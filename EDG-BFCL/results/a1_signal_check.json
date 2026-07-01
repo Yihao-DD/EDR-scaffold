@@ -1,0 +1,163 @@
+{
+  "signal_definitions": {
+    "router_success": "ast_function_name(prediction) == ast_function_name(ground_truth)",
+    "validator_success": "router_success and ast_arguments_match(prediction, ground_truth)",
+    "call_success": "router_success and validator_success"
+  },
+  "n_episodes": 808,
+  "n_prediction_cases": 3232,
+  "matrix": {
+    "correct": {
+      "n": 808,
+      "router_true": 808,
+      "router_false": 0,
+      "validator_true": 808,
+      "validator_false": 0
+    },
+    "function_correct_arguments_wrong": {
+      "n": 808,
+      "router_true": 808,
+      "router_false": 0,
+      "validator_true": 0,
+      "validator_false": 808
+    },
+    "function_wrong": {
+      "n": 808,
+      "router_true": 0,
+      "router_false": 808,
+      "validator_true": 0,
+      "validator_false": 808
+    },
+    "function_correct_arguments_partial": {
+      "n": 808,
+      "router_true": 808,
+      "router_false": 0,
+      "validator_true": 0,
+      "validator_false": 808
+    }
+  },
+  "examples": {
+    "correct": {
+      "episode_id": "simple_python_0",
+      "category": "simple_python",
+      "prediction": {
+        "name": "calculate_triangle_area",
+        "arguments": {
+          "base": 10,
+          "height": 5,
+          "unit": "units"
+        }
+      },
+      "ground_truth": {
+        "name": "calculate_triangle_area",
+        "accepted_arguments": {
+          "base": [
+            10
+          ],
+          "height": [
+            5
+          ],
+          "unit": [
+            "units",
+            ""
+          ]
+        }
+      },
+      "router_success": true,
+      "validator_success": true
+    },
+    "function_correct_arguments_wrong": {
+      "episode_id": "simple_python_0",
+      "category": "simple_python",
+      "prediction": {
+        "name": "calculate_triangle_area",
+        "arguments": {
+          "base": 11,
+          "height": 5,
+          "unit": "units"
+        }
+      },
+      "ground_truth": {
+        "name": "calculate_triangle_area",
+        "accepted_arguments": {
+          "base": [
+            10
+          ],
+          "height": [
+            5
+          ],
+          "unit": [
+            "units",
+            ""
+          ]
+        }
+      },
+      "router_success": true,
+      "validator_success": false
+    },
+    "function_wrong": {
+      "episode_id": "simple_python_0",
+      "category": "simple_python",
+      "prediction": {
+        "name": "calculate_triangle_area__wrong",
+        "arguments": {
+          "base": 10,
+          "height": 5,
+          "unit": "units"
+        }
+      },
+      "ground_truth": {
+        "name": "calculate_triangle_area",
+        "accepted_arguments": {
+          "base": [
+            10
+          ],
+          "height": [
+            5
+          ],
+          "unit": [
+            "units",
+            ""
+          ]
+        }
+      },
+      "router_success": false,
+      "validator_success": false
+    },
+    "function_correct_arguments_partial": {
+      "episode_id": "simple_python_0",
+      "category": "simple_python",
+      "prediction": {
+        "name": "calculate_triangle_area",
+        "arguments": {
+          "height": 5,
+          "unit": "units"
+        }
+      },
+      "ground_truth": {
+        "name": "calculate_triangle_area",
+        "accepted_arguments": {
+          "base": [
+            10
+          ],
+          "height": [
+            5
+          ],
+          "unit": [
+            "units",
+            ""
+          ]
+        }
+      },
+      "router_success": true,
+      "validator_success": false
+    }
+  },
+  "asserts": {
+    "router_non_degenerate": true,
+    "validator_non_degenerate": true,
+    "correct_all_router_true": true,
+    "function_wrong_all_router_false": true,
+    "arguments_wrong_router_true_validator_false": true
+  }
+}

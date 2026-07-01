@@ -1,0 +1,68 @@
+{
+  "a4": {
+    "diagnose_raises_not_implemented": true,
+    "generate_patches_raises_not_implemented": true
+  },
+  "a5": {
+    "alloc_random_raises_not_implemented": true,
+    "alloc_uniform_raises_not_implemented": true,
+    "alloc_greedy_by_diagnosis_confidence_raises_not_implemented": true,
+    "alloc_ours_semantic_raises_not_implemented": true,
+    "alloc_oracle_empirical_raises_not_implemented": true,
+    "estimate_value_raises_not_implemented": true
+  },
+  "a6": {
+    "budget_tiers": [
+      "loose",
+      "medium",
+      "tight"
+    ],
+    "budget_caps": {
+      "loose": {
+        "validation_calls": 1000,
+        "latency_ms": 3600000,
+        "context_tokens": 2000000
+      },
+      "medium": {
+        "validation_calls": 300,
+        "latency_ms": 1200000,
+        "context_tokens": 600000
+      },
+      "tight": {
+        "validation_calls": 100,
+        "latency_ms": 600000,
+        "context_tokens": 200000
+      }
+    },
+    "metrics_example": {
+      "arm": "ours_semantic",
+      "split": "multiple",
+      "version": "original",
+      "budget": "tight",
+      "seed": 0,
+      "repaired_failures": 0,
+      "validation_calls": 0,
+      "net_pass_rate_gain": 0.0,
+      "regression_count": 0,
+      "oracle_80pct_calls": null,
+      "oracle_90pct_calls": null
+    },
+    "patch_record_example": {
+      "patch_id": "p0",
+      "component": "router",
+      "patch_type": "function_alias",
+      "validation_cost": {
+        "calls": 0,
+        "latency_ms": 0,
+        "context_tokens": 0
+      },
+      "rollbackable": true
+    }
+  },
+  "locked_phase_b_cores": [
+    "diagnosis",
+    "patch generation",
+    "semantic value estimation",
+    "empirical oracle"
+  ]
+}

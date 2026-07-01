@@ -1,0 +1,33 @@
+{
+  "budget_unit": "1 validation call = 1 patch replayed on 1 validation episode",
+  "tiers": {
+    "loose": {
+      "caps": {
+        "validation_calls": 1000,
+        "latency_ms": 3600000,
+        "context_tokens": 2000000
+      },
+      "first_add": false
+    },
+    "medium": {
+      "caps": {
+        "validation_calls": 300,
+        "latency_ms": 1200000,
+        "context_tokens": 600000
+      },
+      "first_add": false
+    },
+    "tight": {
+      "caps": {
+        "validation_calls": 100,
+        "latency_ms": 600000,
+        "context_tokens": 200000
+      },
+      "first_add": false
+    }
+  },
+  "placeholder_caps": true,
+  "asserts": {
+    "three_tiers_present": true
+  }
+}

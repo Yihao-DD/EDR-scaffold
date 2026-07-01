@@ -1,0 +1,9 @@
+{
+  "rules_document": "logs/b5_anti_shortcut_rules.md",
+  "locked_cores": [
+    "patch generation",
+    "utility estimation",
+    "oracle",
+    "repair experiment"
+  ]
+}

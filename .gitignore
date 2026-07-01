@@ -1,0 +1,12 @@
+# Local caches
+.pytest_cache/
+__pycache__/
+
+# Private operational credentials
+ops/SERVERS.md
+
+# Large or regenerable training artifacts
+EDG-EXP3-distill/adapters/
+EDG-EXP3-distill/results/smoke/
+EDG-EXP3-distill/results/phase0_shards/
+EDG-EXP3-distill/results/s02_teacher_samples/

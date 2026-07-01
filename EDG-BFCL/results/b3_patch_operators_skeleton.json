@@ -1,0 +1,10 @@
+{
+  "n_operators": 5,
+  "raises_not_implemented": {
+    "generate_router_patches": true,
+    "generate_validator_patches": true,
+    "apply_patch": true,
+    "rollback_patch": true,
+    "estimate_utility": true
+  }
+}

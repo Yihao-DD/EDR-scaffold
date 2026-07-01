@@ -1,0 +1,175 @@
+【已被 EDR 总纲收编】本文件为更早的 Phase 0 指令,原文完整保留;权威规范见同目录 EDR_PROJECT_MASTER_PLAN.md,任何冲突以总纲为准。
+
+EXP3 指令:Evolve → Distill → Retire — Phase 0 存在性验证
+
+
+新方向:把自进化 scaffold 教会的修复,蒸馏进 frozen 7B 的权重(LoRA),卸载 scaffold(Wipe Test),验证收益保留。
+本 Phase 回答一个问题:scaffold 的 0.24 修复收益,蒸进权重后还剩多少? 以及一个前置问题:这些修复里,有多少是模型自己采样碰不到、只有 scaffold 能教会的?
+
+
+
+
+0. 元指令(先读)
+
+目标:一周内产出四臂对比(base / distilled / STaR-distilled / scaffold-on)的 held-out 数字 + Wipe Test 保留率 + pass@16 分区图。这是整个新方向的存在性验证。
+
+执行结构:Step 0.0 + 0.1 先跑(合计约一天),贴结果;若数据盘点通过(原始修复轨迹 ≥50 条),不等待、直接继续 0.2→0.4;若 <50 条,停下贴报告(需要先补 loop 数据)。
+
+纪律(全程):
+
+
+在线验证只用 BFCL AST,绝不 GPT judge。
+所有数字标 PROBE signal (n=X)。
+held-out 是 Wipe Test 的考场,其任何 episode 的任何轨迹绝不进训练数据——代码 assert,不靠自觉。
+base 权重永不改动;LoRA adapter 独立存盘、可加载可卸载、带版本号——adapter 是权重侧的 patch:可版本化、可回滚,延续本项目的 rollback 纪律。
+复用 EDG-EXP2-struct 的环境/评估/失败采集代码(import 或软链,不重写);旧产出不删。
+新目录:本地 E:\EDGscaffold\EDG-EXP3-distill,服务器 /root/autodl-tmp/EDG-EXP3-distill。
+Gate 0 判据(第 8 节)现在写死,跑完对号入座,不许改。
+
+
+关键定义:
+
+
+scaffold(教师侧)= EXP2 中 NL-evo 轨道的最终 evolved harness(held-out 0.2405,三轨最佳,patch 最简)。STRUCT/NL-padded 轨道的修复轨迹暂不并入(保持"卸载的是哪个 scaffold"叙事干净);若 0.0 盘点数据不足,可作为增广备选,但须在报告中单独标注。
+teacher = frozen Qwen2.5-7B-Instruct + NL-evo harness;student = frozen Qwen2.5-7B-Instruct + LoRA。
+蒸馏样本格式(context distillation):input = 无任何 patch 的原始 BFCL prompt(与 base 所见完全一致);output = teacher(patch 在场)产出的、AST 验证通过的函数调用。patch 只在生成 output 时在场,绝不出现在训练 input 里。
+
+
+
+1. Step 0.0 — 数据盘点(半天)
+
+
+统计 NL-evo 轨道下,train + val 集上被修复的失败(patch 在场时 call_success=True 的原失败 episode)数量。用最终 accepted harness 在 train+val 失败集上以 T=0 重跑一遍,取 AST 通过的 episode 清单,得 repaired_train_val.json。
+划定三个回归集(固定、存盘、后续不动):
+
+R-success:base 原本成功的 episode 中随机抽 300-500 条(BFCL Multiple),训练绝不使用其中留作评估的部分。
+R-other:BFCL Simple AST 全量(已有)+ 若可得,另 1-2 个 BFCL 类别。
+R-heldout:EXP2 的 held-out split,原样冻结。
+
+
+
+泄漏 assert 写进代码:set(distill_episodes) ∩ set(heldout_episodes) == ∅;set(distill_episodes) ∩ set(R_success_eval) == ∅。每次构建训练数据时强制执行。
+顺手统计:修复 episode 的函数分布、错误类型分布(为 0.4 的分层评估做准备:held-out 中"同函数/同错误类型" vs "全新"两个子集的划分依据)。
+
+
+交付:results/s00_inventory.json(修复数、分布、回归集清单)、logs/s00.md。
+条件分支:原始修复轨迹 ≥50 → 继续;<50 → 停,贴报告(方案:扩大 train 失败采集面重跑 loop 一轮再回来)。
+
+
+2. Step 0.1 — pass@16 probe(半天,与 0.0 可并行)
+
+目的:把 train+val 失败集切成两个区,决定 STaR 对照的战场和本方向差异化空间的大小。
+
+
+对 train+val 的全部失败 episode(不只被修复的),base 模型、无任何 patch、temperature=0.8、采样 16 条,AST 判定。
+分区:
+
+采样可救区(sampling-rescuable):16 条中 ≥1 条 AST 通过。
+唯 scaffold 可救区(scaffold-only):16 条全灭,且 NL-evo patch 在场时成功(即在 repaired 清单里)。
+双否区:采样救不了、scaffold 也没修好(记录,不用于训练)。
+
+
+
+保留全部采样通过的轨迹——它们就是 0.3 里 STaR 对照的训练数据,不用重采。
+报告:两区的大小、占失败总数比例、占修复集比例;"唯 scaffold 可救区占修复集的比例"是头号数字——它是"scaffold 教会了模型自己够不到的东西"的直接测量。
+
+
+交付:results/s01_pass16_partition.json(每 episode 的区标签 + 命中数)、logs/s01.md(分区统计 + 头号数字)。
+
+汇报点:贴 s00 + s01 的关键数字(修复数、两区占比)。若 0.0 通过,不等待,直接继续。
+
+
+3. Step 0.2 — 蒸馏集构建(1 天)
+
+
+主数据:对 repaired_train_val 中每个 episode,teacher(patch 在场)T=0 取 1 条 + T=0.8 采 4 条,只留 AST 通过的,去重。目标总量 300-500 条;不足则 T=0.8 加采至 k=8。
+每条样本标注:episode_id、来源区(采样可救 / 唯 scaffold 可救)、函数名、错误类型。
+replay 混入:从 base 成功轨迹(非 R-success 评估部分)取蒸馏集条数的 30-50%,格式相同(input 无 patch,output 为 base 自己的正确调用),作为防遗忘正则混入训练集。
+过全部泄漏 assert。
+同步构建 STaR 对照集:用 0.1 保留的采样通过轨迹(input 无 patch,output 为模型自己碰对的调用),总量与主蒸馏集配平(条数 ±10%),同比例 replay 混入。注意:STaR 集按定义只覆盖采样可救区——这正是对照的意义,如实记录其区覆盖。
+
+
+交付:data/distill_main.jsonl、data/distill_star.jsonl、results/s02_datasets.json(两集的量/区覆盖/函数分布对比)、logs/s02.md。
+
+
+4. Step 0.3 — LoRA 训练(1-2 天)
+
+
+框架:peft + transformers,Qwen2.5-7B-Instruct bf16 + gradient checkpointing;单卡显存不足(4090 24GB 吃紧时)退 QLoRA(4bit base + LoRA),在报告中注明。
+网格:rank ∈ {8, 16, 32} × lr ∈ {5e-5, 1e-4, 2e-4},其余固定(epochs ≤3,cosine,warmup 5%),网格用单 seed。
+选点判据(val 上,预先定死):val_repair_rate 提升最大 且 R-success 子样保持 ≥98%——两条同时满足里取 repair 最高者;全不满足 → 取回归最好的一档报告并标注 BLOCKED 讨论。
+选定配置后 3 seeds 重训(最终报告用)。
+STaR 对照用完全相同的选点流程独立训练(同网格、同判据、3 seeds)。
+每个 adapter 存独立目录,带 config + seed 版本号。
+
+
+交付:results/s03_grid.json、最终 adapters、logs/s03.md(选点过程 + 判据对照)。
+
+
+5. Step 0.4 — 四臂评估(1-2 天)
+
+四臂,全部 T=0,AST 判:
+
+臂配置角色base原始 7B,无 patch地板distilled7B + 主蒸馏 LoRA,无 patch主角(Wipe Test)STaR-distilled7B + STaR LoRA,无 patch核心对照scaffold-on7B + NL-evo harness(已有数字 0.2405,重跑确认)内化上界参照
+
+评估面(每臂 × 3 seeds 的 adapter,base/scaffold-on 无 seed 维度):
+
+
+R-heldout 修复率(主指标),分层报告:
+
+全集;
+相似区子集(与训练修复轨迹同函数或同错误类型);
+全新区子集(训练从未覆盖的函数/错误类型)——真学习判据;
+若可标注,按 0.1 的两区(采样可救 / 唯 scaffold 可救)再切一刀——distilled vs STaR 在"唯 scaffold 可救区"上的差距是核心区分数字。
+
+
+
+R-success 保持率(判据 ≥98%)。
+R-other(BFCL Simple 及其他类别)accuracy,与 base 对比。
+BFCL Multiple 整体 accuracy(base 成功 + 失败修复合起来的总分)——benchmark 故事的数字。
+context 成本表:scaffold-on 平均 patch tokens(≈12.5k)vs distilled(0)。
+
+
+交付:results/s04_four_arms.json(全部数字 + CI)、logs/s04.md(含 Gate 0 逐条对号)。
+
+
+6. Gate 0 — 预注册判据(现在写死,跑完对号,不许改)
+
+主判据(Wipe Test 保留率):retention = distilled_heldout_repair / scaffold_on_heldout_repair
+
+
+≥ 0.60 → 强信号,retire 叙事成立,直接进 Phase 1(第二轮循环 + 消融)。
+0.40 – 0.60 → 可用,叙事调整为"内化 + context 成本归零"的净收益(保留 X% 收益、省 12.5k tokens),进 Phase 1,同时把增广加强列为 Phase 1 任务。
+< 0.40 → 允许一轮增广/超参重试(加采到 k=8、调 replay 比例);重试后仍 <0.40 → 停,贴全部数字讨论,不许第二轮重试。
+
+
+回归判据(硬性):R-success ≥ 0.98 且 R-other 相对 base 无显著下降(CI 重叠即可)。不满足 → 无论保留率多高,先修遗忘(降 lr / 加 replay)再报数。
+
+区分判据(核心卖点):在唯 scaffold 可救区上,distilled 修复率 > STaR-distilled,3 seeds CI 分离。
+
+
+成立 → "蒸馏教会的 ≠ 蒸馏碰对的"有了直接证据。
+不成立(打平)→ 如实记录,claim 收窄评估:看该区占比(0.1 的头号数字),贴出讨论——不许把打平解读成"接近成立"。
+
+
+泛化观察(记录,不 gate):全新区子集上 distilled 的修复率 >0 且 > base → 权重学到规律而非查表,超预期强信号,单独标出。
+
+
+7. 交付物清单(Phase 0 完成时)
+
+
+s00_inventory / s01_pass16_partition / s02_datasets / s03_grid / s04_four_arms 全套 results + logs。
+一张主表:四臂 × (heldout 全集 / 相似区 / 全新区 / 唯scaffold区 / R-success / R-other / Multiple 总分) + CI。
+两个头号数字:Wipe Test 保留率、唯 scaffold 可救区占比。
+Gate 0 逐条对号结论(强信号 / 可用 / 重试 / 停)。
+pytest 双机通过;泄漏 assert 在测试中显式覆盖。
+
+
+
+8. 执行顺序
+
+
+Step 0.0 + 0.1(并行,约一天)→ 贴关键数字(修复数、两区占比)。
+盘点 ≥50 条 → 直接继续 0.2 → 0.3 → 0.4,不等待。
+跑完贴主表 + 两个头号数字 + Gate 0 对号。
+全程任何 assert 失败或 BLOCKED,停下贴现场,不自行绕过。

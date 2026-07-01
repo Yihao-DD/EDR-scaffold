@@ -1,0 +1,66 @@
+{
+  "bfcl_version": "bfcl-eval 2026.3.23 / BFCL_v4",
+  "connected_categories": [
+    "simple_python",
+    "simple_java",
+    "simple_javascript",
+    "live_simple"
+  ],
+  "copied_files": [],
+  "category_summaries": [
+    {
+      "category": "simple_python",
+      "n_episodes": 400,
+      "field_coverage": {
+        "query": 400,
+        "ground_truth_function_name": 400,
+        "ground_truth_arguments": 400,
+        "function_doc": 400
+      }
+    },
+    {
+      "category": "simple_java",
+      "n_episodes": 100,
+      "field_coverage": {
+        "query": 100,
+        "ground_truth_function_name": 100,
+        "ground_truth_arguments": 100,
+        "function_doc": 100
+      }
+    },
+    {
+      "category": "simple_javascript",
+      "n_episodes": 50,
+      "field_coverage": {
+        "query": 50,
+        "ground_truth_function_name": 50,
+        "ground_truth_arguments": 50,
+        "function_doc": 50
+      }
+    },
+    {
+      "category": "live_simple",
+      "n_episodes": 258,
+      "field_coverage": {
+        "query": 258,
+        "ground_truth_function_name": 258,
+        "ground_truth_arguments": 258,
+        "function_doc": 258
+      }
+    }
+  ],
+  "total_episodes": 808,
+  "ast_self_check": {
+    "known_correct": true,
+    "known_wrong": false
+  },
+  "excluded_or_deferred_categories": {
+    "multiple": "excluded: multiple candidate functions, not single function doc",
+    "parallel": "excluded: multiple ground-truth calls",
+    "parallel_multiple": "excluded: multiple functions and multiple calls",
+    "irrelevance": "excluded: no possible_answer AST target",
+    "live_relevance": "excluded: relevance detection, no single function call target",
+    "sql/rest/exec/chatable": "deferred/special: unused or special evaluation structure in package data",
+    "web_search/memory/multi_turn": "excluded: agentic or multi-turn, outside single-turn single-function scope"
+  }
+}

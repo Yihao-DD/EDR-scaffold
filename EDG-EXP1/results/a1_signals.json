@@ -1,0 +1,75 @@
+{
+  "signal_definitions": {
+    "router_success": "ast_function_name(prediction) == ast_function_name(ground_truth)",
+    "validator_success": "router_success and ast_arguments_match(prediction, ground_truth)",
+    "call_success": "router_success and validator_success"
+  },
+  "splits": {
+    "multiple": {
+      "matrix": {
+        "correct": {
+          "n": 1253,
+          "router_true": 1253,
+          "router_false": 0,
+          "validator_true": 1253,
+          "validator_false": 0
+        },
+        "function_correct_arguments_wrong": {
+          "n": 1253,
+          "router_true": 1253,
+          "router_false": 0,
+          "validator_true": 0,
+          "validator_false": 1253
+        },
+        "function_wrong": {
+          "n": 1253,
+          "router_true": 0,
+          "router_false": 1253,
+          "validator_true": 0,
+          "validator_false": 1253
+        }
+      },
+      "asserts": {
+        "router_nontrivial": true,
+        "validator_nontrivial": true,
+        "correct_all_router_true": true,
+        "function_wrong_all_router_false": true,
+        "wrong_arguments_router_true_validator_false": true
+      },
+      "n_episodes": 1253
+    },
+    "simple": {
+      "matrix": {
+        "correct": {
+          "n": 808,
+          "router_true": 808,
+          "router_false": 0,
+          "validator_true": 808,
+          "validator_false": 0
+        },
+        "function_correct_arguments_wrong": {
+          "n": 808,
+          "router_true": 808,
+          "router_false": 0,
+          "validator_true": 0,
+          "validator_false": 808
+        },
+        "function_wrong": {
+          "n": 808,
+          "router_true": 0,
+          "router_false": 808,
+          "validator_true": 0,
+          "validator_false": 808
+        }
+      },
+      "asserts": {
+        "router_nontrivial": true,
+        "validator_nontrivial": true,
+        "correct_all_router_true": true,
+        "function_wrong_all_router_false": true,
+        "wrong_arguments_router_true_validator_false": true
+      },
+      "n_episodes": 808
+    }
+  }
+}

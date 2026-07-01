@@ -1,0 +1,13 @@
+{
+  "n_arms": 8,
+  "raises_not_implemented": {
+    "arm_no_update": true,
+    "arm_router_only": true,
+    "arm_validator_only": true,
+    "arm_uniform_split": true,
+    "arm_random_allocator": true,
+    "arm_update_both": true,
+    "arm_oracle_allocator": true,
+    "arm_ours_history_based": true
+  }
+}

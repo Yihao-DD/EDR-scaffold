@@ -1,0 +1,105 @@
+{
+  "bfcl_version": "bfcl-eval 2026.3.23 / BFCL_v4",
+  "source_data_dir": "..\\EDG-BFCL\\deps\\bfcl_eval_pkg\\bfcl_eval\\data",
+  "raw_dir": "data\\raw\\bfcl",
+  "categories": {
+    "multiple": [
+      "multiple",
+      "live_multiple"
+    ],
+    "simple": [
+      "simple_python",
+      "simple_java",
+      "simple_javascript",
+      "live_simple"
+    ]
+  },
+  "copied_files": [
+    "data\\raw\\bfcl\\BFCL_v4_multiple.json",
+    "data\\raw\\bfcl\\possible_answer\\BFCL_v4_multiple.json",
+    "data\\raw\\bfcl\\BFCL_v4_live_multiple.json",
+    "data\\raw\\bfcl\\possible_answer\\BFCL_v4_live_multiple.json",
+    "data\\raw\\bfcl\\BFCL_v4_simple_python.json",
+    "data\\raw\\bfcl\\possible_answer\\BFCL_v4_simple_python.json",
+    "data\\raw\\bfcl\\BFCL_v4_simple_java.json",
+    "data\\raw\\bfcl\\possible_answer\\BFCL_v4_simple_java.json",
+    "data\\raw\\bfcl\\BFCL_v4_simple_javascript.json",
+    "data\\raw\\bfcl\\possible_answer\\BFCL_v4_simple_javascript.json",
+    "data\\raw\\bfcl\\BFCL_v4_live_simple.json",
+    "data\\raw\\bfcl\\possible_answer\\BFCL_v4_live_simple.json"
+  ],
+  "splits": {
+    "multiple": {
+      "n_episodes": 1253,
+      "categories": {
+        "multiple": 200,
+        "live_multiple": 1053
+      },
+      "function_pool_size": {
+        "min": 2,
+        "median": 3,
+        "mean": 3.7789305666400637,
+        "max": 37,
+        "histogram": {
+          "2": 303,
+          "3": 387,
+          "4": 212,
+          "5": 195,
+          "6": 78,
+          "7": 33,
+          "8": 18,
+          "9": 11,
+          "10": 14,
+          "26": 1,
+          "37": 1
+        }
+      },
+      "field_coverage": {
+        "query": 1253,
+        "ground_truth_function_name": 1253,
+        "ground_truth_arguments": 1253,
+        "function_pool": 1253
+      }
+    },
+    "simple": {
+      "n_episodes": 808,
+      "categories": {
+        "simple_python": 400,
+        "simple_java": 100,
+        "simple_javascript": 50,
+        "live_simple": 258
+      },
+      "function_pool_size": {
+        "min": 1,
+        "median": 1,
+        "mean": 1.0,
+        "max": 1,
+        "histogram": {
+          "1": 808
+        }
+      },
+      "field_coverage": {
+        "query": 808,
+        "ground_truth_function_name": 808,
+        "ground_truth_arguments": 808,
+        "function_pool": 808
+      }
+    }
+  },
+  "ast_self_check": {
+    "multiple": {
+      "known_correct": true,
+      "known_wrong": false
+    },
+    "simple": {
+      "known_correct": true,
+      "known_wrong": false
+    }
+  },
+  "asserts": {
+    "multiple_pool_min_ge_2": true,
+    "simple_pool_max_eq_1": true,
+    "ast_known_correct_true_each_split": true,
+    "ast_known_wrong_false_each_split": true
+  }
+}
