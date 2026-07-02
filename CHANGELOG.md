@@ -142,6 +142,49 @@ Capped uniform replay2 datasets: each arm has `148` core rows + `296` replay row
 
 The fixed forgetting gate remains unchanged at `forget <= 0.02`.
 
+## v1.14 - 2026-07-02
+
+### Capped-arena measurement audit and D2 representative revision
+
+Timing: recorded after s06 D3 and targeted C returned, before D2 heldout 5-seed runs. This entry separates valid capped-arena measurements from invalid retrospective s05 capped-arena backfills.
+
+Measurement-validity bug: the capped arena was reserved only for future capped D3/D1 runs. Retrospective s05 checkpoints were trained on the old uncapped replay pools, which overlap the capped arena. Therefore all s05 capped-arena backfills are `INVALID (arena-train overlap)` and may not be used as fresh-pass evidence. Attribution: v1.13 added constructibility checks but did not also require per-checkpoint measurement-validity checks against training rows.
+
+Anti-self-deception protocol, rule 9 expansion: every new evaluation arena must include both (a) satisfiability/constructibility arithmetic and (b) per-checkpoint measurement-validity assertions: `episodes(training_checkpoint) ∩ episodes(evaluation_arena) = ∅` before any number can carry gate authority.
+
+Exact capped-arena overlap audit (`arena_n=106`):
+
+| checkpoint | status | unique train episodes | train rows | arena unique overlap | arena row overlap |
+|---|---:|---:|---:|---:|---:|
+| s05 main ep3 replay1 | INVALID | 222 | 296 | 65 | 65 |
+| s05 main replay2 lambda2 | INVALID | 300 | 444 | 106 | 138 |
+| s05 STaR ep3 replay1 | INVALID | 179 | 296 | 75 | 75 |
+| s05 STaR replay2 lambda2 | INVALID | 257 | 444 | 106 | 138 |
+| D3 main lambda1 | VALID | 194 | 444 | 0 | 0 |
+| D3 main lambda2 | VALID | 194 | 444 | 0 | 0 |
+| D3 STaR lambda1 | VALID | 151 | 444 | 0 | 0 |
+| D3 STaR lambda2 | VALID | 151 | 444 | 0 | 0 |
+| C main targeted | VALID | 137 | 444 | 0 | 0 |
+| C STaR targeted | VALID | 94 | 444 | 0 | 0 |
+
+The apparent s05 STaR ep3 replay1 capped-arena pass (`1/106`) is a mirage: that checkpoint trained on `75/106` arena episodes. It must not appear as a fresh regression success in reports.
+
+Valid capped-arena comparison: D3 main lambda1 `7/106`, D3 main lambda2 `5/106`, D3 STaR lambda1 `5/106`, D3 STaR lambda2 `3/106`; C main targeted `6/106`, C STaR targeted `4/106`. Targeted replay differs from clean D3 baselines by only 1-2 episodes at `n=106`; the earlier wording that targeted replay worsened fresh forgetting is withdrawn. The mechanical D1 targeted verdict still fails because both targeted points exceed the capped `2/106` gate, and the preregistered hard stop remains active.
+
+NaN caveat strengthened: targeted C had substantial non-finite-loss skipping (`main=36`, `STaR=54`). These runs are valid for the binary "failed the capped gate" verdict, but their transfer magnitudes should be read lightly because `lambda2` plus high-repeat targeted replay appears numerically brittle.
+
+Coverage does not imply protection (`PROBE` mechanism note): s05 replay2 lambda2 checkpoints trained over all `106` capped-arena episodes, yet still missed `4` (main) and `5` (STaR). All of those missed episode IDs were present in their respective training rows. This invalidates the fresh-pass use of those numbers, but it is useful sample-in evidence that replay exposure alone does not guarantee protection.
+
+Capped-arena wrong-set audit: capped-arena wrongs are disjoint from the old fragile-24 set (`0` overlap). The clean D3/C runs have no episode wrong in every clean configuration, but five recurring wrong IDs appear in at least three clean configurations: `live_multiple_1003-232-2`, `live_multiple_453-145-4`, `live_multiple_469-145-20`, `live_multiple_956-203-0`, and `multiple_178`. These form the current `PROBE` irreducible-interference watch set.
+
+Sibling-category audit closure: the tier-1 sibling-category arena is unavailable under the current single-call evaluator. No untouched recorded success pool remains, and unrecorded compatible single-call categories are insufficient; multi-call, parallel, memory, web-search, and multi-turn categories require different evaluators. Thus the capped arena remains an exploration proxy only, and final regression authority stays with D2 `forget_heldout`.
+
+D2 representatives revised and locked:
+
+- rep1, best-transfer representative: both arms use s05 `ep3 replay1`. The s05 capped-arena backfill is invalid, but D2 `forget_heldout` will adjudicate regression on genuinely fresh heldout base-success episodes.
+- rep2, valid lowest capped forgetting: both arms use D3 `ep3 replay2 lambda2` (`main=5/106`, `STaR=3/106`). s05 checkpoints exit rep2 competition because their capped-arena measurements are invalid.
+- final regression authority: `forget_heldout` in D2. Capped arena remains `PROBE`/reference, old `R_success_eval` remains continuity-only, and no additional D1 recipe exploration is authorized.
+
 ## v1.6 - 2026-07-02
 
 ### Prior-governed transfer observation and targeted-replay specification
