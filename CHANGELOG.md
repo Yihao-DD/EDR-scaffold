@@ -276,6 +276,78 @@ Sibling-arena blocker: under the current single-call evaluator, there are `0` ne
 
 D2 launch status: D2 5-seed training/evaluation is not launched from this state. Before D2 can carry a deployment regression gate, one of the following must be preregistered: (1) a new evaluator for never-touched multi-call/multi-turn/web-search sibling categories, or (2) an explicitly downgraded non-adjudicating/probe regression surface such as unrecorded `simple_python`, with its limitations stated up front.
 
+## v1.17 - 2026-07-02
+
+### D2 dual-lane launch and composite regression adjudication
+
+Timing: recorded after the v1.16 blocker and before any v1.17 D2 checkpoint metrics are read.
+
+Decision: use a Route 1+2 composite regression adjudication surface and pipeline it with Route 3. D2 training may start immediately; the regression arena is constructed in parallel and then evaluated on the frozen D2 checkpoints by pure forward pass. This is scientifically equivalent because representative points and D2 seeds are frozen before arena metrics are observed.
+
+Rejected single-route alternatives:
+
+- Route 1 only was rejected because implementing a new parallel-family judge is necessary but may not by itself produce enough base-success adjudication examples.
+- Route 2 only was rejected because `simple_python` unrecorded rows are episode-untouched but category eval-touched and therefore cannot alone carry a clean deployment regression claim.
+- Route 3 only was rejected because delaying all D2 training until the arena is complete wastes training-card time; arena evaluation is a pure-forward measurement on already frozen checkpoints.
+
+D2 training lane A:
+
+- New runs: `16` train/eval points, seeds `20260704..20260707`.
+- Reused checkpoints: the four seed `20260703` representatives already produced in s05/s06.
+- Representative definitions:
+  - `rep1`: both arms use the s05 `ep3 replay1` configuration and original replay1 pool.
+  - `rep2`: both arms use the D3 `ep3 replay2 lambda=2` configuration and capped replay2 pool.
+- Numeric hygiene required per D2 seed: `skipped_nonfinite_loss`, `skipped_nonfinite_grad`, `kl_anchor_batches` for rep2, `train_seconds`, and whether eval-only recovery occurred.
+- s05 rep1 numerical-history check remains required: original main/STaR ep3 replay1 logs must be inspected and any non-finite or recovery history attached to rep1's file card.
+
+Launched queue artifact: `tmp_remote_scripts/run_s07_d2_queue.sh`. It serializes four new seeds for one queue, writes results under `results/s07_d2_5seed/{main,star}/`, writes adapters under `adapters/s07_d2_5seed/{main,star}/`, and performs eval-only recovery if an adapter exists without a JSON result.
+
+Training queue assignment:
+
+- new a3: `main_rep2`;
+- new a4: `star_rep2`;
+- old westb: `main_rep1`;
+- old westc: `star_rep1`.
+
+Evaluator/arena lane B:
+
+- New script: `scripts/v17_parallel_arena.py`.
+- Judge scope: parallel-family differential judge only. Covered categories are `parallel`, `parallel_multiple`, `live_parallel`, and `live_parallel_multiple`.
+- Output semantics: prediction must parse as a list of function calls; predicted call count must equal ground-truth call count; matching is order-insensitive; each individual call uses the existing single-call AST/value semantics.
+- This is a differential project judge for this regression surface only. It is not claimed as official BFCL parallel scoring.
+- Multi-turn, memory, and web-search categories remain out of scope for v1.17.
+
+Judge smoke test passed before base-forward evaluation:
+
+- order-insensitive two-call success;
+- wrong call count failure;
+- wrong argument failure;
+- nested dictionary argument success.
+
+Raw candidate pool before base-success filtering:
+
+- parallel family: `440` rows (`parallel=200`, `parallel_multiple=200`, `live_parallel=16`, `live_parallel_multiple=24`);
+- `simple_python` unrecorded candidate: `241` rows;
+- total candidate rows: `681`.
+
+Arena construction rules:
+
+- Run base `T=0` on the `681` candidate rows after the judge smoke and human spot-check are complete.
+- Freeze `simple_python` unrecorded episode IDs into the resulting artifact.
+- Human spot-check: inspect `10-15` base outputs from the parallel-family judge before freezing the judge; record the review in logs. This is a judgment-dense step and requires a person in the loop.
+- Judge freeze: once spot-check passes, record the git hash in this changelog before evaluating any D2 checkpoint on the new arena.
+- Five intersection asserts for the final arena: zero intersection with all training rows, old `R_success_eval` 400, capped106, `D_val`, and `D_heldout`.
+
+Final regression report structure is five-faced:
+
+- `forget_sibling`: composite adjudication surface from v1.17 lane B;
+- old 400: continuity only;
+- capped106: PROBE/reference only, with known invalidity for historical non-capped rep1 where applicable;
+- trained-success-retention 65: mechanistic only;
+- heldout-98: continuity mirror only.
+
+Heldout repair and C2 evaluation remain unchanged from v1.16: the 158 heldout failure arena, retention double reporting, teacher agreement, per-arm 2x2 tables, and scaffold-only paired bootstrap remain the final repair-side/C2 judge.
+
 ## v1.6 - 2026-07-02
 
 ### Prior-governed transfer observation and targeted-replay specification
