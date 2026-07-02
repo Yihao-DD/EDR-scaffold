@@ -123,6 +123,20 @@ def assert_no_leakage(distill_episode_ids, heldout_episode_ids, r_success_eval_i
     return True
 
 
+def assert_no_selection_leakage(training_episode_ids, selection_episode_ids):
+    training = set(training_episode_ids)
+    selection = set(selection_episode_ids)
+    overlap = sorted(training & selection)
+    if overlap:
+        raise AssertionError(
+            {
+                "training_selection_overlap": overlap[:20],
+                "n_training_selection_overlap": len(overlap),
+            }
+        )
+    return True
+
+
 def partition_episode(pass16_hits, scaffold_success):
     if pass16_hits > 0:
         return "sampling_rescuable"
@@ -373,8 +387,11 @@ def run_teacher_sample_shard(args):
         args.split_seed,
     )
     train_val_by_id = {item["episode_id"]: item for item in split["train"] + split["validation"]}
+    train_ids = {item["episode_id"] for item in split["train"]}
     repaired = read_json(args.repaired_input)
     repaired = [row for row in repaired if row["episode_id"] in train_val_by_id]
+    if args.train_only:
+        repaired = [row for row in repaired if row["episode_id"] in train_ids]
     shard = shard_items(repaired, args.shard_index, args.shard_count)
     runner = Phase0Runner(args.model_id, cache_dir=args.model_cache_dir)
     records = []
@@ -467,7 +484,7 @@ def deterministic_sample(rows, count, seed, label):
     for row in rows:
         digest = hashlib.sha256(f"{seed}:{label}:{row['episode_id']}:{row.get('source')}:{row.get('output')}".encode("utf-8")).hexdigest()
         keyed.append((digest, row))
-    return [row for _, row in sorted(keyed)[:count]]
+    return [row for _, row in sorted(keyed, key=lambda item: item[0])[:count]]
 
 
 def load_jsonl(path):
@@ -516,6 +533,8 @@ def build_datasets(args):
         args.split_seed,
     )
     records_by_id = {item["episode_id"]: item for item in baseline["records"]}
+    train_ids = {item["episode_id"] for item in split["train"]}
+    val_ids = {item["episode_id"] for item in split["validation"]}
     train_val_by_id = {item["episode_id"]: item for item in split["train"] + split["validation"]}
     repaired = read_json(args.repaired_input)
     partition = read_json(args.s01_input)
@@ -527,6 +546,8 @@ def build_datasets(args):
 
     teacher_rows = []
     for row in repaired:
+        if args.train_only and row["episode_id"] not in train_ids:
+            continue
         episode = train_val_by_id[row["episode_id"]]
         teacher_rows.append(
             make_distill_row(
@@ -540,6 +561,8 @@ def build_datasets(args):
     for shard_path in sorted(Path(args.teacher_sample_dir).glob(args.teacher_sample_glob)):
         payload = read_json(shard_path)
         for sample_record in payload["records"]:
+            if args.train_only and sample_record["episode_id"] not in train_ids:
+                continue
             episode = train_val_by_id[sample_record["episode_id"]]
             for sample in sample_record["successful_samples"]:
                 teacher_rows.append(
@@ -555,6 +578,8 @@ def build_datasets(args):
     teacher_rows = dedupe_rows(teacher_rows)
     star_rows = []
     for row in load_jsonl(args.pass16_success_input):
+        if args.train_only and row["episode_id"] not in train_ids:
+            continue
         episode = train_val_by_id[row["episode_id"]]
         star_rows.append(
             make_distill_row(
@@ -581,6 +606,8 @@ def build_datasets(args):
 
     assert_no_leakage([row["episode_id"] for row in main_core], heldout_ids, r_success_eval_ids)
     assert_no_leakage([row["episode_id"] for row in star_core], heldout_ids, r_success_eval_ids)
+    assert_no_selection_leakage([row["episode_id"] for row in main_core], val_ids)
+    assert_no_selection_leakage([row["episode_id"] for row in star_core], val_ids)
 
     replay_pool = [
         item
@@ -610,6 +637,8 @@ def build_datasets(args):
     distill_star = star_core + star_replay
     assert_no_leakage([row["episode_id"] for row in distill_main], heldout_ids, r_success_eval_ids)
     assert_no_leakage([row["episode_id"] for row in distill_star], heldout_ids, r_success_eval_ids)
+    assert_no_selection_leakage([row["episode_id"] for row in distill_main], val_ids)
+    assert_no_selection_leakage([row["episode_id"] for row in distill_star], val_ids)
 
     write_jsonl(args.main_output, distill_main)
     write_jsonl(args.star_output, distill_star)
@@ -635,8 +664,10 @@ def build_datasets(args):
         "leakage_asserts": {
             "main_intersect_heldout": 0,
             "main_intersect_r_success_eval": 0,
+            "main_intersect_d_val": 0,
             "star_intersect_heldout": 0,
             "star_intersect_r_success_eval": 0,
+            "star_intersect_d_val": 0,
         },
     }
     write_json(args.summary_output, summary)
@@ -882,6 +913,13 @@ def build_parser():
     teacher_parser.add_argument("--temperature", type=float, default=0.8)
     teacher_parser.add_argument("--max-new-tokens", type=int, default=256)
     teacher_parser.add_argument("--progress-every", type=int, default=10)
+    teacher_parser.add_argument(
+        "--allow-val-sampling",
+        action="store_false",
+        dest="train_only",
+        help="Legacy escape hatch only: sample repaired D_val episodes.",
+    )
+    teacher_parser.set_defaults(train_only=True)
     teacher_parser.set_defaults(func=run_teacher_sample_shard)
 
     merge_parser = subparsers.add_parser("merge-shards")
@@ -913,6 +951,13 @@ def build_parser():
     dataset_parser.add_argument("--star-core-ratio", type=float, default=1.0)
     dataset_parser.add_argument("--min-total", type=int, default=300)
     dataset_parser.add_argument("--max-teacher-core", type=int, default=500)
+    dataset_parser.add_argument(
+        "--allow-val-training",
+        action="store_false",
+        dest="train_only",
+        help="Legacy escape hatch only: allow D_val episodes into training data.",
+    )
+    dataset_parser.set_defaults(train_only=True)
     dataset_parser.set_defaults(func=build_datasets)
     return parser
 

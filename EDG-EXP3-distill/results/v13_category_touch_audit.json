@@ -1,0 +1,322 @@
+{
+  "probe": "v13_category_touch_audit",
+  "split_seed": 20260630,
+  "current_recorded_categories": [
+    {
+      "category": "live_multiple",
+      "recorded_rows": 1053,
+      "recorded_successes": 492,
+      "touched_any": 1053,
+      "untouched_recorded_rows": 0,
+      "untouched_recorded_successes": 0
+    },
+    {
+      "category": "live_simple",
+      "recorded_rows": 258,
+      "recorded_successes": 157,
+      "touched_any": 258,
+      "untouched_recorded_rows": 0,
+      "untouched_recorded_successes": 0
+    },
+    {
+      "category": "multiple",
+      "recorded_rows": 200,
+      "recorded_successes": 134,
+      "touched_any": 200,
+      "untouched_recorded_rows": 0,
+      "untouched_recorded_successes": 0
+    },
+    {
+      "category": "simple_java",
+      "recorded_rows": 100,
+      "recorded_successes": 72,
+      "touched_any": 100,
+      "untouched_recorded_rows": 0,
+      "untouched_recorded_successes": 0
+    },
+    {
+      "category": "simple_javascript",
+      "recorded_rows": 50,
+      "recorded_successes": 35,
+      "touched_any": 50,
+      "untouched_recorded_rows": 0,
+      "untouched_recorded_successes": 0
+    },
+    {
+      "category": "simple_python",
+      "recorded_rows": 159,
+      "recorded_successes": 115,
+      "touched_any": 159,
+      "untouched_recorded_rows": 0,
+      "untouched_recorded_successes": 0
+    }
+  ],
+  "history_touch_sets": {
+    "data:distill_main.jsonl": 148,
+    "data:distill_main_replay1.jsonl": 222,
+    "data:distill_main_replay2.jsonl": 300,
+    "data:distill_main_replay2_unique_tmp.jsonl": 300,
+    "data:distill_main_targeted_replay2.jsonl": 197,
+    "data:distill_star.jsonl": 105,
+    "data:distill_star_replay1.jsonl": 179,
+    "data:distill_star_replay2.jsonl": 257,
+    "data:distill_star_replay2_unique_tmp.jsonl": 257,
+    "data:distill_star_targeted_replay2.jsonl": 154,
+    "data:pass16_success_trajectories.jsonl": 49,
+    "eval:r_heldout": 158,
+    "eval:r_other": 567,
+    "eval:r_success_eval": 400,
+    "eval:s01_heldout_pass16_partition": 158,
+    "eval:s01_pass16_partition": 469,
+    "eval:s03_grid_clean:r_success": 400,
+    "eval:s03_grid_clean:val": 156,
+    "eval:s04_upgrade:r_success": 400,
+    "eval:s04_upgrade:val": 156,
+    "eval:s05_blocked_kl:r_success": 400,
+    "eval:s05_blocked_kl:val": 156
+  },
+  "raw_categories": [
+    {
+      "category": "live_multiple",
+      "question_rows": 1053,
+      "answer_rows": 1053,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 1053,
+      "single_call_compatible_with_current_eval": true,
+      "unrecorded_raw_episode_rows": 0
+    },
+    {
+      "category": "live_parallel",
+      "question_rows": 16,
+      "answer_rows": 16,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 16
+    },
+    {
+      "category": "live_parallel_multiple",
+      "question_rows": 24,
+      "answer_rows": 24,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 24
+    },
+    {
+      "category": "live_simple",
+      "question_rows": 258,
+      "answer_rows": 258,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 258,
+      "single_call_compatible_with_current_eval": true,
+      "unrecorded_raw_episode_rows": 0
+    },
+    {
+      "category": "memory",
+      "question_rows": 155,
+      "answer_rows": 155,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 155
+    },
+    {
+      "category": "multi_turn_base",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 4,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multi_turn_long_context",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 4,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multi_turn_miss_func",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 5,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multi_turn_miss_param",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 5,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multiple",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 200,
+      "single_call_compatible_with_current_eval": true,
+      "unrecorded_raw_episode_rows": 0
+    },
+    {
+      "category": "parallel",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "parallel_multiple",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "simple_java",
+      "question_rows": 100,
+      "answer_rows": 100,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 100,
+      "single_call_compatible_with_current_eval": true,
+      "unrecorded_raw_episode_rows": 0
+    },
+    {
+      "category": "simple_javascript",
+      "question_rows": 50,
+      "answer_rows": 50,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 50,
+      "single_call_compatible_with_current_eval": true,
+      "unrecorded_raw_episode_rows": 0
+    },
+    {
+      "category": "simple_python",
+      "question_rows": 400,
+      "answer_rows": 400,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 400,
+      "single_call_compatible_with_current_eval": true,
+      "unrecorded_raw_episode_rows": 241
+    },
+    {
+      "category": "web_search",
+      "question_rows": 100,
+      "answer_rows": 100,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 100
+    }
+  ],
+  "unrecorded_single_call_compatible_categories": [],
+  "unrecorded_multi_call_categories": [
+    {
+      "category": "live_parallel",
+      "question_rows": 16,
+      "answer_rows": 16,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 16
+    },
+    {
+      "category": "live_parallel_multiple",
+      "question_rows": 24,
+      "answer_rows": 24,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 24
+    },
+    {
+      "category": "memory",
+      "question_rows": 155,
+      "answer_rows": 155,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 155
+    },
+    {
+      "category": "multi_turn_base",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 4,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multi_turn_long_context",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 4,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multi_turn_miss_func",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 5,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "multi_turn_miss_param",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 5,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "parallel",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "parallel_multiple",
+      "question_rows": 200,
+      "answer_rows": 200,
+      "ground_truth_calls_per_episode_first_row": 2,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 200
+    },
+    {
+      "category": "web_search",
+      "question_rows": 100,
+      "answer_rows": 100,
+      "ground_truth_calls_per_episode_first_row": 1,
+      "current_eval_parseable_rows": 0,
+      "single_call_compatible_with_current_eval": false,
+      "unrecorded_raw_episode_rows": 100
+    }
+  ],
+  "fresh_arena_primary_status": "insufficient_single_call_unrecorded_categories",
+  "unrecorded_single_call_total_rows": 0,
+  "strict_recorded_pool_available_successes": 0,
+  "strict_recorded_pool_note": "All categories already present in EXP1 baseline records have zero untouched successes after excluding historical eval/training/replay.",
+  "raw_unrecorded_parseable_rows": 241
+}

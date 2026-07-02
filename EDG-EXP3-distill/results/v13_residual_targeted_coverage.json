@@ -1,0 +1,19 @@
+{
+  "probe": "v13_residual_targeted_coverage",
+  "arms": {
+    "main": {
+      "new_wrong": 21,
+      "exact_train_failure_function_cover": 14,
+      "coarse_train_failure_family_cover": 17,
+      "exact_perfect_protection_residual_forget": 0.0175,
+      "coarse_perfect_protection_residual_forget": 0.01
+    },
+    "star": {
+      "new_wrong": 23,
+      "exact_train_failure_function_cover": 18,
+      "coarse_train_failure_family_cover": 19,
+      "exact_perfect_protection_residual_forget": 0.0125,
+      "coarse_perfect_protection_residual_forget": 0.01
+    }
+  }
+}

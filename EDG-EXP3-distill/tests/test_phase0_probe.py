@@ -2,6 +2,7 @@ import pytest
 
 from scripts.phase0_probe import (
     assert_no_leakage,
+    assert_no_selection_leakage,
     dedupe_rows,
     deterministic_sample,
     merge_shard_payloads,
@@ -60,6 +61,15 @@ def test_assert_no_leakage_raises_on_heldout_or_success_overlap():
         assert_no_leakage(["d1", "s1"], ["h1"], ["s1"])
 
 
+def test_assert_no_selection_leakage_raises_on_validation_overlap():
+    assert assert_no_selection_leakage(["train1"], ["val1"]) is True
+
+    with pytest.raises(AssertionError) as error:
+        assert_no_selection_leakage(["train1", "val1"], ["val1"])
+
+    assert error.value.args[0]["n_training_selection_overlap"] == 1
+
+
 def test_merge_shard_payloads_requires_exact_expected_ids():
     payloads = [
         {"records": [{"episode_id": "e1", "value": 1}]},
@@ -100,3 +110,14 @@ def test_deterministic_sample_is_stable_and_bounded():
     assert first == second
     assert len(first) == 4
     assert all_rows == rows
+
+
+def test_deterministic_sample_handles_duplicate_sort_keys():
+    rows = [
+        {"episode_id": "e1", "source": "star", "output": "same"},
+        {"episode_id": "e1", "source": "star", "output": "same"},
+    ]
+
+    sampled = deterministic_sample(rows, 1, seed=1, label="x")
+
+    assert sampled == [rows[0]]

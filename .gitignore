@@ -1,6 +1,8 @@
 # Local caches
 .pytest_cache/
 __pycache__/
+.DS_Store
+**/.DS_Store
 
 # Private operational credentials
 ops/SERVERS.md
@@ -10,3 +12,9 @@ EDG-EXP3-distill/adapters/
 EDG-EXP3-distill/results/smoke/
 EDG-EXP3-distill/results/phase0_shards/
 EDG-EXP3-distill/results/s02_teacher_samples/
+
+# Local/remote orchestration scratch
+EDG-EXP3-distill/tmp_remote_scripts/
+EDG-EXP3-distill/EDG-EXP3-distill/
+EDG-EXP3-distill/results/s06_d3_capped/
+EDG-EXP3-distill/results/s06_capped_arena_eval/

@@ -1,0 +1,235 @@
+{
+  "dose_order": [
+    {
+      "arm": "main",
+      "ep1_transferred": {
+        "max": -0.7540983606557377,
+        "mean": -0.9919279043869539,
+        "median": -1.0170454545454546,
+        "min": -1.1538461538461537,
+        "n": 13
+      },
+      "ep2_new_transferred": {
+        "max": -0.4085714285714286,
+        "mean": -1.1116901674586368,
+        "median": -1.1651162790697676,
+        "min": -1.625,
+        "n": 24
+      },
+      "not_transferred_by_ep2": {
+        "max": -0.4731182795698925,
+        "mean": -1.1517019998361617,
+        "median": -1.1306573275862069,
+        "min": -1.614864864864865,
+        "n": 26
+      },
+      "partition": "all_validation_teacher_repaired"
+    },
+    {
+      "arm": "main",
+      "ep1_transferred": {
+        "max": -0.7540983606557377,
+        "mean": -1.0011205277754638,
+        "median": -1.0170454545454546,
+        "min": -1.1458333333333333,
+        "n": 7
+      },
+      "ep2_new_transferred": {
+        "max": -0.4085714285714286,
+        "mean": -1.1183578558988674,
+        "median": -1.180232558139535,
+        "min": -1.625,
+        "n": 23
+      },
+      "not_transferred_by_ep2": {
+        "max": -0.4731182795698925,
+        "mean": -1.1697372929443624,
+        "median": -1.140625,
+        "min": -1.614864864864865,
+        "n": 25
+      },
+      "partition": "scaffold_only"
+    },
+    {
+      "arm": "star",
+      "ep1_transferred": {
+        "max": -0.7540983606557377,
+        "mean": -0.9960391373321446,
+        "median": -1.0170454545454546,
+        "min": -1.1538461538461537,
+        "n": 11
+      },
+      "ep2_new_transferred": {
+        "max": -0.8,
+        "mean": -1.1213052734821485,
+        "median": -1.1928571428571428,
+        "min": -1.475609756097561,
+        "n": 21
+      },
+      "not_transferred_by_ep2": {
+        "max": -0.4085714285714286,
+        "mean": -1.1295495973548124,
+        "median": -1.1206896551724137,
+        "min": -1.625,
+        "n": 31
+      },
+      "partition": "all_validation_teacher_repaired"
+    },
+    {
+      "arm": "star",
+      "ep1_transferred": {
+        "max": -0.7540983606557377,
+        "mean": -0.9967782968974612,
+        "median": -0.995501893939394,
+        "min": -1.1458333333333333,
+        "n": 6
+      },
+      "ep2_new_transferred": {
+        "max": -0.8,
+        "mean": -1.1409273198136025,
+        "median": -1.1935483870967742,
+        "min": -1.475609756097561,
+        "n": 19
+      },
+      "not_transferred_by_ep2": {
+        "max": -0.4085714285714286,
+        "mean": -1.1438405948622679,
+        "median": -1.1306573275862069,
+        "min": -1.625,
+        "n": 30
+      },
+      "partition": "scaffold_only"
+    }
+  ],
+  "h_margin": {
+    "correct_logprob": {
+      "ep2_union_fragile": {
+        "max": -0.5357142857142857,
+        "mean": -1.2095601657564012,
+        "median": -1.0892857142857142,
+        "min": -2.892857142857143,
+        "n": 63
+      },
+      "first_shared_fragile": {
+        "max": -0.5833333333333334,
+        "mean": -1.1727938740177914,
+        "median": -1.0608552631578947,
+        "min": -2.892857142857143,
+        "n": 24
+      },
+      "non_first_shared": {
+        "max": -0.44551282051282054,
+        "mean": -1.1375873314057707,
+        "median": -1.0821078431372548,
+        "min": -2.453125,
+        "n": 362
+      }
+    },
+    "first_shared_actual_flip_margins": {
+      "main_r8_lr2e-5_ep1": {
+        "max": 0.7770345596432553,
+        "mean": 0.035596692220822714,
+        "median": 0.06475886917960094,
+        "min": -1.3928571428571428,
+        "n": 24
+      },
+      "main_r8_lr2e-5_ep2": {
+        "max": 0.1074423480083857,
+        "mean": -0.18955111307409953,
+        "median": -0.055285300755568645,
+        "min": -1.3928571428571428,
+        "n": 14
+      },
+      "star_r8_lr2e-5_ep1": {
+        "max": 0.7770345596432553,
+        "mean": 0.034032066370482575,
+        "median": 0.06475886917960094,
+        "min": -1.3928571428571428,
+        "n": 24
+      },
+      "star_r8_lr2e-5_ep2": {
+        "max": 0.1074423480083857,
+        "mean": -0.17579358882537915,
+        "median": -0.07723726817780396,
+        "min": -1.3928571428571428,
+        "n": 13
+      }
+    },
+    "note": "Margin controls are unavailable for non-fragile episodes because no observed flipped-to output exists for them in the logged grid JSONs; this tests the registered fragile-24 actual-flip margin directly."
+  },
+  "scaffold_only_transfer_contrast": [
+    {
+      "arm": "main",
+      "grid_name": "main_r8_lr2e-5_ep1",
+      "not_transferred": {
+        "max": -0.4085714285714286,
+        "mean": -1.1451179793600625,
+        "median": -1.1651162790697676,
+        "min": -1.625,
+        "n": 48
+      },
+      "transferred": {
+        "max": -0.7540983606557377,
+        "mean": -1.0011205277754638,
+        "median": -1.0170454545454546,
+        "min": -1.1458333333333333,
+        "n": 7
+      }
+    },
+    {
+      "arm": "main",
+      "grid_name": "main_r8_lr2e-5_ep2",
+      "not_transferred": {
+        "max": -0.4731182795698925,
+        "mean": -1.1625279835530478,
+        "median": -1.1277777777777778,
+        "min": -1.614864864864865,
+        "n": 27
+      },
+      "transferred": {
+        "max": -0.4085714285714286,
+        "mean": -1.092330398134963,
+        "median": -1.1430386178861789,
+        "min": -1.625,
+        "n": 28
+      }
+    },
+    {
+      "arm": "star",
+      "grid_name": "star_r8_lr2e-5_ep1",
+      "not_transferred": {
+        "max": -0.4085714285714286,
+        "mean": -1.1427109575984997,
+        "median": -1.15,
+        "min": -1.625,
+        "n": 49
+      },
+      "transferred": {
+        "max": -0.7540983606557377,
+        "mean": -0.9967782968974612,
+        "median": -0.995501893939394,
+        "min": -1.1458333333333333,
+        "n": 6
+      }
+    },
+    {
+      "arm": "star",
+      "grid_name": "star_r8_lr2e-5_ep2",
+      "not_transferred": {
+        "max": -0.4085714285714286,
+        "mean": -1.139376283693477,
+        "median": -1.1242337164750957,
+        "min": -1.625,
+        "n": 32
+      },
+      "transferred": {
+        "max": -0.7540983606557377,
+        "mean": -1.1092811141530428,
+        "median": -1.1458333333333333,
+        "min": -1.475609756097561,
+        "n": 23
+      }
+    }
+  ],
+  "source": "results/s04_logprob_probe.json"
+}

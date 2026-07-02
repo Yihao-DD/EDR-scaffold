@@ -1,0 +1,89 @@
+{
+  "probe": "v13_capped_pool_datasets",
+  "dataset_seed": 20260702,
+  "target_replay_rows_per_arm": 296,
+  "available_replay_unique": 226,
+  "allowed_replay_unique": 120,
+  "arena_size": 106,
+  "uniform_replay_unique_episode_count": 120,
+  "targeted_selection_stages": [
+    {
+      "stage": "exact_train_failure_function",
+      "available_unique_rows": 63,
+      "selected_rows": 296,
+      "selected_unique_episodes": 63
+    }
+  ],
+  "targeted_stage_row_share": {
+    "exact_train_failure_function": 1.0
+  },
+  "outputs": {
+    "uniform": {
+      "main": {
+        "path": "data/distill_main_replay2_capped.jsonl",
+        "core_rows": 148,
+        "replay_rows": 296,
+        "total_rows": 444,
+        "core_unique_episode_count": 74,
+        "replay_unique_episode_count": 120,
+        "unique_episode_count": 194,
+        "source_distribution": {
+          "replay_base_success": 296,
+          "teacher_t0": 74,
+          "teacher_t08": 74
+        }
+      },
+      "star": {
+        "path": "data/distill_star_replay2_capped.jsonl",
+        "core_rows": 148,
+        "replay_rows": 296,
+        "total_rows": 444,
+        "core_unique_episode_count": 31,
+        "replay_unique_episode_count": 120,
+        "unique_episode_count": 151,
+        "source_distribution": {
+          "replay_base_success": 296,
+          "star_pass16": 148
+        }
+      }
+    },
+    "targeted": {
+      "main": {
+        "path": "data/distill_main_targeted_replay2_capped.jsonl",
+        "core_rows": 148,
+        "replay_rows": 296,
+        "total_rows": 444,
+        "core_unique_episode_count": 74,
+        "replay_unique_episode_count": 63,
+        "unique_episode_count": 137,
+        "source_distribution": {
+          "replay_base_success": 296,
+          "teacher_t0": 74,
+          "teacher_t08": 74
+        }
+      },
+      "star": {
+        "path": "data/distill_star_targeted_replay2_capped.jsonl",
+        "core_rows": 148,
+        "replay_rows": 296,
+        "total_rows": 444,
+        "core_unique_episode_count": 31,
+        "replay_unique_episode_count": 63,
+        "unique_episode_count": 94,
+        "source_distribution": {
+          "replay_base_success": 296,
+          "star_pass16": 148
+        }
+      }
+    }
+  },
+  "leakage_asserts": {
+    "main_uniform_intersect_capped_arena": 0,
+    "star_uniform_intersect_capped_arena": 0,
+    "main_targeted_intersect_capped_arena": 0,
+    "star_targeted_intersect_capped_arena": 0,
+    "intersect_heldout": 0,
+    "intersect_r_success_eval": 0,
+    "intersect_d_val": 0
+  }
+}

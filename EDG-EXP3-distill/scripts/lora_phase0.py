@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 import torch
+import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 from scripts.phase0_probe import (
@@ -125,7 +126,10 @@ class SFTDataset(torch.utils.data.Dataset):
         return len(self.encoded)
 
     def __getitem__(self, index):
-        return self.encoded[index]
+        item = dict(self.encoded[index])
+        row = self.rows[index]
+        item["is_replay"] = row.get("source") == "replay_base_success" or row.get("partition") == "replay"
+        return item
 
 
 def collate(features, pad_token_id):
@@ -133,15 +137,18 @@ def collate(features, pad_token_id):
     input_ids = []
     labels = []
     attention_mask = []
+    is_replay = []
     for item in features:
         pad = max_len - len(item["input_ids"])
         input_ids.append(item["input_ids"] + [pad_token_id] * pad)
         labels.append(item["labels"] + [-100] * pad)
         attention_mask.append([1] * len(item["input_ids"]) + [0] * pad)
+        is_replay.append(bool(item.get("is_replay", False)))
     return {
         "input_ids": torch.tensor(input_ids, dtype=torch.long),
         "labels": torch.tensor(labels, dtype=torch.long),
         "attention_mask": torch.tensor(attention_mask, dtype=torch.long),
+        "is_replay": torch.tensor(is_replay, dtype=torch.bool),
     }
 
 
@@ -157,6 +164,40 @@ def optimizer_and_scheduler(model, lr, total_steps, warmup_ratio):
 
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
     return optimizer, scheduler
+
+
+def kl_anchor_loss(model, batch, temperature):
+    replay_rows = batch["is_replay"]
+    if not replay_rows.any():
+        return None
+    model_inputs = {
+        "input_ids": batch["input_ids"][replay_rows],
+        "attention_mask": batch["attention_mask"][replay_rows],
+    }
+    labels = batch["labels"][replay_rows]
+    outputs = model(**model_inputs)
+    shifted_labels = labels[:, 1:]
+    anchor_mask = shifted_labels.ne(-100)
+    if not anchor_mask.any():
+        return None
+    with torch.no_grad():
+        if not hasattr(model, "disable_adapter"):
+            return None
+        with model.disable_adapter():
+            base_outputs = model(**model_inputs)
+    adapted_logits = outputs.logits[:, :-1, :][anchor_mask].float() / temperature
+    base_logits = base_outputs.logits[:, :-1, :][anchor_mask].float() / temperature
+    if not torch.isfinite(adapted_logits).all() or not torch.isfinite(base_logits).all():
+        return None
+    adapted_log_probs = F.log_softmax(adapted_logits, dim=-1)
+    base_log_probs = F.log_softmax(base_logits, dim=-1)
+    if not torch.isfinite(adapted_log_probs).all() or not torch.isfinite(base_log_probs).all():
+        return None
+    base_probs = base_log_probs.exp()
+    token_kl = (base_probs * (base_log_probs - adapted_log_probs)).sum(dim=-1)
+    if not torch.isfinite(token_kl).all():
+        return None
+    return token_kl.mean() * (temperature**2)
 
 
 def train(args):
@@ -180,15 +221,49 @@ def train(args):
     model.train()
     global_step = 0
     losses = []
+    skipped_nonfinite_loss = 0
+    skipped_nonfinite_grad = 0
+    kl_anchor_batches = 0
     started = time.time()
     optimizer.zero_grad(set_to_none=True)
+    print(
+        f"[train] grad_clip max_norm={args.max_grad_norm} "
+        f"kl_anchor_lambda={args.kl_anchor_lambda} kl_anchor_temperature={args.kl_anchor_temperature}",
+        flush=True,
+    )
     for epoch in range(args.epochs):
         for batch_index, batch in enumerate(loader, start=1):
             batch = {key: value.to(model.device) for key, value in batch.items()}
-            loss = model(**batch).loss / args.grad_accum_steps
+            labels = batch["labels"]
+            model_batch = {key: value for key, value in batch.items() if key != "is_replay"}
+            loss = model(**model_batch).loss
+            if args.kl_anchor_lambda > 0:
+                anchor = kl_anchor_loss(model, batch, args.kl_anchor_temperature)
+                if anchor is not None:
+                    loss = loss + args.kl_anchor_lambda * anchor
+                    kl_anchor_batches += 1
+            if not torch.isfinite(loss.detach()):
+                skipped_nonfinite_loss += 1
+                optimizer.zero_grad(set_to_none=True)
+                print(
+                    f"[train:warn] skipped non-finite loss epoch={epoch + 1}/{args.epochs} "
+                    f"batch={batch_index}/{len(loader)} skipped={skipped_nonfinite_loss}",
+                    flush=True,
+                )
+                continue
+            loss = loss / args.grad_accum_steps
             loss.backward()
             if batch_index % args.grad_accum_steps == 0 or batch_index == len(loader):
-                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                if not torch.isfinite(grad_norm):
+                    skipped_nonfinite_grad += 1
+                    optimizer.zero_grad(set_to_none=True)
+                    print(
+                        f"[train:warn] skipped non-finite grad norm epoch={epoch + 1}/{args.epochs} "
+                        f"step_candidate={global_step + 1}/{total_steps} skipped={skipped_nonfinite_grad}",
+                        flush=True,
+                    )
+                    continue
                 optimizer.step()
                 scheduler.step()
                 optimizer.zero_grad(set_to_none=True)
@@ -216,6 +291,12 @@ def train(args):
         "grad_accum_steps": args.grad_accum_steps,
         "qlora": not args.no_qlora,
         "target_modules": TARGET_MODULES,
+        "kl_anchor_lambda": args.kl_anchor_lambda,
+        "kl_anchor_temperature": args.kl_anchor_temperature,
+        "max_grad_norm": args.max_grad_norm,
+        "skipped_nonfinite_loss": skipped_nonfinite_loss,
+        "skipped_nonfinite_grad": skipped_nonfinite_grad,
+        "kl_anchor_batches": kl_anchor_batches,
         "train_seconds": time.time() - started,
         "losses": losses,
     }
@@ -379,6 +460,13 @@ def add_train_args(parser):
     parser.add_argument("--max-grad-norm", type=float, default=1.0)
     parser.add_argument("--log-every", type=int, default=10)
     parser.add_argument("--max-train-samples", type=int, default=None)
+    parser.add_argument(
+        "--kl-anchor-lambda",
+        type=float,
+        default=0.0,
+        help="Optional KL(P_base || P_adapter) anchor on replay output tokens. Default 0 keeps the clean-grid SFT recipe unchanged.",
+    )
+    parser.add_argument("--kl-anchor-temperature", type=float, default=1.0)
 
 
 def main(argv=None):

@@ -1,0 +1,2760 @@
+[
+  {
+    "episode_id": "live_multiple_880-183-5",
+    "failure_class": "validator_fail",
+    "function_name": "Travel_1_FindAttractions",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Travel_1_FindAttractions",
+      "arguments": {
+        "location": "Paris, FR",
+        "free_entry": "True",
+        "category": "dontcare",
+        "good_for_kids": "True"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Paris, FR\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+    "patch_ids": [
+      "NL:live_multiple_880-183-5",
+      "NL:live_multiple_464-145-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_366-134-11",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Herbert Ross",
+        "genre": "dontcare",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_656-161-24",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "Harris J",
+        "album": "Salam",
+        "genre": "Pop",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Harris J\", \"album\": \"Salam\", \"genre\": \"Pop\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_338-133-2",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Rock",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_515-150-3",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_1_FindMovies",
+      "arguments": {
+        "location": "San Jose, CA",
+        "theater_name": "West Wind Capitol Drive-In",
+        "genre": "Horror",
+        "show_type": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"San Jose, CA\", \"theater_name\": \"West Wind Capitol Drive-In\", \"genre\": \"Horror\", \"show_type\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_515-150-3"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_318-132-8",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "dontcare",
+        "genre": "dontcare",
+        "cast": "Daniel Camp"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_391-137-9",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "San Lorenzo, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"San Lorenzo, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_561-155-1",
+    "failure_class": "validator_fail",
+    "function_name": "Events_3_FindEvents",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Events_3_FindEvents",
+      "arguments": {
+        "event_type": "Music",
+        "city": "New York, NY",
+        "date": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_566-155-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_386-137-4",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "San Francisco, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"San Francisco, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_420-141-9",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_BuyMovieTickets",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Movies_1_BuyMovieTickets",
+      "arguments": {
+        "movie_name": "Avengers",
+        "number_of_tickets": 3,
+        "show_date": "2023-10-06",
+        "location": "Los Angeles, CA",
+        "show_time": "19:00",
+        "show_type": "regular"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+    "patch_ids": [
+      "NL:live_multiple_420-141-9"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_857-180-5",
+    "failure_class": "validator_fail",
+    "function_name": "Buses_3_FindBus",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Buses_3_FindBus",
+      "arguments": {
+        "from_city": "San Francisco, CA",
+        "to_city": "Los Angeles, CA",
+        "departure_date": "03/07/2023",
+        "num_passengers": 1,
+        "category": "one-stop"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"03/07/2023\", \"num_passengers\": 1, \"category\": \"one-stop\"}}",
+    "patch_ids": [
+      "NL:live_multiple_857-180-5",
+      "NL:live_multiple_889-184-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_334-132-24",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "dontcare",
+        "genre": "Thriller",
+        "cast": "Lisa Tharps"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_644-161-12",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Pop",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_374-134-19",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Riley Stearns",
+        "genre": "dontcare",
+        "cast": "C.J. Rush"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_479-146-4",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Electropop",
+        "year": "2014"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Electropop\", \"year\": \"2014\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_286-129-1",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "San Jose, CA",
+        "type": "Psychologist",
+        "insurance_accepted": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_839-178-14",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Country",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Country\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_542-152-4",
+    "failure_class": "validator_fail",
+    "function_name": "Homes_2_FindHomeByArea",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Homes_2_FindHomeByArea",
+      "arguments": {
+        "area": "Austin, TX",
+        "intent": "buy",
+        "number_of_beds": 3,
+        "number_of_baths": 2,
+        "has_garage": true,
+        "in_unit_laundry": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_734-167-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_324-132-14",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "cast": "Zoe Margaret Colletti",
+        "genre": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Zoe Margaret Colletti\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_415-141-4",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_BuyMovieTickets",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Movies_1_BuyMovieTickets",
+      "arguments": {
+        "movie_name": "Space Adventure",
+        "number_of_tickets": 2,
+        "location": "San Jose, CA",
+        "show_date": "2023-10-02",
+        "show_time": "23:00",
+        "show_type": "regular"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"location\": \"San Jose, CA\", \"show_date\": \"2023-10-02\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+    "patch_ids": [
+      "NL:live_multiple_420-141-9"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_332-132-22",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "dontcare",
+        "genre": "Mystery",
+        "cast": "Kathy Griffin"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Mystery\", \"cast\": \"Kathy Griffin\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_789-174-3",
+    "failure_class": "validator_fail",
+    "function_name": "Homes_2_FindHomeByArea",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Homes_2_FindHomeByArea",
+      "arguments": {
+        "area": "Berkeley, CA",
+        "intent": "rent",
+        "number_of_beds": 2,
+        "number_of_baths": 1,
+        "has_garage": null,
+        "in_unit_laundry": null
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+    "patch_ids": [
+      "NL:live_multiple_734-167-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_706-164-22",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Fantasy",
+        "directed_by": "dontcare",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Fantasy\", \"directed_by\": \"dontcare\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_939-194-1",
+    "failure_class": "validator_fail",
+    "function_name": "set_alarm",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "set_alarm",
+      "arguments": {
+        "alarm_time": "23:00",
+        "purpose": "brush my teeth"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+    "patch_ids": [
+      "NL:live_multiple_939-194-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_723-165-10",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Paris, FR",
+        "has_laundry_service": "True",
+        "number_of_adults": 1,
+        "rating": 3.0
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Paris, FR\", \"has_laundry_service\": \"True\", \"number_of_adults\": 1, \"rating\": 3.0}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_464-145-15",
+    "failure_class": "validator_fail",
+    "function_name": "Travel_1_FindAttractions",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Travel_1_FindAttractions",
+      "arguments": {
+        "location": "Orlando, FL",
+        "free_entry": "True",
+        "category": "Theme Park",
+        "good_for_kids": "True"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+    "patch_ids": [
+      "NL:live_multiple_880-183-5",
+      "NL:live_multiple_464-145-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_714-165-1",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Phoenix, AZ",
+        "has_laundry_service": "dontcare",
+        "number_of_adults": 1,
+        "rating": 4.1
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Phoenix, AZ\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 1, \"rating\": 4.1}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_870-182-7",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_1_FindMovies",
+      "arguments": {
+        "location": "Fremont, CA",
+        "theater_name": "Century at Pacific Commons and XD",
+        "genre": "Sci-fi",
+        "show_type": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Fremont, CA\", \"theater_name\": \"Century at Pacific Commons and XD\", \"genre\": \"Sci-fi\", \"show_type\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_515-150-3"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_557-154-3",
+    "failure_class": "validator_fail",
+    "function_name": "RentalCars_3_GetCarsAvailable",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "RentalCars_3_GetCarsAvailable",
+      "arguments": {
+        "city": "Los Angeles, CA",
+        "start_date": "2023-04-18",
+        "pickup_time": "10:00",
+        "end_date": "2023-04-24",
+        "car_type": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"RentalCars_3_GetCarsAvailable\", \"arguments\": {\"city\": \"Los Angeles, CA\", \"start_date\": \"2023-04-18\", \"pickup_time\": \"10:00\", \"end_date\": \"2023-04-24\", \"car_type\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_557-154-3"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_832-178-7",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Pop",
+        "year": "2021"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_702-164-18",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "cast": "Katsunosuke Hori",
+        "genre": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Katsunosuke Hori\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_688-164-4",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Family",
+        "cast": "Carol Sutton",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_575-156-1",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Santa Rosa, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Santa Rosa, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_93-41-0",
+    "failure_class": "validator_fail",
+    "function_name": "add_postgres_server",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "add_postgres_server",
+      "arguments": {
+        "nickname": "postgres1",
+        "host": "example.org",
+        "port": 5432,
+        "database": "inventory",
+        "username": "admin",
+        "password": "secret"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+    "patch_ids": [
+      "NL:live_multiple_93-41-0"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_696-164-12",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Mystery",
+        "cast": "Noah Gaynor",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Mystery\", \"cast\": \"Noah Gaynor\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_887-184-4",
+    "failure_class": "validator_fail",
+    "function_name": "Buses_3_FindBus",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Buses_3_FindBus",
+      "arguments": {
+        "from_city": "San Diego, CA",
+        "to_city": "Los Angeles, CA",
+        "departure_date": "2023-06-15",
+        "num_passengers": 4,
+        "category": "direct"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+    "patch_ids": [
+      "NL:live_multiple_857-180-5",
+      "NL:live_multiple_889-184-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_446-144-6",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "Vacaville, CA",
+        "type": "Psychologist",
+        "accepts_insurance": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Vacaville, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_443-144-3",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "Pittsburg, PA",
+        "type": "Psychiatrist",
+        "accepts_insurance": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_716-165-3",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Austin, TX",
+        "has_laundry_service": "dontcare",
+        "number_of_adults": 1,
+        "rating": 3.0
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Austin, TX\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 1, \"rating\": 3.0}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_335-132-25",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Taika Waititi",
+        "genre": "Comedy",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_831-178-6",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "Taylor Swift",
+        "album": "dontcare",
+        "genre": "Pop",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Taylor Swift\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_604-158-10",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_4_SearchHotel",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_4_SearchHotel",
+      "arguments": {
+        "location": "Sacramento, CA",
+        "star_rating": "dontcare",
+        "smoking_allowed": false,
+        "number_of_rooms": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_302-131-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_419-141-8",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_1_FindMovies",
+      "arguments": {
+        "location": "San Ramon, CA",
+        "theater_name": "Regal Crow Canyon",
+        "genre": "Drama",
+        "show_type": "regular"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"San Ramon, CA\", \"theater_name\": \"Regal Crow Canyon\", \"genre\": \"Drama\", \"show_type\": \"regular\"}}",
+    "patch_ids": [
+      "NL:live_multiple_515-150-3"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_889-184-6",
+    "failure_class": "validator_fail",
+    "function_name": "Buses_3_FindBus",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Buses_3_FindBus",
+      "arguments": {
+        "from_city": "Miami, FL",
+        "to_city": "Atlanta, GA",
+        "departure_date": "2023-04-22",
+        "num_passengers": 2,
+        "category": "direct"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+    "patch_ids": [
+      "NL:live_multiple_857-180-5",
+      "NL:live_multiple_889-184-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_834-178-9",
+    "failure_class": "router_fail",
+    "function_name": "Music_3_PlayMedia",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_PlayMedia",
+      "arguments": {
+        "track": "Borbena",
+        "artist": "Teodora",
+        "device": "Kitchen",
+        "album": "Borbena"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"Borbena\", \"artist\": \"Teodora\", \"device\": \"Kitchen\", \"album\": \"Borbena\"}}",
+    "patch_ids": [
+      "NL:live_multiple_652-161-20"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_881-183-6",
+    "failure_class": "validator_fail",
+    "function_name": "Travel_1_FindAttractions",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Travel_1_FindAttractions",
+      "arguments": {
+        "location": "San Francisco, CA",
+        "free_entry": "True",
+        "category": "dontcare",
+        "good_for_kids": "True"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+    "patch_ids": [
+      "NL:live_multiple_880-183-5",
+      "NL:live_multiple_464-145-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_329-132-19",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "quentin tarantino",
+        "genre": "dontcare",
+        "cast": "eric stoltz"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"quentin tarantino\", \"genre\": \"dontcare\", \"cast\": \"eric stoltz\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_447-144-7",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "Novato, CA",
+        "type": "Psychologist",
+        "accepts_insurance": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_697-164-13",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Quentin Tarantino",
+        "genre": "Offbeat",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Quentin Tarantino\", \"genre\": \"Offbeat\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_848-179-2",
+    "failure_class": "validator_fail",
+    "function_name": "Restaurants_2_FindRestaurants",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Restaurants_2_FindRestaurants",
+      "arguments": {
+        "category": "Italian",
+        "location": "New York, NY",
+        "price_range": "dontcare",
+        "has_vegetarian_options": true,
+        "has_seating_outdoors": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"New York, NY\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_282-128-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_390-137-8",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Pleasanton, CA",
+        "is_unisex": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Pleasanton, CA\", \"is_unisex\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_9-4-1",
+    "failure_class": "validator_fail",
+    "function_name": "HNA_WQA.search",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "HNA_WQA.search",
+      "arguments": {
+        "keyword": "Imjin war",
+        "result_format": "text",
+        "language": "EN",
+        "max_results": 10
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+    "patch_ids": [
+      "NL:live_multiple_9-4-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_791-174-5",
+    "failure_class": "validator_fail",
+    "function_name": "Homes_2_FindHomeByArea",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Homes_2_FindHomeByArea",
+      "arguments": {
+        "area": "Walnut Creek, CA",
+        "intent": "buy",
+        "number_of_beds": 3,
+        "number_of_baths": 2,
+        "has_garage": true,
+        "in_unit_laundry": null
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Walnut Creek, CA\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": null}}",
+    "patch_ids": [
+      "NL:live_multiple_734-167-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_852-180-0",
+    "failure_class": "validator_fail",
+    "function_name": "Buses_3_FindBus",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Buses_3_FindBus",
+      "arguments": {
+        "from_city": "San Francisco, CA",
+        "to_city": "Los Angeles, CA",
+        "departure_date": "04/25/2023",
+        "num_passengers": 1,
+        "category": "direct"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"04/25/2023\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+    "patch_ids": [
+      "NL:live_multiple_857-180-5",
+      "NL:live_multiple_889-184-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_605-158-11",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_4_SearchHotel",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_4_SearchHotel",
+      "arguments": {
+        "location": "Paris, FR",
+        "star_rating": "3",
+        "smoking_allowed": false,
+        "number_of_rooms": "1"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Paris, FR\", \"star_rating\": \"3\", \"smoking_allowed\": false, \"number_of_rooms\": \"1\"}}",
+    "patch_ids": [
+      "NL:live_multiple_302-131-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_48-18-3",
+    "failure_class": "validator_fail",
+    "function_name": "inventory_management",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "inventory_management",
+      "arguments": {
+        "product_id": "123123",
+        "sizes": [],
+        "color": "any",
+        "quantity": 30
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+    "patch_ids": [
+      "NL:live_multiple_52-21-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_562-155-2",
+    "failure_class": "validator_fail",
+    "function_name": "Events_3_FindEvents",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Events_3_FindEvents",
+      "arguments": {
+        "event_type": "Theater",
+        "city": "Seattle, WA",
+        "date": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"Seattle, WA\", \"date\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_566-155-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_640-161-8",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "Cody Johnson",
+        "album": "Gotta Be Me",
+        "genre": "dontcare",
+        "year": "2019"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_367-134-12",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Action",
+        "directed_by": "dontcare",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Action\", \"directed_by\": \"dontcare\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_686-164-2",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "dontcare",
+        "genre": "Thriller",
+        "cast": "Leland Orser"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "multiple_195",
+    "failure_class": "validator_fail",
+    "function_name": "calc_heat_capacity",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "calc_heat_capacity",
+      "arguments": {
+        "temp": 298,
+        "volume": 10,
+        "gas": "air"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"calc_heat_capacity\", \"arguments\": {\"temp\": 298, \"volume\": 10, \"gas\": \"air\"}}",
+    "patch_ids": [
+      "NL:multiple_195"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_708-164-24",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Steven Spielberg",
+        "genre": "Sci-fi",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_551-153-0",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Berkeley, CA",
+        "is_unisex": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Berkeley, CA\", \"is_unisex\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_56-22-3",
+    "failure_class": "validator_fail",
+    "function_name": "inventory_management",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "inventory_management",
+      "arguments": {
+        "product_id": "111",
+        "sizes": [
+          "L"
+        ],
+        "color": "Any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_52-21-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_475-146-0",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Electropop",
+        "year": "2019"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Electropop\", \"year\": \"2019\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_315-132-5",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Herbert Ross",
+        "genre": "dontcare",
+        "cast": "James Shapkoff III"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_700-164-16",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Hari Sama",
+        "genre": "dontcare",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Hari Sama\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_571-155-11",
+    "failure_class": "validator_fail",
+    "function_name": "Events_3_FindEvents",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Events_3_FindEvents",
+      "arguments": {
+        "event_type": "Theater",
+        "city": "San Francisco, CA",
+        "date": "2023-03-09"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+    "patch_ids": [
+      "NL:live_multiple_566-155-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_773-171-6",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "San Ramon, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"San Ramon, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_704-164-20",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Comedy",
+        "cast": "Claudia Doumit",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_707-164-23",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "cast": "Pete Davidson",
+        "genre": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Pete Davidson\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_652-161-20",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_PlayMedia",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_PlayMedia",
+      "arguments": {
+        "track": "any",
+        "artist": "Outsider",
+        "device": "Living room",
+        "album": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_652-161-20"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_705-164-21",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "cast": "Nikita Mehta",
+        "genre": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Nikita Mehta\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_60-22-7",
+    "failure_class": "validator_fail",
+    "function_name": "inventory_management",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "inventory_management",
+      "arguments": {
+        "product_id": "ABC123",
+        "sizes": [
+          "L"
+        ],
+        "color": "Any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_52-21-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_690-164-6",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "cast": "Jack Carson",
+        "genre": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Jack Carson\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_638-161-6",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "Sia",
+        "album": "Everyday Is Christmas",
+        "genre": "Holiday",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Sia\", \"album\": \"Everyday Is Christmas\", \"genre\": \"Holiday\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_540-152-2",
+    "failure_class": "validator_fail",
+    "function_name": "Homes_2_FindHomeByArea",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Homes_2_FindHomeByArea",
+      "arguments": {
+        "area": "Fremont, CA",
+        "intent": "rent",
+        "number_of_beds": 3,
+        "number_of_baths": 2,
+        "has_garage": true,
+        "in_unit_laundry": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Fremont, CA\", \"intent\": \"rent\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_734-167-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_762-170-0",
+    "failure_class": "validator_fail",
+    "function_name": "Buses_3_FindBus",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Buses_3_FindBus",
+      "arguments": {
+        "from_city": "Portland, OR",
+        "to_city": "Vancouver, BC",
+        "departure_date": "2023-03-07",
+        "num_passengers": 2,
+        "category": "direct"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Portland, OR\", \"to_city\": \"Vancouver, BC\", \"departure_date\": \"2023-03-07\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+    "patch_ids": [
+      "NL:live_multiple_857-180-5",
+      "NL:live_multiple_889-184-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_292-130-1",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Long Beach, CA",
+        "has_laundry_service": "dontcare",
+        "number_of_adults": 1,
+        "rating": 4.2
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Long Beach, CA\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 1, \"rating\": 4.2}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_22-4-14",
+    "failure_class": "validator_fail",
+    "function_name": "HNA_WQA.search",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "HNA_WQA.search",
+      "arguments": {
+        "keyword": "임진왜란",
+        "result_format": "text",
+        "language": "EN",
+        "max_results": 10
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"임진왜란\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+    "patch_ids": [
+      "NL:live_multiple_9-4-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_728-166-3",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Walnut Creek, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Walnut Creek, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_948-198-0",
+    "failure_class": "validator_fail",
+    "function_name": "set_alarm",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "set_alarm",
+      "arguments": {
+        "alarm_time": "23:00",
+        "purpose": "text Raj"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"text Raj\"}}",
+    "patch_ids": [
+      "NL:live_multiple_939-194-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_448-144-8",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "St. Helena, CA",
+        "type": "Family Counselor",
+        "accepts_insurance": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"St. Helena, CA\", \"type\": \"Family Counselor\", \"accepts_insurance\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_637-161-5",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_PlayMedia",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_PlayMedia",
+      "arguments": {
+        "track": "any",
+        "artist": "Thousand Foot Krutch",
+        "device": "Kitchen",
+        "album": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Thousand Foot Krutch\", \"device\": \"Kitchen\", \"album\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_652-161-20"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_635-161-3",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Electropop",
+        "year": "2019"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Electropop\", \"year\": \"2019\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_416-141-5",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_1_FindMovies",
+      "arguments": {
+        "location": "Healdsburg, CA",
+        "theater_name": "Raven Film Center",
+        "genre": "dontcare",
+        "show_type": "3d"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Healdsburg, CA\", \"theater_name\": \"Raven Film Center\", \"genre\": \"dontcare\", \"show_type\": \"3d\"}}",
+    "patch_ids": [
+      "NL:live_multiple_515-150-3"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_843-178-18",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "Sabaton",
+        "album": "The Great War",
+        "genre": "Metal",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Sabaton\", \"album\": \"The Great War\", \"genre\": \"Metal\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_442-144-2",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "Campbell, CA",
+        "type": "Psychologist",
+        "accepts_insurance": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Campbell, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_581-157-2",
+    "failure_class": "validator_fail",
+    "function_name": "Media_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Media_3_FindMovies",
+      "arguments": {
+        "genre": "Sci-fi",
+        "starring": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Media_3_FindMovies\", \"arguments\": {\"genre\": \"Sci-fi\", \"starring\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_750-169-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_300-130-9",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Rio de Janeiro, Brazil",
+        "has_laundry_service": "dontcare",
+        "number_of_adults": 2,
+        "rating": 4.2
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Rio de Janeiro, Brazil\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 2, \"rating\": 4.2}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_385-137-3",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Campbell, CA",
+        "is_unisex": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Campbell, CA\", \"is_unisex\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_717-165-4",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Kuala Lumpur, MY",
+        "has_laundry_service": "True",
+        "number_of_adults": 1,
+        "rating": 3.0
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Kuala Lumpur, MY\", \"has_laundry_service\": \"True\", \"number_of_adults\": 1, \"rating\": 3.0}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_846-179-0",
+    "failure_class": "validator_fail",
+    "function_name": "Restaurants_2_FindRestaurants",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Restaurants_2_FindRestaurants",
+      "arguments": {
+        "category": "Italian",
+        "location": "San Francisco, CA",
+        "price_range": "moderate",
+        "has_vegetarian_options": false,
+        "has_seating_outdoors": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"San Francisco, CA\", \"price_range\": \"moderate\", \"has_vegetarian_options\": false, \"has_seating_outdoors\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_282-128-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_81-36-2",
+    "failure_class": "validator_fail",
+    "function_name": "add_mtnards_server",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "add_mtnards_server",
+      "arguments": {
+        "name": "localhost",
+        "host": "http://plga.ca",
+        "api_key": "1234324"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"add_mtnards_server\", \"arguments\": {\"name\": \"localhost\", \"host\": \"http://plga.ca\", \"api_key\": \"1234324\"}}",
+    "patch_ids": [
+      "NL:live_multiple_80-36-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_923-191-11",
+    "failure_class": "validator_fail",
+    "function_name": "get_service_providers",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "get_service_providers",
+      "arguments": {
+        "avg_rating": null,
+        "province_id": 1,
+        "district_name": "Chatuchak",
+        "sub_district_name": null,
+        "start_available_date": "2024-03-19 13:00:00",
+        "end_available_date": null,
+        "min_age": null,
+        "max_age": null,
+        "has_quality_problem": false,
+        "has_late_check_in": false,
+        "is_excellent": false,
+        "is_package": false,
+        "is_subscription": false,
+        "service_id": 2,
+        "available_for_pet": false,
+        "professional_group_id": null,
+        "job_qty": null,
+        "is_cleaning_condo": false,
+        "is_cleaning_home": false,
+        "is_cleaning_office": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": null, \"province_id\": 1, \"district_name\": \"Chatuchak\", \"sub_district_name\": null, \"start_available_date\": \"2024-03-19 13:00:00\", \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": false, \"is_package\": false, \"is_subscription\": false, \"service_id\": 2, \"available_for_pet\": false, \"professional_group_id\": null, \"job_qty\": null, \"is_cleaning_condo\": false, \"is_cleaning_home\": false, \"is_cleaning_office\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_927-191-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_950-199-1",
+    "failure_class": "validator_fail",
+    "function_name": "set_alarm",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "set_alarm",
+      "arguments": {
+        "alarm_time": "23:00",
+        "purpose": "General reminder"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"General reminder\"}}",
+    "patch_ids": [
+      "NL:live_multiple_939-194-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_687-164-3",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Guillermo del Toro",
+        "genre": "Fantasy",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Guillermo del Toro\", \"genre\": \"Fantasy\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_58-22-5",
+    "failure_class": "validator_fail",
+    "function_name": "inventory_management",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "inventory_management",
+      "arguments": {
+        "product_id": "XY123",
+        "sizes": [
+          "M"
+        ],
+        "color": "Any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"XY123\", \"sizes\": [\"M\"], \"color\": \"Any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_52-21-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_388-137-6",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Alameda, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Alameda, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_826-178-1",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "dontcare",
+        "year": "2015"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"dontcare\", \"year\": \"2015\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_289-129-4",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "Novato, CA",
+        "type": "Psychologist",
+        "insurance_accepted": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_462-145-13",
+    "failure_class": "validator_fail",
+    "function_name": "Flights_4_SearchRoundtripFlights",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Flights_4_SearchRoundtripFlights",
+      "arguments": {
+        "origin_airport": "San Francisco",
+        "destination_airport": "Atlanta",
+        "departure_date": "2023-03-01",
+        "return_date": "2023-03-06",
+        "seating_class": "Economy",
+        "number_of_tickets": 1,
+        "airlines": "American Airlines"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Flights_4_SearchRoundtripFlights\", \"arguments\": {\"origin_airport\": \"San Francisco\", \"destination_airport\": \"Atlanta\", \"departure_date\": \"2023-03-01\", \"return_date\": \"2023-03-06\", \"seating_class\": \"Economy\", \"number_of_tickets\": 1, \"airlines\": \"American Airlines\"}}",
+    "patch_ids": [
+      "NL:live_multiple_451-145-2"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_281-128-4",
+    "failure_class": "validator_fail",
+    "function_name": "Restaurants_2_FindRestaurants",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Restaurants_2_FindRestaurants",
+      "arguments": {
+        "category": "Vegetarian",
+        "location": "Berkeley, CA",
+        "price_range": "cheap",
+        "has_vegetarian_options": true,
+        "has_seating_outdoors": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Vegetarian\", \"location\": \"Berkeley, CA\", \"price_range\": \"cheap\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_282-128-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_347-133-11",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Electropop",
+        "year": 2018
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Electropop\", \"year\": 2018}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_606-158-12",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_4_SearchHotel",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_4_SearchHotel",
+      "arguments": {
+        "location": "Sydney, AU",
+        "star_rating": "4",
+        "smoking_allowed": true,
+        "number_of_rooms": "2"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sydney, AU\", \"star_rating\": \"4\", \"smoking_allowed\": true, \"number_of_rooms\": \"2\"}}",
+    "patch_ids": [
+      "NL:live_multiple_302-131-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_345-133-9",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "Kesha",
+        "album": "Rainbow",
+        "genre": "Pop",
+        "year": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Kesha\", \"album\": \"Rainbow\", \"genre\": \"Pop\", \"year\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_649-161-17",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "Narrated For You",
+        "genre": "dontcare",
+        "year": "2022"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"Narrated For You\", \"genre\": \"dontcare\", \"year\": \"2022\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_476-146-1",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Electropop",
+        "year": "2014"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Electropop\", \"year\": \"2014\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "multiple_108",
+    "failure_class": "validator_fail",
+    "function_name": "calc_heat_capacity",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "calc_heat_capacity",
+      "arguments": {
+        "temp": 298,
+        "volume": 10,
+        "gas": "air"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"calc_heat_capacity\", \"arguments\": {\"temp\": 298, \"volume\": 10, \"gas\": \"air\"}}",
+    "patch_ids": [
+      "NL:multiple_195"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_369-134-14",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Peter Jackson",
+        "genre": "Fantasy",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Peter Jackson\", \"genre\": \"Fantasy\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_473-145-24",
+    "failure_class": "validator_fail",
+    "function_name": "Travel_1_FindAttractions",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Travel_1_FindAttractions",
+      "arguments": {
+        "location": "New York, NY",
+        "free_entry": "True",
+        "category": "Museum",
+        "good_for_kids": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"New York, NY\", \"free_entry\": \"True\", \"category\": \"Museum\", \"good_for_kids\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_880-183-5",
+      "NL:live_multiple_464-145-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_602-158-8",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_4_SearchHotel",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_4_SearchHotel",
+      "arguments": {
+        "location": "Nairobi, KE",
+        "star_rating": "4",
+        "smoking_allowed": false,
+        "number_of_rooms": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Nairobi, KE\", \"star_rating\": \"4\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_302-131-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_339-133-3",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "Speak Now",
+        "genre": "dontcare",
+        "year": 2010
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"Speak Now\", \"genre\": \"dontcare\", \"year\": 2010}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_423-141-12",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_1_BuyMovieTickets",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Movies_1_BuyMovieTickets",
+      "arguments": {
+        "movie_name": "The Last Adventure",
+        "number_of_tickets": 2,
+        "location": "San Francisco, CA",
+        "show_time": "20:30",
+        "show_type": "regular"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"The Last Adventure\", \"number_of_tickets\": 2, \"location\": \"San Francisco, CA\", \"show_time\": \"20:30\", \"show_type\": \"regular\"}}",
+    "patch_ids": [
+      "NL:live_multiple_420-141-9"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_699-164-15",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Family",
+        "cast": "Tzi Ma",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Tzi Ma\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_701-164-17",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Comedy",
+        "cast": "Vanessa Przada",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Vanessa Przada\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_838-178-13",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_PlayMedia",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_PlayMedia",
+      "arguments": {
+        "track": "Narrated For You",
+        "artist": "Alec Benjamin",
+        "device": "Living room",
+        "album": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"Narrated For You\", \"artist\": \"Alec Benjamin\", \"device\": \"Living room\", \"album\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_652-161-20"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_333-132-23",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "dontcare",
+        "cast": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"dontcare\", \"cast\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_384-137-2",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "San Jose, CA",
+        "is_unisex": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"is_unisex\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_599-158-5",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_4_SearchHotel",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_4_SearchHotel",
+      "arguments": {
+        "location": "Delhi, India",
+        "star_rating": "dontcare",
+        "smoking_allowed": false,
+        "number_of_rooms": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Delhi, India\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_302-131-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_685-164-1",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "Wes Anderson",
+        "genre": "Offbeat",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Wes Anderson\", \"genre\": \"Offbeat\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_654-161-22",
+    "failure_class": "validator_fail",
+    "function_name": "Music_3_LookupMusic",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Music_3_LookupMusic",
+      "arguments": {
+        "artist": "dontcare",
+        "album": "dontcare",
+        "genre": "Pop",
+        "year": "2018"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2018\"}}",
+    "patch_ids": [
+      "NL:live_multiple_656-161-24",
+      "NL:live_multiple_338-133-2",
+      "NL:live_multiple_839-178-14"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_66-27-0",
+    "failure_class": "validator_fail",
+    "function_name": "add_postgres_server",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "add_postgres_server",
+      "arguments": {
+        "host": "http://plgah.ca",
+        "port": 5432,
+        "database": "finance_db",
+        "username": "pascal",
+        "password": "123123"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"host\": \"http://plgah.ca\", \"port\": 5432, \"database\": \"finance_db\", \"username\": \"pascal\", \"password\": \"123123\"}}",
+    "patch_ids": [
+      "NL:live_multiple_93-41-0"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_570-155-10",
+    "failure_class": "validator_fail",
+    "function_name": "Events_3_FindEvents",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Events_3_FindEvents",
+      "arguments": {
+        "event_type": "Music",
+        "city": "New York, NY",
+        "date": "any"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+    "patch_ids": [
+      "NL:live_multiple_566-155-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_693-164-9",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "directed_by": "dontcare",
+        "genre": "Drama",
+        "cast": "Utkarsh Ambudkar"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Drama\", \"cast\": \"Utkarsh Ambudkar\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_765-170-3",
+    "failure_class": "validator_fail",
+    "function_name": "Buses_3_FindBus",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Buses_3_FindBus",
+      "arguments": {
+        "from_city": "Philadelphia, PA",
+        "to_city": "New York, NY",
+        "departure_date": "2023-04-23",
+        "num_passengers": 4,
+        "category": "direct"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Philadelphia, PA\", \"to_city\": \"New York, NY\", \"departure_date\": \"2023-04-23\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+    "patch_ids": [
+      "NL:live_multiple_857-180-5",
+      "NL:live_multiple_889-184-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_472-145-23",
+    "failure_class": "validator_fail",
+    "function_name": "Travel_1_FindAttractions",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Travel_1_FindAttractions",
+      "arguments": {
+        "location": "Chicago, IL",
+        "free_entry": "dontcare",
+        "category": "dontcare",
+        "good_for_kids": "True"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Chicago, IL\", \"free_entry\": \"dontcare\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+    "patch_ids": [
+      "NL:live_multiple_880-183-5",
+      "NL:live_multiple_464-145-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_425-141-14",
+    "failure_class": "router_fail",
+    "function_name": "Movies_1_BuyMovieTickets",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_1_BuyMovieTickets",
+      "arguments": {
+        "movie_name": "Ad Astra",
+        "number_of_tickets": 1,
+        "location": "Berkeley, CA",
+        "show_type": "regular",
+        "show_time": "21:00"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Ad Astra\", \"number_of_tickets\": 1, \"location\": \"Berkeley, CA\", \"show_type\": \"regular\", \"show_time\": \"21:00\"}}",
+    "patch_ids": [
+      "NL:live_multiple_420-141-9"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_694-164-10",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "cast": "Javier Bardem",
+        "genre": "dontcare",
+        "directed_by": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Javier Bardem\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_277-128-0",
+    "failure_class": "validator_fail",
+    "function_name": "Restaurants_2_FindRestaurants",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Restaurants_2_FindRestaurants",
+      "arguments": {
+        "category": "American",
+        "location": "New York, NY",
+        "price_range": "moderate",
+        "has_vegetarian_options": false,
+        "has_seating_outdoors": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"American\", \"location\": \"New York, NY\", \"price_range\": \"moderate\", \"has_vegetarian_options\": false, \"has_seating_outdoors\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_282-128-5"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_288-129-3",
+    "failure_class": "validator_fail",
+    "function_name": "Services_4_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_4_FindProvider",
+      "arguments": {
+        "city": "Berkeley, CA",
+        "type": "Family Counselor",
+        "insurance_accepted": true
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Berkeley, CA\", \"type\": \"Family Counselor\", \"insurance_accepted\": true}}",
+    "patch_ids": [
+      "NL:live_multiple_286-129-1",
+      "NL:live_multiple_446-144-6",
+      "NL:live_multiple_443-144-3",
+      "NL:live_multiple_447-144-7"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_719-165-6",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Anaheim, CA",
+        "number_of_adults": 1,
+        "has_laundry_service": "dontcare",
+        "rating": 3.0
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Anaheim, CA\", \"number_of_adults\": 1, \"has_laundry_service\": \"dontcare\", \"rating\": 3.0}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_710-164-26",
+    "failure_class": "validator_fail",
+    "function_name": "Movies_3_FindMovies",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Movies_3_FindMovies",
+      "arguments": {
+        "genre": "Comedy",
+        "directed_by": "dontcare",
+        "cast": "dontcare"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"directed_by\": \"dontcare\", \"cast\": \"dontcare\"}}",
+    "patch_ids": [
+      "NL:live_multiple_366-134-11",
+      "NL:live_multiple_318-132-8",
+      "NL:live_multiple_334-132-24"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_211-91-5",
+    "failure_class": "validator_fail",
+    "function_name": "get_tech_stack",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "get_tech_stack",
+      "arguments": {
+        "employee_id": "1234",
+        "include_tools": false,
+        "as_of_date": null
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"get_tech_stack\", \"arguments\": {\"employee_id\": \"1234\", \"include_tools\": false, \"as_of_date\": null}}",
+    "patch_ids": [
+      "NL:live_multiple_207-91-1"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_394-138-2",
+    "failure_class": "validator_fail",
+    "function_name": "Services_1_FindProvider",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Services_1_FindProvider",
+      "arguments": {
+        "city": "Berkeley, CA",
+        "is_unisex": false
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Berkeley, CA\", \"is_unisex\": false}}",
+    "patch_ids": [
+      "NL:live_multiple_391-137-9",
+      "NL:live_multiple_551-153-0",
+      "NL:live_multiple_773-171-6"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_468-145-19",
+    "failure_class": "validator_fail",
+    "function_name": "Travel_1_FindAttractions",
+    "partition": "sampling_rescuable",
+    "teacher_prediction": {
+      "name": "Travel_1_FindAttractions",
+      "arguments": {
+        "location": "Seattle, WA",
+        "free_entry": "dontcare",
+        "category": "dontcare",
+        "good_for_kids": "True"
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Seattle, WA\", \"free_entry\": \"dontcare\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+    "patch_ids": [
+      "NL:live_multiple_880-183-5",
+      "NL:live_multiple_464-145-15"
+    ]
+  },
+  {
+    "episode_id": "live_multiple_291-130-0",
+    "failure_class": "validator_fail",
+    "function_name": "Hotels_2_SearchHouse",
+    "partition": "scaffold_only",
+    "teacher_prediction": {
+      "name": "Hotels_2_SearchHouse",
+      "arguments": {
+        "where_to": "Austin, TX",
+        "has_laundry_service": "dontcare",
+        "number_of_adults": 0,
+        "rating": 0.0
+      }
+    },
+    "teacher_raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Austin, TX\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 0, \"rating\": 0.0}}",
+    "patch_ids": [
+      "NL:live_multiple_723-165-10",
+      "NL:live_multiple_295-130-4",
+      "NL:live_multiple_716-165-3",
+      "NL:live_multiple_299-130-8"
+    ]
+  }
+]

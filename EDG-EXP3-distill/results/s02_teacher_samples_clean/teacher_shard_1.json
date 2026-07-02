@@ -1,0 +1,4656 @@
+{
+  "model_id": "/root/autodl-tmp/hf/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "split_seed": 20260630,
+  "shard_index": 1,
+  "shard_count": 2,
+  "sample_count": 8,
+  "temperature": 0.8,
+  "records": [
+    {
+      "episode_id": "live_multiple_366-134-11",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3562,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_338-133-2",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3248,
+      "patch_ids": [
+        "NL:live_multiple_656-161-24",
+        "NL:live_multiple_338-133-2",
+        "NL:live_multiple_839-178-14"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Rock",
+              "year": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Music_3_LookupMusic",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_318-132-8",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2919,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "cast": "Daniel Camp",
+              "genre": "dontcare",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"cast\": \"Daniel Camp\", \"genre\": \"dontcare\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "dontcare",
+              "cast": "Daniel Camp"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"dontcare\", \"cast\": \"Daniel Camp\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_561-155-1",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2942,
+      "patch_ids": [
+        "NL:live_multiple_566-155-6"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"any\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Events_3_FindEvents",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_420-141-9",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4281,
+      "patch_ids": [
+        "NL:live_multiple_420-141-9"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Avengers",
+              "number_of_tickets": 3,
+              "show_date": "2023-10-06",
+              "location": "Los Angeles, CA",
+              "show_time": "19:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Avengers\", \"number_of_tickets\": 3, \"show_date\": \"2023-10-06\", \"location\": \"Los Angeles, CA\", \"show_time\": \"19:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_1_BuyMovieTickets",
+      "partition": "sampling_rescuable"
+    },
+    {
+      "episode_id": "live_multiple_334-132-24",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3008,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Lisa Tharps"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Lisa Tharps\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_374-134-19",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3033,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "C.J. Rush"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\", \"cast\": \"C.J. Rush\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "sampling_rescuable"
+    },
+    {
+      "episode_id": "live_multiple_286-129-1",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3069,
+      "patch_ids": [
+        "NL:live_multiple_286-129-1",
+        "NL:live_multiple_446-144-6",
+        "NL:live_multiple_443-144-3",
+        "NL:live_multiple_447-144-7"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "San Jose, CA",
+              "type": "Psychologist",
+              "insurance_accepted": true
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"San Jose, CA\", \"type\": \"Psychologist\", \"insurance_accepted\": true}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Services_4_FindProvider",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_542-152-4",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3708,
+      "patch_ids": [
+        "NL:live_multiple_734-167-5"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Austin, TX",
+              "intent": "buy",
+              "number_of_beds": 3,
+              "number_of_baths": 2,
+              "has_garage": true,
+              "in_unit_laundry": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Austin, TX\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2, \"has_garage\": true, \"in_unit_laundry\": false}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Homes_2_FindHomeByArea",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_415-141-4",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4297,
+      "patch_ids": [
+        "NL:live_multiple_420-141-9"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Space Adventure",
+              "number_of_tickets": 2,
+              "show_date": "2023-10-02",
+              "location": "San Jose, CA",
+              "show_time": "23:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"show_date\": \"2023-10-02\", \"location\": \"San Jose, CA\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Space Adventure",
+              "number_of_tickets": 2,
+              "show_date": "2023-10-02",
+              "location": "San Jose, CA",
+              "show_time": "23:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"show_date\": \"2023-10-02\", \"location\": \"San Jose, CA\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Space Adventure",
+              "number_of_tickets": 2,
+              "location": "San Jose, CA",
+              "show_date": "2023-10-02",
+              "show_time": "23:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"location\": \"San Jose, CA\", \"show_date\": \"2023-10-02\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Space Adventure",
+              "number_of_tickets": 2,
+              "location": "San Jose, CA",
+              "show_date": "2023-10-02",
+              "show_time": "23:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"location\": \"San Jose, CA\", \"show_date\": \"2023-10-02\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Space Adventure",
+              "number_of_tickets": 2,
+              "location": "San Jose, CA",
+              "show_date": "2023-10-02",
+              "show_time": "23:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"location\": \"San Jose, CA\", \"show_date\": \"2023-10-02\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_BuyMovieTickets",
+            "arguments": {
+              "movie_name": "Space Adventure",
+              "number_of_tickets": 2,
+              "show_date": "2023-10-02",
+              "location": "San Jose, CA",
+              "show_time": "23:00",
+              "show_type": "regular"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_BuyMovieTickets\", \"arguments\": {\"movie_name\": \"Space Adventure\", \"number_of_tickets\": 2, \"show_date\": \"2023-10-02\", \"location\": \"San Jose, CA\", \"show_time\": \"23:00\", \"show_type\": \"regular\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_1_BuyMovieTickets",
+      "partition": "sampling_rescuable"
+    },
+    {
+      "episode_id": "live_multiple_789-174-3",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3558,
+      "patch_ids": [
+        "NL:live_multiple_734-167-5"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Homes_2_FindHomeByArea",
+            "arguments": {
+              "area": "Berkeley, CA",
+              "intent": "rent",
+              "number_of_beds": 2,
+              "number_of_baths": 1,
+              "has_garage": null,
+              "in_unit_laundry": null
+            }
+          },
+          "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": null}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Homes_2_FindHomeByArea",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_939-194-1",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2041,
+      "patch_ids": [
+        "NL:live_multiple_939-194-1"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "set_alarm",
+            "arguments": {
+              "alarm_time": "23:00",
+              "purpose": "brush my teeth"
+            }
+          },
+          "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"23:00\", \"purpose\": \"brush my teeth\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "set_alarm",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_464-145-15",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4273,
+      "patch_ids": [
+        "NL:live_multiple_880-183-5",
+        "NL:live_multiple_464-145-15"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Orlando, FL",
+              "free_entry": "True",
+              "category": "Theme Park",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"Orlando, FL\", \"free_entry\": \"True\", \"category\": \"Theme Park\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Travel_1_FindAttractions",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_870-182-7",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3833,
+      "patch_ids": [
+        "NL:live_multiple_515-150-3"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_FindMovies",
+            "arguments": {
+              "location": "Fremont, CA",
+              "theater_name": "Century at Pacific Commons and XD",
+              "genre": "Sci-fi",
+              "show_type": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Fremont, CA\", \"theater_name\": \"Century at Pacific Commons and XD\", \"genre\": \"Sci-fi\", \"show_type\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_FindMovies",
+            "arguments": {
+              "location": "Fremont, CA",
+              "theater_name": "Century at Pacific Commons and XD",
+              "genre": "Sci-fi",
+              "show_type": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Fremont, CA\", \"theater_name\": \"Century at Pacific Commons and XD\", \"genre\": \"Sci-fi\", \"show_type\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_FindMovies",
+            "arguments": {
+              "location": "Fremont, CA",
+              "theater_name": "Century at Pacific Commons and XD",
+              "genre": "Sci-fi",
+              "show_type": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Fremont, CA\", \"theater_name\": \"Century at Pacific Commons and XD\", \"genre\": \"Sci-fi\", \"show_type\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_1_FindMovies",
+            "arguments": {
+              "location": "Fremont, CA",
+              "theater_name": "Century at Pacific Commons and XD",
+              "genre": "Sci-fi",
+              "show_type": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_1_FindMovies\", \"arguments\": {\"location\": \"Fremont, CA\", \"theater_name\": \"Century at Pacific Commons and XD\", \"genre\": \"Sci-fi\", \"show_type\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_1_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_832-178-7",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3338,
+      "patch_ids": [
+        "NL:live_multiple_656-161-24",
+        "NL:live_multiple_338-133-2",
+        "NL:live_multiple_839-178-14"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "dontcare",
+              "album": "dontcare",
+              "genre": "Pop",
+              "year": "2021"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"Pop\", \"year\": \"2021\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Music_3_LookupMusic",
+      "partition": "sampling_rescuable"
+    },
+    {
+      "episode_id": "live_multiple_688-164-4",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2697,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Family",
+              "cast": "Carol Sutton",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Family\", \"cast\": \"Carol Sutton\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_93-41-0",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3380,
+      "patch_ids": [
+        "NL:live_multiple_93-41-0"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "add_postgres_server",
+            "arguments": {
+              "nickname": "postgres1",
+              "host": "example.org",
+              "port": 5432,
+              "database": "inventory",
+              "username": "admin",
+              "password": "secret"
+            }
+          },
+          "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"nickname\": \"postgres1\", \"host\": \"example.org\", \"port\": 5432, \"database\": \"inventory\", \"username\": \"admin\", \"password\": \"secret\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "add_postgres_server",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_887-184-4",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4859,
+      "patch_ids": [
+        "NL:live_multiple_857-180-5",
+        "NL:live_multiple_889-184-6"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Diego, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "2023-06-15",
+              "num_passengers": 4,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Diego, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"2023-06-15\", \"num_passengers\": 4, \"category\": \"direct\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Buses_3_FindBus",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_443-144-3",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3872,
+      "patch_ids": [
+        "NL:live_multiple_286-129-1",
+        "NL:live_multiple_446-144-6",
+        "NL:live_multiple_443-144-3",
+        "NL:live_multiple_447-144-7"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Pittsburg, PA",
+              "type": "Psychiatrist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Pittsburg, PA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Services_4_FindProvider",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_335-132-25",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3020,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Taika Waititi",
+              "genre": "Comedy",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Taika Waititi\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_604-158-10",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2796,
+      "patch_ids": [
+        "NL:live_multiple_302-131-1"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Hotels_4_SearchHotel",
+            "arguments": {
+              "location": "Sacramento, CA",
+              "star_rating": "dontcare",
+              "smoking_allowed": false,
+              "number_of_rooms": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Hotels_4_SearchHotel",
+            "arguments": {
+              "location": "Sacramento, CA",
+              "star_rating": "dontcare",
+              "smoking_allowed": false,
+              "number_of_rooms": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Hotels_4_SearchHotel",
+            "arguments": {
+              "location": "Sacramento, CA",
+              "star_rating": "dontcare",
+              "smoking_allowed": false,
+              "number_of_rooms": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Hotels_4_SearchHotel",
+            "arguments": {
+              "location": "Sacramento, CA",
+              "star_rating": "dontcare",
+              "smoking_allowed": false,
+              "number_of_rooms": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Hotels_4_SearchHotel",
+            "arguments": {
+              "location": "Sacramento, CA",
+              "star_rating": "dontcare",
+              "smoking_allowed": false,
+              "number_of_rooms": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Hotels_4_SearchHotel",
+            "arguments": {
+              "location": "Sacramento, CA",
+              "star_rating": "dontcare",
+              "smoking_allowed": false,
+              "number_of_rooms": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Hotels_4_SearchHotel\", \"arguments\": {\"location\": \"Sacramento, CA\", \"star_rating\": \"dontcare\", \"smoking_allowed\": false, \"number_of_rooms\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Hotels_4_SearchHotel",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_889-184-6",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4789,
+      "patch_ids": [
+        "NL:live_multiple_857-180-5",
+        "NL:live_multiple_889-184-6"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "Miami, FL",
+              "to_city": "Atlanta, GA",
+              "departure_date": "2023-04-22",
+              "num_passengers": 2,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Miami, FL\", \"to_city\": \"Atlanta, GA\", \"departure_date\": \"2023-04-22\", \"num_passengers\": 2, \"category\": \"direct\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Buses_3_FindBus",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_881-183-6",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4251,
+      "patch_ids": [
+        "NL:live_multiple_880-183-5",
+        "NL:live_multiple_464-145-15"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "San Francisco, CA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "True"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"True\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Travel_1_FindAttractions",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_447-144-7",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3811,
+      "patch_ids": [
+        "NL:live_multiple_286-129-1",
+        "NL:live_multiple_446-144-6",
+        "NL:live_multiple_443-144-3",
+        "NL:live_multiple_447-144-7"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Novato, CA",
+              "type": "Psychologist",
+              "accepts_insurance": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Novato, CA\", \"type\": \"Psychologist\", \"accepts_insurance\": false}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Services_4_FindProvider",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_848-179-2",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3296,
+      "patch_ids": [
+        "NL:live_multiple_282-128-5"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Restaurants_2_FindRestaurants",
+            "arguments": {
+              "category": "Italian",
+              "location": "New York, NY",
+              "price_range": "dontcare",
+              "has_vegetarian_options": true,
+              "has_seating_outdoors": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"New York, NY\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Restaurants_2_FindRestaurants",
+            "arguments": {
+              "category": "Italian",
+              "location": "New York, NY",
+              "price_range": "dontcare",
+              "has_vegetarian_options": true,
+              "has_seating_outdoors": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"New York, NY\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Restaurants_2_FindRestaurants",
+            "arguments": {
+              "category": "Italian",
+              "location": "New York, NY",
+              "price_range": "dontcare",
+              "has_vegetarian_options": true,
+              "has_seating_outdoors": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"New York, NY\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Restaurants_2_FindRestaurants",
+            "arguments": {
+              "category": "Italian",
+              "location": "New York, NY",
+              "price_range": "dontcare",
+              "has_vegetarian_options": true,
+              "has_seating_outdoors": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"New York, NY\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Restaurants_2_FindRestaurants",
+            "arguments": {
+              "category": "Italian",
+              "location": "New York, NY",
+              "price_range": "dontcare",
+              "has_vegetarian_options": true,
+              "has_seating_outdoors": false
+            }
+          },
+          "raw_model_output": "{\"name\": \"Restaurants_2_FindRestaurants\", \"arguments\": {\"category\": \"Italian\", \"location\": \"New York, NY\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": true, \"has_seating_outdoors\": false}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Restaurants_2_FindRestaurants",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_9-4-1",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3001,
+      "patch_ids": [
+        "NL:live_multiple_9-4-1"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "HNA_WQA.search",
+            "arguments": {
+              "keyword": "Imjin war",
+              "result_format": "text",
+              "language": "EN",
+              "max_results": 10
+            }
+          },
+          "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "HNA_WQA.search",
+            "arguments": {
+              "keyword": "Imjin war",
+              "result_format": "text",
+              "language": "EN",
+              "max_results": 10
+            }
+          },
+          "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "HNA_WQA.search",
+            "arguments": {
+              "keyword": "Imjin war",
+              "result_format": "text",
+              "language": "EN",
+              "max_results": 10
+            }
+          },
+          "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "HNA_WQA.search",
+            "arguments": {
+              "keyword": "Imjin war",
+              "result_format": "text",
+              "language": "EN",
+              "max_results": 10
+            }
+          },
+          "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "HNA_WQA.search",
+            "arguments": {
+              "keyword": "Imjin war",
+              "result_format": "text",
+              "language": "EN",
+              "max_results": 10
+            }
+          },
+          "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "HNA_WQA.search",
+            "arguments": {
+              "keyword": "Imjin war",
+              "result_format": "text",
+              "language": "EN",
+              "max_results": 10
+            }
+          },
+          "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"Imjin war\", \"result_format\": \"text\", \"language\": \"EN\", \"max_results\": 10}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "HNA_WQA.search",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_852-180-0",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 4581,
+      "patch_ids": [
+        "NL:live_multiple_857-180-5",
+        "NL:live_multiple_889-184-6"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Francisco, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "04/25/2023",
+              "num_passengers": 1,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"04/25/2023\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Francisco, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "04/25/2023",
+              "num_passengers": 1,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"04/25/2023\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Francisco, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "04/25/2023",
+              "num_passengers": 1,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"04/25/2023\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Francisco, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "04/25/2023",
+              "num_passengers": 1,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"04/25/2023\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Buses_3_FindBus",
+            "arguments": {
+              "from_city": "San Francisco, CA",
+              "to_city": "Los Angeles, CA",
+              "departure_date": "04/25/2023",
+              "num_passengers": 1,
+              "category": "direct"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"San Francisco, CA\", \"to_city\": \"Los Angeles, CA\", \"departure_date\": \"04/25/2023\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Buses_3_FindBus",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_48-18-3",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2357,
+      "patch_ids": [
+        "NL:live_multiple_52-21-1"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "123123",
+              "sizes": [],
+              "color": "any",
+              "quantity": 30
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"123123\", \"sizes\": [], \"color\": \"any\", \"quantity\": 30}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "inventory_management",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_640-161-8",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3909,
+      "patch_ids": [
+        "NL:live_multiple_656-161-24",
+        "NL:live_multiple_338-133-2",
+        "NL:live_multiple_839-178-14"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Cody Johnson",
+              "album": "Gotta Be Me",
+              "genre": "dontcare",
+              "year": "2019"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Cody Johnson\", \"album\": \"Gotta Be Me\", \"genre\": \"dontcare\", \"year\": \"2019\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Music_3_LookupMusic",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_686-164-2",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2822,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "dontcare",
+              "genre": "Thriller",
+              "cast": "Leland Orser"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"dontcare\", \"genre\": \"Thriller\", \"cast\": \"Leland Orser\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_708-164-24",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2742,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Steven Spielberg",
+              "genre": "Sci-fi",
+              "cast": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Steven Spielberg\", \"genre\": \"Sci-fi\", \"cast\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_56-22-3",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2101,
+      "patch_ids": [
+        "NL:live_multiple_52-21-1"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "111",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"111\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "inventory_management",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_315-132-5",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3125,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "James Shapkoff III"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "cast": "James Shapkoff III",
+              "genre": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"cast\": \"James Shapkoff III\", \"genre\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "James Shapkoff III"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "James Shapkoff III"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "James Shapkoff III"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "cast": "James Shapkoff III",
+              "genre": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"cast\": \"James Shapkoff III\", \"genre\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "James Shapkoff III"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Herbert Ross",
+              "genre": "dontcare",
+              "cast": "James Shapkoff III"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Herbert Ross\", \"genre\": \"dontcare\", \"cast\": \"James Shapkoff III\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_571-155-11",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 3420,
+      "patch_ids": [
+        "NL:live_multiple_566-155-6"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "San Francisco, CA",
+              "date": "2023-03-09"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"San Francisco, CA\", \"date\": \"2023-03-09\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Events_3_FindEvents",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_704-164-20",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2865,
+      "patch_ids": [
+        "NL:live_multiple_366-134-11",
+        "NL:live_multiple_318-132-8",
+        "NL:live_multiple_334-132-24"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Comedy",
+              "cast": "Claudia Doumit",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Comedy",
+              "cast": "Claudia Doumit",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Comedy",
+              "cast": "Claudia Doumit",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Comedy",
+              "cast": "Claudia Doumit",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Comedy",
+              "cast": "Claudia Doumit",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "genre": "Comedy",
+              "cast": "Claudia Doumit",
+              "directed_by": "dontcare"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"genre\": \"Comedy\", \"cast\": \"Claudia Doumit\", \"directed_by\": \"dontcare\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Movies_3_FindMovies",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_652-161-20",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2911,
+      "patch_ids": [
+        "NL:live_multiple_652-161-20"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 3,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 7,
+          "success": true,
+          "prediction": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "any",
+              "artist": "Outsider",
+              "device": "Living room",
+              "album": "any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"any\", \"artist\": \"Outsider\", \"device\": \"Living room\", \"album\": \"any\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "Music_3_PlayMedia",
+      "partition": "scaffold_only"
+    },
+    {
+      "episode_id": "live_multiple_60-22-7",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "latency_ms": 2159,
+      "patch_ids": [
+        "NL:live_multiple_52-21-1"
+      ],
+      "successful_samples": [
+        {
+          "sample_index": 0,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "ABC123",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 1,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "ABC123",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 2,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "ABC123",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 4,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "ABC123",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 5,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "ABC123",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        },
+        {
+          "sample_index": 6,
+          "success": true,
+          "prediction": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "ABC123",
+              "sizes": [
+                "L"
+              ],
+              "color": "Any"
+            }
+          },
+          "raw_model_output": "{\"name\": \"inventory_management\", \"arguments\": {\"product_id\": \"ABC123\", \"sizes\": [\"L\"], \"color\": \"Any\"}}",
+          "parse_error": null
+        }
+      ],
+      "failure_class": "validator_fail",
+      "function_name": "inventory_management",
+      "partition": "sampling_rescuable"
+    }
+  ]
+}

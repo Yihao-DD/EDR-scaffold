@@ -1,0 +1,218 @@
+{
+  "probe": "v13_targeted_replay2",
+  "dataset_seed": 20260702,
+  "target_replay_rows_per_arm": 296,
+  "train_failure_exact_function_count": 127,
+  "train_failure_coarse_family_count": 87,
+  "candidate_unique_replay_rows": 226,
+  "selection_stages": [
+    {
+      "stage": "exact_train_failure_function",
+      "available_unique_rows": 123,
+      "selected_rows": 296,
+      "selected_unique_episodes": 123
+    }
+  ],
+  "selection_stage_row_share": {
+    "exact_train_failure_function": 1.0
+  },
+  "outputs": {
+    "main": {
+      "path": "data/distill_main_targeted_replay2.jsonl",
+      "core_rows": 148,
+      "targeted_replay_rows": 296,
+      "total_rows": 444,
+      "unique_episode_count": 197,
+      "targeted_replay_unique_episode_count": 123,
+      "source_distribution": {
+        "replay_base_success": 296,
+        "teacher_t0": 74,
+        "teacher_t08": 74
+      },
+      "function_distribution_top20": [
+        [
+          "Events_3_FindEvents",
+          70
+        ],
+        [
+          "Movies_3_FindMovies",
+          39
+        ],
+        [
+          "Media_3_FindMovies",
+          28
+        ],
+        [
+          "Weather_1_GetWeather",
+          25
+        ],
+        [
+          "Music_3_LookupMusic",
+          14
+        ],
+        [
+          "Travel_1_FindAttractions",
+          13
+        ],
+        [
+          "Payment_1_MakePayment",
+          11
+        ],
+        [
+          "Services_1_FindProvider",
+          11
+        ],
+        [
+          "Homes_2_FindHomeByArea",
+          9
+        ],
+        [
+          "Services_4_FindProvider",
+          8
+        ],
+        [
+          "Trains_1_GetTrainTickets",
+          7
+        ],
+        [
+          "Trains_1_FindTrains",
+          6
+        ],
+        [
+          "audit_log_api.AuditLogApi.get_access_logs",
+          6
+        ],
+        [
+          "list_servers",
+          6
+        ],
+        [
+          "stock_price.get",
+          5
+        ],
+        [
+          "Movies_1_BuyMovieTickets",
+          5
+        ],
+        [
+          "Payment_1_RequestPayment",
+          4
+        ],
+        [
+          "add_postgres_server",
+          4
+        ],
+        [
+          "RideSharing_2_GetRide",
+          4
+        ],
+        [
+          "Music_3_PlayMedia",
+          3
+        ]
+      ]
+    },
+    "star": {
+      "path": "data/distill_star_targeted_replay2.jsonl",
+      "core_rows": 148,
+      "targeted_replay_rows": 296,
+      "total_rows": 444,
+      "unique_episode_count": 154,
+      "targeted_replay_unique_episode_count": 123,
+      "source_distribution": {
+        "replay_base_success": 296,
+        "star_pass16": 148
+      },
+      "function_distribution_top20": [
+        [
+          "Events_3_FindEvents",
+          70
+        ],
+        [
+          "Movies_3_FindMovies",
+          39
+        ],
+        [
+          "Media_3_FindMovies",
+          28
+        ],
+        [
+          "Weather_1_GetWeather",
+          25
+        ],
+        [
+          "Music_3_LookupMusic",
+          14
+        ],
+        [
+          "Travel_1_FindAttractions",
+          13
+        ],
+        [
+          "Payment_1_MakePayment",
+          11
+        ],
+        [
+          "Services_1_FindProvider",
+          11
+        ],
+        [
+          "Homes_2_FindHomeByArea",
+          9
+        ],
+        [
+          "Services_4_FindProvider",
+          8
+        ],
+        [
+          "Trains_1_GetTrainTickets",
+          7
+        ],
+        [
+          "Trains_1_FindTrains",
+          6
+        ],
+        [
+          "audit_log_api.AuditLogApi.get_access_logs",
+          6
+        ],
+        [
+          "list_servers",
+          6
+        ],
+        [
+          "stock_price.get",
+          5
+        ],
+        [
+          "Movies_1_BuyMovieTickets",
+          5
+        ],
+        [
+          "Payment_1_RequestPayment",
+          4
+        ],
+        [
+          "add_postgres_server",
+          4
+        ],
+        [
+          "RideSharing_2_GetRide",
+          4
+        ],
+        [
+          "Music_3_PlayMedia",
+          3
+        ]
+      ]
+    }
+  },
+  "leakage_asserts": {
+    "main_intersect_heldout": 0,
+    "main_intersect_r_success_eval": 0,
+    "main_intersect_d_val": 0,
+    "star_intersect_heldout": 0,
+    "star_intersect_r_success_eval": 0,
+    "star_intersect_d_val": 0
+  }
+}

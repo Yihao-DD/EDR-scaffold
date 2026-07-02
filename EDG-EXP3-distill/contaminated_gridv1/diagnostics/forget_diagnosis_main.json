@@ -1,0 +1,1164 @@
+{
+  "probe": "contaminated_forget_diagnosis",
+  "arm": "main",
+  "note": "PROBE (contaminated checkpoints); R_success_eval split is clean. Use only for forgetting diagnosis.",
+  "checkpoints": [
+    {
+      "checkpoint": "main_r8_lr1e-4_seed20260703.json",
+      "r_success_rate": 0.91,
+      "r_success_n": 400,
+      "new_wrong_count": 36,
+      "class_counts": {
+        "parameter_drift": 34,
+        "function_flip": 2
+      },
+      "examples": [
+        {
+          "episode_id": "live_multiple_1-0-1",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "ChaDri.change_drink",
+            "arguments": {
+              "drink_id": "1234",
+              "new_preferences": {
+                "temperature": "hot",
+                "sweetness_level": "none"
+              }
+            }
+          },
+          "new_call": {
+            "name": "ChaDri.change_drink",
+            "arguments": {
+              "drink_id": "1234",
+              "new_preferences": {
+                "milk_type": "regular",
+                "sweetness_level": "none",
+                "special_instructions": "no sugar",
+                "size": "medium",
+                "temperature": "hot"
+              }
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"drink_id\": \"1234\", \"new_preferences\": {\"milk_type\": \"regular\", \"sweetness_level\": \"none\", \"special_instructions\": \"no sugar\", \"size\": \"medium\", \"temperature\": \"hot\"}}, \"name\": \"ChaDri.change_drink\"}"
+        },
+        {
+          "episode_id": "live_multiple_1045-272-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Lafayette",
+              "type": "Family Counselor",
+              "insurance_accepted": true
+            }
+          },
+          "new_call": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Lafayette, LA",
+              "insurance_accepted": true,
+              "type": "Family Counselor"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"Lafayette, LA\", \"insurance_accepted\": true, \"type\": \"Family Counselor\"}, \"name\": \"Services_4_FindProvider\"}"
+        },
+        {
+          "episode_id": "live_multiple_178-75-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "HNA_NEWS.search",
+            "arguments": {
+              "keyword": "Ji Sung Park",
+              "category": "World",
+              "language": "en",
+              "limit": 5,
+              "sort_by": "Date"
+            }
+          },
+          "new_call": {
+            "name": "HNA_NEWS.search",
+            "arguments": {
+              "category": "Local",
+              "keyword": "Ji Sung Park",
+              "language": "en",
+              "limit": 5,
+              "sort_by": "Date"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"category\": \"Local\", \"keyword\": \"Ji Sung Park\", \"language\": \"en\", \"limit\": 5, \"sort_by\": \"Date\"}, \"name\": \"HNA_NEWS.search\"}"
+        },
+        {
+          "episode_id": "live_multiple_187-82-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "quarterly_earnings",
+            "arguments": {
+              "company_name": "Berkshire Hathaway",
+              "cik": "0001067983"
+            }
+          },
+          "new_call": {
+            "name": "quarterly_earnings",
+            "arguments": {
+              "company_name": "BERKSHIRE HATHAWAY INC",
+              "cik": "0001067983"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"company_name\": \"BERKSHIRE HATHAWAY INC\", \"cik\": \"0001067983\"}, \"name\": \"quarterly_earnings\"}"
+        },
+        {
+          "episode_id": "live_multiple_190-84-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "game_rewards.get",
+            "arguments": {
+              "game": "Fortnite",
+              "platform": "PlayStation",
+              "mission": "All Missions",
+              "trophy": "all levels"
+            }
+          },
+          "new_call": {
+            "name": "game_rewards.get",
+            "arguments": {
+              "game": "Fortnite",
+              "mission": "All Missions",
+              "platform": "PlayStation"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"game\": \"Fortnite\", \"mission\": \"All Missions\", \"platform\": \"PlayStation\"}, \"name\": \"game_rewards.get\"}"
+        },
+        {
+          "episode_id": "live_multiple_198-90-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "adriel_contact",
+            "arguments": {}
+          },
+          "new_call": {
+            "name": "adriel_contact",
+            "arguments": {
+              "contact_id": 1,
+              "format": "json"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"contact_id\": 1, \"format\": \"json\"}, \"name\": \"adriel_contact\"}"
+        },
+        {
+          "episode_id": "live_multiple_206-91-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "contact",
+            "arguments": {
+              "person_name": "Adriel"
+            }
+          },
+          "new_call": {
+            "name": "contact",
+            "arguments": {
+              "email_address": "",
+              "person_name": "Adriel",
+              "phone_number": ""
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"email_address\": \"\", \"person_name\": \"Adriel\", \"phone_number\": \"\"}, \"name\": \"contact\"}"
+        },
+        {
+          "episode_id": "live_multiple_241-107-2",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "search_web_tool",
+            "arguments": {
+              "query": "flight prices from NYC to New Delhi",
+              "num_results": 3,
+              "source": "text"
+            }
+          },
+          "new_call": {
+            "name": "search_web_tool",
+            "arguments": {
+              "num_results": 3,
+              "query": "flight prices from NYC to NEw Delhi",
+              "source": "text"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"num_results\": 3, \"query\": \"flight prices from NYC to NEw Delhi\", \"source\": \"text\"}, \"name\": \"search_web_tool\"}"
+        },
+        {
+          "episode_id": "live_multiple_276-127-11",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Weather_1_GetWeather",
+            "arguments": {
+              "city": "Los Angeles",
+              "date": "2023-03-09"
+            }
+          },
+          "new_call": {
+            "name": "Weather_1_GetWeather",
+            "arguments": {
+              "city": "LA",
+              "date": "2023-03-09"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"LA\", \"date\": \"2023-03-09\"}, \"name\": \"Weather_1_GetWeather\"}"
+        },
+        {
+          "episode_id": "live_multiple_32-10-2",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "sub",
+            "arguments": {
+              "a": 100,
+              "b": 40
+            }
+          },
+          "new_call": {
+            "name": "sub",
+            "arguments": {
+              "a": 60,
+              "b": 100
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"a\": 60, \"b\": 100}, \"name\": \"sub\"}"
+        },
+        {
+          "episode_id": "live_multiple_325-132-15",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "new_call": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "cast": "Riley Stearns",
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"cast\": \"Riley Stearns\", \"directed_by\": \"Riley Stearns\", \"genre\": \"dontcare\"}, \"name\": \"Movies_3_FindMovies\"}"
+        },
+        {
+          "episode_id": "live_multiple_34-11-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "get_news_report",
+            "arguments": {
+              "location": "Letterkenny, Ireland"
+            }
+          },
+          "new_call": {
+            "name": "get_news_report",
+            "arguments": {
+              "location": "Letterkenny, County Donegal"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"location\": \"Letterkenny, County Donegal\"}, \"name\": \"get_news_report\"}"
+        },
+        {
+          "episode_id": "live_multiple_344-133-8",
+          "class": "function_flip",
+          "base_call": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "album": "Prequelle",
+              "artist": "dontcare",
+              "genre": "dontcare",
+              "year": "dontcare"
+            }
+          },
+          "new_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "album": "Prequelle",
+              "artist": "dontcare",
+              "device": "Living room",
+              "track": "dontcare"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"album\": \"Prequelle\", \"artist\": \"dontcare\", \"device\": \"Living room\", \"track\": \"dontcare\"}, \"name\": \"Music_3_PlayMedia\"}"
+        },
+        {
+          "episode_id": "live_multiple_351-133-15",
+          "class": "function_flip",
+          "base_call": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "artist": "Imagine Dragons",
+              "album": "Night Visions",
+              "genre": "dontcare",
+              "year": "dontcare"
+            }
+          },
+          "new_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "album": "Night Visions",
+              "artist": "Imagine Dragons",
+              "device": "Living room",
+              "track": "Somebody Told Me"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"album\": \"Night Visions\", \"artist\": \"Imagine Dragons\", \"device\": \"Living room\", \"track\": \"Somebody Told Me\"}, \"name\": \"Music_3_PlayMedia\"}"
+        },
+        {
+          "episode_id": "live_multiple_401-139-5",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "Toronto, ON",
+              "date": "2023-10-02"
+            }
+          },
+          "new_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "city": "Toronto, CA",
+              "date": "2023-10-02",
+              "event_type": "Music"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"Toronto, CA\", \"date\": \"2023-10-02\", \"event_type\": \"Music\"}, \"name\": \"Events_3_FindEvents\"}"
+        },
+        {
+          "episode_id": "live_multiple_406-140-2",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "RideSharing_2_GetRide",
+            "arguments": {
+              "destination": "2508 University Avenue, Palo Alto"
+            }
+          },
+          "new_call": {
+            "name": "RideSharing_2_GetRide",
+            "arguments": {
+              "destination": "2508 University Avenue, Palo Alto",
+              "number_of_seats": 1,
+              "ride_type": "Regular"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"destination\": \"2508 University Avenue, Palo Alto\", \"number_of_seats\": 1, \"ride_type\": \"Regular\"}, \"name\": \"RideSharing_2_GetRide\"}"
+        },
+        {
+          "episode_id": "live_multiple_44-17-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "BankStatementOverView",
+            "arguments": {
+              "bank_name": "U.S. Bank",
+              "account_number": "1-523-1713-5704",
+              "account_type": "checking",
+              "full_name": "SILVER BUSINESS CHECKING",
+              "transaction_overview": {
+                "total_deposits": 7132.76,
+                "total_withdrawals": 5927.4,
+                "start_date": "2019-10-01",
+                "end_date": "2019-10-31"
+              }
+            }
+          },
+          "new_call": {
+            "name": "BankStatementOverView",
+            "arguments": {
+              "account_number": "1-523-1713-5704",
+              "account_type": "checking",
+              "bank_name": "U.S. Bank",
+              "end_date": "2019-10-31",
+              "full_name": "SILVER BUSINESS CHECKING",
+              "starting_balance": 5532.01,
+              "transaction_overview": {
+                "total_deposits": 7132.76,
+                "total_withdrawals": 5927.4,
+                "start_date": "2019-10-01",
+                "end_date": "2019-10-31"
+              }
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"account_number\": \"1-523-1713-5704\", \"account_type\": \"checking\", \"bank_name\": \"U.S. Bank\", \"end_date\": \"2019-10-31\", \"full_name\": \"SILVER BUSINESS CHECKING\", \"starting_balance\": 5532.01, \"transaction_overview\": {\"end_date\": \"2019-10-31\", \"start_date\": \"2019-10-01\", \"total_deposits\": 7132.76, \"total_withdrawals\": 5927.4}, \"transaction_overview\": {\"total_deposits\": 7132.76, \"total_withdrawals\": 5927.4, \"start_date\": \"2019-10-01\", \"end_date\": \"2019-10-31\"}}, \"name\": \"BankStatementOve"
+        },
+        {
+          "episode_id": "live_multiple_463-145-14",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "location": "Philadelphia, PA",
+              "free_entry": "True",
+              "category": "dontcare",
+              "good_for_kids": "dontcare"
+            }
+          },
+          "new_call": {
+            "name": "Travel_1_FindAttractions",
+            "arguments": {
+              "category": "Tourist Attraction",
+              "free_entry": "True",
+              "good_for_kids": "dontcare",
+              "location": "Philadelphia, PA"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"category\": \"Tourist Attraction\", \"free_entry\": \"True\", \"good_for_kids\": \"dontcare\", \"location\": \"Philadelphia, PA\"}, \"name\": \"Travel_1_FindAttractions\"}"
+        },
+        {
+          "episode_id": "live_multiple_5-3-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "get_current_weather",
+            "arguments": {
+              "location": "Shanghai, China",
+              "unit": "metric"
+            }
+          },
+          "new_call": {
+            "name": "get_current_weather",
+            "arguments": {
+              "location": "Shanghai, CN",
+              "unit": "metric"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"location\": \"Shanghai, CN\", \"unit\": \"metric\"}, \"name\": \"get_current_weather\"}"
+        },
+        {
+          "episode_id": "live_multiple_59-22-6",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "Wonderland maxi dress",
+              "sizes": [
+                "S"
+              ]
+            }
+          },
+          "new_call": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "Wonderland maxi dress",
+              "sizes": [
+                "S",
+                "M",
+                "L"
+              ]
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"product_id\": \"Wonderland maxi dress\", \"sizes\": [\"S\", \"M\", \"L\"]}, \"name\": \"inventory_management\"}"
+        },
+        {
+          "episode_id": "live_multiple_673-162-15",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "2023-10-01"
+            }
+          },
+          "new_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "city": "New York, NY",
+              "date": "2023-09-30",
+              "event_type": "Music"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"New York, NY\", \"date\": \"2023-09-30\", \"event_type\": \"Music\"}, \"name\": \"Events_3_FindEvents\"}"
+        },
+        {
+          "episode_id": "live_multiple_74-34-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "dartfx_help",
+            "arguments": {
+              "topic": "trading",
+              "include_examples": true
+            }
+          },
+          "new_call": {
+            "name": "dartfx_help",
+            "arguments": {
+              "include_examples": true,
+              "subtopic": "",
+              "topic": "trading"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"include_examples\": true, \"subtopic\": \"\", \"topic\": \"trading\"}, \"name\": \"dartfx_help\"}"
+        },
+        {
+          "episode_id": "live_multiple_755-169-10",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Media_3_FindMovies",
+            "arguments": {
+              "genre": "Fantasy",
+              "starring": "Peter Jackson"
+            }
+          },
+          "new_call": {
+            "name": "Media_3_FindMovies",
+            "arguments": {
+              "genre": "Drama",
+              "starring": "Peter Jackson"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"genre\": \"Drama\", \"starring\": \"Peter Jackson\"}, \"name\": \"Media_3_FindMovies\"}"
+        },
+        {
+          "episode_id": "live_multiple_833-178-8",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "Captured",
+              "artist": "Spice",
+              "device": "Living room",
+              "album": "Captured"
+            }
+          },
+          "new_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "album": "Captured",
+              "artist": "Spice",
+              "device": "Living room",
+              "track": "stream"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"album\": \"Captured\", \"artist\": \"Spice\", \"device\": \"Living room\", \"track\": \"stream\"}, \"name\": \"Music_3_PlayMedia\"}"
+        },
+        {
+          "episode_id": "live_multiple_88-38-5",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "list_servers",
+            "arguments": {
+              "type": "all"
+            }
+          },
+          "new_call": {
+            "name": "list_servers",
+            "arguments": {}
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {}, \"name\": \"list_servers\"}"
+        }
+      ]
+    },
+    {
+      "checkpoint": "main_r8_lr5e-5_seed20260703.json",
+      "r_success_rate": 0.92,
+      "r_success_n": 400,
+      "new_wrong_count": 32,
+      "class_counts": {
+        "parameter_drift": 29,
+        "function_flip": 3
+      },
+      "examples": [
+        {
+          "episode_id": "live_multiple_1-0-1",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "ChaDri.change_drink",
+            "arguments": {
+              "drink_id": "1234",
+              "new_preferences": {
+                "temperature": "hot",
+                "sweetness_level": "none"
+              }
+            }
+          },
+          "new_call": {
+            "name": "ChaDri.change_drink",
+            "arguments": {
+              "drink_id": "1234",
+              "new_preferences": {
+                "milk_type": "regular",
+                "sweetness_level": "none",
+                "special_instructions": "no sugar",
+                "size": "medium",
+                "temperature": "hot"
+              }
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"drink_id\": \"1234\", \"new_preferences\": {\"milk_type\": \"regular\", \"sweetness_level\": \"none\", \"special_instructions\": \"no sugar\", \"size\": \"medium\", \"temperature\": \"hot\"}}, \"name\": \"ChaDri.change_drink\"}"
+        },
+        {
+          "episode_id": "live_multiple_1000-231-0",
+          "class": "function_flip",
+          "base_call": {
+            "name": "MaintenanceConfigurationApi.get_maintenance_config",
+            "arguments": {
+              "id": "sandcastle"
+            }
+          },
+          "new_call": {
+            "name": "get_maintenance_configs",
+            "arguments": {
+              "active_only": false,
+              "api_version": "v2",
+              "page": 1,
+              "size": 10
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"active_only\": false, \"api_version\": \"v2\", \"page\": 1, \"size\": 10}, \"name\": \"get_maintenance_configs\"}"
+        },
+        {
+          "episode_id": "live_multiple_1025-254-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "MaintenanceConfigurationApi.get_maintenance_config",
+            "arguments": {
+              "id": "sandcastle"
+            }
+          },
+          "new_call": {
+            "name": "MaintenanceConfigurationApi.get_maintenance_config",
+            "arguments": {
+              "filter_status": "active",
+              "id": "sandcastle",
+              "page": 1,
+              "page_size": 20,
+              "sort_order": "asc"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"filter_status\": \"active\", \"id\": \"sandcastle\", \"page\": 1, \"page_size\": 20, \"sort_order\": \"asc\"}, \"name\": \"MaintenanceConfigurationApi.get_maintenance_config\"}"
+        },
+        {
+          "episode_id": "live_multiple_1045-272-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Lafayette",
+              "type": "Family Counselor",
+              "insurance_accepted": true
+            }
+          },
+          "new_call": {
+            "name": "Services_4_FindProvider",
+            "arguments": {
+              "city": "Lafayette, LA",
+              "insurance_accepted": true,
+              "type": "Family Counselor"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"Lafayette, LA\", \"insurance_accepted\": true, \"type\": \"Family Counselor\"}, \"name\": \"Services_4_FindProvider\"}"
+        },
+        {
+          "episode_id": "live_multiple_178-75-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "HNA_NEWS.search",
+            "arguments": {
+              "keyword": "Ji Sung Park",
+              "category": "World",
+              "language": "en",
+              "limit": 5,
+              "sort_by": "Date"
+            }
+          },
+          "new_call": {
+            "name": "HNA_NEWS.search",
+            "arguments": {
+              "category": "Local",
+              "keyword": "Ji Sung Park",
+              "language": "en",
+              "limit": 5,
+              "sort_by": "Date"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"category\": \"Local\", \"keyword\": \"Ji Sung Park\", \"language\": \"en\", \"limit\": 5, \"sort_by\": \"Date\"}, \"name\": \"HNA_NEWS.search\"}"
+        },
+        {
+          "episode_id": "live_multiple_187-82-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "quarterly_earnings",
+            "arguments": {
+              "company_name": "Berkshire Hathaway",
+              "cik": "0001067983"
+            }
+          },
+          "new_call": {
+            "name": "quarterly_earnings",
+            "arguments": {
+              "company_name": "BERKSHIRE HATHAWAY INC",
+              "cik": "0001067983"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"company_name\": \"BERKSHIRE HATHAWAY INC\", \"cik\": \"0001067983\"}, \"name\": \"quarterly_earnings\"}"
+        },
+        {
+          "episode_id": "live_multiple_198-90-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "adriel_contact",
+            "arguments": {}
+          },
+          "new_call": {
+            "name": "adriel_contact",
+            "arguments": {
+              "contact_id": 1,
+              "format": "json"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"contact_id\": 1, \"format\": \"json\"}, \"name\": \"adriel_contact\"}"
+        },
+        {
+          "episode_id": "live_multiple_206-91-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "contact",
+            "arguments": {
+              "person_name": "Adriel"
+            }
+          },
+          "new_call": {
+            "name": "contact",
+            "arguments": {
+              "email_address": "",
+              "person_name": "Adriel",
+              "phone_number": ""
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"email_address\": \"\", \"person_name\": \"Adriel\", \"phone_number\": \"\"}, \"name\": \"contact\"}"
+        },
+        {
+          "episode_id": "live_multiple_241-107-2",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "search_web_tool",
+            "arguments": {
+              "query": "flight prices from NYC to New Delhi",
+              "num_results": 3,
+              "source": "text"
+            }
+          },
+          "new_call": {
+            "name": "search_web_tool",
+            "arguments": {
+              "num_results": 3,
+              "query": "flight prices from NYC to NEw Delhi",
+              "source": "text"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"num_results\": 3, \"query\": \"flight prices from NYC to NEw Delhi\", \"source\": \"text\"}, \"name\": \"search_web_tool\"}"
+        },
+        {
+          "episode_id": "live_multiple_32-10-2",
+          "class": "function_flip",
+          "base_call": {
+            "name": "sub",
+            "arguments": {
+              "a": 100,
+              "b": 40
+            }
+          },
+          "new_call": {
+            "name": "add",
+            "arguments": {
+              "a": 60,
+              "b": 100
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"a\": 60, \"b\": 100}, \"name\": \"add\"}"
+        },
+        {
+          "episode_id": "live_multiple_325-132-15",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "directed_by": "Riley Stearns",
+              "genre": "dontcare",
+              "cast": "dontcare"
+            }
+          },
+          "new_call": {
+            "name": "Movies_3_FindMovies",
+            "arguments": {
+              "cast": "Riley Stearns",
+              "directed_by": "dontcare",
+              "genre": "dontcare"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"cast\": \"Riley Stearns\", \"directed_by\": \"dontcare\", \"genre\": \"dontcare\"}, \"name\": \"Movies_3_FindMovies\"}"
+        },
+        {
+          "episode_id": "live_multiple_344-133-8",
+          "class": "function_flip",
+          "base_call": {
+            "name": "Music_3_LookupMusic",
+            "arguments": {
+              "album": "Prequelle",
+              "artist": "dontcare",
+              "genre": "dontcare",
+              "year": "dontcare"
+            }
+          },
+          "new_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "album": "Prequelle",
+              "artist": "dontcare",
+              "device": "Living room",
+              "track": "dontcare"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"album\": \"Prequelle\", \"artist\": \"dontcare\", \"device\": \"Living room\", \"track\": \"dontcare\"}, \"name\": \"Music_3_PlayMedia\"}"
+        },
+        {
+          "episode_id": "live_multiple_400-139-4",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Theater",
+              "city": "Chicago, IL",
+              "date": "2023-10-02"
+            }
+          },
+          "new_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "city": "Chicago, IL",
+              "date": "2023-10-23",
+              "event_type": "Theater"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"Chicago, IL\", \"date\": \"2023-10-23\", \"event_type\": \"Theater\"}, \"name\": \"Events_3_FindEvents\"}"
+        },
+        {
+          "episode_id": "live_multiple_401-139-5",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "Toronto, ON",
+              "date": "2023-10-02"
+            }
+          },
+          "new_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "city": "Toronto, CA",
+              "date": "2023-10-02",
+              "event_type": "Music"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"Toronto, CA\", \"date\": \"2023-10-02\", \"event_type\": \"Music\"}, \"name\": \"Events_3_FindEvents\"}"
+        },
+        {
+          "episode_id": "live_multiple_406-140-2",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "RideSharing_2_GetRide",
+            "arguments": {
+              "destination": "2508 University Avenue, Palo Alto"
+            }
+          },
+          "new_call": {
+            "name": "RideSharing_2_GetRide",
+            "arguments": {
+              "destination": "2508 University Avenue, Palo Alto",
+              "number_of_seats": 1,
+              "ride_type": "Regular"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"destination\": \"2508 University Avenue, Palo Alto\", \"number_of_seats\": 1, \"ride_type\": \"Regular\"}, \"name\": \"RideSharing_2_GetRide\"}"
+        },
+        {
+          "episode_id": "live_multiple_44-17-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "BankStatementOverView",
+            "arguments": {
+              "bank_name": "U.S. Bank",
+              "account_number": "1-523-1713-5704",
+              "account_type": "checking",
+              "full_name": "SILVER BUSINESS CHECKING",
+              "transaction_overview": {
+                "total_deposits": 7132.76,
+                "total_withdrawals": 5927.4,
+                "start_date": "2019-10-01",
+                "end_date": "2019-10-31"
+              }
+            }
+          },
+          "new_call": {
+            "name": "BankStatementOverView",
+            "arguments": {
+              "account_number": "1-523-1713-5704",
+              "account_type": "checking",
+              "bank_name": "U.S. Bank",
+              "end_date": "2019-10-31",
+              "full_name": "SILVER BUSINESS CHECKING",
+              "starting_balance": 5532.01,
+              "starting_date": "2019-10-01",
+              "transaction_overview": {
+                "end_date": "2019-10-31",
+                "start_date": "2019-10-01",
+                "total_deposits": 7132.76,
+                "total_withdrawals": 5927.4
+              }
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"account_number\": \"1-523-1713-5704\", \"account_type\": \"checking\", \"bank_name\": \"U.S. Bank\", \"end_date\": \"2019-10-31\", \"full_name\": \"SILVER BUSINESS CHECKING\", \"starting_balance\": 5532.01, \"starting_date\": \"2019-10-01\", \"transaction_overview\": {\"end_date\": \"2019-10-31\", \"start_date\": \"2019-10-01\", \"total_deposits\": 7132.76, \"total_withdrawals\": 5927.4}}, \"name\": \"BankStatementOverView\"}"
+        },
+        {
+          "episode_id": "live_multiple_5-3-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "get_current_weather",
+            "arguments": {
+              "location": "Shanghai, China",
+              "unit": "metric"
+            }
+          },
+          "new_call": {
+            "name": "get_current_weather",
+            "arguments": {
+              "location": "Shanghai, CN",
+              "unit": "metric"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"location\": \"Shanghai, CN\", \"unit\": \"metric\"}, \"name\": \"get_current_weather\"}"
+        },
+        {
+          "episode_id": "live_multiple_59-22-6",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "Wonderland maxi dress",
+              "sizes": [
+                "S"
+              ]
+            }
+          },
+          "new_call": {
+            "name": "inventory_management",
+            "arguments": {
+              "product_id": "Wonderland maxi dress",
+              "sizes": [
+                "S",
+                "M"
+              ]
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"product_id\": \"Wonderland maxi dress\", \"sizes\": [\"S\", \"M\"]}, \"name\": \"inventory_management\"}"
+        },
+        {
+          "episode_id": "live_multiple_673-162-15",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "event_type": "Music",
+              "city": "New York, NY",
+              "date": "2023-10-01"
+            }
+          },
+          "new_call": {
+            "name": "Events_3_FindEvents",
+            "arguments": {
+              "city": "New York, NY",
+              "date": "2023-09-30",
+              "event_type": "Music"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"city\": \"New York, NY\", \"date\": \"2023-09-30\", \"event_type\": \"Music\"}, \"name\": \"Events_3_FindEvents\"}"
+        },
+        {
+          "episode_id": "live_multiple_74-34-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "dartfx_help",
+            "arguments": {
+              "topic": "trading",
+              "include_examples": true
+            }
+          },
+          "new_call": {
+            "name": "dartfx_help",
+            "arguments": {
+              "include_examples": true,
+              "subtopic": "",
+              "topic": "trading"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"include_examples\": true, \"subtopic\": \"\", \"topic\": \"trading\"}, \"name\": \"dartfx_help\"}"
+        },
+        {
+          "episode_id": "live_multiple_833-178-8",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "track": "Captured",
+              "artist": "Spice",
+              "device": "Living room",
+              "album": "Captured"
+            }
+          },
+          "new_call": {
+            "name": "Music_3_PlayMedia",
+            "arguments": {
+              "album": "Captured",
+              "artist": "Spice",
+              "device": "Living room",
+              "track": "stream"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"album\": \"Captured\", \"artist\": \"Spice\", \"device\": \"Living room\", \"track\": \"stream\"}, \"name\": \"Music_3_PlayMedia\"}"
+        },
+        {
+          "episode_id": "live_multiple_88-38-5",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "list_servers",
+            "arguments": {
+              "type": "all"
+            }
+          },
+          "new_call": {
+            "name": "list_servers",
+            "arguments": {}
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {}, \"name\": \"list_servers\"}"
+        },
+        {
+          "episode_id": "live_multiple_89-39-0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "render_ui_date_picker_widget",
+            "arguments": {
+              "default_date": "20-09-2023"
+            }
+          },
+          "new_call": {
+            "name": "render_ui_date_picker_widget",
+            "arguments": {
+              "default_date": "20-09-2023",
+              "heading": "Select your vacation date:"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"default_date\": \"20-09-2023\", \"heading\": \"Select your vacation date:\"}, \"name\": \"render_ui_date_picker_widget\"}"
+        },
+        {
+          "episode_id": "live_multiple_955-202-1",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "uber.eat.order",
+            "arguments": {
+              "restaurant": "McDonald's",
+              "items": [
+                "fries"
+              ],
+              "quantities": [
+                5
+              ]
+            }
+          },
+          "new_call": {
+            "name": "uber.eat.order",
+            "arguments": {
+              "items": [
+                "fries"
+              ],
+              "quantities": [
+                5
+              ],
+              "restaurant": "McDonalds"
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"items\": [\"fries\"], \"quantities\": [5], \"restaurant\": \"McDonalds\"}, \"name\": \"uber.eat.order\"}"
+        },
+        {
+          "episode_id": "multiple_0",
+          "class": "parameter_drift",
+          "base_call": {
+            "name": "triangle_properties.get",
+            "arguments": {
+              "side1": 5,
+              "side2": 4,
+              "side3": 3,
+              "get_area": true,
+              "get_perimeter": true,
+              "get_angles": true
+            }
+          },
+          "new_call": {
+            "name": "triangle_properties.get",
+            "arguments": {
+              "get_area": true,
+              "get_angles": true,
+              "get_perimeter": true,
+              "side1": 3,
+              "side2": 4,
+              "side3": 5
+            }
+          },
+          "parse_error": null,
+          "raw_model_output": "{\"arguments\": {\"get_area\": true, \"get_angles\": true, \"get_perimeter\": true, \"side1\": 3, \"side2\": 4, \"side3\": 5}, \"name\": \"triangle_properties.get\"}"
+        }
+      ]
+    }
+  ]
+}
