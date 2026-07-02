@@ -185,6 +185,48 @@ D2 representatives revised and locked:
 - rep2, valid lowest capped forgetting: both arms use D3 `ep3 replay2 lambda2` (`main=5/106`, `STaR=3/106`). s05 checkpoints exit rep2 competition because their capped-arena measurements are invalid.
 - final regression authority: `forget_heldout` in D2. Capped arena remains `PROBE`/reference, old `R_success_eval` remains continuity-only, and no additional D1 recipe exploration is authorized.
 
+## v1.15 - 2026-07-02
+
+### Saturated-replay interference, v1.14 wording fixes, and D2 launch spec
+
+Timing: recorded after the capped-arena overlap audit and before D2 heldout 5-seed training/evaluation. This entry supersedes three v1.14 wordings without changing the mechanical D1 failure or D2 representative choices.
+
+Saturated-replay observation upgraded: s05 `replay2 lambda2` checkpoints trained on all `106/106` capped-arena episodes (`main` row overlap `138`, `STaR` row overlap `138`) while using the strongest tested KL anchor (`lambda=2`). Even under this saturated replay-plus-KL condition, main still missed `4/106` and STaR missed `5/106`, and every missed ID was present in that checkpoint's training rows. The hard observation is no longer merely "coverage does not imply protection"; it is: saturated replay exposure plus KL anchoring still leaves a residual interference core. The mechanistic explanation remains `PROBE`, but the sample-in observation itself is hard.
+
+Mechanistic implication (`PROBE`): the BLOCKED-stage failures are consistent with a structural conflict between repair gradients and already-correct behavior. Replay scaling, KL anchoring, and targeted replay all operate by feeding or constraining protected examples; the saturated-replay miss set shows that protection dose is not sufficient for some boundary-near successes.
+
+Drift subtype check on saturated-replay misses:
+
+| source | missed IDs | subtype summary |
+|---|---:|---|
+| s05 main replay2 lambda2 | 4 | value `3`, drop `1` |
+| s05 STaR replay2 lambda2 | 5 | value `2`, drop `2`, function flip `1` |
+
+The recurring clean capped-arena watch set is also mostly parameter/value level rather than format level: `live_multiple_1003-232-2` is consistently drop; `live_multiple_453-145-4`, `live_multiple_469-145-20`, and `live_multiple_956-203-0` are consistently value drift; `multiple_178` is mostly add, with one parse-error outlier. Existing local log-prob probes do not contain these capped-arena IDs, so base-margin scoring for this exact set remains a pending forward probe rather than an already available zero-GPU result.
+
+Distributional fragility note: capped-arena wrongs have `0` overlap with the old fragile-24 set, but capped wrongs recur across clean capped D3/C configurations. This supports the interpretation that fragility is a distributional boundary layer: different regression surfaces reveal different fragile points, while each surface can still show stable cross-arm weak spots.
+
+v1.14 wording fixes:
+
+1. Targeted replay verdict: the binary failure stands (`C main=6/106`, `C STaR=4/106`, both above the capped `2/106` gate), and the earlier "targeted worsened fresh forgetting" wording remains withdrawn. However, the statement "no detectable effect" carries the targeted-run numeric caveat because targeted C had substantial non-finite-loss skipping (`main=36`, `STaR=54`). The valid statement is: no reliable improvement was detected, and the targeted runs are numerically caveated.
+2. rep2 selection: D3 `ep3 replay2 lambda2` is selected using capped-arena numbers even though capped arena is `PROBE`/reference. This is intentional and not a gate claim: `PROBE` numbers may be used for representative selection, while final regression authority is reserved for D2 `forget_heldout`.
+3. Coverage/protection status: "coverage does not imply protection" is promoted from a weak `PROBE` observation to a hard sample-in observation under saturated replay. The mechanistic interpretation of an irreducible interference core remains `PROBE` until D2 provides a fresh heldout regression surface.
+
+D2 representatives remain locked:
+
+- rep1, best transfer: main `main_ep3_r16_lr5e-5_replay1_seed20260703`; STaR `star_ep3_r16_lr1e-4_replay1_seed20260703`.
+- rep2, valid lowest capped forgetting: main `main_d3c_r16_lr5e-5_ep3_replay2_lam2_seed20260703`; STaR `star_d3c_r16_lr1e-4_ep3_replay2_lam2_seed20260703`.
+
+D2 numerical hygiene spec: every D2 run must report `skipped_nonfinite_loss`, `skipped_nonfinite_grad`, `kl_anchor_batches`, train seconds, and whether eval-only recovery was used. Existing s05 rep1 logs show that main ep3 required eval-only recovery after a staged-server missing-path failure, and current logs do not preserve a final exact skip total for both rep1 runs. Therefore D2 must record skip counts directly from per-seed `train_metadata.json`; summaries without skip counts are incomplete.
+
+D2 adjudication remains:
+
+- C1 final wording is determined by heldout repair plus `forget_heldout`.
+- C2 final wording is determined by heldout scaffold-only paired comparison over 5 seeds.
+- capped arena is retained as exploration/reference only.
+- old `R_success_eval` is continuity only.
+- no additional D1 recipe exploration is authorized.
+
 ## v1.6 - 2026-07-02
 
 ### Prior-governed transfer observation and targeted-replay specification
