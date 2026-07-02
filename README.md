@@ -5,6 +5,7 @@ This workspace is now organized around **EDR: Evolve -> Distill -> Retire**.
 ## Authoritative Spec
 
 - `PROJECT_MASTER_PLAN.md` is the highest project guidance.
+- `METHODOLOGY.md` is the consolidated current-methodology record for EDR Phase 0 / EXP3.
 - `TASK_GUIDANCE.md` is only a compatibility pointer to the master plan.
 - Legacy Gate-1 guidance is archived under `archive/legacy_gate1/`.
 

@@ -1,5 +1,5 @@
 # EDR 项目总纲:Evolve → Distill → Retire
-## 面向顶会的完整研究程序 · v1.1 · 2026-07(修订记录见文末 CHANGELOG)
+## 面向顶会的完整研究程序 · v1.2 · 2026-07(修订记录见文末 CHANGELOG)
 
 > 本文档是项目的唯一权威规范。本地 agent 执行任何步骤前必须通读本文档。
 > 一切判据在此预注册;跑完对号入座,事后不许改。
@@ -103,7 +103,7 @@
 
 **关键不变量(每轮 assert)**:
 - 蒸馏样本 input = 原始无-patch prompt,与 base 所见 byte 级一致;patch 只出现在生成 y 的过程中,绝不出现在训练 input。
-- `episodes(T_r) ∩ episodes(D_heldout) = ∅`;`episodes(T_r) ∩ episodes(R_success_eval) = ∅`。代码 assert,每次构建数据强制执行。
+- `episodes(T_r) ∩ episodes(D_heldout) = ∅`;`episodes(T_r) ∩ episodes(R_success_eval) = ∅`;`episodes(T_r) ∩ episodes(D_val) = ∅`(v1.2 新增;泄漏事故暴露 v1.0 assert 清单缺此项)。三条并列,代码 assert + pytest,每次构建数据强制执行。
 - 每轮的 `H_r`、`A_r`、评估结果、随机种子全部版本化存档,任意轮可复现。
 
 ## 8. 数据划分与治理(全项目冻结,任何 Phase 不得改动)
@@ -178,11 +178,11 @@
 > (与已发的 AGENT_EXP3_distill_phase0.md 一致,此处为权威版;冲突以本文档为准。)
 
 **Step 0.0 数据盘点(半天)**
-1. NL-evo 最终 harness 在 `D_train ∪ D_val` 失败集上 T=0 重跑,得修复清单 `repaired_train_val.json`。
+1. NL-evo 最终 harness 在 `D_train ∪ D_val` 失败集上 T=0 重跑,得修复清单 `repaired_train_val.json`(**train/val 两份分开记账**)。**蒸馏数据池 = 仅 train 份修复**;val 份修复只记录、只作评估点,绝不入任何训练集(v1.2 修订:v1.0 此句原文"train∪val"与 Part III·8 治理表"D_val 不进训练样本"自相矛盾,泄漏事故根因在此)。
 2. 固化 R_success(评估份/replay 份不重叠切分)、R_other、D_heldout 三个回归/考场集。
 3. 泄漏 assert 落码并入 pytest。
 4. 统计修复 episode 的函数/错误类型分布(供 2×2 分层)。
-**分支**:原始修复 ≥50 条 → 直行;<50 → 停,报告(补 loop 数据方案)。
+**分支**:**train 份**原始修复 ≥50 条 → 直行;<50 → 停,报告(补 loop 数据方案)。
 
 **Step 0.1 pass@16 probe(半天,可与 0.0 并行)**
 1. `D_train ∪ D_val` 全部失败,base 无 patch,T=0.8 × 16 条,V 判。
@@ -190,18 +190,19 @@
 3. 采样通过轨迹全部留存(= A4 的训练数据,不重采)。
 
 **Step 0.2 蒸馏集构建(1 天)**
-1. 主集:修复 episode × (T=0 ×1 + T=0.8 ×4,不足加采到 ×8),V=1 过滤,去重,目标 300–500 条;逐条标注(episode_id / 分区 / 函数 / 错误类型)。
+1. 主集:**仅 train 份**修复 episode × (T=0 ×1 + T=0.8 ×4,不足加采到 ×8),V=1 过滤,去重,目标 300–500 条;逐条标注(episode_id / 分区 / 函数 / 错误类型)。
 2. Replay 30–50% 混入(来自 R_success 的 replay 份)。
-3. STaR 集:0.1 留存轨迹,量配平 ±10%,同比例 replay。
+3. STaR 集:0.1 留存轨迹中**仅 train 份**,量配平 ±10%;若一方不足,以**较小集为基准对另一方下采样**(配平方向永远向下,两集最终条数均报),同比例 replay。
 4. 全部过泄漏 assert。
 
 **Step 0.3 训练(1–2 天)**
 - peft + transformers,bf16 + gradient checkpointing;5090 32GB 单卡足够;显存吃紧退 QLoRA 并注明。
-- 网格 rank∈{8,16,32} × lr∈{5e-5,1e-4,2e-4},epochs≤3,cosine,warmup 5%,单 seed。
-- 选点判据(D_val,预注册):val repair 提升最大 **且** R_success 子样 ≥0.98;满足者取 repair 最高;全不满足 → 取回归最好档 + BLOCKED 报告。
+- 网格(v1.2 修订;动机:v1.1 网格已完成点在**干净的** R_success_eval 上 forget 8–9%,远破 ≤2% 硬闸):rank∈{8,16} × lr∈{2e-5,5e-5,1e-4} × epochs∈{1,2},replay 50%,cosine,warmup 5%,单 seed,共 12 点。**升级规则(预注册)**:12 点全破 forget 闸 → 取其中 repair 最高点,replay 提至 1:1 且 lr 减半重跑一点;仍破 → BLOCKED 报告,人决策。
+- 选点判据(D_val,预注册):val repair 提升最大 **且** R_success 子样 ≥0.98;满足者取 repair 最高;全不满足 → 取回归最好档 + BLOCKED 报告。(v1.2 起训练与 D_val 零交集,D_val 全体 156 个失败均为干净选点集;**选点锁定前 heldout 一个数字不跑**。)
 - 选定配置 **5 seeds** 重训;A4 同流程独立训练。
 
 **Step 0.4 四臂评估(1–2 天)**
+- 前置:heldout 失败集补跑 pass@16 分区标签(base 模型,T=0.8×16,纯评估侧前向,不触任何训练;网格期间空闲卡先跑)——唯 scaffold 区的分层评估依赖此标签,v1.0 的 Step 0.1 只覆盖了 train∪val。
 - A1/A2/A3/A4,全 T=0,按第 11 节分层全报 + 第 9 节度量全报。
 - 评估时顺手计算 `teacher_agree`(A3 各 seed 对 A2 输出的函数名+参数集一致率,修复集与 NN 格分别报)与分层 retention(失败类型 × patch 类型)。
 - **交付**:主表(四臂 × 全分层 × CI)、两个头号数字(retention_1、唯 scaffold 区占比)、`teacher_agree` 两切片、分层 retention 表、Gate 0 逐条对号、pytest 双机。
@@ -376,3 +377,23 @@
 时间线影响:零(A11 的 1 天被 Phase 1 吸收);Gate 判据无实质变更,新增判据均为"诚实扣除/加报"型,不改变任何既有 kill/pivot 线。
 
 签字:Ian 批准,2026-07-01。
+
+---
+
+**v1.1 → v1.2(2026-07-01;修订发生在任何 heldout 评估之前——heldout 零接触,预注册核心完整)**
+
+触发:执行期人工核对发现 `distill_main`/`distill_star` 分别含 63/17 个 `D_val` episode。根因判定:**文档自相矛盾,责任在总纲不在 agent**——v1.0 Step 0.0 写"train∪val 重跑取修复清单"(蒸馏池未限定),与 Part III·8 治理表"D_val 不进训练样本"冲突,且 Part III·7 assert 清单缺 val 交集项;agent 按 Step 0.0 字面执行,assert 全绿。
+
+审计结论:heldout ∩ training = 0,R_success_eval ∩ training = 0,两条硬泄漏线干净——**主考场未受污染,损害限于选点层**。数字内部一致(63+17−8 重叠 = 72 union;0.6346=99/156、0.4679=73/156 确认 val 选点分母)。
+
+决策:按 Option A/B 预写规则(train 份修复 74 ≥ 50 且 val_clean 84 ≥ 30)→ **Option A:val 全部退出训练**,恢复治理表原文效力。
+
+去污染粗估(PROBE 级,记录在案防止方向信号被误引):假设已训 episode 近全召回,干净 val 上 main ≈ 36/93 = 0.387,star ≈ 56/139 = 0.403;90% 召回假设下 main ≈ 0.455,star ≈ 0.415。**两假设下区间重叠——污染网格的 main>star 方向信号不成立,不得在任何场合引用**;C2 裁决场不变(heldout 唯 scaffold 区分层对比)。
+
+修订项:Step 0.0/0.2 蒸馏池与 STaR 集限 train 份 + 配平方向规则(向下);不变量新增第三条 assert(training ∩ D_val = ∅);Step 0.3 网格保守化(rank{8,16} × lr{2e-5,5e-5,1e-4} × epochs{1,2},replay 50%,12 点)+ 预注册升级规则,动机为干净 R_success 证据 forget 8–9%;Step 0.4 前置补 heldout pass@16 分区标签;选点判据说明补全。
+
+污染产出处置:v1.1 网格全部 checkpoint 与日志**归档留存**(目录加 `contaminated_gridv1/` 标签 + README 指向本条),标 `PROBE (contaminated)`,永不作为选点/报告/论文依据;已完成 checkpoint 仅可用于遗忘类型诊断(R_success_eval 干净)。
+
+时间线影响:Phase 0 +2–3 天;第 8 周 preprint 节点不变。
+
+签字:Ian 批准(Option A 规则触发,2026-07-01)。
