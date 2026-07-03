@@ -49,3 +49,31 @@ def test_round2_eval_dry_run_passes_m1_adapter_to_all_eval_surfaces(tmp_path):
     assert result.stdout.count("--base-adapter-dir M1_ADAPTER") == 3
     assert "--adapter-dir A2_ADAPTER" in result.stdout
     assert "--train-dataset T1_T2.jsonl" in result.stdout
+
+
+def test_round2_loop_dry_run_uses_m1_aware_vendor(tmp_path):
+    cmd = [
+        "python3",
+        "round2/loop/evolution_loop_round2.py",
+        "--m1-adapter",
+        "M1_ADAPTER",
+        "--f2",
+        "F2.json",
+        "--seeds",
+        "20260630",
+        "--output-dir",
+        str(tmp_path / "loop"),
+        "--dry-run",
+    ]
+    result = subprocess.run(cmd, cwd=REPO, check=True, text=True, capture_output=True)
+    assert "round2/loop/evolution_loop_m1.py" in result.stdout
+    assert "EDG-EXP2-struct/scripts/evolution_loop.py" not in result.stdout
+    assert "--base-adapter-dir M1_ADAPTER" in result.stdout
+    assert "--manifest repro_rep2/MANIFEST.json" in result.stdout
+
+
+def test_vendor_loop_requires_and_merges_m1_adapter():
+    text = (REPO / "round2/loop/evolution_loop_m1.py").read_text(encoding="utf-8")
+    assert "PeftModel.from_pretrained" in text
+    assert "merge_and_unload()" in text
+    assert "raw M0 patch search is invalid" in text

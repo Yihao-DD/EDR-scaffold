@@ -60,21 +60,27 @@ def main() -> None:
 
         evo = load_exp2(args.exp2_root)
         tokenizer = load_tokenizer(args.model_id)
-        model = load_model_for_eval(args.model_id, adapter_dir=args.m1_adapter, qlora=not args.no_qlora)
+        model = load_model_for_eval(
+            args.model_id,
+            adapter_dir=None,
+            base_adapter_dir=args.m1_adapter,
+            qlora=not args.no_qlora,
+        )
         failures = []
         eliminated = []
         for index, row in enumerate(train_share, start=1):
             if index == 1 or index % args.progress_every == 0 or index == len(train_share):
                 print(f"[collect-f2] {index}/{len(train_share)} {row['episode_id']}", flush=True)
+            baseline_row = baseline_by_id[row["episode_id"]]
             result = evaluate_episode(
                 evo,
                 model,
                 tokenizer,
-                baseline_by_id[row["episode_id"]],
+                baseline_row,
                 baseline["prompt_template"],
                 args.max_new_tokens,
             )
-            merged = {**row, **result}
+            merged = {**baseline_row, **row, **result}
             if result["success"]:
                 eliminated.append(merged)
             else:
@@ -83,6 +89,8 @@ def main() -> None:
     payload = {
         "probe": "round2_collect_failures",
         "m1_adapter": args.m1_adapter,
+        "model_stack": ["M0", "A1_merged_in_memory"],
+        "prompt_template": None if args.dry_run else baseline.get("prompt_template"),
         "train_share_checked": len(train_share),
         "f2_count": len(failures),
         "internalized_count": len(train_share) - len(failures),
@@ -91,6 +99,7 @@ def main() -> None:
         "internalized_by_partition": summarize(eliminated if not args.dry_run else [], "partition"),
         "f2_by_failure_class": summarize(failures, "failure_class"),
         "f2": failures,
+        "failures": [dict(row, split="multiple") for row in failures],
         "note": "Dry run enumerates the train share; full mode records M0+A1 T=0 AST failures.",
     }
     write_json(args.output, payload)

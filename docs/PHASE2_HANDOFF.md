@@ -18,6 +18,7 @@
 ## 2. Phase 2 迭代代码(目录 `round2/`,全部新写或改造,要求可冷启动)
 2.1 `collect_failures.py`:加载 M0+A1(M1),T=0 在 D_train share 上前向,输出 F2 清单 + 与 F1 的构成对比(哪些一轮失败已被内化消灭、新失败类型分布)。
 2.2 `loop/`:从 EDG-EXP2-struct vendor 最小 NL-evo loop 代码(注明来源 commit),改造模型加载支持 base+adapter 栈;patch 接受判定仅在 D_val;judge 仅 AST。loop 配置锁一轮 NL-evo 同款。
+    loop 全链路运行在 M1(merged)上;任何在裸 M0 上搜索/验证 patch 的运行无效。
 2.3 `build_t2.py`:同 Step 0.2 规程(train 份 only;T=0 x1 + T=0.8 x4->8;AST 过滤;去重;逐条标注);泄漏 assert 四连(∩ D_heldout / D_val / old-400 / sibling-300 = ∅)写死在构建路径上。|T2|<30 -> 输出 `MATERIAL_EXHAUSTION` 标记但不中止(材料枯竭本身是发现,PROBE)。
 2.4 `build_replay2.py`:M1 T=0 在 train share 成功(V=1)轨迹为池,排除全部 eval 集(assert),2:1 配比。
 2.5 `train_round2.py`:**配方锁死** = r16 / lr5e-5 / ep3 / replay2:1 / KLλ2 / guards on;**KL 参考模型 = M1(冻结)**,不是 M0——代码里显式加载 M1 作 anchor,注释写明;A2 训练在 M0+A1 之上(实现:load base -> merge A1 in-memory -> attach 新 LoRA;A1 文件永不改动);seeds = {20260708..20260712}。
@@ -35,3 +36,11 @@
 ## 4. 推送与登记
 - push `handoff/phase2-round2`,记录分支 HEAD hash;
 - CHANGELOG v1.22:M1 指定规则与结果、第二轮三项锁定决策(配方锁死 / KL 锚=M1 / 新 seed 块)、分支 hash、REVIEW 结论。
+
+## v1.22 增补:EXP2 loop 的 adapter-aware 改造
+1. vendor EXP2 loop 时,模型加载入口改为:base -> PeftModel(A1) -> merge_and_unload();merge 只在内存,A1 文件只读;adapter 路径走 config(M1_DESIGNATED),禁止硬编码。
+2. loop 内所有 generate 调用(含 patch 在场重跑、验证、采样)共用 `round2/loop/evolution_loop_m1.py` 的 `ModelRunner`;grep 确认没有第二处独立加载模型的代码路径。
+3. 等价性 smoke:改造后 loop 入口在 10 个 F2 episode 上无 patch 前向,输出应与 `collect_failures.py` 逐 episode 逐字一致;不一致即停并贴 diff。
+4. T2 生成走同一入口:teacher-2 = merged(M1) + H2 patch-in-context。
+5. `eval_round2.py` 的 teacher-2 前向走同一入口。
+6. `REVIEW.md` 单列人工复核项:loop 无任何 M0 裸模型残留路径。

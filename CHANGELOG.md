@@ -696,3 +696,44 @@ Local checks:
 - `python3 -m compileall -q round2 repro_rep2/scripts`
 - `python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py`
   returned `5 passed`.
+
+## v1.24 - 2026-07-03
+
+### EXP2 loop adapter-aware repair for Phase 2 handoff
+
+The v1.23 remaining caveat is resolved. Patch search is no longer run through
+the raw upstream EXP2 loop.
+
+Fixed:
+
+- Added `round2/loop/evolution_loop_m1.py`, a vendored EXP2 loop whose only
+  model-loading path is `base -> PeftModel(A1) -> merge_and_unload()` in memory.
+  It resolves A1/M1 from `repro_rep2/MANIFEST.json` unless
+  `--base-adapter-dir` is supplied, and exits if no M1 adapter is available.
+- `round2/loop/evolution_loop_round2.py` now delegates to the M1-aware vendored
+  loop. The dry-run command no longer points at
+  `EDG-EXP2-struct/scripts/evolution_loop.py`.
+- `round2/collect_failures.py` now uses the same merged-M1 eval path and writes
+  complete F2 episode records plus a `failures` list consumable by the loop.
+- Added `round2/loop/no_patch_equivalence_smoke.py`. On a GPU execution host it
+  checks that the loop entry, with no patch context, exactly matches
+  `collect_failures.py` raw outputs for the first 10 F2 episodes.
+- `round2/build_t2.py` can now generate teacher-2 samples directly from F2 plus
+  H2 loop output using the same M1-aware loop entry:
+  `teacher-2 = merged(M1) + H2 patch-in-context`.
+- Added `round2/loop/teacher2_forward.py` and wired `round2/eval_round2.py` so
+  teacher-2 heldout forward also uses the same M1-aware entry.
+- `docs/PHASE2_HANDOFF.md`, `round2/README.md`, `round2/loop/README.md`, and
+  `docs/REVIEW.md` now state that any raw-M0 patch search or validation run is
+  invalid.
+- Added tests for the loop contract: wrapper dry-run must call
+  `round2/loop/evolution_loop_m1.py`, and the vendored loop must include
+  `PeftModel.from_pretrained`, `merge_and_unload()`, and the raw-M0 guard.
+
+Local checks:
+
+- `python3 -m compileall -q round2 repro_rep2/scripts/lora_phase0.py repro_rep2/scripts/s07_heldout_eval.py repro_rep2/scripts/s07_sibling_arena_eval.py`
+- `python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py`
+  returned `7 passed`.
+- Static grep over `round2/loop` found one model load path and one direct
+  `model.generate` site, both inside `round2/loop/evolution_loop_m1.py`.

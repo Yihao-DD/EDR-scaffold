@@ -12,3 +12,19 @@ The wrapper intentionally keeps the policy narrow:
 - acceptance: validation AST only;
 - generation: one NL-evo round using the Phase 1 policy;
 - outputs: accepted patch list plus teacher-2 samples for `build_t2.py`.
+
+`evolution_loop_m1.py` is the only valid loop entry. It resolves M1 from
+`repro_rep2/MANIFEST.json` unless `--base-adapter-dir` is supplied explicitly,
+then loads `base -> PeftModel(A1) -> merge_and_unload()` in memory. Any loop run
+on raw M0 is invalid.
+
+Before accepting a rerun, execute:
+
+```bash
+python3 round2/loop/no_patch_equivalence_smoke.py \
+  --collect-json round2_outputs/f2_failures.json \
+  --limit 10
+```
+
+The smoke must match `collect_failures.py` raw outputs exactly for the first 10
+F2 episodes.

@@ -19,7 +19,9 @@ quarantine/repair artifacts are intentionally excluded.
 - [x] No SSH credentials or machine passwords are stored in the handoff files.
 - [x] Local compile check passed.
 - [x] Data/assert smoke passed without pytest dependency.
-- [x] Round2 dry-run smoke passed for `collect_failures -> loop -> train_round2`.
+- [x] Round2 dry-run smoke passed for `collect_failures -> M1-aware loop -> train_round2`.
+- [x] Loop M1 invariant manually checked: `round2/loop/evolution_loop_m1.py` loads base -> `PeftModel(A1)` -> `merge_and_unload()` and exits if no M1 adapter is supplied.
+- [x] Loop has no raw-M0 residual path: all patch-search generate calls flow through `ModelRunner.generate()` in `round2/loop/evolution_loop_m1.py`.
 - [x] Round2 eval dry-run command renders M2 as `M0 + A1 + A2` by passing `--base-adapter-dir` to all eval surfaces.
 - [x] Focused `pytest` run for rep2 data/leakage and round2 contract asserts passed.
 - [x] Artifact SHA manifest generated: `repro_rep2/MANIFEST.md`, `repro_rep2/MANIFEST.json`, `repro_rep2/SHA256SUMS`.
@@ -45,8 +47,8 @@ Focused pytest:
 
 ```text
 python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py
-.....                                                                    [100%]
-5 passed in 0.06s
+.......                                                                  [100%]
+7 passed in 0.12s
 ```
 
 Reconcile smoke:
@@ -60,16 +62,17 @@ Round2 dry-run:
 
 ```text
 wrote /tmp/f2_smoke.json f2_count=20
-DRY_RUN python3 EDG-EXP2-struct/scripts/evolution_loop.py --input /tmp/f2_smoke.json --output /tmp/loop_smoke/evolution_loop.json --log /tmp/loop_smoke/evolution_loop.md --model-id Qwen/Qwen2.5-7B-Instruct --seeds 20260630
+DRY_RUN python3 round2/loop/evolution_loop_m1.py --input /tmp/f2_smoke.json --output /tmp/loop_smoke/evolution_loop.json --log /tmp/loop_smoke/evolution_loop.md --model-id Qwen/Qwen2.5-7B-Instruct --manifest repro_rep2/MANIFEST.json --seeds 20260630 --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter
 DRY_RUN python3 repro_rep2/scripts/lora_phase0.py --model-id Qwen/Qwen2.5-7B-Instruct train --dataset /tmp/a2_smoke/round2_train_seed20260708.jsonl --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --output-dir /tmp/a2_smoke --rank 16 --lr 5e-5 --seed 20260708 --epochs 3 --kl-anchor-lambda 2 --max-grad-norm 1.0
 ```
 
 Eval dry-run:
 
 ```text
-DRY_RUN python3 repro_rep2/scripts/s07_heldout_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --arm main --config round2 --seed 0 --run-id round2_eval --train-dataset round2_outputs/t1_t2.jsonl --output /tmp/eval_smoke/m2.heldout.json
+DRY_RUN python3 repro_rep2/scripts/s07_heldout_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --arm main --config round2 --seed 0 --run-id round2_eval --train-dataset T1_T2.jsonl --output /tmp/eval_smoke/m2.heldout.json
 DRY_RUN python3 repro_rep2/scripts/s07_sibling_arena_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --arm main --config round2 --seed 0 --run-id round2_eval --output /tmp/eval_smoke/m2.sibling.json
-SKIP val_old400: pass --phase0-failures, --phase0-exp2-root, and --phase0-s00-input to enable it.
+DRY_RUN python3 repro_rep2/scripts/lora_phase0.py --model-id Qwen/Qwen2.5-7B-Instruct --failures failures.json --exp2-root exp2 --s00-input s00.json eval --adapter-dir /tmp/a2_smoke --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --output /tmp/eval_smoke/m2.val_old400.json
+DRY_RUN python3 round2/loop/teacher2_forward.py --loop-output /tmp/loop_smoke/evolution_loop.json --loop-method NL-evo --manifest repro_rep2/MANIFEST.json --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --output /tmp/eval_smoke/m2.teacher2_heldout.json
 ```
 
 ## Manual Review Notes
@@ -87,6 +90,15 @@ SKIP val_old400: pass --phase0-failures, --phase0-exp2-root, and --phase0-s00-in
   of entering T2.
 - `build_replay2.py` writes `source=replay_base_success` and `partition=replay`
   on every replay row so the KL-anchor path fires.
-- The upstream EXP2 patch loop is not LoRA-adapter-aware. Round2 currently uses
-  M1 to collect F2, then runs the patch loop on that F2 set. Making patch search
-  itself adapter-aware remains a separate implementation step.
+- The EXP2 patch loop is vendored as `round2/loop/evolution_loop_m1.py` and is
+  adapter-aware. It resolves M1 from `repro_rep2/MANIFEST.json` unless an
+  explicit `--base-adapter-dir` is supplied, merges A1 into memory, and refuses
+  raw-M0 execution.
+- GPU equivalence smoke command is implemented as
+  `round2/loop/no_patch_equivalence_smoke.py`; it must pass on the execution
+  host before accepting a company rerun:
+  `python3 round2/loop/no_patch_equivalence_smoke.py --collect-json round2_outputs/f2_failures.json --limit 10`.
+- Manual review item: `rg -n "AutoModelForCausalLM.from_pretrained|PeftModel.from_pretrained|model.generate\\(" round2/loop`
+  shows the only model-load path is `ModelRunner` in
+  `round2/loop/evolution_loop_m1.py`; wrapper/smoke scripts import that entry
+  and do not load a second model path.

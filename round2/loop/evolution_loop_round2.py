@@ -2,8 +2,8 @@
 """Minimal Phase 2 NL-evo loop entrypoint.
 
 This wrapper records immutable inputs and delegates the actual patch search to
-the vendored EDG-EXP2-struct loop. It is intentionally thin so reviewers can
-verify that acceptance remains D_val-only and AST-only.
+the vendored M1-aware EXP2 loop. Acceptance remains D_val-only and AST-only, and
+the loop refuses raw-M0 patch search.
 """
 
 from __future__ import annotations
@@ -21,8 +21,9 @@ from round2.common import write_json
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--vendor-loop", default="EDG-EXP2-struct/scripts/evolution_loop.py")
-    parser.add_argument("--m1-adapter", required=True)
+    parser.add_argument("--vendor-loop", default="round2/loop/evolution_loop_m1.py")
+    parser.add_argument("--manifest", default="repro_rep2/MANIFEST.json")
+    parser.add_argument("--m1-adapter", default=None)
     parser.add_argument("--f2", required=True)
     parser.add_argument("--d-val", default="repro_rep2/data/episode_ids/D_val_failures.json")
     parser.add_argument("--model-id", default="Qwen/Qwen2.5-7B-Instruct")
@@ -35,12 +36,13 @@ def main() -> None:
     plan = {
         "probe": "round2_loop_plan",
         "vendor_loop": args.vendor_loop,
-        "vendor_source": "EDG-EXP2-struct/scripts/evolution_loop.py from this repository.",
+        "vendor_source": "EDG-EXP2-struct/scripts/evolution_loop.py vendored as round2/loop/evolution_loop_m1.py.",
         "m1_adapter": args.m1_adapter,
+        "manifest": args.manifest,
         "f2": args.f2,
-        "acceptance": "D_val AST only; F2 was collected from M0+A1 before entering this patch loop.",
+        "acceptance": "D_val AST only; all patch search and validation run on M1 = M0+A1 merged in memory.",
         "d_val": args.d_val,
-        "adapter_note": "The upstream patch loop does not load LoRA adapters. Adapter conditioning happens in F2 collection; adapter-aware patch search remains a future extension.",
+        "adapter_note": "Raw M0 patch search is invalid. The vendored loop resolves M1 from MANIFEST unless --m1-adapter is explicitly supplied.",
     }
     write_json(Path(args.output_dir) / "loop_plan.json", plan)
     vendor_loop = Path(args.vendor_loop)
@@ -57,9 +59,13 @@ def main() -> None:
         str(Path(args.output_dir) / "evolution_loop.md"),
         "--model-id",
         args.model_id,
+        "--manifest",
+        args.manifest,
         "--seeds",
         args.seeds,
     ]
+    if args.m1_adapter:
+        cmd.extend(["--base-adapter-dir", args.m1_adapter])
     if args.dry_run:
         print("DRY_RUN", " ".join(cmd))
         return

@@ -28,7 +28,9 @@ python3 round2/loop/evolution_loop_round2.py \
   --dry-run
 
 python3 round2/build_t2.py \
-  --teacher2-samples round2_outputs/teacher2_samples.jsonl
+  --f2-json round2_outputs/f2_failures.json \
+  --loop-output round2_outputs/loop/evolution_loop.json \
+  --m1-adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter
 
 python3 round2/build_replay2.py \
   --m1-success-jsonl round2_outputs/m1_train_success.jsonl \
@@ -47,6 +49,7 @@ python3 round2/eval_round2.py \
   --m1-adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter \
   --a2-adapter round2_outputs/a2_seed20260708 \
   --train-signature-jsonl round2_outputs/t1_t2.jsonl \
+  --teacher2-loop-output round2_outputs/loop/evolution_loop.json \
   --dry-run
 
 python3 round2/reconcile.py --skip-pytest --skip-model-check
@@ -57,14 +60,20 @@ Full GPU execution should remove `--dry-run` after data generation files exist.
 `ACCEPTED`. Full acceptance requires a model path and re-evaluates M1 on heldout
 and sibling surfaces.
 
-## Caveat
+## Adapter-Aware Loop
 
-`round2/loop/evolution_loop_round2.py` calls the real
-`EDG-EXP2-struct/scripts/evolution_loop.py` entrypoint. That upstream patch loop
-does not load LoRA adapters directly. The current round-2 path uses M1 for F2
-collection, then evolves patches over the resulting F2 set. If patch search
-itself must be conditioned on M1, the EXP2 runner needs an adapter-aware model
-loading change before production use.
+`round2/loop/evolution_loop_round2.py` delegates to the vendored
+`round2/loop/evolution_loop_m1.py` entrypoint. That entry resolves the designated
+M1 adapter from `repro_rep2/MANIFEST.json` unless `--m1-adapter` is supplied,
+loads `base -> PeftModel(A1) -> merge_and_unload()` in memory, and refuses raw
+M0 execution. The no-patch equivalence smoke must pass before accepting a
+company rerun:
+
+```bash
+python3 round2/loop/no_patch_equivalence_smoke.py \
+  --collect-json round2_outputs/f2_failures.json \
+  --limit 10
+```
 
 ## Review Hooks
 
