@@ -74,6 +74,56 @@ If the preregistered upgrade point (`replay=1:1` plus halved learning rate from 
 
 The forgetting gate remains unchanged at `forget <= 0.02`.
 
+## v1.18 - 2026-07-02
+
+### Phase 0 final-evaluation preconditions and monitoring-surface caveat
+
+The prior 5-seed report over `val@156 + old R_success@400` is explicitly classified as a monitoring-surface confirmation, not the Phase 0 final evaluation. It is useful for frontier calibration and seed-level sanity checks, but the preregistered final C1/C2 claims require heldout `158` plus the sibling regression arbitration surface.
+
+Monitoring-surface observations recorded before final heldout evaluation:
+
+- Aggregate validation main-vs-STaR differences are not statistically settled at 5 seeds and include a seed-level reversal. Therefore no report may claim that main wins STaR on aggregate validation repair.
+- The predicted cross-stratum shape appears in monitoring: STaR can match or exceed main on sampling-rescuable/high-prior slices, while main's advantage is concentrated in scaffold-only/low-prior slices. This remains a monitoring observation until the heldout scaffold-only bootstrap.
+- Forgetting on the old `R_success@400` surface is seed-stable around the 5-7% band, far above the 2% gate. This supports the irreducible-interference interpretation but is not the final regression arbitration surface.
+
+Final-evaluation protocol is fixed as pure forward evaluation of the frozen 20 checkpoints: heldout `158`, retention ratio and conditional-recovery denominators, teacher agreement, per-arm SS/SN/NS/NN labels, five regression surfaces, and episode-level paired bootstrap on heldout scaffold-only `47` as the unique C2 adjudicator.
+
+## v1.19 - 2026-07-02
+
+### Judge freeze, sibling arena lock, and teacher denominator re-anchor
+
+Parallel judge manual audit is confirmed by Ian under the judgment-dense-step rule. The audit checked both parsing fidelity and pass/fail matching logic for 15 base outputs, with special attention to fail cases and `live_parallel_multiple`. No parsing or matching defect was found. The judge is frozen for s07 final evaluation.
+
+Freeze identifiers:
+
+- git HEAD at freeze time: `f3dcc4f2b628c355498d29d1c1e45088ae7e8fa5`
+- `EDG-EXP3-distill/scripts/v17_parallel_arena.py` sha256: `761c6ab312d97fdb840ed7c2731c5ef63312359a32683f866d88c5c375e753aa`
+- manual audit file: `EDG-EXP3-distill/logs/v17_parallel_judge_manual_audit.md`, status `CONFIRMED`
+
+Sibling arena decision tree lands mechanically in route A: never-touched parallel-family base successes are sufficient.
+
+- parallel-family raw: `440`; base successes: `304` (`0.6909`)
+- simple_python unrecorded raw: `241`; base successes: `134` (`0.5560`)
+- arena source: parallel-family successes only
+- arena size: `300`
+- arena category composition: `parallel=146`, `parallel_multiple=134`, `live_parallel=11`, `live_parallel_multiple=9`
+- five asserts are zero: arena intersect all historical training rows, old `R_success@400`, capped-106, `D_val`, and `D_heldout`
+
+Teacher heldout denominator is re-anchored in the pinned s07 evaluation environment. The re-run returns the same denominator as the prior pass@16 partition file:
+
+- old denominator: `50/158 = 0.3164557`
+- pinned-environment re-anchor: `50/158 = 0.3164557`
+- denominator for Gate 0 retention ratio remains `50/158`; both old and re-anchored values should be reported.
+
+Two missing-adapter recoveries are completed and provenance-checked:
+
+- `main rep1 seed20260704` v2 recovery: `val_repair=0.5192`, `r_success=0.9275`, exactly matching the original JSON.
+- `STaR rep2 seed20260703` v2 recovery: `val_repair=0.3013`, `r_success=0.9425`, exactly matching the original JSON.
+
+The non-finite-loss skip issue is reclassified from stochastic instability to deterministic row exclusion: static tokenization predicts the exact skip counts for replay1 and capped replay2 datasets. The relevant caveat is effective training row count, not random numerical corruption.
+
+With these preconditions satisfied, the s07 final forward-only batch is authorized: 20 frozen checkpoints over heldout `158` and sibling arena `300`, followed by the preregistered C2 paired bootstrap.
+
 ## v1.12 - 2026-07-02
 
 ### s05 KL-anchor result and targeted-replay decision setup
@@ -508,3 +558,94 @@ BLOCKED exit criteria, fixed before any KL number returns:
 - Failure: after the combination round, if no qualifying point exists, hold a negative-result decision review. The paper path switches to the internalization-forgetting frontier for 7B plus this recipe family, with C2 and mechanism analyses retained. No second combination round and no new unregistered lever may be added at that point.
 
 The forgetting gate remains unchanged at `forget <= 0.02`.
+
+## v1.20 - 2026-07-02
+
+### s07-final quarantine, rep1 adjudication, and rep2 preservation
+
+Status: the previously generated `s07-final` table is placed under quarantine for Gate/C1/C2 interpretation until the rep1 provenance issue is resolved. The table may be used only as an audit object, not as the final Phase 0 decision table. This entry records the adjudication evidence gathered after the inconsistency was found.
+
+Reason for quarantine: three contradictions are concentrated in rep1 while rep2 remains internally consistent.
+
+1. Dry-run versus final mismatch: main rep1 seed `20260703` dry-run reported `80/158` heldout repairs, but the final 5-seed rep1 mean was only `51.4/158`. STaR rep1 dry-run reported `74/158`, but the final seed `20260703` JSON reports `10/158`.
+2. Rep1 aggregate C2 reversal: the final rep1 aggregate bootstrap favored STaR over main, contradicting the dry-run direction and the earlier validation monitoring shape.
+3. Rep1 cross-arena inconsistency: validation monitoring showed a stable main scaffold-only advantage, while heldout rep1 did not. Rep2 did not show this inconsistency.
+
+Adjudication experiment and evidence:
+
+- Main rep1 seed `20260703` was re-evaluated in the pinned final evaluation environment and reproduced the dry-run and final JSON exactly: `80/158` heldout repairs, retention ratio `1.600`, partition repairs `scaffold_only=37/47`, `sampling_rescuable=8/10`, `neither=35/101`. Per-episode success diffs versus the dry-run JSON were `0`.
+- Main rep1 seed `20260704` was re-evaluated and reproduced the low final result: `9/158` heldout repairs, partition repairs `scaffold_only=4/47`, `sampling_rescuable=3/10`, `neither=2/101`. The adapter file exists and has a complete adapter size; this is a true bad/no-op-like recovered checkpoint under the current artifact, not a missing-adapter fallback.
+- Rep1 training data hashes are consistent across seeds. Main rep1 seeds use `data/distill_main_replay1.jsonl` with SHA256 `f9af3ffb30c0d58657dadccb6300241306af51889b547aa9421dc444f61031d2`. STaR rep1 seeds use `data/distill_star_replay1.jsonl` with SHA256 `2028e65067ff3ccf44b1d0509e8345a8cde2e0e9085f835dd3541669bc7be99b`. The rep1 issue is not explained by seeds `20260704..20260707` using the wrong replay pool.
+- STaR rep1 seed `20260703` is provenance-broken. The dry-run JSON reports `74/158`, but the current adapter at the same path reproduces the final result `10/158` when re-evaluated. The current adapter checksum is stable across available machines, and the evaluation script plus heldout partition inputs match. No alternate full adapter matching the dry-run behavior was recovered. Therefore the most likely explanation is that the adapter artifact at that path changed or was overwritten between dry-run and final evaluation. STaR rep1 seed `20260703` must not be used in any clean 5-seed rep1 claim unless it is retrained or the original dry-run artifact is recovered and checksum-verified.
+- Main and STaR rep2 dry-run versus final heldout evaluations are per-episode identical where checked. Rep2 remains the clean C2 adjudication line.
+
+Preserved results:
+
+- Rep2 C2 remains valid under the current evidence. On heldout scaffold-only `47` episodes, the episode-level paired bootstrap for rep2 gives main minus STaR `+0.1532` with 95% CI `[+0.0638, +0.2511]`, not containing zero. This supports C2 in the preregistered scope: the main arm's advantage is concentrated in the sampling-inaccessible scaffold-only stratum.
+- The no-regression gate remains failed under all audited branches. The best sibling-forget estimate in the quarantined table is still above the hard gate (`forget <= 0.02`), so the C1 deployment-style claim remains: high-retention internalization and net repair are observed, but no no-regression point has been established within this recipe family.
+
+Interpretation policy until repair:
+
+- Do not cite the full `s07-final` table as final.
+- Do not use rep1 aggregate bootstrap, rep1 retention means, or rep1 arm comparisons as clean claims.
+- Rep1 may only be discussed as a provenance/case-study audit until STaR seed `20260703` is retrained or the original adapter artifact is recovered.
+- Rep2 may remain in the final evidence set because it passes dry-run/final reconciliation and preserves the preregistered heldout scaffold-only C2 result.
+
+Process correction:
+
+1. Every final evaluation table must include a dry-run reconciliation row for reused checkpoints before being interpreted.
+2. Every reused checkpoint JSON must record the resolved adapter path, adapter SHA256, adapter file size, loaded trainable-parameter count if available, data file hash, and evaluation script hash.
+3. Any reused checkpoint evaluated on a different machine must be checksum-verified before evaluation. If an artifact path is reused after recovery or resync, the new artifact must receive a versioned provenance label instead of silently occupying the original path.
+
+## v1.22 - 2026-07-03
+
+### rep2 handoff branch and Phase 2 round-2 cold-start package
+
+Scope: branch `handoff/phase2-round2` is a rep2-only handoff package. Rep1 quarantine and repair artifacts are excluded from this branch. The handoff instruction text is preserved at `docs/PHASE2_HANDOFF.md`.
+
+Rep2 reproduction package:
+
+- Package root: `repro_rep2/`.
+- Core data: `repro_rep2/data/distill_main_core.jsonl`, 148 rows.
+- Training data: `repro_rep2/data/distill_main_replay2_capped.jsonl`, 444 rows.
+- Frozen episode-id lists: D_val 156, D_heldout 158, old400 400, capped106 106, sibling300 300.
+- Code: Phase 0 LoRA train/eval, heldout/sibling evaluators, frozen parallel judge, capped-arena evaluator, pass@16/judge support code, and focused pytest asserts.
+- Artifacts: five main rep2 adapters plus training JSON, heldout JSON, sibling JSON, and provenance logs under `repro_rep2/artifacts/main_rep2_seed*/`.
+- SHA inventory: `repro_rep2/MANIFEST.md`, `repro_rep2/MANIFEST.json`, and `repro_rep2/SHA256SUMS`.
+- Large binaries: adapter safetensors are tracked via Git LFS (`*.safetensors`, `*.bin`, `*.pt`).
+
+M1 designation rule and result:
+
+- Rule: among the five main rep2 seeds, choose the median heldout repair count; ties choose the smaller seed.
+- Heldout repair counts: seed20260703 `54/158`, seed20260704 `51/158`, seed20260705 `46/158`, seed20260706 `58/158`, seed20260707 `43/158`.
+- `M1_DESIGNATED`: seed `20260704`.
+- M1 adapter path: `repro_rep2/artifacts/main_rep2_seed20260704/adapter/adapter_model.safetensors`.
+- M1 adapter SHA256: `c3afb185a6a32480a55e678599b3bebc8b8899ed935d620605b00ab3c3e62683`.
+- Reference numbers for company reconciliation: heldout repair `51/158`, sibling success `292/300`.
+
+Phase 2 round-2 decisions locked in code:
+
+1. Recipe locked: rank `16`, lr `5e-5`, epochs `3`, replay `2:1`, KL lambda `2`, non-finite guards on.
+2. KL anchor is M1, not raw M0. Implementation: `repro_rep2/scripts/lora_phase0.py` accepts `--base-adapter-dir`, merges A1/M1 into base weights, then attaches the new A2 LoRA; the existing KL disable-adapter path therefore evaluates frozen M1.
+3. New seed block: `{20260708, 20260709, 20260710, 20260711, 20260712}`.
+
+Round2 cold-start scripts added under `round2/`:
+
+- `collect_failures.py`: enumerate or collect F2 on the train share under M0+A1.
+- `loop/evolution_loop_round2.py`: thin wrapper for the vendored EDG-EXP2-struct NL-evo loop, with D_val AST-only acceptance.
+- `build_t2.py`: build T2 with AST filtering, dedupe, material-exhaustion marker, and leakage asserts.
+- `build_replay2.py`: construct M1-success replay at 2:1 with eval-surface exclusion asserts.
+- `train_round2.py`: locked A2 training launcher with M1-anchor invariant.
+- `eval_round2.py`: M2 evaluation launcher for heldout/sibling surfaces and extension points for val/old400/teacher2.
+- `reconcile.py`: company acceptance smoke; prints `ACCEPTED` when manifest references are in tolerance and tests pass.
+
+Review result:
+
+- Local compile check passed.
+- Focused pytest for rep2 data/leakage asserts passed: `2 passed`.
+- Dry-run chain passed for `collect_failures -> loop -> train_round2`.
+- Eval dry-run command rendering passed.
+- `round2/reconcile.py --skip-pytest` printed `ACCEPTED`.
+- Full review notes are in `docs/REVIEW.md`.
+
+Push note: the final pushed branch HEAD is reported in the handoff response because a commit cannot reliably embed its own final hash without changing that hash.

@@ -1,0 +1,4290 @@
+{
+  "probe": "s07_heldout_eval",
+  "model_id": "/root/autodl-tmp/hf/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "split_seed": 20260630,
+  "heldout_partition": "results/s01_heldout_pass16_partition.json",
+  "summary": {
+    "run_id": "main_rep2_ep3_replay2_lam2_capped_seed20260706",
+    "arm": "main",
+    "config": "rep2_ep3_replay2_lam2_capped",
+    "seed": 20260706,
+    "adapter_dir": "adapters/s07_d2_5seed/main/main_d2_rep2_r16_lr5e-5_ep3_replay2_capped_lam2_seed20260706",
+    "heldout_n": 158,
+    "heldout_repair": 58,
+    "heldout_repair_rate": 0.3670886075949367,
+    "teacher_success_n": 50,
+    "retention_ratio_vs_partition_teacher": 1.16,
+    "conditional_recovery_on_teacher_success": 0.62,
+    "partition": {
+      "neither": {
+        "n": 101,
+        "success": 22,
+        "rate": 0.21782178217821782
+      },
+      "sampling_rescuable": {
+        "n": 10,
+        "success": 7,
+        "rate": 0.7
+      },
+      "scaffold_only": {
+        "n": 47,
+        "success": 29,
+        "rate": 0.6170212765957447
+      }
+    },
+    "generalization": {
+      "NS": {
+        "n": 56,
+        "success": 7,
+        "rate": 0.125
+      },
+      "SS": {
+        "n": 102,
+        "success": 51,
+        "rate": 0.5
+      }
+    },
+    "teacher_agree": {
+      "all_success": {
+        "n": 58,
+        "agree": 31,
+        "rate": 0.5344827586206896
+      },
+      "teacher_success_successes": {
+        "n": 31,
+        "agree": 31,
+        "rate": 1.0
+      },
+      "nn_successes": {
+        "n": 0,
+        "agree": 0,
+        "rate": null
+      },
+      "scaffold_only_successes": {
+        "n": 29,
+        "agree": 29,
+        "rate": 1.0
+      }
+    },
+    "train_signature": {
+      "dataset": "data/distill_main_replay2_capped.jsonl",
+      "rows": 444,
+      "unique_episodes": 194,
+      "function_count": 87,
+      "failure_class_count": 3
+    }
+  },
+  "records": [
+    {
+      "episode_id": "multiple_51",
+      "success": false,
+      "prediction": {
+        "name": "dice_roll_probability",
+        "arguments": {
+          "desired_sum": 7,
+          "sides_per_die": 6
+        }
+      },
+      "raw_model_output": "{\"name\": \"dice_roll_probability\", \"arguments\": {\"desired_sum\": 7, \"sides_per_die\": 6}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "dice_roll_probability",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_709-164-25",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "dontcare",
+          "directed_by": "Kirill Mikhanovsky",
+          "genre": "Comedy-drama"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"dontcare\", \"directed_by\": \"Kirill Mikhanovsky\", \"genre\": \"Comedy-drama\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Kirill Mikhanovsky",
+          "genre": "Comedy-drama",
+          "cast": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_720-165-7",
+      "success": false,
+      "prediction": {
+        "name": "Hotels_2_BookHouse",
+        "arguments": {
+          "where_to": "New York, NY",
+          "number_of_adults": 4,
+          "check_in_date": "05/10/2023",
+          "check_out_date": "05/15/2023"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"where_to\": \"New York, NY\", \"number_of_adults\": 4, \"check_in_date\": \"05/10/2023\", \"check_out_date\": \"05/15/2023\"}, \"name\": \"Hotels_2_BookHouse\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Hotels_2_SearchHouse",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "New York, NY",
+          "number_of_adults": 4,
+          "has_laundry_service": "dontcare",
+          "rating": 3.0
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_533-151-9",
+      "success": true,
+      "prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Theater",
+          "city": "London, UK",
+          "date": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Theater\", \"city\": \"London, UK\", \"date\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Events_3_FindEvents",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Theater",
+          "city": "London, UK",
+          "date": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_982-215-6",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "service_id": 1,
+          "extra_service_id": 3,
+          "start_available_date": "2024-03-20 18:00:00"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"province_id\": 1, \"service_id\": 1, \"extra_service_id\": 3, \"start_available_date\": \"2024-03-20 18:00:00\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "start_available_date": "2024-03-20 18:00:00",
+          "service_id": 1,
+          "extra_service_id": 2
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_928-191-16",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "professional_group_id": 2,
+          "has_late_check_in": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"professional_group_id\": 2, \"has_late_check_in\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "is_subscription": true,
+          "professional_group_id": 2,
+          "has_late_check_in": false
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_636-161-4",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "Tove Lo",
+          "genre": "Electropop",
+          "year": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"Tove Lo\", \"genre\": \"Electropop\", \"year\": \"dontcare\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Tove Lo",
+          "genre": "Electropop",
+          "year": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1047-274-0",
+      "success": false,
+      "prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Cape Town, South Africa",
+          "has_laundry_service": "dontcare",
+          "number_of_adults": 2,
+          "rating": 0.0
+        }
+      },
+      "raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Cape Town, South Africa\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 2, \"rating\": 0.0}}",
+      "parse_error": null,
+      "failure_class": "router_fail",
+      "partition": "neither",
+      "function_name": "Hotels_2_BookHouse",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_161-63-0",
+      "success": false,
+      "prediction": {
+        "name": "get_detail_adriel_project",
+        "arguments": {
+          "project_name": "portfolio-web"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_detail_adriel_project\", \"arguments\": {\"project_name\": \"portfolio-web\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "get_detail_adriel_project",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_298-130-7",
+      "success": true,
+      "prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Chicago, IL",
+          "has_laundry_service": "True",
+          "number_of_adults": 0,
+          "rating": 3.9
+        }
+      },
+      "raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Chicago, IL\", \"has_laundry_service\": \"True\", \"number_of_adults\": 0, \"rating\": 3.9}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Hotels_2_SearchHouse",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Chi-town, IL",
+          "has_laundry_service": "True",
+          "rating": 3.9
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_440-144-0",
+      "success": true,
+      "prediction": {
+        "name": "Services_4_FindProvider",
+        "arguments": {
+          "accepts_insurance": false,
+          "city": "Berkeley, CA",
+          "type": "Family Counselor"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"accepts_insurance\": false, \"city\": \"Berkeley, CA\", \"type\": \"Family Counselor\"}, \"name\": \"Services_4_FindProvider\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Services_4_FindProvider",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Services_4_FindProvider",
+        "arguments": {
+          "city": "Berkeley, CA",
+          "type": "Family Counselor"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_772-171-5",
+      "success": true,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Fremont, CA",
+          "is_unisex": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Fremont, CA\", \"is_unisex\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Fremont, CA",
+          "is_unisex": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_930-191-18",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "service_id": 35
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"service_id\": 35}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "service_id": 35
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_517-150-5",
+      "success": false,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "genre": "Supernatural",
+          "location": "Los Angeles, CA",
+          "show_type": "regular"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"genre\": \"Supernatural\", \"location\": \"Los Angeles, CA\", \"show_type\": \"regular\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Los Angeles, CA",
+          "genre": "Supernatural",
+          "show_type": "regular"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_87",
+      "success": false,
+      "prediction": {
+        "name": "games.update.find",
+        "arguments": {
+          "game": "Cyberpunk 2077",
+          "platform": "Xbox"
+        }
+      },
+      "raw_model_output": "{\"name\": \"games.update.find\", \"arguments\": {\"game\": \"Cyberpunk 2077\", \"platform\": \"Xbox\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "games.update.find",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1051-278-0",
+      "success": true,
+      "prediction": {
+        "name": "set_alarm",
+        "arguments": {
+          "alarm_time": "2023-12-01 07:00:00",
+          "purpose": "wake up"
+        }
+      },
+      "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"2023-12-01 07:00:00\", \"purpose\": \"wake up\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "set_alarm",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "set_alarm",
+        "arguments": {
+          "alarm_time": "2023-12-01 07:00:00",
+          "purpose": "meeting"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_970-211-0",
+      "success": false,
+      "prediction": {
+        "name": "fmp.income_statement",
+        "arguments": {
+          "symbol": "APPL",
+          "period": "annual",
+          "datatype": "json",
+          "limit": 2
+        }
+      },
+      "raw_model_output": "{\"name\": \"fmp.income_statement\", \"arguments\": {\"symbol\": \"APPL\", \"period\": \"annual\", \"datatype\": \"json\", \"limit\": 2}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "fmp.income_statement",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_915-191-3",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": 5.0,
+          "province_id": 1,
+          "district_name": "Lat Phrao",
+          "sub_district_name": null,
+          "start_available_date": null,
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": false,
+          "is_package": true,
+          "is_subscription": false,
+          "service_id": null,
+          "available_for_pet": false,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": null,
+          "is_cleaning_home": null,
+          "is_cleaning_office": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": 5.0, \"province_id\": 1, \"district_name\": \"Lat Phrao\", \"sub_district_name\": null, \"start_available_date\": null, \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": false, \"is_package\": true, \"is_subscription\": false, \"service_id\": null, \"available_for_pet\": false, \"professional_group_id\": null, \"job_qty\": null, \"is_cleaning_condo\": null, \"is_cleaning_home\": null, \"is_cleaning_office\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": 5.0,
+          "province_id": 1,
+          "district_name": "Lat Phrao",
+          "is_package": true
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1040-267-0",
+      "success": false,
+      "prediction": {
+        "name": "detail_experience_and_education",
+        "arguments": {
+          "experience_or_education_type": "Education at Universitas Sebelas Maret (UNS)",
+          "experience_or_education_name": "Adriel's Education at UNS"
+        }
+      },
+      "raw_model_output": "{\"name\": \"detail_experience_and_education\", \"arguments\": {\"experience_or_education_type\": \"Education at Universitas Sebelas Maret (UNS)\", \"experience_or_education_name\": \"Adriel's Education at UNS\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "detail_experience_and_education",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_175-72-1",
+      "success": false,
+      "prediction": {
+        "name": "get_adriel_list_projects",
+        "arguments": {
+          "user_id": "12345",
+          "status": "active",
+          "include_dates": true
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_adriel_list_projects\", \"arguments\": {\"user_id\": \"12345\", \"status\": \"active\", \"include_dates\": true}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_adriel_list_projects",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_209-91-3",
+      "success": true,
+      "prediction": {
+        "name": "detail_project",
+        "arguments": {
+          "project_name": "turing-machine",
+          "include_status": false,
+          "start_date": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"detail_project\", \"arguments\": {\"project_name\": \"turing-machine\", \"include_status\": false, \"start_date\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "detail_project",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_633-161-1",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "dontcare",
+          "genre": "Rock",
+          "year": "2015"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"dontcare\", \"genre\": \"Rock\", \"year\": \"2015\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "dontcare",
+          "album": "dontcare",
+          "genre": "Rock",
+          "year": "2015"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_336-133-0",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Shape of You",
+          "artist": "Ed Sheeran",
+          "device": "Kitchen",
+          "album": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"Shape of You\", \"artist\": \"Ed Sheeran\", \"device\": \"Kitchen\", \"album\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "Music_3_PlayMedia",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Shape of You",
+          "artist": "Ed Sheeran",
+          "device": "Kitchen",
+          "album": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_375-134-20",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Sameh Zoabi",
+          "genre": "dontcare",
+          "cast": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Sameh Zoabi\", \"genre\": \"dontcare\", \"cast\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Sameh Zoabi",
+          "genre": "dontcare",
+          "cast": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_233-105-0",
+      "success": false,
+      "prediction": {
+        "name": "get_contact_information",
+        "arguments": {
+          "name": "Rayson Goh"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_contact_information\", \"arguments\": {\"name\": \"Rayson Goh\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_contact_information",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_836-178-11",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Love",
+          "artist": "any",
+          "device": "Kitchen",
+          "album": "Sucker Punch"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"Love\", \"artist\": \"any\", \"device\": \"Kitchen\", \"album\": \"Sucker Punch\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_PlayMedia",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Love",
+          "artist": "any",
+          "device": "Kitchen",
+          "album": "Sucker Punch"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "multiple_142",
+      "success": true,
+      "prediction": {
+        "name": "weather.humidity_forecast",
+        "arguments": {
+          "location": "Miami, Florida",
+          "days": 7,
+          "min_humidity": 0
+        }
+      },
+      "raw_model_output": "{\"name\": \"weather.humidity_forecast\", \"arguments\": {\"location\": \"Miami, Florida\", \"days\": 7, \"min_humidity\": 0}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "weather.humidity_forecast",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_456-145-7",
+      "success": false,
+      "prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "London, UK",
+          "free_entry": "True",
+          "category": "dontcare",
+          "good_for_kids": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"London, UK\", \"free_entry\": \"True\", \"category\": \"dontcare\", \"good_for_kids\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Travel_1_FindAttractions",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "London, UK",
+          "free_entry": "True",
+          "category": "Performing Arts Venue",
+          "good_for_kids": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_320-132-10",
+      "success": false,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "Pete Davidson",
+          "genre": "Animation",
+          "directed_by": "Thurop Van Orman"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"Pete Davidson\", \"genre\": \"Animation\", \"directed_by\": \"Thurop Van Orman\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "genre": "Animation",
+          "cast": "Pete Davidson",
+          "directed_by": "Thurop Van Orman"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_436-142-2",
+      "success": false,
+      "prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Portland, OR",
+          "start_date": "2023-04-22",
+          "pickup_time": "10:00",
+          "end_date": "2023-04-27"
+        }
+      },
+      "raw_model_output": "{\"name\": \"RentalCars_3_GetCarsAvailable\", \"arguments\": {\"city\": \"Portland, OR\", \"start_date\": \"2023-04-22\", \"pickup_time\": \"10:00\", \"end_date\": \"2023-04-27\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "RentalCars_3_GetCarsAvailable",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Portland, OR",
+          "start_date": "2023-04-22",
+          "pickup_time": "10:00",
+          "end_date": "2023-04-27",
+          "car_type": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_827-178-2",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "dontcare",
+          "genre": "dontcare",
+          "year": "2021"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"dontcare\", \"genre\": \"dontcare\", \"year\": \"2021\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "year": "2021"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_849-179-3",
+      "success": true,
+      "prediction": {
+        "name": "Restaurants_2_FindRestaurants",
+        "arguments": {
+          "category": "Indian",
+          "has_seating_outdoors": false,
+          "has_vegetarian_options": false,
+          "location": "Sunnyvale, CA",
+          "price_range": "cheap"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"category\": \"Indian\", \"has_seating_outdoors\": false, \"has_vegetarian_options\": false, \"location\": \"Sunnyvale, CA\", \"price_range\": \"cheap\"}, \"name\": \"Restaurants_2_FindRestaurants\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Restaurants_2_FindRestaurants",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Restaurants_2_FindRestaurants",
+        "arguments": {
+          "category": "Indian",
+          "location": "Sunnyvale, CA",
+          "price_range": "cheap",
+          "has_vegetarian_options": false,
+          "has_seating_outdoors": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_144-56-0",
+      "success": false,
+      "prediction": {
+        "name": "get_sensor_readings_latest",
+        "arguments": {
+          "perPage": 100,
+          "networkId": [],
+          "serials": [],
+          "metrics": [
+            "temperature"
+          ]
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_sensor_readings_latest\", \"arguments\": {\"perPage\": 100, \"networkId\": [], \"serials\": [], \"metrics\": [\"temperature\"]}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_sensor_readings_latest",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_725-166-0",
+      "success": false,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Lafayette, Louisiana",
+          "is_unisex": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Lafayette, Louisiana\", \"is_unisex\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Lafayette, LA",
+          "is_unisex": false
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_975-214-1",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": 1,
+          "district_name": null,
+          "sub_district_name": null,
+          "start_available_date": null,
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": false,
+          "is_package": true,
+          "is_subscription": false,
+          "service_id": 1,
+          "available_for_pet": false,
+          "professional_group_id": null,
+          "job_qty": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": null, \"province_id\": 1, \"district_name\": null, \"sub_district_name\": null, \"start_available_date\": null, \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": false, \"is_package\": true, \"is_subscription\": false, \"service_id\": 1, \"available_for_pet\": false, \"professional_group_id\": null, \"job_qty\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": 1,
+          "district_name": null,
+          "sub_district_name": null,
+          "start_available_date": null,
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": true,
+          "is_package": false,
+          "is_subscription": false,
+          "service_id": 1,
+          "available_for_pet": false,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": false,
+          "is_cleaning_home": true,
+          "is_cleaning_office": false
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1036-263-1",
+      "success": true,
+      "prediction": {
+        "name": "api_token_api.APITokenApi.get_api_tokens",
+        "arguments": {
+          "user_id": 12345,
+          "include_expired": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"api_token_api.APITokenApi.get_api_tokens\", \"arguments\": {\"user_id\": 12345, \"include_expired\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "api_token_api.APITokenApi.get_api_tokens",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_845-178-20",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Sara Evans",
+          "album": "Stronger",
+          "genre": "dontcare",
+          "year": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"Sara Evans\", \"album\": \"Stronger\", \"genre\": \"dontcare\", \"year\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Sara Evans",
+          "album": "Stronger",
+          "genre": "dontcare",
+          "year": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_864-182-1",
+      "success": false,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "genre": "dontcare",
+          "location": "Los Angeles, CA",
+          "show_type": "regular"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"genre\": \"dontcare\", \"location\": \"Los Angeles, CA\", \"show_type\": \"regular\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Los Angeles, CA",
+          "genre": "dontcare",
+          "show_type": "regular"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_729-167-0",
+      "success": true,
+      "prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Denver, CO",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 1,
+          "has_garage": false,
+          "in_unit_laundry": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"area\": \"Denver, CO\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": false, \"in_unit_laundry\": \"dontcare\"}, \"name\": \"Homes_2_FindHomeByArea\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Homes_2_FindHomeByArea",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Denver, CO",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 1
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_173",
+      "success": false,
+      "prediction": {
+        "name": "get_defense_ranking",
+        "arguments": {
+          "season": 2021
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_defense_ranking\", \"arguments\": {\"season\": 2021}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_defense_ranking",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_906-186-3",
+      "success": false,
+      "prediction": {
+        "name": "Trains_1_GetTrainTickets",
+        "arguments": {
+          "_from": "New York, NY",
+          "to": "Los Angeles, CA",
+          "date_of_journey": "2023-05-05",
+          "journey_start_time": "15:00",
+          "number_of_adults": 2,
+          "trip_protection": true,
+          "_class": "Value"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Trains_1_GetTrainTickets\", \"arguments\": {\"_from\": \"New York, NY\", \"to\": \"Los Angeles, CA\", \"date_of_journey\": \"2023-05-05\", \"journey_start_time\": \"15:00\", \"number_of_adults\": 2, \"trip_protection\": true, \"_class\": \"Value\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Trains_1_GetTrainTickets",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_671-162-13",
+      "success": false,
+      "prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "New York, NY",
+          "date": "2023-10-20"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": \"2023-10-20\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "Events_3_FindEvents",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "New York, NY",
+          "date": "2023-10-01"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_158-61-0",
+      "success": true,
+      "prediction": {
+        "name": "get_adriel_projects",
+        "arguments": {
+          "user_id": 7623,
+          "include_completed": true,
+          "date_range": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_adriel_projects\", \"arguments\": {\"user_id\": 7623, \"include_completed\": true, \"date_range\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_adriel_projects",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_645-161-13",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "Madonna",
+          "genre": "dontcare",
+          "year": "2019"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"Madonna\", \"genre\": \"dontcare\", \"year\": \"2019\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Madonna",
+          "year": "2019",
+          "genre": "Pop"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_769-171-2",
+      "success": true,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Mill Valley, CA",
+          "is_unisex": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"Services_1_FindProvider\", \"arguments\": {\"city\": \"Mill Valley, CA\", \"is_unisex\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Mill Valley, CA",
+          "is_unisex": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_916-191-4",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": null,
+          "district_name": null,
+          "sub_district_name": null,
+          "start_available_date": "2024-03-19 12:00:00",
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": false,
+          "is_package": false,
+          "is_subscription": false,
+          "service_id": 1,
+          "available_for_pet": false,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": false,
+          "is_cleaning_home": true,
+          "is_cleaning_office": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": null, \"province_id\": null, \"district_name\": null, \"sub_district_name\": null, \"start_available_date\": \"2024-03-19 12:00:00\", \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": false, \"is_package\": false, \"is_subscription\": false, \"service_id\": 1, \"available_for_pet\": false, \"professional_group_id\": null, \"job_qty\": null, \"is_cleaning_condo\": false, \"is_cleaning_home\": true, \"is_cleaning_office\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "start_available_date": "2024-03-19 12:00:00"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_150-58-4",
+      "success": false,
+      "prediction": {
+        "name": "get_sensor_readings_latest",
+        "arguments": {
+          "perPage": 100
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_sensor_readings_latest\", \"arguments\": {\"perPage\": 100}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_sensor_readings_latest",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_558-154-4",
+      "success": false,
+      "prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Los Angeles, CA",
+          "start_date": "2023-05-15",
+          "pickup_time": "10:00",
+          "end_date": "2023-05-20"
+        }
+      },
+      "raw_model_output": "{\"name\": \"RentalCars_3_GetCarsAvailable\", \"arguments\": {\"city\": \"Los Angeles, CA\", \"start_date\": \"2023-05-15\", \"pickup_time\": \"10:00\", \"end_date\": \"2023-05-20\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "RentalCars_3_GetCarsAvailable",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Los Angeles, CA",
+          "start_date": "2023-05-15",
+          "pickup_time": "10:00",
+          "end_date": "2023-05-20",
+          "car_type": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_545-152-7",
+      "success": false,
+      "prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Petaluma, CA",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 2
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"area\": \"Petaluma, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 2}, \"name\": \"Homes_2_FindHomeByArea\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Homes_2_FindHomeByArea",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Petaluma, CA",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 2
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_692-164-8",
+      "success": false,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "dontcare",
+          "directed_by": "Peter Strickland",
+          "genre": "Fantasy"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"dontcare\", \"directed_by\": \"Peter Strickland\", \"genre\": \"Fantasy\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Peter Strickland",
+          "genre": "Ghost",
+          "cast": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_120",
+      "success": false,
+      "prediction": {
+        "name": "light_travel_time",
+        "arguments": {
+          "distance_in_light_years": 4
+        }
+      },
+      "raw_model_output": "{\"name\": \"light_travel_time\", \"arguments\": {\"distance_in_light_years\": 4}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "light_travel_time",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_984-215-8",
+      "success": false,
+      "prediction": {
+        "name": "view_service_provider_profile",
+        "arguments": {
+          "professional_id": 3726
+        }
+      },
+      "raw_model_output": "{\"name\": \"view_service_provider_profile\", \"arguments\": {\"professional_id\": 3726}}",
+      "parse_error": null,
+      "failure_class": "router_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "view_service_provider_profile",
+        "arguments": {
+          "professional_id": 3726
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_722-165-9",
+      "success": true,
+      "prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Los Angeles, CA",
+          "has_laundry_service": "dontcare",
+          "number_of_adults": 4,
+          "rating": 4.1
+        }
+      },
+      "raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Los Angeles, CA\", \"has_laundry_service\": \"dontcare\", \"number_of_adults\": 4, \"rating\": 4.1}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Hotels_2_SearchHouse",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Los Angeles, CA",
+          "has_laundry_service": "dontcare",
+          "number_of_adults": 4,
+          "rating": 4.1
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_766-170-4",
+      "success": true,
+      "prediction": {
+        "name": "Buses_3_FindBus",
+        "arguments": {
+          "from_city": "Austin, TX",
+          "to_city": "Dallas, TX",
+          "departure_date": "2023-03-13",
+          "num_passengers": 3,
+          "category": "direct"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"Austin, TX\", \"to_city\": \"Dallas, TX\", \"departure_date\": \"2023-03-13\", \"num_passengers\": 3, \"category\": \"direct\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Buses_3_FindBus",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Buses_3_FindBus",
+        "arguments": {
+          "from_city": "Austin, TX",
+          "to_city": "Dallas, TX",
+          "departure_date": "2023-03-13",
+          "num_passengers": 3,
+          "category": "direct"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "multiple_53",
+      "success": false,
+      "prediction": {
+        "name": "linear_regression",
+        "arguments": {
+          "independent_var": [
+            "interest_rates",
+            "unemployment_rates"
+          ],
+          "dependent_var": "house_prices",
+          "forecast_period": 5
+        }
+      },
+      "raw_model_output": "{\"name\": \"linear_regression\", \"arguments\": {\"independent_var\": [\"interest_rates\", \"unemployment_rates\"], \"dependent_var\": \"house_prices\", \"forecast_period\": 5}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "linear_regression",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_863-182-0",
+      "success": false,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Orinda, CA",
+          "show_type": "regular",
+          "movie_name": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"Orinda, CA\", \"show_type\": \"regular\", \"movie_name\": \"dontcare\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Orinda, CA",
+          "theater_name": "Orinda Theatre",
+          "genre": "dontcare",
+          "show_type": "regular"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_510-149-7",
+      "success": false,
+      "prediction": {
+        "name": "Flights_4_SearchOnewayFlight",
+        "arguments": {
+          "origin_airport": "JFK",
+          "destination_airport": "Portland, OR",
+          "departure_date": "2023-04-20",
+          "seating_class": "Economy",
+          "number_of_tickets": 1,
+          "airlines": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Flights_4_SearchOnewayFlight\", \"arguments\": {\"origin_airport\": \"JFK\", \"destination_airport\": \"Portland, OR\", \"departure_date\": \"2023-04-20\", \"seating_class\": \"Economy\", \"number_of_tickets\": 1, \"airlines\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Flights_4_SearchOnewayFlight",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_39-14-1",
+      "success": false,
+      "prediction": {
+        "name": "review_of_interviewer",
+        "arguments": {
+          "interviewer_name": "Charlie Brown",
+          "include_comments": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"review_of_interviewer\", \"arguments\": {\"interviewer_name\": \"Charlie Brown\", \"include_comments\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "review_of_interviewer",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_95",
+      "success": false,
+      "prediction": {
+        "name": "currency_exchange.convert",
+        "arguments": {
+          "amount": 200,
+          "from_currency": "EUR",
+          "to_currency": "USD",
+          "live_conversion": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"currency_exchange.convert\", \"arguments\": {\"amount\": 200, \"from_currency\": \"EUR\", \"to_currency\": \"USD\", \"live_conversion\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "currency_exchange.convert",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_600-158-6",
+      "success": false,
+      "prediction": {
+        "name": "Hotels_4_SearchHotel",
+        "arguments": {
+          "location": "London, UK",
+          "number_of_rooms": "2",
+          "smoking_allowed": true
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"London, UK\", \"number_of_rooms\": \"2\", \"smoking_allowed\": true}, \"name\": \"Hotels_4_SearchHotel\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Hotels_4_SearchHotel",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Hotels_4_SearchHotel",
+        "arguments": {
+          "location": "London, UK",
+          "star_rating": "dontcare",
+          "smoking_allowed": true,
+          "number_of_rooms": "2"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_933-191-21",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": 1,
+          "district_name": "Ratchathewi",
+          "sub_district_name": null,
+          "start_available_date": "2024-03-20 11:00:00",
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": false,
+          "is_package": false,
+          "is_subscription": false,
+          "service_id": null,
+          "available_for_pet": true,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": null,
+          "is_cleaning_home": null,
+          "is_cleaning_office": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": null, \"province_id\": 1, \"district_name\": \"Ratchathewi\", \"sub_district_name\": null, \"start_available_date\": \"2024-03-20 11:00:00\", \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": false, \"is_package\": false, \"is_subscription\": false, \"service_id\": null, \"available_for_pet\": true, \"professional_group_id\": null, \"job_qty\": null, \"is_cleaning_condo\": null, \"is_cleaning_home\": null, \"is_cleaning_office\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": 1,
+          "district_name": "Ratchathewi",
+          "sub_district_name": null,
+          "start_available_date": "2024-03-20 11:00:00",
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": false,
+          "is_package": false,
+          "is_subscription": false,
+          "service_id": 1,
+          "available_for_pet": true,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": false,
+          "is_cleaning_home": false,
+          "is_cleaning_office": false
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_450-145-1",
+      "success": true,
+      "prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "category": "dontcare",
+          "free_entry": "dontcare",
+          "good_for_kids": "True",
+          "location": "Paris, France"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"category\": \"dontcare\", \"free_entry\": \"dontcare\", \"good_for_kids\": \"True\", \"location\": \"Paris, France\"}, \"name\": \"Travel_1_FindAttractions\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Travel_1_FindAttractions",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "Paris, FR",
+          "free_entry": "dontcare",
+          "category": "dontcare",
+          "good_for_kids": "True"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_55",
+      "success": false,
+      "prediction": {
+        "name": "stock_forecast",
+        "arguments": {
+          "company": "Google",
+          "days": 3
+        }
+      },
+      "raw_model_output": "{\"name\": \"stock_forecast\", \"arguments\": {\"company\": \"Google\", \"days\": 3}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "stock_forecast",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_421-141-10",
+      "success": true,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Mountain View, CA",
+          "theater_name": "dontcare",
+          "genre": "dontcare",
+          "show_type": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"Mountain View, CA\", \"theater_name\": \"dontcare\", \"genre\": \"dontcare\", \"show_type\": \"dontcare\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Mountain View, CA",
+          "genre": "dontcare",
+          "show_type": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_903-186-0",
+      "success": false,
+      "prediction": {
+        "name": "Trains_1_FindTrains",
+        "arguments": {
+          "_from": "Phoenix, AZ",
+          "to": "Los Angeles, CA",
+          "date_of_journey": "04/25/2023",
+          "_class": "Value",
+          "number_of_adults": 1
+        }
+      },
+      "raw_model_output": "{\"name\": \"Trains_1_FindTrains\", \"arguments\": {\"_from\": \"Phoenix, AZ\", \"to\": \"Los Angeles, CA\", \"date_of_journey\": \"04/25/2023\", \"_class\": \"Value\", \"number_of_adults\": 1}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Trains_1_FindTrains",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_908-187-0",
+      "success": true,
+      "prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "category": "dontcare",
+          "free_entry": "True",
+          "good_for_kids": "True",
+          "location": "New York, NY"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"category\": \"dontcare\", \"free_entry\": \"True\", \"good_for_kids\": \"True\", \"location\": \"New York, NY\"}, \"name\": \"Travel_1_FindAttractions\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Travel_1_FindAttractions",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "New York, NY",
+          "free_entry": "True",
+          "category": "dontcare",
+          "good_for_kids": "True"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_342-133-6",
+      "success": false,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "Chief",
+          "artist": "Eric Church",
+          "genre": "Country",
+          "year": 2016
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"Chief\", \"artist\": \"Eric Church\", \"genre\": \"Country\", \"year\": 2016}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Eric Church",
+          "album": "Chief",
+          "genre": "Country",
+          "year": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_165-65-1",
+      "success": true,
+      "prediction": {
+        "name": "get_adriel_list_projects",
+        "arguments": {
+          "user_id": 123,
+          "include_inactive": true,
+          "sort_order": "name"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_adriel_list_projects\", \"arguments\": {\"user_id\": 123, \"include_inactive\": true, \"sort_order\": \"name\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_adriel_list_projects",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_936-192-1",
+      "success": false,
+      "prediction": {
+        "name": "set_alarm",
+        "arguments": {
+          "alarm_time": "2023-04-02 07:30:00",
+          "purpose": "Meeting"
+        }
+      },
+      "raw_model_output": "{\"name\": \"set_alarm\", \"arguments\": {\"alarm_time\": \"2023-04-02 07:30:00\", \"purpose\": \"Meeting\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "set_alarm",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "set_alarm",
+        "arguments": {
+          "alarm_time": "2023-04-02 07:30:00",
+          "purpose": "wake me up for a meeting"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_883-184-0",
+      "success": true,
+      "prediction": {
+        "name": "Buses_3_FindBus",
+        "arguments": {
+          "from_city": "New York, NY",
+          "to_city": "Boston, MA",
+          "departure_date": "2023-04-20",
+          "num_passengers": 1,
+          "category": "direct"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Buses_3_FindBus\", \"arguments\": {\"from_city\": \"New York, NY\", \"to_city\": \"Boston, MA\", \"departure_date\": \"2023-04-20\", \"num_passengers\": 1, \"category\": \"direct\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Buses_3_FindBus",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Buses_3_FindBus",
+        "arguments": {
+          "from_city": "New York, NY",
+          "to_city": "Boston, MA",
+          "departure_date": "2023-04-20"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_500-148-10",
+      "success": false,
+      "prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "San Francisco, CA"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"San Francisco, CA\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Events_3_FindEvents",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "San Francisco, CA",
+          "date": "null"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_712-164-28",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "dontcare",
+          "directed_by": "David Leitch",
+          "genre": "Action"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"dontcare\", \"directed_by\": \"David Leitch\", \"genre\": \"Action\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "David Leitch",
+          "genre": "Action",
+          "cast": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_195-87-2",
+      "success": false,
+      "prediction": {
+        "name": "getCurrentTime",
+        "arguments": {
+          "timezone": "America/Los_Angeles",
+          "include_date": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"getCurrentTime\", \"arguments\": {\"timezone\": \"America/Los_Angeles\", \"include_date\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "getCurrentTime",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_148-58-2",
+      "success": false,
+      "prediction": {
+        "name": "get_sensor_readings_latest",
+        "arguments": {
+          "perPage": 10
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_sensor_readings_latest\", \"arguments\": {\"perPage\": 10}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_sensor_readings_latest",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_882-183-7",
+      "success": true,
+      "prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "San Francisco, CA",
+          "free_entry": "True",
+          "category": "Museum",
+          "good_for_kids": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"San Francisco, CA\", \"free_entry\": \"True\", \"category\": \"Museum\", \"good_for_kids\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Travel_1_FindAttractions",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "San Francisco, CA",
+          "free_entry": "True",
+          "category": "Museum",
+          "good_for_kids": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_27-7-0",
+      "success": false,
+      "prediction": {
+        "name": "subtract",
+        "arguments": {
+          "a": 100,
+          "b": 40
+        }
+      },
+      "raw_model_output": "{\"name\": \"subtract\", \"arguments\": {\"a\": 100, \"b\": 40}}",
+      "parse_error": null,
+      "failure_class": "router_fail",
+      "partition": "neither",
+      "function_name": "add",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_945-196-3",
+      "success": false,
+      "prediction": {
+        "name": "play_song",
+        "arguments": {
+          "query": "Wo noor",
+          "volume": 70,
+          "shuffle": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"play_song\", \"arguments\": {\"query\": \"Wo noor\", \"volume\": 70, \"shuffle\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "play_song",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_553-153-2",
+      "success": false,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "San Francisco, CA",
+          "is_unisex": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"city\": \"San Francisco, CA\", \"is_unisex\": \"dontcare\"}, \"name\": \"Services_1_FindProvider\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "San Fran, CA",
+          "is_unisex": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_679-163-4",
+      "success": false,
+      "prediction": {
+        "name": "Weather_1_GetWeather",
+        "arguments": {
+          "city": "Sydney, Australia",
+          "date": "2023-03-02"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Sydney, Australia\", \"date\": \"2023-03-02\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Weather_1_GetWeather",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_297-130-6",
+      "success": true,
+      "prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Long Beach, CA",
+          "has_laundry_service": "True",
+          "number_of_adults": 1,
+          "rating": 0.0
+        }
+      },
+      "raw_model_output": "{\"name\": \"Hotels_2_SearchHouse\", \"arguments\": {\"where_to\": \"Long Beach, CA\", \"has_laundry_service\": \"True\", \"number_of_adults\": 1, \"rating\": 0.0}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Hotels_2_SearchHouse",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "Long Beach, CA",
+          "has_laundry_service": "True",
+          "number_of_adults": 1
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_851-179-5",
+      "success": true,
+      "prediction": {
+        "name": "Restaurants_2_FindRestaurants",
+        "arguments": {
+          "category": "Japanese",
+          "location": "San Francisco, CA",
+          "price_range": "dontcare",
+          "has_vegetarian_options": false,
+          "has_seating_outdoors": false
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"category\": \"Japanese\", \"location\": \"San Francisco, CA\", \"price_range\": \"dontcare\", \"has_vegetarian_options\": false, \"has_seating_outdoors\": false}, \"name\": \"Restaurants_2_FindRestaurants\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Restaurants_2_FindRestaurants",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Restaurants_2_FindRestaurants",
+        "arguments": {
+          "category": "Japanese",
+          "location": "San Francisco, CA"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_732-167-3",
+      "success": false,
+      "prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Seattle, WA",
+          "intent": "buy",
+          "number_of_beds": 3,
+          "number_of_baths": 2
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"area\": \"Seattle, WA\", \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2}, \"name\": \"Homes_2_FindHomeByArea\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Homes_2_FindHomeByArea",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Seattle, WA",
+          "intent": "buy",
+          "number_of_beds": 3,
+          "number_of_baths": 2
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_230-103-1",
+      "success": false,
+      "prediction": {
+        "name": "get_contact_information",
+        "arguments": {
+          "name": "Liam Neeson"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_contact_information\", \"arguments\": {\"name\": \"Liam Neeson\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_contact_information",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_82-37-0",
+      "success": true,
+      "prediction": {
+        "name": "add_postgres_server",
+        "arguments": {
+          "host": "192.168.0.5",
+          "port": 5432,
+          "database": "postgres",
+          "username": "postgres",
+          "password": "postgres",
+          "nickname": "pg"
+        }
+      },
+      "raw_model_output": "{\"name\": \"add_postgres_server\", \"arguments\": {\"host\": \"192.168.0.5\", \"port\": 5432, \"database\": \"postgres\", \"username\": \"postgres\", \"password\": \"postgres\", \"nickname\": \"pg\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "add_postgres_server",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "add_postgres_server",
+        "arguments": {
+          "nickname": "pg",
+          "host": "192.168.0.5",
+          "port": 5432,
+          "database": "postgres",
+          "username": "postgres",
+          "password": "postgres"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_130-50-2",
+      "success": false,
+      "prediction": {
+        "name": "english_llm",
+        "arguments": {
+          "q": "I'd like to read a poem about kites. Could you generate one with a creative touch?",
+          "max_tokens": 150,
+          "temperature": 0.7
+        }
+      },
+      "raw_model_output": "{\"name\": \"english_llm\", \"arguments\": {\"q\": \"I'd like to read a poem about kites. Could you generate one with a creative touch?\", \"max_tokens\": 150, \"temperature\": 0.7}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "english_llm",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_438-142-4",
+      "success": false,
+      "prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Los Angeles, CA",
+          "start_date": "2023-04-24",
+          "pickup_time": "10:00",
+          "end_date": "2023-04-28"
+        }
+      },
+      "raw_model_output": "{\"name\": \"RentalCars_3_GetCarsAvailable\", \"arguments\": {\"city\": \"Los Angeles, CA\", \"start_date\": \"2023-04-24\", \"pickup_time\": \"10:00\", \"end_date\": \"2023-04-28\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "RentalCars_3_GetCarsAvailable",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Los Angeles, CA",
+          "start_date": "2023-04-24",
+          "pickup_time": "10:00",
+          "end_date": "2023-04-28",
+          "car_type": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1001-232-0",
+      "success": true,
+      "prediction": {
+        "name": "api_token_api.APITokenApi.get_api_tokens",
+        "arguments": {
+          "user_id": "098-293",
+          "include_expired": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"api_token_api.APITokenApi.get_api_tokens\", \"arguments\": {\"user_id\": \"098-293\", \"include_expired\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "api_token_api.APITokenApi.get_api_tokens",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_11-4-3",
+      "success": false,
+      "prediction": {
+        "name": "HNA_WQA.search",
+        "arguments": {
+          "keyword": "ji sung park",
+          "language": "EN",
+          "result_format": "text"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"keyword\": \"ji sung park\", \"language\": \"EN\", \"result_format\": \"text\"}, \"name\": \"HNA_WQA.search\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "HNA_WQA.search",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "HNA_WQA.search",
+        "arguments": {
+          "keyword": "ji sung park",
+          "result_format": "text",
+          "language": "EN",
+          "max_results": 10
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_316-132-6",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "Camila Sosa",
+          "genre": "Offbeat",
+          "directed_by": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"Camila Sosa\", \"genre\": \"Offbeat\", \"directed_by\": \"dontcare\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "dontcare",
+          "genre": "Offbeat",
+          "cast": "Camila Sosa"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_340-133-4",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "dontcare",
+          "album": "dontcare",
+          "genre": "dontcare",
+          "year": 2022
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"dontcare\", \"genre\": \"dontcare\", \"year\": 2022}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "dontcare",
+          "album": "dontcare",
+          "genre": "Pop",
+          "year": 2022
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_639-161-7",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "High Expectations",
+          "artist": "dontcare",
+          "genre": "dontcare",
+          "year": "2019"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"High Expectations\", \"artist\": \"dontcare\", \"genre\": \"dontcare\", \"year\": \"2019\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "dontcare",
+          "album": "High Expectations",
+          "genre": "dontcare",
+          "year": "2019"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_532-151-8",
+      "success": true,
+      "prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "Portland, OR",
+          "date": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"Portland, OR\", \"date\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Events_3_FindEvents",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "Portland, OR",
+          "date": "any"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_749-169-4",
+      "success": false,
+      "prediction": {
+        "name": "Media_3_FindMovies",
+        "arguments": {
+          "genre": "Offbeat"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Media_3_FindMovies\", \"arguments\": {\"genre\": \"Offbeat\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Media_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Media_3_FindMovies",
+        "arguments": {
+          "genre": "Offbeat"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_979-215-3",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "service_id": 1,
+          "extra_service_id": 3
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"province_id\": 1, \"service_id\": 1, \"extra_service_id\": 3}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "service_id": 1,
+          "extra_service_id": 2
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_170-70-0",
+      "success": false,
+      "prediction": {
+        "name": "get_adriel_detail_experience_and_education",
+        "arguments": {
+          "experience_or_education_name": "Sebelas Maret University",
+          "experience_or_education_type": "education"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_adriel_detail_experience_and_education\", \"arguments\": {\"experience_or_education_name\": \"Sebelas Maret University\", \"experience_or_education_type\": \"education\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_adriel_detail_experience_and_education",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_516-150-4",
+      "success": false,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "San Ramon, CA",
+          "show_type": "imax",
+          "theater_name": "Regal"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"San Ramon, CA\", \"show_type\": \"imax\", \"theater_name\": \"Regal\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "San Ramon, CA",
+          "theater_name": "Regal",
+          "genre": "dontcare",
+          "show_type": "imax"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_657-161-25",
+      "success": false,
+      "prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Shape of You",
+          "artist": "Ed Sheeran",
+          "device": "Living room",
+          "album": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"Shape of You\", \"artist\": \"Ed Sheeran\", \"device\": \"Living room\", \"album\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_PlayMedia",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Shape of You",
+          "artist": "Ed Sheeran",
+          "device": "Living room",
+          "album": "any"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_389-137-7",
+      "success": false,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Corte Madera",
+          "is_unisex": true
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"city\": \"Corte Madera\", \"is_unisex\": true}, \"name\": \"Services_1_FindProvider\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Corte Madera, CA",
+          "is_unisex": true
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_151",
+      "success": true,
+      "prediction": {
+        "name": "social_media_analytics.most_followed",
+        "arguments": {
+          "topic": "psychology",
+          "sub_topics": [
+            "behaviour",
+            "group dynamics"
+          ],
+          "region": "global"
+        }
+      },
+      "raw_model_output": "{\"name\": \"social_media_analytics.most_followed\", \"arguments\": {\"topic\": \"psychology\", \"sub_topics\": [\"behaviour\", \"group dynamics\"], \"region\": \"global\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "social_media_analytics.most_followed",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_265-127-0",
+      "success": false,
+      "prediction": {
+        "name": "Weather_1_GetWeather",
+        "arguments": {
+          "city": "Hanoi"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Hanoi\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Weather_1_GetWeather",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_641-161-9",
+      "success": false,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "Jess Glynne",
+          "genre": "Pop",
+          "year": "2018"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"Jess Glynne\", \"genre\": \"Pop\", \"year\": \"2018\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Jess Glynne",
+          "year": "2018"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_54",
+      "success": false,
+      "prediction": {
+        "name": "corporate_finance.dividend_data",
+        "arguments": {
+          "company": "Apple Inc",
+          "years": 5
+        }
+      },
+      "raw_model_output": "{\"name\": \"corporate_finance.dividend_data\", \"arguments\": {\"company\": \"Apple Inc\", \"years\": 5}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "corporate_finance.dividend_data",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1035-263-0",
+      "success": true,
+      "prediction": {
+        "name": "api_token_api.APITokenApi.get_api_tokens",
+        "arguments": {
+          "user_id": 12345,
+          "include_expired": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"api_token_api.APITokenApi.get_api_tokens\", \"arguments\": {\"user_id\": 12345, \"include_expired\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "api_token_api.APITokenApi.get_api_tokens",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_119",
+      "success": false,
+      "prediction": {
+        "name": "database.query",
+        "arguments": {
+          "table": "user",
+          "conditions": [
+            {
+              "field": "age",
+              "operation": ">",
+              "value": "25"
+            },
+            {
+              "field": "job",
+              "operation": "=",
+              "value": "engineer"
+            }
+          ]
+        }
+      },
+      "raw_model_output": "{\"name\": \"database.query\", \"arguments\": {\"table\": \"user\", \"conditions\": [{\"field\": \"age\", \"operation\": \">\", \"value\": \"25\"}, {\"field\": \"job\", \"operation\": \"=\", \"value\": \"engineer\"}]}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "database.query",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_343-133-7",
+      "success": false,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "dontcare",
+          "album": "The Martin Garrix Experience",
+          "genre": "House",
+          "year": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_LookupMusic\", \"arguments\": {\"artist\": \"dontcare\", \"album\": \"The Martin Garrix Experience\", \"genre\": \"House\", \"year\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "The Martin Garrix Experience",
+          "genre": "House",
+          "album": "dontcare",
+          "year": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_977-215-1",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "start_available_date": "2024-03-22 11:00:00",
+          "end_available_date": "2024-03-22 13:00:00",
+          "service_id": 24
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"province_id\": 1, \"start_available_date\": \"2024-03-22 11:00:00\", \"end_available_date\": \"2024-03-22 13:00:00\", \"service_id\": 24}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "start_available_date": "2024-03-22 11:00:00",
+          "service_id": 1
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_830-178-5",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "Sabaton",
+          "genre": "Metal",
+          "year": "2019"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"Sabaton\", \"genre\": \"Metal\", \"year\": \"2019\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Sabaton",
+          "album": "dontcare",
+          "genre": "Metal",
+          "year": "2019"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_788-174-2",
+      "success": false,
+      "prediction": {
+        "name": "Homes_2_ScheduleVisit",
+        "arguments": {
+          "property_name": "Beach Park Apartments",
+          "visit_date": "2023-10-18"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Homes_2_ScheduleVisit\", \"arguments\": {\"property_name\": \"Beach Park Apartments\", \"visit_date\": \"2023-10-18\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Homes_2_ScheduleVisit",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_380-136-1",
+      "success": false,
+      "prediction": {
+        "name": "Alarm_1_GetAlarms",
+        "arguments": {
+          "user_id": "12345"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Alarm_1_GetAlarms\", \"arguments\": {\"user_id\": \"12345\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Alarm_1_GetAlarms",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_621-160-1",
+      "success": false,
+      "prediction": {
+        "name": "Payment_1_MakePayment",
+        "arguments": {
+          "payment_method": "debit card",
+          "amount": 15400,
+          "receiver": "landlord's email",
+          "private_visibility": true
+        }
+      },
+      "raw_model_output": "{\"name\": \"Payment_1_MakePayment\", \"arguments\": {\"payment_method\": \"debit card\", \"amount\": 15400, \"receiver\": \"landlord's email\", \"private_visibility\": true}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Payment_1_MakePayment",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_395-138-3",
+      "success": true,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Rohnert Park, CA",
+          "is_unisex": false
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"city\": \"Rohnert Park, CA\", \"is_unisex\": false}, \"name\": \"Services_1_FindProvider\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Rohnert Park, CA",
+          "is_unisex": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_102-43-0",
+      "success": true,
+      "prediction": {
+        "name": "list_files",
+        "arguments": {
+          "type": "json",
+          "include_hidden": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"list_files\", \"arguments\": {\"type\": \"json\", \"include_hidden\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "list_files",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_507-149-4",
+      "success": false,
+      "prediction": {
+        "name": "Flights_4_SearchOnewayFlight",
+        "arguments": {
+          "origin_airport": "LAX",
+          "destination_airport": "JFK",
+          "departure_date": "2023-03-14",
+          "seating_class": "Economy",
+          "number_of_tickets": 1,
+          "airlines": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Flights_4_SearchOnewayFlight\", \"arguments\": {\"origin_airport\": \"LAX\", \"destination_airport\": \"JFK\", \"departure_date\": \"2023-03-14\", \"seating_class\": \"Economy\", \"number_of_tickets\": 1, \"airlines\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Flights_4_SearchOnewayFlight",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_337-133-1",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Remind Me",
+          "artist": "Carrie Underwood",
+          "device": "Living room",
+          "album": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Music_3_PlayMedia\", \"arguments\": {\"track\": \"Remind Me\", \"artist\": \"Carrie Underwood\", \"device\": \"Living room\", \"album\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_PlayMedia",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_PlayMedia",
+        "arguments": {
+          "track": "Remind Me",
+          "artist": "Carrie Underwood",
+          "device": "Living room",
+          "album": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_444-144-4",
+      "success": true,
+      "prediction": {
+        "name": "Services_4_FindProvider",
+        "arguments": {
+          "accepts_insurance": false,
+          "city": "Los Gatos, CA",
+          "type": "Family Counselor"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"accepts_insurance\": false, \"city\": \"Los Gatos, CA\", \"type\": \"Family Counselor\"}, \"name\": \"Services_4_FindProvider\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Services_4_FindProvider",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Services_4_FindProvider",
+        "arguments": {
+          "city": "Los Gatos, CA",
+          "type": "Family Counselor"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_897-185-7",
+      "success": false,
+      "prediction": {
+        "name": "Payment_1_MakePayment",
+        "arguments": {
+          "payment_method": "debit card",
+          "amount": 122.0,
+          "receiver": "John"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Payment_1_MakePayment\", \"arguments\": {\"payment_method\": \"debit card\", \"amount\": 122.0, \"receiver\": \"John\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Payment_1_MakePayment",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_213-91-7",
+      "success": false,
+      "prediction": {
+        "name": "detail_experience_and_education",
+        "arguments": {
+          "experience_or_education_type": "Internship at Universitas Sebelas Maret (UNS)",
+          "experience_or_education_name": "Universitas Sebelas Maret"
+        }
+      },
+      "raw_model_output": "{\"name\": \"detail_experience_and_education\", \"arguments\": {\"experience_or_education_type\": \"Internship at Universitas Sebelas Maret (UNS)\", \"experience_or_education_name\": \"Universitas Sebelas Maret\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "detail_experience_and_education",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_229-103-0",
+      "success": false,
+      "prediction": {
+        "name": "get_contact_information",
+        "arguments": {
+          "id_no": "A1234567B"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_contact_information\", \"arguments\": {\"id_no\": \"A1234567B\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_contact_information",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_364-134-9",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Wes Anderson",
+          "genre": "Comedy",
+          "cast": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Movies_3_FindMovies\", \"arguments\": {\"directed_by\": \"Wes Anderson\", \"genre\": \"Comedy\", \"cast\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Wes Anderson",
+          "genre": "Comedy",
+          "cast": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_559-154-5",
+      "success": false,
+      "prediction": {
+        "name": "RentalCars_3_ReserveCar",
+        "arguments": {
+          "add_insurance": false,
+          "car_type": "Sedan",
+          "end_date": "2023-04-10",
+          "pickup_location": "Los Angeles, CA",
+          "pickup_time": "10:00 AM",
+          "start_date": "2023-04-08"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"add_insurance\": false, \"car_type\": \"Sedan\", \"end_date\": \"2023-04-10\", \"pickup_location\": \"Los Angeles, CA\", \"pickup_time\": \"10:00 AM\", \"start_date\": \"2023-04-08\"}, \"name\": \"RentalCars_3_ReserveCar\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "RentalCars_3_GetCarsAvailable",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "RentalCars_3_GetCarsAvailable",
+        "arguments": {
+          "city": "Los Angeles, CA",
+          "start_date": "2023-04-08",
+          "pickup_time": "10:00",
+          "end_date": "2023-04-10",
+          "car_type": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_226-100-0",
+      "success": false,
+      "prediction": {
+        "name": "AclApi.add_mapping",
+        "arguments": {
+          "resource_id": "123-resource",
+          "user_id": "user-456",
+          "permissions": [
+            "read",
+            "write"
+          ]
+        }
+      },
+      "raw_model_output": "{\"name\": \"AclApi.add_mapping\", \"arguments\": {\"resource_id\": \"123-resource\", \"user_id\": \"user-456\", \"permissions\": [\"read\", \"write\"]}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "AclApi.add_mapping",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_482-146-7",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "dontcare",
+          "artist": "dontcare",
+          "genre": "Reggae",
+          "year": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"dontcare\", \"artist\": \"dontcare\", \"genre\": \"Reggae\", \"year\": \"dontcare\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "dontcare",
+          "album": "dontcare",
+          "genre": "Reggae",
+          "year": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_264-126-1",
+      "success": false,
+      "prediction": {
+        "name": "EventQuery",
+        "arguments": {
+          "search_string": "trip",
+          "start_date": "2023-04-01",
+          "end_date": "2023-04-30",
+          "include_recurring": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"EventQuery\", \"arguments\": {\"search_string\": \"trip\", \"start_date\": \"2023-04-01\", \"end_date\": \"2023-04-30\", \"include_recurring\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "EventQuery",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_139-53-1",
+      "success": false,
+      "prediction": {
+        "name": "stock_price.get",
+        "arguments": {
+          "ticker": "AAPL",
+          "exchange": "NASDAQ"
+        }
+      },
+      "raw_model_output": "{\"name\": \"stock_price.get\", \"arguments\": {\"ticker\": \"AAPL\", \"exchange\": \"NASDAQ\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "stock_price.get",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_454-145-5",
+      "success": false,
+      "prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "London, England",
+          "free_entry": "True",
+          "category": "Museum",
+          "good_for_kids": "True"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Travel_1_FindAttractions\", \"arguments\": {\"location\": \"London, England\", \"free_entry\": \"True\", \"category\": \"Museum\", \"good_for_kids\": \"True\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Travel_1_FindAttractions",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "London, England",
+          "free_entry": "True",
+          "category": "Museum",
+          "good_for_kids": "True"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_457-145-8",
+      "success": true,
+      "prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "category": "dontcare",
+          "free_entry": "dontcare",
+          "good_for_kids": "True",
+          "location": "Paris, France"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"category\": \"dontcare\", \"free_entry\": \"dontcare\", \"good_for_kids\": \"True\", \"location\": \"Paris, France\"}, \"name\": \"Travel_1_FindAttractions\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Travel_1_FindAttractions",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Travel_1_FindAttractions",
+        "arguments": {
+          "location": "Paris, FR",
+          "free_entry": "dontcare",
+          "category": "dontcare",
+          "good_for_kids": "True"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_808-175-14",
+      "success": false,
+      "prediction": {
+        "name": "Weather_1_GetWeather",
+        "arguments": {
+          "city": "Antioch, CA",
+          "date": "2023-10-04"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Antioch, CA\", \"date\": \"2023-10-04\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Weather_1_GetWeather",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_624-160-4",
+      "success": false,
+      "prediction": {
+        "name": "Payment_1_RequestPayment",
+        "arguments": {
+          "receiver": "JohnDoe@example.com",
+          "amount": 15025,
+          "private_visibility": true
+        }
+      },
+      "raw_model_output": "{\"name\": \"Payment_1_RequestPayment\", \"arguments\": {\"receiver\": \"JohnDoe@example.com\", \"amount\": 15025, \"private_visibility\": true}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Payment_1_RequestPayment",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_165",
+      "success": false,
+      "prediction": {
+        "name": "guitar_price.find",
+        "arguments": {
+          "model": "Les Paul",
+          "condition": "Excellent",
+          "location": "Chicago"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"model\": \"Les Paul\", \"condition\": \"Excellent\", \"location\": \"Chicago\"}, \"name\": \"guitar_price.find\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "sampling_rescuable",
+      "function_name": "guitar_price.find",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_392-138-0",
+      "success": true,
+      "prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Austin, TX",
+          "is_unisex": false
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"city\": \"Austin, TX\", \"is_unisex\": false}, \"name\": \"Services_1_FindProvider\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_1_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_1_FindProvider",
+        "arguments": {
+          "city": "Austin, TX",
+          "is_unisex": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_931-191-19",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": 1,
+          "district_name": null,
+          "sub_district_name": "Phra Khanong",
+          "start_available_date": null,
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": true,
+          "is_package": false,
+          "is_subscription": false,
+          "service_id": null,
+          "available_for_pet": false,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": false,
+          "is_cleaning_home": false,
+          "is_cleaning_office": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": null, \"province_id\": 1, \"district_name\": null, \"sub_district_name\": \"Phra Khanong\", \"start_available_date\": null, \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": true, \"is_package\": false, \"is_subscription\": false, \"service_id\": null, \"available_for_pet\": false, \"professional_group_id\": null, \"job_qty\": null, \"is_cleaning_condo\": false, \"is_cleaning_home\": false, \"is_cleaning_office\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 1,
+          "sub_district_name": "Phra Khanong",
+          "is_excellent": true
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_523-150-11",
+      "success": false,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "genre": "War",
+          "location": "San Jose, CA",
+          "show_type": "regular"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"genre\": \"War\", \"location\": \"San Jose, CA\", \"show_type\": \"regular\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "San Jose, CA",
+          "theater_name": "3 Below Theaters and Lounge",
+          "genre": "War",
+          "show_type": "regular"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_698-164-14",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "dontcare",
+          "directed_by": "dontcare",
+          "genre": "Offbeat"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"dontcare\", \"directed_by\": \"dontcare\", \"genre\": \"Offbeat\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "genre": "Offbeat",
+          "directed_by": "dontcare",
+          "cast": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_431-141-20",
+      "success": false,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Danville, CA",
+          "show_type": "imax",
+          "theater_name": "Century Blackhawk Plaza"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"Danville, CA\", \"show_type\": \"imax\", \"theater_name\": \"Century Blackhawk Plaza\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "Danville, CA",
+          "theater_name": "Century Blackhawk Plaza",
+          "genre": "dontcare",
+          "show_type": "imax"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_50-20-0",
+      "success": false,
+      "prediction": {
+        "name": "get_movies",
+        "arguments": {
+          "city": "Noida",
+          "movie_date": "04-11-2024",
+          "movie_language": "Hindi",
+          "movie_format": "2D"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_movies\", \"arguments\": {\"city\": \"Noida\", \"movie_date\": \"04-11-2024\", \"movie_language\": \"Hindi\", \"movie_format\": \"2D\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_movies",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_445-144-5",
+      "success": true,
+      "prediction": {
+        "name": "Services_4_FindProvider",
+        "arguments": {
+          "city": "Santa Rosa, CA",
+          "type": "Psychiatrist",
+          "accepts_insurance": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"Services_4_FindProvider\", \"arguments\": {\"city\": \"Santa Rosa, CA\", \"type\": \"Psychiatrist\", \"accepts_insurance\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Services_4_FindProvider",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Services_4_FindProvider",
+        "arguments": {
+          "city": "Santa Rosa, CA",
+          "type": "Psychiatrist",
+          "accepts_insurance": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_495-148-5",
+      "success": false,
+      "prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "New York, NY",
+          "date": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"New York, NY\", \"date\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Events_3_FindEvents",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "New York, NY",
+          "date": "null"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_601-158-7",
+      "success": false,
+      "prediction": {
+        "name": "Hotels_4_SearchHotel",
+        "arguments": {
+          "location": "Kuala Lumpur, Malaysia",
+          "number_of_rooms": "dontcare",
+          "smoking_allowed": false,
+          "star_rating": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"Kuala Lumpur, Malaysia\", \"number_of_rooms\": \"dontcare\", \"smoking_allowed\": false, \"star_rating\": \"dontcare\"}, \"name\": \"Hotels_4_SearchHotel\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Hotels_4_SearchHotel",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Hotels_4_SearchHotel",
+        "arguments": {
+          "location": "Kuala Lumpur, MY",
+          "star_rating": "dontcare",
+          "smoking_allowed": false,
+          "number_of_rooms": "dontcare"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_787-174-1",
+      "success": true,
+      "prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Berkeley, CA",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 1,
+          "has_garage": null,
+          "in_unit_laundry": true
+        }
+      },
+      "raw_model_output": "{\"name\": \"Homes_2_FindHomeByArea\", \"arguments\": {\"area\": \"Berkeley, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": null, \"in_unit_laundry\": true}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Homes_2_FindHomeByArea",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "Berkeley, CA",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": null,
+          "has_garage": null,
+          "in_unit_laundry": true
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_1012-241-0",
+      "success": false,
+      "prediction": {
+        "name": "get_synthetic_locations",
+        "arguments": {
+          "sort": "created_at",
+          "offset": 0,
+          "limit": 50,
+          "filter": "details:alpha,details:beta,details:gamma"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_synthetic_locations\", \"arguments\": {\"sort\": \"created_at\", \"offset\": 0, \"limit\": 50, \"filter\": \"details:alpha,details:beta,details:gamma\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_synthetic_locations",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_166-66-0",
+      "success": true,
+      "prediction": {
+        "name": "get_adriel_profile",
+        "arguments": {
+          "user_id": "12445",
+          "include_contacts": true,
+          "format": "json"
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_adriel_profile\", \"arguments\": {\"user_id\": \"12445\", \"include_contacts\": true, \"format\": \"json\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_adriel_profile",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_648-161-16",
+      "success": true,
+      "prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "album": "Get Weird",
+          "artist": "Little Mix",
+          "genre": "dontcare",
+          "year": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"album\": \"Get Weird\", \"artist\": \"Little Mix\", \"genre\": \"dontcare\", \"year\": \"dontcare\"}, \"name\": \"Music_3_LookupMusic\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Music_3_LookupMusic",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Music_3_LookupMusic",
+        "arguments": {
+          "artist": "Little Mix",
+          "album": "Get Weird",
+          "genre": "dontcare",
+          "year": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_255-119-0",
+      "success": false,
+      "prediction": {
+        "name": "badge_api.BadgeApi.get_project_policy_violations_badge",
+        "arguments": {
+          "uuid": "badae",
+          "format": "svg",
+          "style": "for-the-badge"
+        }
+      },
+      "raw_model_output": "{\"name\": \"badge_api.BadgeApi.get_project_policy_violations_badge\", \"arguments\": {\"uuid\": \"badae\", \"format\": \"svg\", \"style\": \"for-the-badge\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "badge_api.BadgeApi.get_project_policy_violations_badge",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_549-152-11",
+      "success": true,
+      "prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "San Jose, CA",
+          "has_garage": true,
+          "in_unit_laundry": false,
+          "intent": "buy",
+          "number_of_beds": 3,
+          "number_of_baths": 2
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"area\": \"San Jose, CA\", \"has_garage\": true, \"in_unit_laundry\": false, \"intent\": \"buy\", \"number_of_beds\": 3, \"number_of_baths\": 2}, \"name\": \"Homes_2_FindHomeByArea\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Homes_2_FindHomeByArea",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "San Jose, CA",
+          "intent": "buy",
+          "number_of_beds": 3,
+          "number_of_baths": 2,
+          "has_garage": true,
+          "in_unit_laundry": false
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_23-5-0",
+      "success": false,
+      "prediction": {
+        "name": "search_products",
+        "arguments": {
+          "color": "red",
+          "size": "8",
+          "category": "shoes",
+          "price_min": 0.0,
+          "price_max": 1000.0,
+          "brand": null
+        }
+      },
+      "raw_model_output": "{\"name\": \"search_products\", \"arguments\": {\"color\": \"red\", \"size\": \"8\", \"category\": \"shoes\", \"price_min\": 0.0, \"price_max\": 1000.0, \"brand\": null}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "search_products",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_801-175-7",
+      "success": false,
+      "prediction": {
+        "name": "Weather_1_GetWeather",
+        "arguments": {
+          "city": "New Delhi, India"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"New Delhi, India\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Weather_1_GetWeather",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_595-158-1",
+      "success": false,
+      "prediction": {
+        "name": "Hotels_4_SearchHotel",
+        "arguments": {
+          "location": "New York, NY",
+          "number_of_rooms": "2",
+          "smoking_allowed": true,
+          "star_rating": "3"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"New York, NY\", \"number_of_rooms\": \"2\", \"smoking_allowed\": true, \"star_rating\": \"3\"}, \"name\": \"Hotels_4_SearchHotel\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Hotels_4_SearchHotel",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Hotels_4_SearchHotel",
+        "arguments": {
+          "location": "New York, NY",
+          "star_rating": "3",
+          "smoking_allowed": true,
+          "number_of_rooms": "2"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_24-5-1",
+      "success": false,
+      "prediction": {
+        "name": "search_products",
+        "arguments": {
+          "category": "clothing",
+          "size": "XL",
+          "color": "shimmer"
+        }
+      },
+      "raw_model_output": "{\"name\": \"search_products\", \"arguments\": {\"category\": \"clothing\", \"size\": \"XL\", \"color\": \"shimmer\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "search_products",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_961-205-1",
+      "success": false,
+      "prediction": {
+        "name": "web_search",
+        "arguments": {
+          "query": "where is beijing",
+          "results_limit": 5,
+          "language": "en",
+          "safe_search": true
+        }
+      },
+      "raw_model_output": "{\"name\": \"web_search\", \"arguments\": {\"query\": \"where is beijing\", \"results_limit\": 5, \"language\": \"en\", \"safe_search\": true}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "web_search",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_918-191-6",
+      "success": false,
+      "prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "avg_rating": null,
+          "province_id": 7,
+          "district_name": "Bang Kruai",
+          "sub_district_name": null,
+          "start_available_date": null,
+          "end_available_date": null,
+          "min_age": null,
+          "max_age": null,
+          "has_quality_problem": false,
+          "has_late_check_in": false,
+          "is_excellent": false,
+          "is_package": false,
+          "is_subscription": false,
+          "service_id": 2,
+          "available_for_pet": false,
+          "professional_group_id": null,
+          "job_qty": null,
+          "is_cleaning_condo": false,
+          "is_cleaning_home": false,
+          "is_cleaning_office": false
+        }
+      },
+      "raw_model_output": "{\"name\": \"get_service_providers\", \"arguments\": {\"avg_rating\": null, \"province_id\": 7, \"district_name\": \"Bang Kruai\", \"sub_district_name\": null, \"start_available_date\": null, \"end_available_date\": null, \"min_age\": null, \"max_age\": null, \"has_quality_problem\": false, \"has_late_check_in\": false, \"is_excellent\": false, \"is_package\": false, \"is_subscription\": false, \"service_id\": 2, \"available_for_pet\": false, \"professional_group_id\": null, \"job_qty\": null, \"is_cleaning_condo\": false, \"is_cleaning_home\": false, \"is_cleaning_office\": false}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "get_service_providers",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "get_service_providers",
+        "arguments": {
+          "province_id": 7,
+          "district_name": "Bang Kruai",
+          "service_id": 2
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_713-165-0",
+      "success": false,
+      "prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "has_laundry_service": "True",
+          "number_of_adults": 1,
+          "rating": 3.0,
+          "where_to": "London, England"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"has_laundry_service\": \"True\", \"number_of_adults\": 1, \"rating\": 3.0, \"where_to\": \"London, England\"}, \"name\": \"Hotels_2_SearchHouse\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Hotels_2_SearchHouse",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Hotels_2_SearchHouse",
+        "arguments": {
+          "where_to": "London, England",
+          "has_laundry_service": "True",
+          "number_of_adults": 1
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_12-4-4",
+      "success": false,
+      "prediction": {
+        "name": "HNA_WQA.search",
+        "arguments": {
+          "keyword": "park ji sung",
+          "result_format": "text",
+          "language": "EN"
+        }
+      },
+      "raw_model_output": "{\"name\": \"HNA_WQA.search\", \"arguments\": {\"keyword\": \"park ji sung\", \"result_format\": \"text\", \"language\": \"EN\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "HNA_WQA.search",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "HNA_WQA.search",
+        "arguments": {
+          "keyword": "park ji sung",
+          "result_format": "text",
+          "language": "EN",
+          "max_results": 10
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_535-151-11",
+      "success": true,
+      "prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "Belvedere, CA",
+          "date": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Events_3_FindEvents\", \"arguments\": {\"event_type\": \"Music\", \"city\": \"Belvedere, CA\", \"date\": \"dontcare\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Events_3_FindEvents",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Events_3_FindEvents",
+        "arguments": {
+          "event_type": "Music",
+          "city": "Belvedere, CA",
+          "date": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_269-127-4",
+      "success": false,
+      "prediction": {
+        "name": "Weather_1_GetWeather",
+        "arguments": {
+          "city": "Philadelphia",
+          "date": "2023-03-08"
+        }
+      },
+      "raw_model_output": "{\"name\": \"Weather_1_GetWeather\", \"arguments\": {\"city\": \"Philadelphia\", \"date\": \"2023-03-08\"}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Weather_1_GetWeather",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_733-167-4",
+      "success": false,
+      "prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "San Francisco, CA",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 1,
+          "has_garage": false,
+          "in_unit_laundry": "True"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"area\": \"San Francisco, CA\", \"intent\": \"rent\", \"number_of_beds\": 2, \"number_of_baths\": 1, \"has_garage\": false, \"in_unit_laundry\": \"True\"}, \"name\": \"Homes_2_FindHomeByArea\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "Homes_2_FindHomeByArea",
+      "generalization": "SS",
+      "teacher_success": false,
+      "teacher_prediction": {
+        "name": "Homes_2_FindHomeByArea",
+        "arguments": {
+          "area": "San Francisco, CA",
+          "intent": "rent",
+          "number_of_beds": 2,
+          "number_of_baths": 1,
+          "has_garage": false,
+          "in_unit_laundry": "True"
+        }
+      },
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "multiple_50",
+      "success": false,
+      "prediction": {
+        "name": "house_price_forecast",
+        "arguments": {
+          "location": "New York",
+          "months": 1
+        }
+      },
+      "raw_model_output": "{\"name\": \"house_price_forecast\", \"arguments\": {\"location\": \"New York\", \"months\": 1}}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "neither",
+      "function_name": "house_price_forecast",
+      "generalization": "NS",
+      "teacher_success": false,
+      "teacher_prediction": null,
+      "teacher_agree": false
+    },
+    {
+      "episode_id": "live_multiple_330-132-20",
+      "success": true,
+      "prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "cast": "Joey Fatone",
+          "directed_by": "Joel Zwick",
+          "genre": "dontcare"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"cast\": \"Joey Fatone\", \"directed_by\": \"Joel Zwick\", \"genre\": \"dontcare\"}, \"name\": \"Movies_3_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_3_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_3_FindMovies",
+        "arguments": {
+          "directed_by": "Joel Zwick",
+          "cast": "Joey Fatone",
+          "genre": "dontcare"
+        }
+      },
+      "teacher_agree": true
+    },
+    {
+      "episode_id": "live_multiple_514-150-2",
+      "success": true,
+      "prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "San Jose, CA",
+          "theater_name": "Century 20",
+          "genre": "dontcare",
+          "show_type": "regular"
+        }
+      },
+      "raw_model_output": "{\"arguments\": {\"location\": \"San Jose, CA\", \"theater_name\": \"Century 20\", \"genre\": \"dontcare\", \"show_type\": \"regular\"}, \"name\": \"Movies_1_FindMovies\"}",
+      "parse_error": null,
+      "failure_class": "validator_fail",
+      "partition": "scaffold_only",
+      "function_name": "Movies_1_FindMovies",
+      "generalization": "SS",
+      "teacher_success": true,
+      "teacher_prediction": {
+        "name": "Movies_1_FindMovies",
+        "arguments": {
+          "location": "San Jose, CA",
+          "theater_name": "Century 20",
+          "genre": "dontcare",
+          "show_type": "regular"
+        }
+      },
+      "teacher_agree": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[2026-07-03T04:50:38+08:00] start s07 D2 queue=main_rep2 arm=main rep=rep2
+[2026-07-03T04:50:38+08:00] main_rep2 seed=20260704 name=main_d2_rep2_r16_lr5e-5_ep3_replay2_capped_lam2_seed20260704
+[2026-07-03T04:50:38+08:00] eval-only recovery for main_d2_rep2_r16_lr5e-5_ep3_replay2_capped_lam2_seed20260704
+Traceback (most recent call last):
+  File "/root/autodl-tmp/EDG-EXP3-distill/scripts/lora_phase0.py", line 479, in <module>
+    main()
+  File "/root/autodl-tmp/EDG-EXP3-distill/scripts/lora_phase0.py", line 475, in main
+    args.func(args)
+  File "/root/autodl-tmp/EDG-EXP3-distill/scripts/lora_phase0.py", line 366, in evaluate
+    evo = load_exp2(args.exp2_root)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/EDG-EXP3-distill/scripts/phase0_probe.py", line 39, in load_exp2
+    from scripts import evolution_loop as evo
+ImportError: cannot import name 'evolution_loop' from 'scripts' (unknown location)

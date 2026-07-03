@@ -1,0 +1,3 @@
+logs/s07_d2_main_rep2.nohup
+logs/s07_d2_main_rep2_seed04_recover_05.nohup
+logs/s07_d2_main_rep2_seed04_recover_05_retry.nohup

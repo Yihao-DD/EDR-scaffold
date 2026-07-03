@@ -1,0 +1,52 @@
+{
+  "dataset_seed": 20260702,
+  "leakage_asserts": {
+    "main_intersect_d_val": 0,
+    "main_intersect_heldout": 0,
+    "main_intersect_r_success_eval": 0,
+    "star_intersect_d_val": 0,
+    "star_intersect_heldout": 0,
+    "star_intersect_r_success_eval": 0
+  },
+  "main": {
+    "core_rows": 148,
+    "core_unique_episode_count": 74,
+    "partition_distribution": {
+      "replay": 296,
+      "sampling_rescuable": 20,
+      "scaffold_only": 128
+    },
+    "replay_repeated_rows": 70,
+    "replay_rows": 296,
+    "replay_unique_episode_count": 226,
+    "replay_unique_rows": 226,
+    "source_distribution": {
+      "replay_base_success": 296,
+      "teacher_t0": 74,
+      "teacher_t08": 74
+    },
+    "total_rows": 444,
+    "unique_episode_count": 300
+  },
+  "note": "Replay 2:1 uses all available unique replay rows, then repeats deterministically to reach 296 replay rows per arm.",
+  "probe": "s02_replay2_weighted_datasets",
+  "replay_ratio_target": 2.0,
+  "star": {
+    "core_rows": 148,
+    "core_unique_episode_count": 31,
+    "partition_distribution": {
+      "replay": 296,
+      "sampling_rescuable": 148
+    },
+    "replay_repeated_rows": 70,
+    "replay_rows": 296,
+    "replay_unique_episode_count": 226,
+    "replay_unique_rows": 226,
+    "source_distribution": {
+      "replay_base_success": 296,
+      "star_pass16": 148
+    },
+    "total_rows": 444,
+    "unique_episode_count": 257
+  }
+}

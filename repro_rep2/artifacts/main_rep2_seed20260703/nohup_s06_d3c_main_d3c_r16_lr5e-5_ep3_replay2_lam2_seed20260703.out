@@ -1,0 +1,76 @@
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<01:19,  4.23it/s]Loading weights:   1%|          | 2/339 [00:00<01:21,  4.14it/s]Loading weights:   1%|▏         | 5/339 [00:00<00:31, 10.60it/s]Loading weights:   5%|▌         | 17/339 [00:00<00:08, 38.30it/s]Loading weights:   9%|▊         | 29/339 [00:00<00:05, 58.90it/s]Loading weights:  12%|█▏        | 41/339 [00:00<00:03, 74.54it/s]Loading weights:  16%|█▌        | 53/339 [00:01<00:03, 86.18it/s]Loading weights:  19%|█▉        | 65/339 [00:01<00:02, 94.39it/s]Loading weights:  23%|██▎       | 77/339 [00:01<00:02, 100.02it/s]Loading weights:  26%|██▋       | 89/339 [00:01<00:02, 104.84it/s]Loading weights:  30%|██▉       | 101/339 [00:01<00:02, 107.33it/s]Loading weights:  33%|███▎      | 113/339 [00:01<00:02, 109.44it/s]Loading weights:  37%|███▋      | 125/339 [00:01<00:01, 111.50it/s]Loading weights:  40%|████      | 137/339 [00:01<00:01, 112.07it/s]Loading weights:  44%|████▍     | 149/339 [00:01<00:01, 112.97it/s]Loading weights:  47%|████▋     | 161/339 [00:01<00:01, 113.16it/s]Loading weights:  51%|█████     | 173/339 [00:02<00:01, 113.05it/s]Loading weights:  55%|█████▍    | 185/339 [00:02<00:01, 113.51it/s]Loading weights:  58%|█████▊    | 197/339 [00:02<00:01, 113.62it/s]Loading weights:  62%|██████▏   | 209/339 [00:02<00:01, 111.61it/s]Loading weights:  65%|██████▌   | 221/339 [00:02<00:01, 111.56it/s]Loading weights:  69%|██████▊   | 233/339 [00:02<00:00, 111.20it/s]Loading weights:  72%|███████▏  | 245/339 [00:02<00:00, 112.14it/s]Loading weights:  76%|███████▌  | 257/339 [00:02<00:00, 112.56it/s]Loading weights:  79%|███████▉  | 269/339 [00:02<00:00, 112.29it/s]Loading weights:  83%|████████▎ | 281/339 [00:03<00:00, 112.26it/s]Loading weights:  86%|████████▋ | 293/339 [00:03<00:00, 112.03it/s]Loading weights:  90%|████████▉ | 305/339 [00:03<00:00, 112.71it/s]Loading weights:  94%|█████████▎| 317/339 [00:03<00:00, 106.01it/s]Loading weights:  97%|█████████▋| 329/339 [00:03<00:00, 107.52it/s]Loading weights: 100%|██████████| 339/339 [00:03<00:00, 96.06it/s]
+trainable params: 40,370,176 || all params: 7,655,986,688 || trainable%: 0.5273
+[train] grad_clip max_norm=1.0 kl_anchor_lambda=2.0 kl_anchor_temperature=1.0
+/root/miniconda3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py:929: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.5 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+/root/miniconda3/lib/python3.12/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+[train:warn] skipped non-finite loss epoch=1/3 batch=4/444 skipped=1
+[train] epoch=1/3 step=1/168 loss=1.3109
+[train:warn] skipped non-finite loss epoch=1/3 batch=11/444 skipped=2
+[train:warn] skipped non-finite loss epoch=1/3 batch=60/444 skipped=3
+[train:warn] skipped non-finite loss epoch=1/3 batch=94/444 skipped=4
+[train:warn] skipped non-finite loss epoch=1/3 batch=102/444 skipped=5
+[train:warn] skipped non-finite loss epoch=1/3 batch=104/444 skipped=6
+[train:warn] skipped non-finite loss epoch=1/3 batch=116/444 skipped=7
+[train:warn] skipped non-finite loss epoch=1/3 batch=121/444 skipped=8
+[train:warn] skipped non-finite loss epoch=1/3 batch=122/444 skipped=9
+[train:warn] skipped non-finite loss epoch=1/3 batch=153/444 skipped=10
+[train] epoch=1/3 step=25/168 loss=0.0833
+[train:warn] skipped non-finite loss epoch=1/3 batch=240/444 skipped=11
+[train:warn] skipped non-finite loss epoch=1/3 batch=259/444 skipped=12
+[train:warn] skipped non-finite loss epoch=1/3 batch=280/444 skipped=13
+[train:warn] skipped non-finite loss epoch=1/3 batch=406/444 skipped=14
+[train] epoch=1/3 step=50/168 loss=0.0348
+[train:warn] skipped non-finite loss epoch=1/3 batch=429/444 skipped=15
+[train:warn] skipped non-finite loss epoch=2/3 batch=54/444 skipped=16
+[train:warn] skipped non-finite loss epoch=2/3 batch=75/444 skipped=17
+[train:warn] skipped non-finite loss epoch=2/3 batch=80/444 skipped=18
+[train:warn] skipped non-finite loss epoch=2/3 batch=106/444 skipped=19
+[train:warn] skipped non-finite loss epoch=2/3 batch=111/444 skipped=20
+[train:warn] skipped non-finite loss epoch=2/3 batch=122/444 skipped=21
+[train:warn] skipped non-finite loss epoch=2/3 batch=134/444 skipped=22
+[train] epoch=2/3 step=75/168 loss=0.0103
+[train:warn] skipped non-finite loss epoch=2/3 batch=187/444 skipped=23
+[train:warn] skipped non-finite loss epoch=2/3 batch=211/444 skipped=24
+[train:warn] skipped non-finite loss epoch=2/3 batch=223/444 skipped=25
+[train:warn] skipped non-finite loss epoch=2/3 batch=252/444 skipped=26
+[train:warn] skipped non-finite loss epoch=2/3 batch=266/444 skipped=27
+[train:warn] skipped non-finite loss epoch=2/3 batch=311/444 skipped=28
+[train:warn] skipped non-finite loss epoch=2/3 batch=381/444 skipped=29
+[train] epoch=2/3 step=100/168 loss=0.0539
+[train:warn] skipped non-finite loss epoch=2/3 batch=404/444 skipped=30
+[train:warn] skipped non-finite loss epoch=3/3 batch=131/444 skipped=31
+[train] epoch=3/3 step=125/168 loss=0.1585
+[train:warn] skipped non-finite loss epoch=3/3 batch=150/444 skipped=32
+[train:warn] skipped non-finite loss epoch=3/3 batch=164/444 skipped=33
+[train:warn] skipped non-finite loss epoch=3/3 batch=166/444 skipped=34
+[train:warn] skipped non-finite loss epoch=3/3 batch=182/444 skipped=35
+[train:warn] skipped non-finite loss epoch=3/3 batch=215/444 skipped=36
+[train:warn] skipped non-finite loss epoch=3/3 batch=261/444 skipped=37
+[train:warn] skipped non-finite loss epoch=3/3 batch=272/444 skipped=38
+[train:warn] skipped non-finite loss epoch=3/3 batch=277/444 skipped=39
+[train:warn] skipped non-finite loss epoch=3/3 batch=284/444 skipped=40
+[train:warn] skipped non-finite loss epoch=3/3 batch=295/444 skipped=41
+[train:warn] skipped non-finite loss epoch=3/3 batch=315/444 skipped=42
+[train:warn] skipped non-finite loss epoch=3/3 batch=323/444 skipped=43
+[train] epoch=3/3 step=150/168 loss=0.0796
+[train:warn] skipped non-finite loss epoch=3/3 batch=376/444 skipped=44
+[train:warn] skipped non-finite loss epoch=3/3 batch=442/444 skipped=45
+[train] saved adapters/s06_d3_capped/main/main_d3c_r16_lr5e-5_ep3_replay2_lam2_seed20260703
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<01:19,  4.27it/s]Loading weights:   1%|          | 2/339 [00:00<01:18,  4.30it/s]Loading weights:   3%|▎         | 10/339 [00:00<00:13, 24.28it/s]Loading weights:   6%|▋         | 22/339 [00:00<00:06, 50.07it/s]Loading weights:  10%|█         | 34/339 [00:00<00:04, 68.59it/s]Loading weights:  13%|█▎        | 43/339 [00:00<00:03, 74.25it/s]Loading weights:  16%|█▌        | 54/339 [00:00<00:03, 82.64it/s]Loading weights:  19%|█▉        | 66/339 [00:01<00:02, 91.09it/s]Loading weights:  23%|██▎       | 78/339 [00:01<00:02, 98.28it/s]Loading weights:  27%|██▋       | 90/339 [00:01<00:02, 102.39it/s]Loading weights:  30%|███       | 102/339 [00:01<00:02, 104.74it/s]Loading weights:  34%|███▎      | 114/339 [00:01<00:02, 106.80it/s]Loading weights:  37%|███▋      | 126/339 [00:01<00:01, 109.55it/s]Loading weights:  41%|████      | 138/339 [00:01<00:01, 109.83it/s]Loading weights:  44%|████▍     | 150/339 [00:01<00:01, 105.97it/s]Loading weights:  48%|████▊     | 162/339 [00:01<00:01, 107.27it/s]Loading weights:  51%|█████▏    | 174/339 [00:02<00:01, 108.00it/s]Loading weights:  55%|█████▍    | 186/339 [00:02<00:01, 110.40it/s]Loading weights:  58%|█████▊    | 198/339 [00:02<00:01, 109.75it/s]Loading weights:  62%|██████▏   | 210/339 [00:02<00:01, 110.42it/s]Loading weights:  65%|██████▌   | 222/339 [00:02<00:01, 106.65it/s]Loading weights:  69%|██████▉   | 234/339 [00:02<00:01, 103.24it/s]Loading weights:  73%|███████▎  | 246/339 [00:02<00:00, 105.26it/s]Loading weights:  76%|███████▌  | 258/339 [00:02<00:00, 106.35it/s]Loading weights:  80%|███████▉  | 270/339 [00:02<00:00, 107.73it/s]Loading weights:  83%|████████▎ | 282/339 [00:03<00:00, 107.37it/s]Loading weights:  87%|████████▋ | 294/339 [00:03<00:00, 108.19it/s]Loading weights:  90%|█████████ | 306/339 [00:03<00:00, 110.27it/s]Loading weights:  94%|█████████▍| 318/339 [00:03<00:00, 111.34it/s]Loading weights:  97%|█████████▋| 330/339 [00:03<00:00, 110.76it/s]Loading weights: 100%|██████████| 339/339 [00:03<00:00, 96.19it/s]
+[eval:val] 1/156
+[eval:val] 50/156
+[eval:val] 100/156
+[eval:val] 150/156
+[eval:val] 156/156
+[eval:r-success] 1/400
+[eval:r-success] 50/400
+[eval:r-success] 100/400
+[eval:r-success] 150/400
+[eval:r-success] 200/400
+[eval:r-success] 250/400
+[eval:r-success] 300/400
+[eval:r-success] 350/400
+[eval:r-success] 400/400
+[eval] val_repair_rate=0.3397 r_success_rate=0.9400
