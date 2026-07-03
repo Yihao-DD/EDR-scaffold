@@ -20,11 +20,11 @@ quarantine/repair artifacts are intentionally excluded.
 - [x] Local compile check passed.
 - [x] Data/assert smoke passed without pytest dependency.
 - [x] Round2 dry-run smoke passed for `collect_failures -> loop -> train_round2`.
-- [x] Round2 eval dry-run command rendered.
-- [x] Focused `pytest` run for rep2 data/leakage asserts passed.
+- [x] Round2 eval dry-run command renders M2 as `M0 + A1 + A2` by passing `--base-adapter-dir` to all eval surfaces.
+- [x] Focused `pytest` run for rep2 data/leakage and round2 contract asserts passed.
 - [x] Artifact SHA manifest generated: `repro_rep2/MANIFEST.md`, `repro_rep2/MANIFEST.json`, `repro_rep2/SHA256SUMS`.
 - [x] M1 designated seed and SHA recorded: seed `20260704`, adapter SHA256 `c3afb185a6a32480a55e678599b3bebc8b8899ed935d620605b00ab3c3e62683`.
-- [x] Reconcile smoke passed: `ACCEPTED`.
+- [x] Reconcile package-only smoke passed without printing `ACCEPTED`; full `ACCEPTED` now requires model re-evaluation.
 
 ## Smoke Output
 
@@ -44,31 +44,31 @@ assert_smoke_ok
 Focused pytest:
 
 ```text
-python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py
-..                                                                       [100%]
-2 passed in 0.03s
+python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py
+.....                                                                    [100%]
+5 passed in 0.06s
 ```
 
 Reconcile smoke:
 
 ```text
-python3 round2/reconcile.py --skip-pytest
-ACCEPTED
+python3 round2/reconcile.py --skip-pytest --skip-model-check
+PACKAGE_ONLY: static files and pytest passed; model re-evaluation was skipped.
 ```
 
 Round2 dry-run:
 
 ```text
 wrote /tmp/f2_smoke.json f2_count=20
-DRY_RUN python3 EDG-EXP2-struct/scripts/evolution_main.py --adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter --failures /tmp/f2_smoke.json --validation-ids repro_rep2/data/episode_ids/D_val_failures.json
+DRY_RUN python3 EDG-EXP2-struct/scripts/evolution_loop.py --input /tmp/f2_smoke.json --output /tmp/loop_smoke/evolution_loop.json --log /tmp/loop_smoke/evolution_loop.md --model-id Qwen/Qwen2.5-7B-Instruct --seeds 20260630
 DRY_RUN python3 repro_rep2/scripts/lora_phase0.py --model-id Qwen/Qwen2.5-7B-Instruct train --dataset /tmp/a2_smoke/round2_train_seed20260708.jsonl --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --output-dir /tmp/a2_smoke --rank 16 --lr 5e-5 --seed 20260708 --epochs 3 --kl-anchor-lambda 2 --max-grad-norm 1.0
 ```
 
 Eval dry-run:
 
 ```text
-DRY_RUN python3 repro_rep2/scripts/s07_heldout_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --arm main --config round2 --seed 0 --run-id round2_eval --train-dataset round2_outputs/t2.jsonl --output /tmp/eval_smoke/m2.heldout.json
-DRY_RUN python3 repro_rep2/scripts/s07_sibling_arena_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --arm main --config round2 --seed 0 --run-id round2_eval --output /tmp/eval_smoke/m2.sibling.json
+DRY_RUN python3 repro_rep2/scripts/s07_heldout_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --arm main --config round2 --seed 0 --run-id round2_eval --train-dataset round2_outputs/t1_t2.jsonl --output /tmp/eval_smoke/m2.heldout.json
+DRY_RUN python3 repro_rep2/scripts/s07_sibling_arena_eval.py --model-id Qwen/Qwen2.5-7B-Instruct --adapter-dir /tmp/a2_smoke --base-adapter-dir repro_rep2/artifacts/main_rep2_seed20260704/adapter --arm main --config round2 --seed 0 --run-id round2_eval --output /tmp/eval_smoke/m2.sibling.json
 SKIP val_old400: pass --phase0-failures, --phase0-exp2-root, and --phase0-s00-input to enable it.
 ```
 
@@ -83,3 +83,10 @@ SKIP val_old400: pass --phase0-failures, --phase0-exp2-root, and --phase0-s00-in
 - Round2 `train_round2.py` combines T2 and replay2 into a per-seed JSONL before
   training. `eval_round2.py` always renders heldout/sibling commands and renders
   val@156/old400 when the Phase0 EXP1/EXP2 inventory paths are supplied.
+- `build_t2.py` is AST fail-closed; rows missing `ast_pass` now assert instead
+  of entering T2.
+- `build_replay2.py` writes `source=replay_base_success` and `partition=replay`
+  on every replay row so the KL-anchor path fires.
+- The upstream EXP2 patch loop is not LoRA-adapter-aware. Round2 currently uses
+  M1 to collect F2, then runs the patch loop on that F2 set. Making patch search
+  itself adapter-aware remains a separate implementation step.

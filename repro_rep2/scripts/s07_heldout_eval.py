@@ -93,7 +93,12 @@ def evaluate_heldout(args):
         raise AssertionError({"missing_heldout_in_baseline": missing[:20], "count": len(missing)})
 
     tokenizer = load_tokenizer(args.model_id)
-    model = load_model_for_eval(args.model_id, adapter_dir=args.adapter_dir, qlora=not args.no_qlora)
+    model = load_model_for_eval(
+        args.model_id,
+        adapter_dir=args.adapter_dir,
+        qlora=not args.no_qlora,
+        base_adapter_dir=args.base_adapter_dir,
+    )
 
     records = []
     for index, row in enumerate(heldout_rows, start=1):
@@ -128,6 +133,7 @@ def evaluate_heldout(args):
         "config": args.config,
         "seed": args.seed,
         "adapter_dir": args.adapter_dir,
+        "base_adapter_dir": args.base_adapter_dir,
         "heldout_n": len(records),
         "heldout_repair": repair_n,
         "heldout_repair_rate": repair_n / len(records) if records else 0.0,
@@ -170,6 +176,7 @@ def build_parser():
     parser.add_argument("--root", default=".")
     parser.add_argument("--model-id", required=True)
     parser.add_argument("--adapter-dir", required=True)
+    parser.add_argument("--base-adapter-dir", default=None)
     parser.add_argument("--arm", required=True, choices=["main", "star"])
     parser.add_argument("--config", required=True)
     parser.add_argument("--seed", type=int, required=True)

@@ -649,3 +649,50 @@ Review result:
 - Full review notes are in `docs/REVIEW.md`.
 
 Push note: the final pushed branch HEAD is reported in the handoff response because a commit cannot reliably embed its own final hash without changing that hash.
+
+## v1.23 - 2026-07-03
+
+### round2 handoff audit fixes after external review
+
+External review found several real round2 cold-start defects. This entry records
+the fixes made on `handoff/phase2-round2` after the original v1.22 push.
+
+Fixed:
+
+- M2 evaluation no longer drops A1. `repro_rep2/scripts/lora_phase0.py`,
+  `s07_heldout_eval.py`, `s07_sibling_arena_eval.py`, and `round2/eval_round2.py`
+  now support/pass `--base-adapter-dir`, so evaluation can load
+  `M0 + A1 + A2` instead of raw `M0 + A2`.
+- `build_t2.py` is AST fail-closed. Rows missing `ast_pass` now assert with
+  examples instead of silently entering T2.
+- `build_replay2.py` now derives its default target size from `2 * |T2|` when
+  `--t2-jsonl` is supplied, and every replay row is stamped with
+  `source=replay_base_success` and `partition=replay` so the KL-anchor replay
+  path fires.
+- `round2/common.py` no longer lets rows with missing/falsy `episode_id` bypass
+  leakage asserts.
+- `round2/collect_failures.py` now has a real full mode: it loads M1, runs T=0
+  over the train share, writes F2 failures, and reports F1-vs-F2 composition
+  summaries.
+- `round2/reconcile.py` no longer compares manifest values to themselves. Full
+  `ACCEPTED` now requires model re-evaluation of M1 on heldout and sibling
+  surfaces. `--skip-model-check` is package-only and prints `PACKAGE_ONLY`.
+- `round2/loop/evolution_loop_round2.py` now points at the real
+  `EDG-EXP2-struct/scripts/evolution_loop.py` and passes its actual
+  `--input/--output/--log/--model-id/--seeds` interface rather than the
+  nonexistent `evolution_main.py`/`--adapter` interface.
+- Focused pytest now includes round2 contract tests for M2 eval stack rendering,
+  replay KL markers, and episode-id fail-closed behavior.
+
+Remaining explicit caveat:
+
+- The upstream EXP2 patch loop is not LoRA-adapter-aware. The repaired round2
+  path uses M1 for F2 collection, then runs the patch loop on F2. Conditioning
+  patch search itself on M1 remains a separate implementation task before
+  production Phase 2 use.
+
+Local checks:
+
+- `python3 -m compileall -q round2 repro_rep2/scripts`
+- `python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py`
+  returned `5 passed`.

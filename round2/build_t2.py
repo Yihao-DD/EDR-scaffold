@@ -37,9 +37,18 @@ def main() -> None:
     args = parser.parse_args()
 
     data_root = Path(args.data_root)
-    rows = read_jsonl(args.teacher2_samples)
-    rows = [dict(row, round2_source=row.get("round2_source", "teacher2")) for row in rows]
-    rows = [row for row in rows if row.get("ast_pass", True)]
+    raw_rows = read_jsonl(args.teacher2_samples)
+    missing_ast = [row.get("episode_id") for row in raw_rows if "ast_pass" not in row]
+    if missing_ast:
+        raise AssertionError(
+            {
+                "assert": "teacher2_ast_pass_field_present",
+                "missing_count": len(missing_ast),
+                "examples": missing_ast[:20],
+            }
+        )
+    rejected_ast = [row.get("episode_id") for row in raw_rows if row.get("ast_pass") is not True]
+    rows = [dict(row, round2_source=row.get("round2_source", "teacher2")) for row in raw_rows if row.get("ast_pass") is True]
     rows = dedupe_by_episode_output(rows)
     ids = episode_ids(rows)
 
@@ -59,6 +68,8 @@ def main() -> None:
         {
             "probe": "round2_build_t2",
             "rows": len(rows),
+            "raw_rows": len(raw_rows),
+            "ast_rejected_rows": len(rejected_ast),
             "unique_episodes": len(ids),
             "status": status,
             "assertions": assertions,

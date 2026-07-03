@@ -336,11 +336,18 @@ def train(args):
     print(f"[train] saved {output_dir}")
 
 
-def load_model_for_eval(model_id, adapter_dir=None, qlora=True):
+def load_model_for_eval(model_id, adapter_dir=None, qlora=True, base_adapter_dir=None):
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, BitsAndBytesConfig
 
     kwargs = {"device_map": "auto", "trust_remote_code": True}
+    if base_adapter_dir and qlora:
+        print(
+            "[eval:warn] --base-adapter-dir requires merging before loading the evaluated adapter; "
+            "loading bf16/full precision for the merge. Use a >=49GB GPU.",
+            flush=True,
+        )
+        qlora = False
     if qlora:
         kwargs["quantization_config"] = BitsAndBytesConfig(
             load_in_4bit=True,
@@ -351,6 +358,7 @@ def load_model_for_eval(model_id, adapter_dir=None, qlora=True):
     else:
         kwargs["torch_dtype"] = torch.bfloat16 if torch.cuda.is_available() else torch.float32
     model = AutoModelForCausalLM.from_pretrained(model_id, **kwargs)
+    model = merge_base_adapter(model, base_adapter_dir)
     if adapter_dir:
         model = PeftModel.from_pretrained(model, adapter_dir)
     model.eval()
@@ -408,7 +416,12 @@ def evaluate(args):
         val_episodes = val_episodes[: args.eval_limit]
         r_success = r_success[: args.eval_limit]
     tokenizer = load_tokenizer(args.model_id)
-    model = load_model_for_eval(args.model_id, adapter_dir=args.adapter_dir, qlora=not args.no_qlora)
+    model = load_model_for_eval(
+        args.model_id,
+        adapter_dir=args.adapter_dir,
+        qlora=not args.no_qlora,
+        base_adapter_dir=args.base_adapter_dir,
+    )
     val_records = []
     for index, episode in enumerate(val_episodes, start=1):
         if index == 1 or index % args.progress_every == 0 or index == len(val_episodes):
@@ -421,6 +434,7 @@ def evaluate(args):
         success_records.append(evaluate_episode(evo, model, tokenizer, episode, baseline["prompt_template"], args.max_new_tokens))
     result = {
         "adapter_dir": args.adapter_dir,
+        "base_adapter_dir": args.base_adapter_dir,
         "model_id": args.model_id,
         "split_seed": args.split_seed,
         "val_n": len(val_records),
@@ -463,6 +477,7 @@ def build_parser():
 
     eval_parser = subparsers.add_parser("eval")
     eval_parser.add_argument("--adapter-dir", default=None)
+    eval_parser.add_argument("--base-adapter-dir", default=None)
     eval_parser.add_argument("--output", required=True)
     eval_parser.add_argument("--eval-limit", type=int, default=None)
     eval_parser.add_argument("--progress-every", type=int, default=50)

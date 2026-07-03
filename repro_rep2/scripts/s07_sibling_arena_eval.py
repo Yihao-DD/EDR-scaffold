@@ -41,7 +41,12 @@ def evaluate(args):
     baseline = json.loads((root / args.failures).read_text(encoding="utf-8"))
 
     tokenizer = load_tokenizer(args.model_id)
-    model = load_model_for_eval(args.model_id, adapter_dir=args.adapter_dir, qlora=not args.no_qlora)
+    model = load_model_for_eval(
+        args.model_id,
+        adapter_dir=args.adapter_dir,
+        qlora=not args.no_qlora,
+        base_adapter_dir=args.base_adapter_dir,
+    )
 
     records = []
     for index, row in enumerate(records_in, start=1):
@@ -107,6 +112,7 @@ def evaluate(args):
         "config": args.config,
         "seed": args.seed,
         "adapter_dir": args.adapter_dir,
+        "base_adapter_dir": args.base_adapter_dir,
         "arena": args.arena,
         "arena_n": len(records),
         "success": success,
@@ -131,6 +137,7 @@ def build_parser():
     parser.add_argument("--root", default=".")
     parser.add_argument("--model-id", required=True)
     parser.add_argument("--adapter-dir", required=True)
+    parser.add_argument("--base-adapter-dir", default=None)
     parser.add_argument("--arm", required=True, choices=["main", "star"])
     parser.add_argument("--config", required=True)
     parser.add_argument("--seed", type=int, required=True)

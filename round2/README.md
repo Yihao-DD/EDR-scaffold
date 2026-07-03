@@ -31,7 +31,8 @@ python3 round2/build_t2.py \
   --teacher2-samples round2_outputs/teacher2_samples.jsonl
 
 python3 round2/build_replay2.py \
-  --m1-success-jsonl round2_outputs/m1_train_success.jsonl
+  --m1-success-jsonl round2_outputs/m1_train_success.jsonl \
+  --t2-jsonl round2_outputs/t2.jsonl
 
 python3 round2/train_round2.py \
   --m1-adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter \
@@ -45,12 +46,25 @@ python3 round2/train_round2.py \
 python3 round2/eval_round2.py \
   --m1-adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter \
   --a2-adapter round2_outputs/a2_seed20260708 \
+  --train-signature-jsonl round2_outputs/t1_t2.jsonl \
   --dry-run
 
-python3 round2/reconcile.py --skip-pytest
+python3 round2/reconcile.py --skip-pytest --skip-model-check
 ```
 
 Full GPU execution should remove `--dry-run` after data generation files exist.
+`--skip-model-check` is package-only; it intentionally does not print
+`ACCEPTED`. Full acceptance requires a model path and re-evaluates M1 on heldout
+and sibling surfaces.
+
+## Caveat
+
+`round2/loop/evolution_loop_round2.py` calls the real
+`EDG-EXP2-struct/scripts/evolution_loop.py` entrypoint. That upstream patch loop
+does not load LoRA adapters directly. The current round-2 path uses M1 for F2
+collection, then evolves patches over the resulting F2 set. If patch search
+itself must be conditioned on M1, the EXP2 runner needs an adapter-aware model
+loading change before production use.
 
 ## Review Hooks
 

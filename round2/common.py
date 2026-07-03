@@ -58,7 +58,23 @@ def write_jsonl(path: os.PathLike[str] | str, rows: Iterable[Mapping]) -> None:
 
 
 def episode_ids(rows: Iterable[Mapping]) -> set[str]:
-    return {str(row["episode_id"]) for row in rows if row.get("episode_id")}
+    ids = set()
+    missing = []
+    for index, row in enumerate(rows):
+        episode_id = row.get("episode_id")
+        if not episode_id:
+            missing.append(index)
+            continue
+        ids.add(str(episode_id))
+    if missing:
+        raise AssertionError(
+            {
+                "assert": "episode_id_present",
+                "missing_count": len(missing),
+                "examples": missing[:20],
+            }
+        )
+    return ids
 
 
 def load_episode_id_file(path: os.PathLike[str] | str) -> set[str]:

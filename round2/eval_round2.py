@@ -22,6 +22,7 @@ def main() -> None:
     add_common_args(parser)
     parser.add_argument("--m1-adapter", required=True)
     parser.add_argument("--a2-adapter", required=True)
+    parser.add_argument("--train-signature-jsonl", default="round2_outputs/t1_t2.jsonl")
     parser.add_argument("--teacher2-adapter", default=None, help="Optional M1+H2 teacher adapter/harness reference.")
     parser.add_argument("--output-prefix", default="round2_outputs/eval/m2")
     parser.add_argument("--heldout-eval", default="repro_rep2/scripts/s07_heldout_eval.py")
@@ -40,6 +41,7 @@ def main() -> None:
         "teacher2_adapter": args.teacher2_adapter,
         "surfaces": ["heldout158", "sibling300", "old400", "val156"],
         "seen_definition": "T1 union T2 for 2x2 function/error labels",
+        "train_signature_jsonl": args.train_signature_jsonl,
     }
     write_json(str(prefix) + ".plan.json", plan)
     common = [
@@ -47,6 +49,8 @@ def main() -> None:
         "Qwen/Qwen2.5-7B-Instruct",
         "--adapter-dir",
         args.a2_adapter,
+        "--base-adapter-dir",
+        args.m1_adapter,
         "--arm",
         "main",
         "--config",
@@ -62,7 +66,7 @@ def main() -> None:
             args.heldout_eval,
             *common,
             "--train-dataset",
-            "round2_outputs/t2.jsonl",
+            args.train_signature_jsonl,
             "--output",
             str(prefix) + ".heldout.json",
         ],
@@ -85,6 +89,8 @@ def main() -> None:
                 "eval",
                 "--adapter-dir",
                 args.a2_adapter,
+                "--base-adapter-dir",
+                args.m1_adapter,
                 "--output",
                 str(prefix) + ".val_old400.json",
             ],
