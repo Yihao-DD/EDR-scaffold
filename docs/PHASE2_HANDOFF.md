@@ -22,7 +22,7 @@
 2.3 `build_t2.py`:同 Step 0.2 规程(train 份 only;T=0 x1 + T=0.8 x4->8;AST 过滤;去重;逐条标注);泄漏 assert 四连(∩ D_heldout / D_val / old-400 / sibling-300 = ∅)写死在构建路径上。|T2|<30 -> 输出 `MATERIAL_EXHAUSTION` 标记但不中止(材料枯竭本身是发现,PROBE)。
 2.4 `build_replay2.py`:M1 T=0 在 train share 成功(V=1)轨迹为池,排除全部 eval 集(assert),2:1 配比。
 2.5 `train_round2.py`:**配方锁死** = r16 / lr5e-5 / ep3 / replay2:1 / KLλ2 / guards on;**KL 参考模型 = M1(冻结)**,不是 M0——代码里显式加载 M1 作 anchor,注释写明;A2 训练在 M0+A1 之上(实现:load base -> merge A1 in-memory -> attach 新 LoRA;A1 文件永不改动);seeds = {20260708..20260712}。
-2.6 `eval_round2.py`:M2 = M0+A1+A2(顺序 merge 加载)无 patch 全套评估——heldout 158 全分层(47/10/101;2×2 的"seen"以 T1∪T2 累积定义)、retention_2 = repair(M2)/repair(M1+H2)(需 teacher-2 = M1+H2 的 heldout 前向,同脚本支持)、sibling 300(仲裁)/ old-400(continuity)/ val@156(monitor)三面齐报、Gate 2 分类器(复利/收敛/崩塌,按 5-seed CI 机械判)。
+2.6 `eval_round2.py`:M2 = M0+A1+A2(顺序 merge 加载)无 patch 全套评估——heldout 158 全分层(47/10/101;2×2 的"seen"以 T1∪T2 累积定义,由 `build_t2.py` 产出 `t1_t2.jsonl`)、retention_2 = repair(M2)/repair(M1+H2)(teacher-2 = M1+H2 的 heldout 前向由 `round2/loop/teacher2_forward.py` 产出;retention_2 由 `eval_round2.py` 写入 `<prefix>.retention2.json`)、sibling 300(仲裁)/ old-400(continuity)/ val@156(monitor)三面齐报。**Gate 2 动力学分类(复利/收敛/崩塌)由脚本 `round2/classify_gate2.py` 按 5-seed paired bootstrap CI 机械判定,不用文字规则对号。**
 2.7 `reconcile.py`:公司验收脚本——pytest 全绿 + 用 M1 复现 heldout(±1 episode)与 sibling(±2)参考数字,全过才打印 `ACCEPTED`。
 
 ## 3. Code review(推送前,逐项打勾进 `docs/REVIEW.md`)
@@ -44,3 +44,9 @@
 4. T2 生成走同一入口:teacher-2 = merged(M1) + H2 patch-in-context。
 5. `eval_round2.py` 的 teacher-2 前向走同一入口。
 6. `REVIEW.md` 单列人工复核项:loop 无任何 M0 裸模型残留路径。
+
+## v1.23 增补:中间产物补全 + 动力学脚本化(消除冷启动缺文件)
+1. **replay 源池落码**:`round2/build_m1_success.py` 产出 `m1_train_success.jsonl`——池 = M1 T=0 @ {capped-120 ∪ eliminated},仅留 V=1,报告 V=0 剔除数,eval 集四连 assert;`capped-120` = `repro_rep2/data/episode_ids/capped120_replay.json`(round-1 replay 池 120 唯一 episode);`eliminated` 由 `collect_failures.py` 的 `eliminated_episode_ids` 提供。**禁止只落盘 eliminated。**
+2. **2×2 seen 落码**:`build_t2.py` 末尾拼 `distill_main core(148) ∪ t2`,`episode_id` 去重,产出 `t1_t2.jsonl`;`assert_main_arm` 确认无 STaR 分叉(只查 source/arm/round2_source 角色字段)。
+3. **动力学脚本化**:`round2/classify_gate2.py` 机械判定 compound/converge/collapse(§2.6);`eval_round2.py` 写 `retention_2`。文档的 Gate 2 规则一律指向脚本,不再以文字对号。
+4. **回归测试**:KL 参考 = merged(M1) 锁死;新增"输入文件存在性"测试,堵住"命令能拼但文件没人产"的盲区。

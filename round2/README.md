@@ -31,6 +31,12 @@ python3 round2/build_t2.py \
   --f2-json round2_outputs/f2_failures.json \
   --loop-output round2_outputs/loop/evolution_loop.json \
   --m1-adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter
+  # also writes round2_outputs/t1_t2.jsonl (T1 core ∪ T2, episode_id deduped) for the 2x2 seen signature
+
+python3 round2/build_m1_success.py \
+  --m1-adapter repro_rep2/artifacts/main_rep2_seed20260704/adapter \
+  --collect-json round2_outputs/f2_failures.json
+  # pool = M1 T=0 @ {capped-120 ∪ eliminated}, keeps V=1, writes round2_outputs/m1_train_success.jsonl
 
 python3 round2/build_replay2.py \
   --m1-success-jsonl round2_outputs/m1_train_success.jsonl \
@@ -51,6 +57,14 @@ python3 round2/eval_round2.py \
   --train-signature-jsonl round2_outputs/t1_t2.jsonl \
   --teacher2-loop-output round2_outputs/loop/evolution_loop.json \
   --dry-run
+  # full (non-dry) run also writes <prefix>.retention2.json = repair(M2)/repair(M1+H2)
+
+# Gate 2 dynamics classification over the 5 M2 seeds (mechanical; run after all seeds are evaluated):
+python3 round2/classify_gate2.py \
+  --m1-heldout round2_outputs/reconcile/m1.heldout.json \
+  --m2-heldout round2_outputs/eval/m2_seed*.heldout.json \
+  --f1-size 74 --f2-size $(python3 -c "import json;print(json.load(open('round2_outputs/f2_failures.json'))['f2_count'])") \
+  --forget 0.06
 
 python3 round2/reconcile.py --skip-pytest --skip-model-check
 ```

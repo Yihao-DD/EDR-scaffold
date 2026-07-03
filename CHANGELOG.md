@@ -737,3 +737,51 @@ Local checks:
   returned `7 passed`.
 - Static grep over `round2/loop` found one model load path and one direct
   `model.generate` site, both inside `round2/loop/evolution_loop_m1.py`.
+
+## v1.25 - 2026-07-03
+
+### round2 missing-producer closure and dynamics scriptization
+
+Second external review found two pipeline files that were consumed but never
+produced (so a literal cold-start would stop at replay build and heldout eval),
+plus Gate 2 / retention_2 that were prose rather than code. All resolved.
+
+Fixed:
+
+- Replay source pool is now produced. `round2/build_m1_success.py` writes
+  `m1_train_success.jsonl` as `M1 T=0 @ {capped-120 ∪ eliminated}` keeping only
+  V=1, reporting the V=0 exclusion count, and asserting disjointness from
+  heldout/D_val/old400/sibling300. `capped-120` is frozen as
+  `repro_rep2/data/episode_ids/capped120_replay.json` (the 120 unique round-1
+  replay episodes, verified disjoint from every eval surface). Dumping only
+  `eliminated` is explicitly disallowed. `collect_failures.py` now emits
+  `eliminated_episode_ids` to feed the pool.
+- `t1_t2.jsonl` is now produced. `build_t2.py` unions `distill_main_core`
+  (148 rows, 74 episodes) with T2, deduped by `episode_id`, and `assert_main_arm`
+  confirms no STaR fork by inspecting only role fields (source/arm/round2_source),
+  never free text.
+- Gate 2 is scriptized. `round2/classify_gate2.py` classifies
+  compound/converge/collapse by a 5-seed paired-bootstrap CI on heldout repair
+  plus the forget gate; classification is mechanical (no narrative override).
+- `retention_2 = repair(M2)/repair(M1+H2)` is now written by `eval_round2.py`
+  to `<prefix>.retention2.json` after the M2 heldout and teacher-2 forwards.
+- `docs/PHASE2_HANDOFF.md` Gate 2 / retention_2 language now points at the
+  scripts rather than restating the rule in prose.
+
+Tests:
+
+- KL reference lock: `test_kl_reference_is_merged_m1_not_raw_m0` asserts the
+  merge-before-apply-lora ordering, the `disable_adapter` KL path, and the
+  `merged_base_adapter` metadata; `test_train_round2_dry_run_anchors_kl_to_m1`
+  asserts the launcher passes `--base-adapter-dir M1` with `--kl-anchor-lambda 2`.
+- Input-file existence: `test_build_t2_produces_t2_and_t1_t2` and
+  `test_build_m1_success_dry_run_produces_replay_source` close the
+  command-string-only blind spot by asserting the files themselves are written.
+
+Local checks:
+
+- `python3 -m compileall -q round2 repro_rep2/scripts/lora_phase0.py repro_rep2/scripts/s07_heldout_eval.py repro_rep2/scripts/s07_sibling_arena_eval.py`
+- `python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py`
+  returned `11 passed`.
+- Dry-run walk of the full `round2/README.md` pipeline: every consumed
+  intermediate now has a producing step.

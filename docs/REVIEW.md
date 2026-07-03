@@ -47,8 +47,8 @@ Focused pytest:
 
 ```text
 python3 -m pytest -q repro_rep2/tests/test_repro_rep2_asserts.py repro_rep2/tests/test_round2_contracts.py
-.......                                                                  [100%]
-7 passed in 0.12s
+...........                                                              [100%]
+11 passed in 0.25s
 ```
 
 Reconcile smoke:
@@ -102,3 +102,36 @@ DRY_RUN python3 round2/loop/teacher2_forward.py --loop-output /tmp/loop_smoke/ev
   shows the only model-load path is `ModelRunner` in
   `round2/loop/evolution_loop_m1.py`; wrapper/smoke scripts import that entry
   and do not load a second model path.
+
+## v1.23 additions (missing-producer + dynamics scriptization)
+
+Second-review follow-up: two pipeline files were consumed but never produced
+(`m1_train_success.jsonl`, `t1_t2.jsonl`), and Gate 2 / retention_2 were prose,
+not code. Fixed and covered by tests.
+
+- [x] `round2/build_m1_success.py` produces `m1_train_success.jsonl`: pool =
+      M1 T=0 @ {capped-120 ∪ eliminated}, keeps V=1, reports V=0 exclusions,
+      asserts disjoint from heldout/D_val/old400/sibling300. capped-120 frozen as
+      `repro_rep2/data/episode_ids/capped120_replay.json` (120 unique round-1
+      replay episodes, disjoint from all eval surfaces). Not just `eliminated`.
+- [x] `collect_failures.py` now emits `eliminated_episode_ids` for the pool.
+- [x] `build_t2.py` writes `t1_t2.jsonl` = distill_main core (148) ∪ T2, deduped
+      by episode_id; `assert_main_arm` confirms no STaR fork (role fields only).
+- [x] `round2/classify_gate2.py` classifies compound/converge/collapse by 5-seed
+      paired-bootstrap CI on heldout; `eval_round2.py` writes `retention2.json`.
+      HANDOFF §2.6 now points at the scripts, not prose rules.
+- [x] KL-ref regression test: `test_kl_reference_is_merged_m1_not_raw_m0`
+      (merge-before-apply-lora ordering + `disable_adapter` + merged-reference
+      metadata) and `test_train_round2_dry_run_anchors_kl_to_m1`.
+- [x] Input-file existence tests: `test_build_t2_produces_t2_and_t1_t2`,
+      `test_build_m1_success_dry_run_produces_replay_source`.
+- [x] Full round2 pipeline dry-run walked; all consumed intermediates now have a
+      producing step in `round2/README.md`.
+
+train_round2 anchor lines (manual re-confirm):
+- stacking: `round2/train_round2.py` passes `--base-adapter-dir args.m1_adapter`
+  to the trainer; `repro_rep2/scripts/lora_phase0.py::train` calls
+  `merge_base_adapter(model, args.base_adapter_dir)` before `apply_lora(...)`.
+- KL reference: `lora_phase0.py::kl_anchor_loss` uses `with model.disable_adapter():`
+  after the merge, so the reference is merged M1; `train_metadata.kl_anchor_reference`
+  records `merged_base_adapter`.

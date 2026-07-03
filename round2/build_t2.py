@@ -44,6 +44,38 @@ def dedupe_by_episode_output(rows: list[dict]) -> list[dict]:
     return list(seen.values())
 
 
+def assert_main_arm(rows: list[dict], source_path: Path) -> None:
+    """Guard the T1 core against a STaR fork before it feeds the T1∪T2 signature.
+
+    ``main`` teacher rows carry sources like ``teacher_t0`` / ``teacher_t08``; a
+    STaR (self-sampled) fork would carry a ``star`` arm marker. Only the role
+    fields are inspected (never free-text like the prompt, which legitimately
+    contains words such as "starring").
+    """
+
+    if "star" in source_path.name.lower():
+        raise AssertionError({"assert": "t1_core_is_main_arm", "path": str(source_path)})
+    star_rows = [
+        row.get("episode_id")
+        for row in rows
+        if any(str(row.get(field, "")).lower().lstrip().startswith("star") for field in ("source", "arm", "round2_source"))
+    ]
+    if star_rows:
+        raise AssertionError({"assert": "t1_core_no_star_source", "count": len(star_rows), "examples": star_rows[:20]})
+
+
+def build_t1_t2(t1_rows: list[dict], t2_rows: list[dict]) -> list[dict]:
+    """Union T1 core and T2, deduped by episode_id (T1 kept on collision)."""
+    seen = OrderedDict()
+    for row in [*t1_rows, *t2_rows]:
+        key = row.get("episode_id")
+        if not key:
+            raise AssertionError({"assert": "t1_t2_episode_id_present"})
+        if key not in seen:
+            seen[key] = row
+    return list(seen.values())
+
+
 def _loop_family_from_method(method: str) -> str:
     return method.replace("-evo", "")
 
@@ -151,6 +183,8 @@ def main() -> None:
     parser.add_argument("--augment-to", type=int, default=8)
     parser.add_argument("--teacher2-samples-output", default="round2_outputs/teacher2_samples.jsonl")
     parser.add_argument("--output", default="round2_outputs/t2.jsonl")
+    parser.add_argument("--t1-core", default=None, help="T1 main core JSONL (default: <data_root>/distill_main_core.jsonl).")
+    parser.add_argument("--t1t2-output", default="round2_outputs/t1_t2.jsonl", help="T1∪T2 union for the 2x2 seen signature.")
     parser.add_argument("--summary-output", default="round2_outputs/t2_summary.json")
     args = parser.parse_args()
 
@@ -181,6 +215,14 @@ def main() -> None:
 
     status = "OK" if len(rows) >= 30 else "MATERIAL_EXHAUSTION"
     write_jsonl(args.output, rows)
+
+    # T1∪T2 union (episode_id deduped) drives the 2x2 "seen" signature at eval time.
+    t1_core_path = Path(args.t1_core) if args.t1_core else data_root / "distill_main_core.jsonl"
+    t1_rows = read_jsonl(t1_core_path)
+    assert_main_arm(t1_rows, t1_core_path)
+    t1_t2_rows = build_t1_t2(t1_rows, rows)
+    write_jsonl(args.t1t2_output, t1_t2_rows)
+
     write_json(
         args.summary_output,
         {
@@ -190,10 +232,14 @@ def main() -> None:
             "ast_rejected_rows": len(rejected_ast),
             "unique_episodes": len(ids),
             "status": status,
+            "t1_core": str(t1_core_path),
+            "t1_core_rows": len(t1_rows),
+            "t1_t2_rows": len(t1_t2_rows),
+            "t1_t2_output": args.t1t2_output,
             "assertions": assertions,
         },
     )
-    print(f"wrote {args.output} rows={len(rows)} status={status}")
+    print(f"wrote {args.output} rows={len(rows)} status={status}; wrote {args.t1t2_output} t1_t2_rows={len(t1_t2_rows)}")
 
 
 if __name__ == "__main__":

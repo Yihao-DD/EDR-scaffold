@@ -7,7 +7,7 @@ import argparse
 import subprocess
 from pathlib import Path
 
-from common import add_common_args, write_json
+from common import add_common_args, read_json, write_json
 
 
 def run(cmd: list[str], dry_run: bool) -> None:
@@ -15,6 +15,28 @@ def run(cmd: list[str], dry_run: bool) -> None:
         print("DRY_RUN", " ".join(cmd))
     else:
         subprocess.run(cmd, check=True)
+
+
+def write_retention2(prefix: Path) -> None:
+    """retention_2 = repair(M2 no-patch) / repair(M1+H2), both on heldout."""
+    heldout = read_json(str(prefix) + ".heldout.json")["summary"]
+    teacher2 = read_json(str(prefix) + ".teacher2_heldout.json")
+    m2_rate = heldout["heldout_repair_rate"]
+    teacher2_rate = teacher2["success_rate"]
+    retention2 = (m2_rate / teacher2_rate) if teacher2_rate else None
+    payload = {
+        "probe": "round2_retention2",
+        "definition": "repair(M2 no-patch, heldout) / repair(M1+H2, heldout)",
+        "m2_heldout_repair": heldout["heldout_repair"],
+        "m2_heldout_n": heldout["heldout_n"],
+        "m2_repair_rate": m2_rate,
+        "teacher2_success": teacher2["success"],
+        "teacher2_n": teacher2["episode_n"],
+        "teacher2_repair_rate": teacher2_rate,
+        "retention_2": retention2,
+    }
+    write_json(str(prefix) + ".retention2.json", payload)
+    print(f"retention_2={retention2} (M2={m2_rate:.4f} / teacher2={teacher2_rate:.4f})")
 
 
 def main() -> None:
@@ -119,6 +141,10 @@ def main() -> None:
         if args.teacher2_loop_seed is not None:
             cmd.extend(["--loop-seed", str(args.teacher2_loop_seed)])
         run(cmd, args.dry_run)
+        if not args.dry_run:
+            write_retention2(prefix)
+        else:
+            print("SKIP retention_2: requires a full (non-dry-run) M2 heldout + teacher-2 forward.")
     else:
         print("SKIP teacher2: pass --teacher2-loop-output to evaluate M1+H2 with the adapter-aware loop entry.")
 

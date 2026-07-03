@@ -94,6 +94,7 @@ def main() -> None:
         "train_share_checked": len(train_share),
         "f2_count": len(failures),
         "internalized_count": len(train_share) - len(failures),
+        "eliminated_episode_ids": [] if args.dry_run else [row["episode_id"] for row in eliminated],
         "f1_by_partition": summarize(train_share, "partition"),
         "f2_by_partition": summarize(failures, "partition"),
         "internalized_by_partition": summarize(eliminated if not args.dry_run else [], "partition"),
