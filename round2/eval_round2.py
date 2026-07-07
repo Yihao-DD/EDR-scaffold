@@ -4,17 +4,24 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 from pathlib import Path
 
-from common import add_common_args, read_json, write_json
+from common import add_common_args, read_json, write_json, REPO_ROOT
 
 
 def run(cmd: list[str], dry_run: bool) -> None:
     if dry_run:
         print("DRY_RUN", " ".join(cmd))
     else:
-        subprocess.run(cmd, check=True)
+        # The spawned s07 evaluators import `scripts.*`, which resolves against
+        # repro_rep2 — not against this script's directory. v1.26 audit fix:
+        # without this, a real (non-dry) run fails at import time.
+        env = dict(os.environ)
+        repro = str(REPO_ROOT / "repro_rep2")
+        env["PYTHONPATH"] = repro + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+        subprocess.run(cmd, check=True, env=env)
 
 
 def write_retention2(prefix: Path) -> None:
@@ -56,6 +63,14 @@ def main() -> None:
     parser.add_argument("--phase0-exp2-root", default=None, help="Optional EXP2 root for val@156 and old400 continuity.")
     parser.add_argument("--phase0-s00-input", default=None, help="Optional s00 inventory for val@156 and old400 continuity.")
     parser.add_argument("--teacher2-forward", default="round2/loop/teacher2_forward.py")
+    # v1.26 audit fix: the spawned evaluators previously ran on their own
+    # defaults (--root ., ../EDG-EXP1, results/s01_...), which do not resolve
+    # from the repository root. Pass repo-root-correct paths explicitly.
+    parser.add_argument("--model-id", default="Qwen/Qwen2.5-7B-Instruct")
+    parser.add_argument("--failures", default="EDG-EXP1/results/a2_failures.json")
+    parser.add_argument("--exp2-root", default="EDG-EXP2-struct")
+    parser.add_argument("--heldout-partition", default="repro_rep2/data/heldout_pass16_partition.json")
+    parser.add_argument("--sibling-arena", default="repro_rep2/data/v17_sibling_arena.json")
     args = parser.parse_args()
 
     prefix = Path(args.output_prefix)
@@ -71,7 +86,7 @@ def main() -> None:
     write_json(str(prefix) + ".plan.json", plan)
     common = [
         "--model-id",
-        "Qwen/Qwen2.5-7B-Instruct",
+        args.model_id,
         "--adapter-dir",
         args.a2_adapter,
         "--base-adapter-dir",
@@ -84,12 +99,18 @@ def main() -> None:
         "0",
         "--run-id",
         "round2_eval",
+        "--failures",
+        args.failures,
     ]
     run(
         [
             "python3",
             args.heldout_eval,
             *common,
+            "--exp2-root",
+            args.exp2_root,
+            "--heldout-partition",
+            args.heldout_partition,
             "--train-dataset",
             args.train_signature_jsonl,
             "--output",
@@ -97,14 +118,25 @@ def main() -> None:
         ],
         args.dry_run,
     )
-    run(["python3", args.sibling_eval, *common, "--output", str(prefix) + ".sibling.json"], args.dry_run)
+    run(
+        [
+            "python3",
+            args.sibling_eval,
+            *common,
+            "--arena",
+            args.sibling_arena,
+            "--output",
+            str(prefix) + ".sibling.json",
+        ],
+        args.dry_run,
+    )
     if args.phase0_failures and args.phase0_exp2_root and args.phase0_s00_input:
         run(
             [
                 "python3",
                 args.phase0_eval,
                 "--model-id",
-                "Qwen/Qwen2.5-7B-Instruct",
+                args.model_id,
                 "--failures",
                 args.phase0_failures,
                 "--exp2-root",

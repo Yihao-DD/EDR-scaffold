@@ -5,10 +5,20 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 from pathlib import Path
 
-from common import add_common_args, read_json
+from common import add_common_args, read_json, REPO_ROOT
+
+
+def _run(cmd: list[str]) -> None:
+    """v1.26 audit fix: spawned s07 evaluators import `scripts.*` against repro_rep2."""
+
+    env = dict(os.environ)
+    repro = str(REPO_ROOT / "repro_rep2")
+    env["PYTHONPATH"] = repro + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+    subprocess.run(cmd, check=True, env=env)
 
 
 def main() -> None:
@@ -20,8 +30,9 @@ def main() -> None:
     parser.add_argument("--model-id", default=None, help="Model path or HF id used to re-evaluate M1.")
     parser.add_argument("--heldout-eval", default="repro_rep2/scripts/s07_heldout_eval.py")
     parser.add_argument("--sibling-eval", default="repro_rep2/scripts/s07_sibling_arena_eval.py")
-    parser.add_argument("--failures", default="../EDG-EXP1/results/a2_failures.json")
-    parser.add_argument("--exp2-root", default="../EDG-EXP2-struct")
+    # v1.26 audit fix: repo-root-relative defaults ("../" escaped the repository).
+    parser.add_argument("--failures", default="EDG-EXP1/results/a2_failures.json")
+    parser.add_argument("--exp2-root", default="EDG-EXP2-struct")
     parser.add_argument("--heldout-partition", default="repro_rep2/data/heldout_pass16_partition.json")
     parser.add_argument("--sibling-arena", default="repro_rep2/data/v17_sibling_arena.json")
     parser.add_argument("--output-prefix", default="round2_outputs/reconcile/m1")
@@ -49,7 +60,7 @@ def main() -> None:
     prefix.parent.mkdir(parents=True, exist_ok=True)
     heldout_json = Path(str(prefix) + ".heldout.json")
     sibling_json = Path(str(prefix) + ".sibling.json")
-    subprocess.run(
+    _run(
         [
             "python3",
             args.heldout_eval,
@@ -75,10 +86,9 @@ def main() -> None:
             args.exp2_root,
             "--heldout-partition",
             args.heldout_partition,
-        ],
-        check=True,
+        ]
     )
-    subprocess.run(
+    _run(
         [
             "python3",
             args.sibling_eval,
@@ -100,8 +110,7 @@ def main() -> None:
             str(sibling_json),
             "--failures",
             args.failures,
-        ],
-        check=True,
+        ]
     )
 
     heldout_payload = json.loads(heldout_json.read_text(encoding="utf-8"))

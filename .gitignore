@@ -18,3 +18,10 @@ EDG-EXP3-distill/tmp_remote_scripts/
 EDG-EXP3-distill/EDG-EXP3-distill/
 EDG-EXP3-distill/results/s06_d3_capped/
 EDG-EXP3-distill/results/s06_capped_arena_eval/
+
+# Launcher runtime state (the ledger is sent back out-of-band, not via git)
+run_state/
+
+# Large regenerable phase-1 training artifacts (eval JSONs and summaries ARE
+# committed; adapters go to a results branch via Git LFS when requested)
+phase1_outputs/*/adapters/

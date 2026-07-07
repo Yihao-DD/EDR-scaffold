@@ -1,0 +1,59 @@
+{
+  "_comment": "Single source of truth for the EDR launcher. Do not edit recipes: they are preregistered (CHANGELOG v1.26). Paths may be adapted to the local machine.",
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "model_cache_dir": null,
+  "split_seed": 20260630,
+  "dataset_seed": 20260702,
+  "recipe_locked": {
+    "rank": 16,
+    "lr": 5e-05,
+    "epochs": 3,
+    "replay_ratio": "2:1",
+    "kl_anchor_lambda": 2.0,
+    "guards": "non-finite skip + grad clipping",
+    "_ruling": "v1.26: ablation arms are recipe-locked to rep2; the v1.0 'same grid' clause is void because A3 itself was not grid-selected."
+  },
+  "phase1": {
+    "seeds": [20260704, 20260705, 20260706],
+    "a5": {
+      "mode": "no_verifier_full",
+      "_mode_comment": "no_verifier_full = teacher outputs over ALL train-share failures, no V filtering at episode or sample level (the honest no-verifier counterfactual). Alternative mode repaired_episodes_only restricts the pool to the 74 rep2 episodes.",
+      "sample_count": 8,
+      "temperature": 0.8,
+      "core_rows": 148,
+      "shard_count": 2
+    },
+    "a6": {
+      "retrievers": ["bm25", "dense"],
+      "k_values": [1, 3],
+      "dense_model": "sentence-transformers/all-MiniLM-L6-v2",
+      "dense_revision": null,
+      "_dense_comment": "dense_revision null = resolve the current commit hash at index-build time and freeze it into the index artifact (v1.26 ruling: model name + revision pinned in the frozen index)."
+    },
+    "a8": {
+      "fractions": [0.25, 0.5]
+    },
+    "a11": {
+      "scramble_seed": 20260707
+    },
+    "step15": {
+      "sample_size": 20
+    }
+  },
+  "phase2": {
+    "seeds": [20260708, 20260709, 20260710, 20260711, 20260712],
+    "m1_manifest": "repro_rep2/MANIFEST.json",
+    "forget_gate": 0.02
+  },
+  "eval": {
+    "heldout_partition": "data/heldout_pass16_partition.json",
+    "sibling_arena": "data/v17_sibling_arena.json",
+    "teacher_heldout_reference": "data/s07_teacher_reanchor_heldout.json",
+    "max_new_tokens": 256
+  },
+  "gpu": {
+    "mode": "auto",
+    "max_lanes": null,
+    "min_free_mem_gb": 20
+  }
+}

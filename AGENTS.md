@@ -1,15 +1,34 @@
 # Project Instructions
 
-`PROJECT_MASTER_PLAN.md` is the only authoritative specification for this workspace.
+`PROJECT_MASTER_PLAN.md` is the only authoritative specification for this
+workspace; `CHANGELOG.md` (latest entry) is the current execution truth.
 
-Before making any project change:
+## If your job is to RUN Phase 1 / Phase 2
 
-1. Read `PROJECT_MASTER_PLAN.md` in full.
-2. Treat all gates, metrics, splits, leakage rules, and anti-self-deception rules in that document as frozen.
-3. Prefer the active workspace `EDG-EXP3-distill/` for new work.
-4. Reuse `EDG-EXP1/` and `EDG-EXP2-struct/` only as dependencies for data, split logic, scaffold outputs, and BFCL evaluation utilities.
-5. Do not follow legacy Gate-1 budget-arbitration instructions unless the user explicitly reactivates that old line.
-6. Use `ops/SERVERS.md` for private server access details; do not rely on external files for project guidance.
+Read `RUNBOOK.md` and use `run.py` — do not hand-run individual scripts:
 
-Legacy documents are archived under `archive/`.
-If a legacy document conflicts with `PROJECT_MASTER_PLAN.md`, the master plan wins.
+```bash
+python3 run.py preflight && python3 run.py phase1 && python3 run.py phase2 && python3 run.py report
+```
+
+Discipline while running (violations invalidate results):
+
+1. All gates, metrics, splits, recipes, seeds, and leakage rules are frozen.
+   `configs/launch.json` recipes are preregistered (CHANGELOG v1.26) — never tune them.
+2. BFCL AST is the only judge; no LLM/GPT judge anywhere.
+3. Never bypass a leakage assert; report it.
+4. Gate reports are mechanical; interpretation requires the project owner.
+5. Negative outcomes are deliverables; ship them unsoftened.
+
+## If your job is to MODIFY the project
+
+1. Read `PROJECT_MASTER_PLAN.md` in full first, then the tail of `CHANGELOG.md`.
+2. Any preregistration-relevant change needs a CHANGELOG entry signed by the owner.
+3. Frozen Phase-0 code and data live in `repro_rep2/` — treat as read-only;
+   new work goes in `phase1/`, `round2/`, or `launcher/` with contract tests
+   in `repro_rep2/tests/`.
+4. Reuse `EDG-EXP1/` / `EDG-EXP2-struct/` as data/code dependencies; do not rewrite them.
+5. `EDG-EXP3-distill/` is the archived Phase-0 working area (audit trail), not the active workspace.
+
+Legacy documents are archived under `archive/`; the master plan wins conflicts.
+`ops/SERVERS.md` (gitignored) holds private server details.

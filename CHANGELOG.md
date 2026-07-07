@@ -785,3 +785,112 @@ Local checks:
   returned `11 passed`.
 - Dry-run walk of the full `round2/README.md` pipeline: every consumed
   intermediate now has a producing step.
+
+## v1.26 - 2026-07-06
+
+### Phase 1 automation, ablation-recipe rulings, unified launcher, and eval_round2/reconcile audit fixes
+
+Timing: recorded before any Phase 1 arm produced data and before any Phase 2
+round-2 GPU run. All rulings below were adjudicated by Ian in-session on
+2026-07-06 and are preregistered relative to every affected number.
+
+Ruling 1 — ablation recipes are LOCKED to rep2; the v1.0 "same grid" clause
+for A5 is void:
+
+- A5/A7/A8 all train at rank 16 / lr 5e-5 / epochs 3 / replay 2:1 /
+  KL lambda 2 / non-finite guards on, single configuration, no grid.
+- Basis: (a) equal-treatment — A3's final clean line (rep2) was itself NOT
+  grid-selected, so granting ablation arms a grid would violate the "no arm
+  gets extra tuning rounds" parity law; (b) ablation semantics — the recipe
+  is a control variable, not an experimental variable; a per-arm grid would
+  vary two factors at once.
+- Physical corollary: the KL anchor fires on replay rows only, so A7
+  (replay = 0) is by definition "rep2 minus replay minus KL" and is labeled
+  as such everywhere. A separate "replay=0 but KL on teaching rows" arm is
+  explicitly NOT added (scope frozen).
+- A8 keeps the 2:1 replay:core ROW RATIO at 25%/50% (the ratio is part of
+  the recipe; the absolute count is not). 100% = A3 artifacts reused.
+- Seeds: 3 per ablation arm, {20260704, 20260705, 20260706}, overlapping
+  A3's block for paired power; every 3-seed number carries PROBE and is
+  upgraded to 5 seeds only if promoted to a headline claim.
+
+Ruling 2 — A6 retrieval-patch specification ("generous to the baseline",
+preregistered before any A6 number):
+
+- Dual retrievers: BM25 (pure-python Okapi, k1=1.5/b=0.75) + one pinned
+  small open embedding model (default sentence-transformers/all-MiniLM-L6-v2;
+  the resolved revision hash is frozen into the retrieval artifact at
+  index-build time). Four cells: {bm25, dense} x k in {1, 3}; best cell
+  enters the context-cost frontier, all four are reported.
+- Query = user instruction + candidate function NAME list (no schemas).
+  Doc = accepted patch full text. No query expansion, no reranker, no LLM
+  anywhere in the retrieval path. Index and per-episode retrieval results
+  are frozen to disk with hashes; evaluation reads the frozen retrieval only.
+- New preregistered observation item: if any A6 cell repairs MORE than A2
+  (full injection), that is recorded separately as direct patch-interference
+  evidence.
+
+Ruling 3 — GPU policy: auto-detect lanes, one whole card per step, serial on
+one card; design record at `docs/GPU_SCHEDULING.md`.
+
+A5 pipeline interpretation (registered for sign-off visibility): mode
+`no_verifier_full` — the episode pool is ALL train-share failures (313) with
+teacher outputs admitted regardless of the AST verdict at both episode and
+sample level, since without a verifier one cannot know which episodes were
+repaired. Parsing stays as the unchanged mechanical pipeline stage;
+unparseable outputs are counted and reported, not trained on. The narrower
+`repaired_episodes_only` variant remains available behind config. Teacher
+re-sampling reuses the Phase 0 deterministic per-episode seeds; Phase 0
+teacher shards could not be reused because they stored successful samples
+only.
+
+New infrastructure (company cold-start = four commands, see RUNBOOK.md):
+
+- `run.py` + `launcher/`: preflight / phase1 / phase2 / status / report;
+  dependency-driven scheduler, one GPU per step, resumable via
+  `run_state/state.json` (done = state + outputs exist), per-step logs,
+  failure isolates only its dependents.
+- `phase1/`: a5_resample_teacher, a5_build_unverified, a6_retrieval
+  (build-index/eval), a7_a8_build, a11_placebo (scramble/eval),
+  step15_sample_nn (material only — human writes conclusions),
+  gate1_report (mechanical tally: paired bootstrap 10k, Wilson CI for
+  placebo, PROBE tags, human-sign-off banner).
+- `launcher/gate2_glue.py`: Gate-2 classification from MEASURED inputs
+  (f2-size from collect output, forget = mean sibling forget over the five
+  M2 seeds, M1 reference from the reconcile forward, retention_2 for every
+  seed from the single teacher-2 forward).
+- Frozen A2 reference added to the package:
+  `repro_rep2/data/s07_teacher_reanchor_heldout.json` (50/158, per-episode).
+- Docs: RUNBOOK.md (execution entry), docs/BASELINES.md (every arm +
+  reference-number provenance), docs/FILEMAP.md, docs/GPU_SCHEDULING.md;
+  README.md/AGENTS.md refreshed from their stale "grid running" state.
+
+Audit fixes (same blind-spot family as v1.23/v1.25 — command renders but
+fails at real runtime; dry-run could not catch these because dry-run never
+executes the spawned process):
+
+- `round2/eval_round2.py`: spawned s07 evaluators now (a) receive
+  PYTHONPATH=repro_rep2 so `scripts.*` imports resolve, (b) get explicit
+  repo-root-correct --failures/--exp2-root/--heldout-partition/--arena
+  paths instead of their own broken defaults, (c) use a new --model-id
+  argument instead of a hardcoded model string.
+- `round2/reconcile.py`: same PYTHONPATH fix for its spawned evaluators;
+  "../EDG-EXP1"/"../EDG-EXP2-struct" defaults (which escaped the repository
+  when run from repo root) corrected to repo-root-relative paths.
+- Regression tests added: `test_eval_round2_dry_run_passes_explicit_eval_paths`
+  plus DAG-integrity tests (every consumed dataset has a producing step in
+  the launcher plan; recipe-lock tests assert the exact hyperparameters and
+  A7's KL=0).
+
+Verification: `python3 -m compileall` clean over phase1/launcher/round2/run.py;
+focused pytest `23 passed` (11 prior + 12 new contract tests);
+`run.py preflight` correct on a no-GPU machine (env failures reported, all
+data/package/LFS checks green, all four dry-run smokes green); full
+`run.py all --dry-run` renders the 65-step plan with correct dependencies.
+
+Numbers sanity from the real (CPU) builders: A5 pool = 313 train-share
+failures; H1 = 39 accepted patches; A7 = 148 rows/0 replay; A8-25% =
+36 core + 72 replay; A8-50% = 74 core + 148 replay; A2 heldout reference =
+50/158.
+
+签字:Ian(2026-07-06,消融配方锁定 + A6 规格 + GPU 策略三项裁决,先于任何消融数据)。

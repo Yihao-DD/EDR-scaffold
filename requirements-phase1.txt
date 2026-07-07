@@ -1,0 +1,2 @@
+# Phase 1 extras (A6 dense retriever). Everything else is in requirements.txt.
+sentence-transformers==4.1.0
