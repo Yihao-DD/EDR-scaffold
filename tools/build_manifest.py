@@ -19,6 +19,14 @@ from edr.io_utils import read_json, sha256_file, write_json  # noqa: E402
 from edr.paths import ADAPTER_DIR, ROUND1_DIR, ROUND1_MANIFEST  # noqa: E402
 
 ADAPTER_SEEDS = [20260703, 20260704, 20260705, 20260706, 20260707]
+ADAPTER_ARMS = {
+    "round1": "main (scaffold-taught), recipe r16/lr5e-5/ep3/replay2:1/KLλ2",
+    "round1_star": "star (self-sampled A4 contrast), recipe r16/lr1e-4/ep3/replay2:1/KLλ2 (per-arm base lr, preregistered symmetric rule)",
+}
+STAR_SEED03_NOTE = (
+    "star seed20260703 is the reconciled recovered-v2 artifact; its dry-run vs final heldout "
+    "evaluation was verified per-episode identical (round-1 audit), unlike the quarantined rep1 line."
+)
 M1_SEED = 20260704
 
 
@@ -43,15 +51,20 @@ def main(argv=None):
 
     adapter_files = []
     previous_adapter_files = {item["path"]: item for item in (previous.get("adapters") or {}).get("files", [])}
-    for seed in ADAPTER_SEEDS:
-        rel = f"round1/seed{seed}/adapter_model.safetensors"
-        local = ADAPTER_DIR / rel
-        if local.exists():
-            adapter_files.append({"path": rel, "seed": seed, "size": local.stat().st_size, "sha256": sha256_file(local)})
-        elif rel in previous_adapter_files:
-            adapter_files.append(previous_adapter_files[rel])
-        else:
-            adapter_files.append({"path": rel, "seed": seed, "size": None, "sha256": None, "note": "hash pending: adapter not present locally"})
+    for arm_dir, arm_note in ADAPTER_ARMS.items():
+        for seed in ADAPTER_SEEDS:
+            rel = f"{arm_dir}/seed{seed}/adapter_model.safetensors"
+            local = ADAPTER_DIR / rel
+            entry = {"path": rel, "arm": arm_dir, "seed": seed}
+            if local.exists():
+                entry.update({"size": local.stat().st_size, "sha256": sha256_file(local)})
+            elif rel in previous_adapter_files:
+                entry = previous_adapter_files[rel]
+            else:
+                entry.update({"size": None, "sha256": None, "note": "hash pending: adapter not present locally"})
+            if arm_dir == "round1_star" and seed == 20260703:
+                entry["provenance_note"] = STAR_SEED03_NOTE
+            adapter_files.append(entry)
 
     manifest = {
         "probe": "round1_manifest",
@@ -61,7 +74,7 @@ def main(argv=None):
             "reference": {"expected_heldout_repair_count": 51, "expected_sibling_success_count": 292},
             "rule": "median heldout repair over the five round-1 seeds; ties take the smaller seed",
         },
-        "adapters": {"hf_repo": hf_repo, "files": adapter_files},
+        "adapters": {"hf_repo": hf_repo, "arms": ADAPTER_ARMS, "files": adapter_files},
         "files": files,
     }
     write_json(ROUND1_MANIFEST, manifest)

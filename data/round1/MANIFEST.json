@@ -11,36 +11,81 @@
   },
   "adapters": {
     "hf_repo": null,
+    "arms": {
+      "round1": "main (scaffold-taught), recipe r16/lr5e-5/ep3/replay2:1/KLλ2",
+      "round1_star": "star (self-sampled A4 contrast), recipe r16/lr1e-4/ep3/replay2:1/KLλ2 (per-arm base lr, preregistered symmetric rule)"
+    },
     "files": [
       {
         "path": "round1/seed20260703/adapter_model.safetensors",
+        "arm": "round1",
         "seed": 20260703,
         "size": 161533192,
         "sha256": "6c69d3f52474dd8bec16ad8df2ea2366538fe87a25d5bb053261d3eb7459f879"
       },
       {
         "path": "round1/seed20260704/adapter_model.safetensors",
+        "arm": "round1",
         "seed": 20260704,
         "size": 161533192,
         "sha256": "c3afb185a6a32480a55e678599b3bebc8b8899ed935d620605b00ab3c3e62683"
       },
       {
         "path": "round1/seed20260705/adapter_model.safetensors",
+        "arm": "round1",
         "seed": 20260705,
         "size": 161533192,
         "sha256": "fa1ef04a60bdbc5ed9f5b7ea54a0bef5c5e556656868f16e0ec824a1ca3fd8a6"
       },
       {
         "path": "round1/seed20260706/adapter_model.safetensors",
+        "arm": "round1",
         "seed": 20260706,
         "size": 161533192,
         "sha256": "ddaf2d2fea9f56a097ce55981910d6154b057863d2b9ba4e3af1cf08bc67bb7f"
       },
       {
         "path": "round1/seed20260707/adapter_model.safetensors",
+        "arm": "round1",
         "seed": 20260707,
         "size": 161533192,
         "sha256": "65e1d6928ac27e3ef2a8e05c1481950d4a616956d39abcafd6ecef220d9cdf89"
+      },
+      {
+        "path": "round1_star/seed20260703/adapter_model.safetensors",
+        "arm": "round1_star",
+        "seed": 20260703,
+        "size": 161533192,
+        "sha256": "4efa8f3b4c56b3da9133484f49a80eb9dcf39caae33800a6cf13bc1dc9fe6e69",
+        "provenance_note": "star seed20260703 is the reconciled recovered-v2 artifact; its dry-run vs final heldout evaluation was verified per-episode identical (round-1 audit), unlike the quarantined rep1 line."
+      },
+      {
+        "path": "round1_star/seed20260704/adapter_model.safetensors",
+        "arm": "round1_star",
+        "seed": 20260704,
+        "size": 161533192,
+        "sha256": "8e53f1bf41a8f6dfe217ba3aa0d90757cbc421bd5cc9a3b929ec740747e4e869"
+      },
+      {
+        "path": "round1_star/seed20260705/adapter_model.safetensors",
+        "arm": "round1_star",
+        "seed": 20260705,
+        "size": 161533192,
+        "sha256": "ea04810acac16ae37e9ac2433c66de23d8465fd4087e0ae19059b71d9c1fd38b"
+      },
+      {
+        "path": "round1_star/seed20260706/adapter_model.safetensors",
+        "arm": "round1_star",
+        "seed": 20260706,
+        "size": 161533192,
+        "sha256": "17a7e0a540a5fa9c7b39030eb696737bbf42b2254c49f841681738b6c5a8b2be"
+      },
+      {
+        "path": "round1_star/seed20260707/adapter_model.safetensors",
+        "arm": "round1_star",
+        "seed": 20260707,
+        "size": 161533192,
+        "sha256": "d1ac7310684f74a813d688b8198f5877c7cc75dd46550d79ebec3c6c3e86bc0e"
       }
     ]
   },
@@ -54,6 +99,11 @@
       "path": "distill_core.jsonl",
       "size": 682692,
       "sha256": "b95e12ae75da19df8460959e0d7f04670e42afbe0a486bc2e254b2f5b70a706e"
+    },
+    {
+      "path": "distill_star_train.jsonl",
+      "size": 1893504,
+      "sha256": "366b3ce2b7f22dd91e1ac36ba2937b85f628a65bed21b94b3fb20f03f4239e06"
     },
     {
       "path": "distill_train.jsonl",
@@ -96,54 +146,109 @@
       "sha256": "7e861cd64e32c6f28729f6f6efc9e8932200079feb768801b9acac2ac90df25a"
     },
     {
-      "path": "reference_evals/seed20260703/heldout.json",
+      "path": "pass16_success_trajectories.jsonl",
+      "size": 119300,
+      "sha256": "4dff01eb6b4068d5c595646079da088e5657b9d281d9e5ac3b6298b82df35d5a"
+    },
+    {
+      "path": "reference_evals/main/seed20260703/heldout.json",
       "size": 143893,
       "sha256": "e26b6990e51e9c5a5afacb50714a20174c37bbbcfdf077478ec255adef55ab1a"
     },
     {
-      "path": "reference_evals/seed20260703/sibling.json",
+      "path": "reference_evals/main/seed20260703/sibling.json",
       "size": 369688,
       "sha256": "5dbb77aeb777f1d7813f5c53818923696391c15b038e7e3839ec427788fe48cc"
     },
     {
-      "path": "reference_evals/seed20260704/heldout.json",
+      "path": "reference_evals/main/seed20260704/heldout.json",
       "size": 143469,
       "sha256": "375660513a8780b2ca8091d423071be65252ba8ee5ab0ccbdccd1cbc21e173f2"
     },
     {
-      "path": "reference_evals/seed20260704/sibling.json",
+      "path": "reference_evals/main/seed20260704/sibling.json",
       "size": 370058,
       "sha256": "dce732c1712398bd864b936968dbd9c0dbfef12e463b55dffb95053cdd78c0ed"
     },
     {
-      "path": "reference_evals/seed20260705/heldout.json",
+      "path": "reference_evals/main/seed20260705/heldout.json",
       "size": 142596,
       "sha256": "1630799b6b5ee605ebb8acf175bf8e03ecc568c348918a5ba8b56c60d5bc805e"
     },
     {
-      "path": "reference_evals/seed20260705/sibling.json",
+      "path": "reference_evals/main/seed20260705/sibling.json",
       "size": 369936,
       "sha256": "ae1b76f326971da8531de1d69d1563d6c9176e68a2921f1db0c031ace481fe70"
     },
     {
-      "path": "reference_evals/seed20260706/heldout.json",
+      "path": "reference_evals/main/seed20260706/heldout.json",
       "size": 145522,
       "sha256": "3ba76ee938342bbdd85cd585ce875d1d825ba29ff99d58f7200c97fb558c5389"
     },
     {
-      "path": "reference_evals/seed20260706/sibling.json",
+      "path": "reference_evals/main/seed20260706/sibling.json",
       "size": 369329,
       "sha256": "a67325f416744e7968fbd4ff5803e90389d151cb3bbde2cfa3c11bdf23e51999"
     },
     {
-      "path": "reference_evals/seed20260707/heldout.json",
+      "path": "reference_evals/main/seed20260707/heldout.json",
       "size": 142881,
       "sha256": "286eae38ec35cd1487fb19ca00ac2bf4947b99da8381cbd3a629b4f4994f8c7f"
     },
     {
-      "path": "reference_evals/seed20260707/sibling.json",
+      "path": "reference_evals/main/seed20260707/sibling.json",
       "size": 369323,
       "sha256": "184f0bdf1e55d248dfe09f4790902e6b0fda239c775606ef5388424d81597c40"
+    },
+    {
+      "path": "reference_evals/star/seed20260703/heldout.json",
+      "size": 141551,
+      "sha256": "3ca6f31396933df1463ffa22ef4f2d1fdac11cbb3708e99d3dcbaf13c0e1e96a"
+    },
+    {
+      "path": "reference_evals/star/seed20260703/sibling.json",
+      "size": 367260,
+      "sha256": "949bbebadcc77082a1168aeea8011624768e686c5c41df10921de9d9f81799dd"
+    },
+    {
+      "path": "reference_evals/star/seed20260704/heldout.json",
+      "size": 140922,
+      "sha256": "afc487d3d8c36b9dd4cca45b223f4c2dc36cd29a99966bab275514d0fad23c8c"
+    },
+    {
+      "path": "reference_evals/star/seed20260704/sibling.json",
+      "size": 368396,
+      "sha256": "089a7eafa5f627f28de5f6c851740ba9d5f998b048fbccf8ff8e11af43f34732"
+    },
+    {
+      "path": "reference_evals/star/seed20260705/heldout.json",
+      "size": 139992,
+      "sha256": "6e66eff86d06419e2c62a400255eda4c4835653a60454846346f705e178ab377"
+    },
+    {
+      "path": "reference_evals/star/seed20260705/sibling.json",
+      "size": 369915,
+      "sha256": "124750e23c65512159ac9787caa9fddabaa9f40ab8ee35254bbdbbea1f3a88b9"
+    },
+    {
+      "path": "reference_evals/star/seed20260706/heldout.json",
+      "size": 141986,
+      "sha256": "9575fb6e4405cb23cf4eb7a36b6bc2e83d69f00403d208ef699f202e7aaba430"
+    },
+    {
+      "path": "reference_evals/star/seed20260706/sibling.json",
+      "size": 372062,
+      "sha256": "26950259fa3bdff68785ef9aa151ef6c1ccb1c781cf5bc8dbbe981770e0c3b93"
+    },
+    {
+      "path": "reference_evals/star/seed20260707/heldout.json",
+      "size": 142158,
+      "sha256": "1919bdf625f5c96a966b751468d0d8e772751832f5efe9c882dcee2c7185ae7d"
+    },
+    {
+      "path": "reference_evals/star/seed20260707/sibling.json",
+      "size": 368559,
+      "sha256": "a528b3cb33328e531da843e2f1133852fbf1501892c28df2e2b271f16e06726f"
     },
     {
       "path": "sibling_arena.json",

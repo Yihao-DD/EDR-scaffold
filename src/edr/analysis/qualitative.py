@@ -18,7 +18,7 @@ from edr.paths import ABLATION_OUT, REFERENCE_EVALS
 
 
 def collect(args, config):
-    seed_dirs = sorted(Path(REFERENCE_EVALS).glob("seed*"))
+    seed_dirs = sorted((Path(REFERENCE_EVALS) / "main").glob("seed*"))
     if not seed_dirs:
         raise FileNotFoundError(f"no reference evaluations under {REFERENCE_EVALS}")
 

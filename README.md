@@ -84,23 +84,55 @@ heldout 158 个失败的分区:**scaffold-only 47 / sampling-rescuable 10 / neit
 - **KL 锚(λ=2,只打在 replay 行上)**:`lora.py` 的 `kl_anchor_loss`。为什么:第一轮网格监控发现 repair 和 forget 是**同一场分布移动的两岸**——剂量越大,越多低先验失败被推过正确边界,同时越多低 margin 原成功被推向最近的错误邻居。replay 只是重复正确答案,KL 锚直接约束输出分布不要离 base 太远,是对"margin 侵蚀"病因最贴的配方。训练含非有限值防护(nan loss/grad 跳批),因为第一轮真的出过 nan。
 - **最终配方(锁定)**:rank 16 / lr 5e-5 / 3 epochs / replay 2:1 / KL λ2。这不是网格搜出来的最优点——是遗忘闸约束下走完预注册升级路径后的代表点,这个"如何选出"的历史正是消融臂必须锁配方的原因(§4)。
 
-### 3.3 Retire 与评估
+### 3.3 对照臂 STaR(A4):C2 的另一半
 
-代码:`src/edr/evaluation/heldout.py`(主考场,含 pass@16 分层、2×2 泛化格、teacher 一致率)、`src/edr/evaluation/sibling.py` + `evaluation/parallel_arena.py`(回归面,含多调用回溯匹配判定)。
+代码:数据构建与 main 同一条管线(`round1_build.py build-datasets` 同时产出两臂,`--star-output`);训练器、评估器与 main **完全同一套**——对照臂不允许有自己的代码路径,否则差异无法归因。
 
-一切主评估在 **M₁ 无任何 patch** 状态下进行(Wipe Test)。对照臂 STaR:同样的训练器、同样的行数(148,配平方向永远向下)、但数据换成 base 自己 pass@16 碰对的轨迹——它只覆盖 31 个 unique episode,这不是不公平,**自采样的内生覆盖限制正是 C2 要测的现象**(行数配平的是训练预算,不是修改被测变量)。
+STaR 蒸馏的是 base 自己 pass@16 碰对的轨迹(原料冻结于 `data/round1/pass16_success_trajectories.jsonl`):同样的 444 行预算配平(148 core + 296 replay,冻结于 `data/round1/distill_star_train.jsonl`),配方唯一的差别是 lr=1e-4(预注册对称规则:各臂用**自己**网格 repair 最高点的 base lr,main 5e-5 / STaR 1e-4——不给任何一臂借用对方的调参结果;可在两臂 adapter 的 `train_metadata.json` 里核对)。core 只覆盖 **31 个 unique episode**(main 是 74)——这不是不公平,**自采样的内生覆盖限制正是 C2 要测的现象**(行数配平的是训练预算,不是修改被测变量;配平方向永远向下)。五 seed 评估结果冻结于 `data/round1/reference_evals/star/`。
 
-### 3.4 第一轮结果(全部冻结,`data/round1/reference_evals/`)
+### 3.4 Retire 与评估
+
+代码:`src/edr/evaluation/heldout.py`(主考场,含 pass@16 分层、2×2 泛化格、teacher 一致率)、`src/edr/evaluation/sibling.py` + `evaluation/parallel_arena.py`(回归面,含多调用回溯匹配判定)、`src/edr/evaluation/teacher_forward.py`(teacher 分母:M₀+H₁ 在 heldout 前向,复现 50/158)。
+
+一切主评估在 **M₁ 无任何 patch** 状态下进行(Wipe Test)。retention 的分母不是拍的——是 teacher 在同一考场的实测前向,冻结于 `data/round1/teacher_heldout_reference.json`。
+
+### 3.5 第一轮结果(全部冻结,`data/round1/reference_evals/{main,star}/`)
 
 | 量 | 结果 | 判读 |
 |---|---|---|
-| heldout 修复(5 seeds) | [54, 51, 46, 58, 43],均值 **50.4/158** | — |
+| main heldout 修复(5 seeds) | [54, 51, 46, 58, 43],均值 **50.4/158** | — |
+| STaR heldout 修复(5 seeds) | [39, 36, 24, 40, 52],均值 **38.2/158** | — |
 | **retention(C1 主指标)** | 50.4 / teacher 50 = **≈1.008** | 卸载 scaffold 后学生≈teacher,内化成立,远超 0.60 的"强信号"预注册线 |
-| **C2(scaffold-only 47 层)** | 教学蒸馏 − 自采样蒸馏 = **+0.153**,95% CI **[+0.064, +0.251]** | CI 不含 0,优势恰好集中在采样不可达层——C2 成立 |
-| **forget 硬闸(≤0.02)** | sibling forget = **0.045** | **未通过**。诚实负结果:本配方族能创造修复能力,但尚未把既有能力损伤压到部署级 |
+| **C2(scaffold-only 47 层)** | main − STaR = **+0.1532**,95% CI **[+0.064, +0.251]** | CI 不含 0,优势恰好集中在采样不可达层——C2 成立 |
+| **forget 硬闸(≤0.02)** | main sibling forget = **0.045**(STaR **0.033**) | **两臂都未通过**。诚实负结果:本配方族能创造修复能力,但尚未把既有能力损伤压到部署级 |
 | 指定 M1 | seed 20260704(heldout 51/158,sibling 292/300) | 规则:五 seed heldout 修复取中位数,并列取小 seed(`data/round1/MANIFEST.json`) |
 
+**这些数字不是"仓库外的历史"——在本仓库内一条 CPU 命令即可重算**:
+
+```bash
+python3 -m edr.analysis.c2
+# all_158:          +0.0772  CI [+0.034, +0.122]  excludes 0: True
+# scaffold_only_47: +0.1532  CI [+0.060, +0.251]  excludes 0: True   <- C2 裁决层
+# neither_101:      +0.0515  CI [+0.002, +0.105]  excludes 0: True
+```
+
+点估计与冻结记录逐位一致(纯配对算术),CI 端点在 bootstrap seed 容差内——且这条复现被测试钉死(`test_c2_headline_is_recomputable_from_shipped_evals`),数据或代码任何一边漂移,CI 就红。
+
 所以论文叙事是三件事同时成立:**高保留内化 + scaffold-only 机制优势 + 无回归点尚未找到**——第三件事催生了 §4 的 A7/A8,前两件事需要 §4 的 A5/A6/A11 来封死替代解释。
+
+### 3.6 第一轮已验证代码全景(每步:代码 → 冻结产物 → 复算/重跑)
+
+| 第一轮步骤 | 本仓库代码(与当年验证一致) | 冻结产物 | 复算/重跑命令 |
+|---|---|---|---|
+| Evolve loop(H₁ 进化) | `scaffold/loop.py` + `patches.py` + `patch_generation.py` | `evolution_h1.json`(39 patches) | `python -m edr.scaffold.loop --input data/round1/base_failures.json ...`(round-1 复跑需去掉 M1 约束,见 reproduce.md §3) |
+| teacher T=0 + pass@16 分区 | `data/round1_build.py run-shard` + `scaffold/teacher.py` | `heldout_pass16_partition.json`、`train_val_pass16_partition.json` | reproduce.md §3 ① |
+| teacher T=0.8 增广 | `round1_build.py sample-teacher-shard` | (进入蒸馏集) | reproduce.md §3 ② |
+| 蒸馏集构建(main + STaR 双臂) | `round1_build.py build-datasets` + `data/distill.py` | `distill_core/train.jsonl`、`distill_star_train.jsonl`、`pass16_success_trajectories.jsonl` | reproduce.md §3 ③ |
+| LoRA 训练(两臂同一训练器) | `training/lora.py` | 5+5 adapters(HF Hub,`tools/fetch_adapters.py`) | reproduce.md §3 ④ |
+| heldout / sibling 评估 | `evaluation/heldout.py` / `sibling.py` | `reference_evals/{main,star}/seed*/` | reproduce.md §3 ④ |
+| teacher 分母前向 | `evaluation/teacher_forward.py` | `teacher_heldout_reference.json`(50/158) | `python -m edr.evaluation.teacher_forward` |
+| C2 配对 bootstrap | `analysis/c2.py` + `analysis/stats.py` | (由上两行派生) | `python -m edr.analysis.c2`(纯 CPU) |
+| 划分/泄漏/判定不变量 | `data/splits.py` / `leakage.py` / `verifier/` | episode 表 + MANIFEST | `pytest tests/test_frozen_protocol.py` |
 
 ## 4. 消融与对照实验:为什么需要、怎么设计、怎么跑
 
@@ -265,6 +297,8 @@ python3 scripts/run.py report            # 汇总 REPORT.md
 | A11 placebo | `src/edr/evaluation/placebo.py` | scramble / eval | `test_a11_*` |
 | round2 管线(8 步) | `src/edr/round2/*.py` | 见 §5 表 | `test_round2_dag_*` |
 | 统计(bootstrap/Wilson) | `src/edr/analysis/stats.py` | `paired_bootstrap` / `wilson_ci` | — |
+| C2 头号数字重算 | `src/edr/analysis/c2.py` | CLI(纯 CPU) | `test_c2_headline_is_recomputable_*` |
+| teacher 分母前向(M0+H1) | `src/edr/evaluation/teacher_forward.py` | CLI | — |
 | Gate 机械对号 | `src/edr/analysis/gate1.py` / `gate2.py` | CLI | `test_gate2_classifier_categories` |
 | 调度器(车道/续跑/DAG) | `src/edr/runner/` | `scheduler.py` / `steps.py` | `test_scheduler.py`(3 项实测) |
 

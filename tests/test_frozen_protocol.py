@@ -88,12 +88,45 @@ def test_teacher_reference_is_50_of_158():
     assert ref["stats"]["total"] == 158
 
 
-def test_reference_evals_are_the_five_frozen_seeds():
-    seeds = sorted(p.name for p in (REPO / "data/round1/reference_evals").glob("seed*"))
-    assert seeds == [f"seed{s}" for s in (20260703, 20260704, 20260705, 20260706, 20260707)]
-    repairs = [
-        read_json(REPO / f"data/round1/reference_evals/seed{s}/heldout.json")["summary"]["heldout_repair"]
-        for s in (20260703, 20260704, 20260705, 20260706, 20260707)
-    ]
-    assert repairs == [54, 51, 46, 58, 43]  # frozen round-1 five-seed results
-    assert abs(sum(repairs) / 5 - 50.4) < 1e-9
+def test_reference_evals_are_the_five_frozen_seeds_both_arms():
+    for arm, expected_repairs in (("main", [54, 51, 46, 58, 43]), ("star", [39, 36, 24, 40, 52])):
+        seeds = sorted(p.name for p in (REPO / f"data/round1/reference_evals/{arm}").glob("seed*"))
+        assert seeds == [f"seed{s}" for s in (20260703, 20260704, 20260705, 20260706, 20260707)]
+        repairs = [
+            read_json(REPO / f"data/round1/reference_evals/{arm}/seed{s}/heldout.json")["summary"]["heldout_repair"]
+            for s in (20260703, 20260704, 20260705, 20260706, 20260707)
+        ]
+        assert repairs == expected_repairs, f"{arm} frozen five-seed heldout repairs drifted"
+    # frozen means: main 50.4/158, star 38.2/158
+    assert abs(sum([54, 51, 46, 58, 43]) / 5 - 50.4) < 1e-9
+    assert abs(sum([39, 36, 24, 40, 52]) / 5 - 38.2) < 1e-9
+
+
+def test_star_train_set_is_row_matched_with_31_unique_episodes():
+    from edr.io_utils import read_jsonl
+
+    rows = read_jsonl(REPO / "data/round1/distill_star_train.jsonl")
+    core = [row for row in rows if row.get("source") != "replay_base_success"]
+    replay = [row for row in rows if row.get("source") == "replay_base_success"]
+    assert len(rows) == 444 and len(core) == 148 and len(replay) == 296
+    assert len({row["episode_id"] for row in core}) == 31  # self-sampling's intrinsic coverage limit — the C2 phenomenon
+
+
+def test_c2_headline_is_recomputable_from_shipped_evals():
+    """The round-1 C2 number must be reproducible inside this repo.
+
+    Point estimate is exact arithmetic: scaffold-only 47 stratum,
+    main 24.6/47 − star 17.4/47 = 7.2/47 ≈ +0.1532. The CI must exclude zero
+    and land near the frozen interval [+0.064, +0.251] (bootstrap-seed
+    tolerance ±0.02 on each endpoint).
+    """
+
+    from edr.analysis.c2 import compute
+
+    result = compute()
+    so = next(ci for name, ci in result["strata"].items() if name.startswith("scaffold_only"))
+    assert so["n"] == 47
+    assert abs(so["mean_diff"] - 7.2 / 47) < 1e-9
+    assert so["ci_excludes_zero"] is True
+    assert abs(so["ci95"][0] - 0.064) < 0.02
+    assert abs(so["ci95"][1] - 0.251) < 0.02

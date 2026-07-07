@@ -60,7 +60,23 @@ python3 -m edr.evaluation.heldout --model-id Qwen/Qwen2.5-7B-Instruct \
     --output outputs/round1_build/heldout_seed20260704.json
 ```
 
-对账:与 `data/round1/reference_evals/seed20260704/heldout.json` 的 summary 比对(GPU 硬件差异可能带来 ±1 episode 级波动;`scripts/reconcile.py` 的容差即为此设)。
+```bash
+# 5) STaR 对照臂(A4)同法重训——同一训练器、同一评估器,只换数据。
+#    注意 lr=1e-4:预注册对称规则是各臂用自己网格 repair 最高点的 base lr
+#    (main 5e-5 / STaR 1e-4),两臂 adapter 的 train_metadata.json 均可核对:
+python3 -m edr.training.lora --model-id Qwen/Qwen2.5-7B-Instruct \
+    --dataset data/round1/distill_star_train.jsonl \
+    --output-dir outputs/round1_build/adapters/star_seed20260704 \
+    --rank 16 --lr 1e-4 --epochs 3 --seed 20260704 --kl-anchor-lambda 2.0
+
+# 6) teacher 分母前向(复现 50/158):
+python3 -m edr.evaluation.teacher_forward
+
+# 7) C2 头号数字重算(纯 CPU,直接对冻结参考评估做配对 bootstrap):
+python3 -m edr.analysis.c2
+```
+
+对账:与 `data/round1/reference_evals/main/seed20260704/heldout.json`(STaR 对 `reference_evals/star/`)的 summary 比对(GPU 硬件差异可能带来 ±1 episode 级波动;`scripts/reconcile.py` 的容差即为此设);C2 重算的点估计应与 §3.5 表逐位一致。
 
 ## 4. 溯源链
 

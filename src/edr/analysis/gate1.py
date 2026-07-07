@@ -111,8 +111,8 @@ def main(argv=None):
         "banner": "MECHANICAL TALLY ONLY — interpretation and gate verdicts require human sign-off.",
     }
 
-    reference_heldout = load_glob("seed*/heldout.json", REFERENCE_EVALS)
-    reference_sibling = load_glob("seed*/sibling.json", REFERENCE_EVALS)
+    reference_heldout = load_glob("main/seed*/heldout.json", REFERENCE_EVALS)
+    reference_sibling = load_glob("main/seed*/sibling.json", REFERENCE_EVALS)
     report["round1_main_reference"] = {
         "heldout": heldout_summary(reference_heldout),
         "sibling": sibling_summary(reference_sibling),

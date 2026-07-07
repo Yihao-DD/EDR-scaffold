@@ -40,7 +40,7 @@ HELDOUT_PARTITION = ROUND1_DIR / "heldout_pass16_partition.json"
 TRAINVAL_PARTITION = ROUND1_DIR / "train_val_pass16_partition.json"
 TEACHER_HELDOUT_REFERENCE = ROUND1_DIR / "teacher_heldout_reference.json"
 SIBLING_ARENA = ROUND1_DIR / "sibling_arena.json"
-REFERENCE_EVALS = ROUND1_DIR / "reference_evals"   # frozen A3 (round-1) heldout/sibling evals, 5 seeds
+REFERENCE_EVALS = ROUND1_DIR / "reference_evals"   # frozen round-1 evals: main/ (scaffold-taught) + star/ (self-sampled), 5 seeds each
 ROUND1_MANIFEST = ROUND1_DIR / "MANIFEST.json"
 
 
