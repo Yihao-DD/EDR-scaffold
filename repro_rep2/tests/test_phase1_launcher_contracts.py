@@ -16,6 +16,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
 from launcher.steps import phase1_steps, phase2_steps  # noqa: E402
+from phase1.a5_build_unverified import select_core_episode_uniform  # noqa: E402
 from phase1.a6_retrieval import BM25, build_query, top_k  # noqa: E402
 from phase1.a11_placebo import scramble_text  # noqa: E402
 from phase1.common import assert_training_disjoint, load_config, replay_rows_from_capped  # noqa: E402
@@ -117,6 +118,29 @@ def test_a5_builder_fails_closed_on_wrong_shard_kind(tmp_path):
     )
     assert rc.returncode != 0
     assert "a5_shard_kind" in (rc.stderr + rc.stdout)
+
+
+def test_a5_core_selection_is_episode_uniform_t0_first():
+    """v1.27 ruling: hash-ordered episodes each contribute their T=0 row first;
+    deeper sampled rows fill only after every episode contributed one."""
+
+    rows = []
+    for episode in ("e1", "e2", "e3"):
+        rows.append({"episode_id": episode, "source": "teacher_unverified_t08", "sample_index": 0})
+        rows.append({"episode_id": episode, "source": "teacher_unverified_t0", "sample_index": None})
+    core = select_core_episode_uniform(rows, 3, seed=1)
+    assert len(core) == 3
+    assert {row["episode_id"] for row in core} == {"e1", "e2", "e3"}, "budget=n_episodes must cover every episode once"
+    assert all(row["source"].endswith("_t0") for row in core), "first pass must take the T=0 row"
+    deeper = select_core_episode_uniform(rows, 5, seed=1)
+    assert sum(1 for row in deeper if row["source"].endswith("_t0")) == 3
+    assert sum(1 for row in deeper if row["source"].endswith("_t08")) == 2, "depth-1 fills only after all episodes contributed"
+    assert select_core_episode_uniform(rows, 3, seed=1) == core, "deterministic given the same seed"
+
+
+def test_a11_config_has_three_archived_scramble_seeds():
+    seeds = CONFIG["phase1"]["a11"]["scramble_seeds"]
+    assert len(seeds) == 3 and len(set(seeds)) == 3, "v1.27: three distinct archived scramble seeds"
 
 
 def test_replay_block_is_the_frozen_296():

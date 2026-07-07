@@ -34,7 +34,8 @@
       "fractions": [0.25, 0.5]
     },
     "a11": {
-      "scramble_seed": 20260707
+      "scramble_seeds": [20260707, 20260717, 20260727],
+      "_ruling": "v1.27: three archived scramble seeds; an episode counts as placebo-rescuable if ANY seed's scramble passes V (union — generous to placebo = conservative for us). Main surface = heldout 158; train/val reported as reference."
     },
     "step15": {
       "sample_size": 20

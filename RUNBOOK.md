@@ -105,12 +105,14 @@ the evolve loop and 5 trainings). One card roughly doubles it.
 Phase 1 is DONE when `python3 run.py status` shows every `p1.*` step `done`
 and both `phase1_outputs/gate1_report.md` and `.json` exist. Spot-check:
 
-- `phase1_outputs/a5/a5_dataset_summary.json` — `total_rows` = 444 and
+- `phase1_outputs/a5/a5_dataset_summary.json` — `total_rows` = 444,
+  `core_unique_episodes` ≈ 148 (episode-uniform balance, v1.27) and
   `core_ast_fail_rows` > 0 (the arm is meaningless if no unverified rows made it in);
 - `phase1_outputs/a6/a6_summary.json` — 4 cells (`bm25:k1/k3`, `dense:k1/k3`),
   each with `repair` and `ctx_tokens_mean`, plus a frozen retrieval artifact
   with the dense model revision pinned;
-- `phase1_outputs/a11/a11_summary.json` — three surfaces with `placebo_repair`.
+- `phase1_outputs/a11/a11_summary.json` — three surfaces × three scramble
+  seeds with per-seed and union `placebo_repair` (heldout is the main surface).
 
 Phase 2 is DONE when every `p2.*` step is `done`, `p2.reconcile_m1` printed
 `ACCEPTED` in its log (this is the company acceptance gate: M1 reproduces

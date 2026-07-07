@@ -67,6 +67,22 @@ answers "is the scaffold effect just prompt noise".
   upgraded to 5 seeds only if it becomes a headline claim.
 - Differences are judged by episode-level paired bootstrap CI (10k resamples).
   Point estimates and "looks better" are not conclusions.
+- **Adjudication-field principle (v1.27)**: each arm's verdict field follows
+  the scope of the hypothesis it tests. A5's hypothesis (verification signal)
+  acts on ALL training data → adjudicated on heldout all-158; C2's hypothesis
+  is stratum-specific → adjudicated on scaffold-only 47.
+- A5 balance (v1.27): core = 148 rows by EPISODE-LEVEL UNIFORM downsampling
+  over the full 313-failure pool (T=0 row first per episode); rows AND unique
+  episodes both reported; the composite effect (more episodes, shallower
+  depth, wrong outputs) is the finding and is not decomposed. Preregistered
+  asymmetric branch: all-158 tied but scaffold-only significantly worse →
+  "verifier necessity stratum-limited" (Gate-1 partial).
+- A11 (v1.27): three archived scramble seeds; union over seeds (generous to
+  placebo); main surface heldout 158, train/val reference-only; Wilson 95%
+  lower bound > 0 → deduction fires with the POINT net gain (CI attached),
+  else "≈0" and the perturbation explanation is excluded.
+- A8 (v1.27): 100% point = A3's original 5 seeds unshaved; 25%/50% at 3
+  seeds; every curve point annotated with its seed count.
 - Regression hard gate: `forget ≤ 0.02` on the sibling arena. Phase 0's A3
   did NOT pass it (0.045) — that honest negative is part of the frozen
   result; Phase 1 arms are reported against the same gate.
@@ -74,8 +90,7 @@ answers "is the scaffold effect just prompt noise".
   A3 → verifier necessity established; A5 not worse → honest finding with
   wording downgrade. A6 approaching A3 at low context → the frontier's real
   shape. Any A6 cell repairing MORE than A2's full injection → recorded as
-  patch-interference evidence. A11 placebo ≈ 0 → perturbation explanation
-  excluded; > 0 → mechanical deduction of the net teaching gain.
+  patch-interference evidence.
 
 ## 4. Reference numbers you can check against
 

@@ -1,18 +1,30 @@
 #!/usr/bin/env python3
 """A5 step 2: build the unverified-distilled dataset (AST filter OFF).
 
-Pipeline parity with A3 (single-variable isolation, v1.26 ruling):
+Pipeline parity with A3 (single-variable isolation, v1.26/v1.27 rulings):
 - same prompt construction (original no-patch input),
 - same canonical output serialization,
 - same dedupe rule (episode_id, source, output),
-- same deterministic downsample, same replay block (the frozen 296 rep2
-  replay rows, verbatim), same row budget (148 core rows).
+- same replay block (the frozen 296 rep2 replay rows, verbatim),
+- same row budget (148 core rows, ±10% parity law).
 The ONLY change: samples are admitted regardless of the AST verdict.
+
+Balance procedure (v1.27 ruling): EPISODE-LEVEL UNIFORM downsampling over the
+full 313-episode pool — episodes are hash-ordered, each contributes its T=0
+row first, deeper (T=0.8) rows fill only when episodes run out. Rows AND
+unique episodes are both reported. Sampling from A3's 74-episode pool is
+forbidden: episode selection is itself a product of the verifier, and A5 is
+the no-verifier counterfactual. Expected (preregistered) consequence: A5 has
+~148 unique episodes vs A3's 74, shallower per-episode depth, and wrong
+outputs mixed in — the COMPOSITE effect is the honest cost of the
+no-verifier world and is not decomposed (decomposition belongs to the
+config-gated narrow variant, a rebuttal tool, not a headline arm).
 
 Unparseable raw outputs cannot be serialized by the shared pipeline
 (output_text requires a prediction); they are counted and reported, not
-trained on. This keeps parsing — a mechanical pipeline stage — fixed, and
-switches off only the verifier. Registered in CHANGELOG v1.26.
+trained on. Parsing is a mechanical pipeline stage, not the verifier:
+"A5-unverified" means NOT CORRECTNESS-VERIFIED, not unparsed. Registered in
+CHANGELOG v1.26/v1.27.
 
 CPU-only. Consumes a5_teacher_all_shard_*.json from a5_resample_teacher.py.
 """
@@ -20,12 +32,12 @@ CPU-only. Consumes a5_teacher_all_shard_*.json from a5_resample_teacher.py.
 from __future__ import annotations
 
 import argparse
+import hashlib
 from pathlib import Path
 
 from phase1.common import (
     add_common_args,
     assert_training_disjoint,
-    deterministic_sample,
     load_config,
     load_inputs,
     load_probe_module,
@@ -34,6 +46,41 @@ from phase1.common import (
     write_json,
     write_jsonl,
 )
+
+
+def select_core_episode_uniform(rows, budget, seed):
+    """v1.27 balance: hash-order episodes; each contributes its T=0 row first;
+    deeper (sampled) rows are used only after every episode contributed one."""
+
+    by_episode = {}
+    for row in rows:
+        by_episode.setdefault(row["episode_id"], []).append(row)
+    for items in by_episode.values():
+        items.sort(
+            key=lambda row: (
+                0 if row["source"].endswith("_t0") else 1,
+                row.get("sample_index") if row.get("sample_index") is not None else 1 << 30,
+            )
+        )
+    order = sorted(
+        by_episode,
+        key=lambda episode_id: hashlib.sha256(f"{seed}:a5_core:{episode_id}".encode("utf-8")).hexdigest(),
+    )
+    core = []
+    depth = 0
+    while len(core) < budget:
+        added = False
+        for episode_id in order:
+            items = by_episode[episode_id]
+            if depth < len(items):
+                core.append(items[depth])
+                added = True
+                if len(core) >= budget:
+                    break
+        if not added:
+            break
+        depth += 1
+    return core
 
 
 def collect_unfiltered_rows(shard_paths, split, baseline, probe):
@@ -91,7 +138,7 @@ def main(argv=None):
 
     rows, funnel = collect_unfiltered_rows(shard_paths, split, baseline, probe)
     rows = probe.dedupe_rows(rows)
-    core = deterministic_sample(rows, a5["core_rows"], config["dataset_seed"], "a5_core")
+    core = select_core_episode_uniform(rows, a5["core_rows"], config["dataset_seed"])
     if len(core) < a5["core_rows"]:
         print(f"[a5-build:warn] only {len(core)} unique rows available for a {a5['core_rows']}-row budget")
 
@@ -107,10 +154,13 @@ def main(argv=None):
     summary = {
         "probe": "a5_unverified_dataset",
         "mode": a5["mode"],
+        "balance": "episode-level uniform, T=0 first (v1.27); rows matched to A3 core 148 +/-10%",
+        "unverified_meaning": "not correctness-verified (AST filter off); parsing is a mechanical stage, unparseable outputs counted below and never trained on",
         "funnel": funnel,
         "unfiltered_rows_available": len(rows),
         "core_rows": len(core),
         "core_unique_episodes": len(core_episodes),
+        "core_t0_rows": sum(1 for row in core if row["source"].endswith("_t0")),
         "core_ast_pass_rows": sum(1 for row in core if row.get("ast_pass")),
         "core_ast_fail_rows": sum(1 for row in core if not row.get("ast_pass")),
         "replay_rows": len(replay),

@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
 """Gate 1 mechanical tally. NO narrative verdicts — human sign-off required.
 
-Preregistered Gate 1 criteria (PROJECT_MASTER_PLAN Part VI, v1.26 rulings):
-- A5: significantly worse than A3 (paired bootstrap CI on heldout, CI excludes
-  0) -> verifier necessity established. Not worse -> honest finding, wording
-  downgrade, never silently dropped.
+Preregistered Gate 1 criteria (PROJECT_MASTER_PLAN Part VI, v1.26/v1.27 rulings):
+- A5: adjudication field = heldout ALL-158 paired bootstrap CI (the verifier
+  hypothesis acts on ALL training data, so the adjudication field follows the
+  hypothesis's scope — v1.27 principle). scaffold-only 47 is co-reported, not
+  adjudicating. Preregistered asymmetric branch: all-158 not separated but
+  scaffold-only significantly worse -> "verifier necessity STRATUM-LIMITED",
+  Gate 1 partial, philosophy wording narrowed accordingly.
 - A6: frontier reported as-is. Best cell enters the frontier; all cells
   reported. Preregistered extra observation: any cell repairing MORE than the
   A2 full-injection reference is flagged as patch-interference evidence.
-- A11: placebo_repair ≈ 0 -> perturbation explanation excluded. Significantly
-  > 0 -> mechanical deduction (net gain = scaffold-on − placebo), no kill.
-- A7/A8: descriptive tables (replay necessity, data-scale curve).
+- A11 (v1.27 operationalization): main surface = heldout 158; union over the
+  three scramble seeds; Wilson 95% lower bound > 0 -> significantly above
+  zero -> deduction fires (net gain = repair(A2) − placebo, POINT estimate,
+  CI attached); lower bound ≤ 0 -> "≈0" holds, exclusion statement stands.
+  train/val surfaces are reference-only.
+- A7/A8: descriptive tables (replay necessity, data-scale curve). A8's 100%
+  point = A3's original 5-seed artifacts, unshaved; every curve point is
+  annotated with its seed count (v1.27).
 
 Every phase-1 number is 3-seed -> tagged PROBE. Strata with n<30 tagged.
 Output: gate1_report.json + gate1_report.md.
@@ -141,10 +149,16 @@ def compare_arms(name, arm_payloads, a3_payloads, report):
         "a3_minus_arm_scaffold_only": {**so_ci, "probe": so_ci["n"] < 30 and f"PROBE signal (n={so_ci['n']})" or None},
     }
     if name == "a5":
+        entry["adjudication_field"] = "heldout all-158 (v1.27: the field follows the hypothesis's scope)"
         if all_ci.get("ci_excludes_zero") and all_ci["mean_diff"] > 0:
-            entry["mechanical_verdict"] = "A5_SIGNIFICANTLY_WORSE_THAN_A3 -> verifier necessity supported (Gate 1 wording)"
+            entry["mechanical_verdict"] = "A5_SIGNIFICANTLY_WORSE_THAN_A3 (all-158) -> verifier necessity supported (Gate 1)"
         elif all_ci.get("ci_excludes_zero"):
-            entry["mechanical_verdict"] = "A5_SIGNIFICANTLY_BETTER_THAN_A3 -> honest finding, philosophy layer-4 wording downgrade"
+            entry["mechanical_verdict"] = "A5_SIGNIFICANTLY_BETTER_THAN_A3 (all-158) -> honest finding, philosophy layer-4 wording downgrade"
+        elif so_ci.get("ci_excludes_zero") and (so_ci.get("mean_diff") or 0) > 0:
+            entry["mechanical_verdict"] = (
+                "STRATUM_LIMITED: all-158 not separated but scaffold-only significantly worse "
+                "-> verifier necessity stratum-limited, Gate 1 partial (v1.27 preregistered branch)"
+            )
         else:
             entry["mechanical_verdict"] = "NOT_SEPARATED -> honest finding, philosophy layer-4 wording downgrade"
     report[name] = entry
@@ -238,14 +252,22 @@ def main(argv=None):
         surfaces = {}
         for name, item in a11["surfaces"].items():
             ci = wilson_ci(item["placebo_repair"], item["n"])
+            role = "MAIN adjudication surface (v1.27)" if name == "heldout" else "reference surface"
             surfaces[name] = {
                 **item,
-                "wilson_ci95": ci,
-                "mechanical_verdict": "SIGNIFICANTLY_ABOVE_ZERO -> mechanical deduction applies" if ci[0] > 0 else "≈0 -> perturbation explanation excluded",
+                "role": role,
+                "wilson_ci95_union_rate": ci,
+                "mechanical_verdict": "SIGNIFICANTLY_ABOVE_ZERO -> deduction fires" if ci[0] > 0 else "≈0 -> perturbation explanation excluded",
             }
         if a2_repair is not None and "heldout" in surfaces:
-            surfaces["heldout"]["net_teaching_gain_heldout"] = a2_repair - surfaces["heldout"]["placebo_repair"]
-        report["a11"] = {"scramble_seed": a11.get("scramble_seed"), "surfaces": surfaces}
+            item = surfaces["heldout"]
+            ci = item["wilson_ci95_union_rate"]
+            item["net_teaching_gain_heldout"] = {
+                "point": a2_repair - item["placebo_repair"],
+                "ci95": [a2_repair - item["n"] * ci[1], a2_repair - item["n"] * ci[0]],
+                "rule": "net gain = repair(A2) − placebo union; POINT estimate is the deduction magnitude, CI attached (v1.27)",
+            }
+        report["a11"] = {"scramble_seeds": a11.get("scramble_seeds"), "main_surface": "heldout", "surfaces": surfaces}
     else:
         report["a11"] = {"status": "MISSING_RUNS"}
 
@@ -284,8 +306,10 @@ def write_markdown(path, report):
                 lines.append(f"- note: {entry['definition_note']}")
         lines.append("")
     lines.append("## A8 data-scale")
+    lines.append("(v1.27: 100% = A3's original 5 seeds unshaved; seed counts differ by design — every point annotated, error bars speak)")
     for tag, item in report.get("a8", {}).items():
-        lines.append(f"- {tag}: heldout={_fmt(item.get('heldout'))} sibling_forget={_sib(item.get('sibling'))} {item.get('note', '')}")
+        seeds = (item.get("heldout") or {}).get("seeds", "?")
+        lines.append(f"- {tag} (seeds={seeds}): heldout={_fmt(item.get('heldout'))} sibling_forget={_sib(item.get('sibling'))} {item.get('note', '')}")
     lines.append("")
     lines.append("## A6 retrieval-patch")
     a6 = report.get("a6", {})
@@ -304,10 +328,15 @@ def write_markdown(path, report):
     if a11.get("status") == "MISSING_RUNS":
         lines.append("- MISSING RUNS")
     else:
+        lines.append(f"(union over scramble seeds {a11.get('scramble_seeds')}; main surface = heldout — v1.27)")
         for name, item in a11.get("surfaces", {}).items():
             lines.append(
-                f"- {name}: placebo_repair={item['placebo_repair']}/{item['n']} wilson95={item['wilson_ci95']} -> {item['mechanical_verdict']}"
+                f"- {name} [{item.get('role', '')}]: union placebo_repair={item['placebo_repair']}/{item['n']} "
+                f"per_seed={item.get('per_seed_repair')} wilson95={item['wilson_ci95_union_rate']} -> {item['mechanical_verdict']}"
             )
+        gain = (a11.get("surfaces", {}).get("heldout") or {}).get("net_teaching_gain_heldout")
+        if gain:
+            lines.append(f"- net teaching gain (heldout): point={gain['point']} ci95={gain['ci95']}")
     lines.append("")
     lines.append("---")
     lines.append("All phase-1 arms are 3-seed: every number above is `PROBE signal` until upgraded to 5 seeds for headline use.")

@@ -894,3 +894,72 @@ failures; H1 = 39 accepted patches; A7 = 148 rows/0 replay; A8-25% =
 50/158.
 
 签字:Ian(2026-07-06,消融配方锁定 + A6 规格 + GPU 策略三项裁决,先于任何消融数据)。
+
+## v1.27 - 2026-07-06
+
+### Four preregistration rulings closing every open judgment point before Phase 1 data
+
+Timing: adjudicated by Ian in-session on 2026-07-06, after v1.26 and before
+any Phase 1 arm produced data. With this entry there are NO open judgment
+points in the Phase 1/2 execution path: the company run is fully mechanical.
+
+Ruling 1 — A5 pool: `no_verifier_full` approved as the headline arm; the
+narrow `repaired_episodes_only` variant stays config-gated and unrun (it is
+attribution/rebuttal material, not a headline arm). Basis: episode-level
+filtering is itself a product of the verifier, so the honest no-verifier
+counterfactual is the full 313-episode pool. Balance procedure fixed now:
+core rows matched to A3 at 148 (±10% parity law) by EPISODE-LEVEL UNIFORM
+downsampling — hash-ordered episodes each contribute their T=0 row first,
+deeper T=0.8 rows fill only after every episode contributed one; rows and
+unique episodes are both reported. Sampling from A3's 74-episode pool is
+forbidden (it would smuggle the verifier's episode selection back in).
+Preregistered expected consequence: A5 will have ~148 unique episodes vs
+A3's 74, shallower per-episode depth, and wrong outputs mixed in — the
+COMPOSITE effect is the honest cost of the no-verifier world and is not
+decomposed. Parse-failure handling approved: parsing is a mechanical
+pipeline stage, not the verifier; unparseable outputs are counted, reported,
+and never trained on, and reports must state that "unverified" means
+not-correctness-verified, not unparsed.
+
+Ruling 2 — Gate 1 A5 adjudication field: heldout ALL-158 paired CI is the
+verdict field; scaffold-only 47 is co-reported, non-adjudicating. General
+principle recorded for all future arms: THE ADJUDICATION FIELD FOLLOWS THE
+SCOPE OF THE HYPOTHESIS — A5's hypothesis (verification signal) acts on all
+training data, so the field is the full set; C2's hypothesis is
+stratum-specific, so its field is the 47-stratum. Preregistered asymmetric
+branch: if all-158 is not separated but scaffold-only shows A5 significantly
+worse, the verdict is "verifier necessity STRATUM-LIMITED", Gate 1 partial,
+philosophy wording narrowed accordingly — fixed now so nothing is invented
+at reading time.
+
+Ruling 3 — A11 "≈0" operationalization (three parameters filled): main
+surface = heldout 158 (same exam as every arm), train/val failure sets
+reported as reference; THREE archived scramble seeds {20260707, 20260717,
+20260727}, an episode counts as placebo-rescuable if ANY seed's scramble
+passes V (union — generous to placebo = conservative for us), Wilson 95% CI
+computed on the union rate; deduction trigger = Wilson lower bound > 0,
+deduction magnitude = POINT estimate of net teaching gain
+(repair(A2) − placebo_repair) with CI attached; lower bound ≤ 0 → "≈0"
+holds and the exclusion statement stands.
+
+Ruling 4 — A8 100% point: A3's original 5-seed results enter the curve
+unshaved; 25%/50% run at 3 seeds; every curve point is annotated with its
+seed count and error bars speak for themselves. Shaving A3 to 3 seeds would
+discard information for cosmetic evenness and add an unnecessary seed-choice
+degree of freedom. If a 25%/50% point is later promoted to a headline claim,
+it is upgraded to 5 seeds per the handoff rule and the curve evens out
+naturally.
+
+Implementation of the four rulings (same commit):
+
+- `phase1/a5_build_unverified.py`: episode-uniform T=0-first core selection
+  (`select_core_episode_uniform`), summary reports rows/unique-episodes/
+  T=0-row counts and the "not-correctness-verified" clarification.
+- `phase1/gate1_report.py`: all-158 adjudication + STRATUM_LIMITED branch;
+  A11 union Wilson + net-gain point-with-CI; A8 per-point seed annotation.
+- `phase1/a11_placebo.py` + `configs/launch.json`: three archived scramble
+  seeds, per-seed and union bookkeeping, heldout marked as main surface.
+- Contract tests extended to 14 (episode-uniform selection semantics;
+  three-distinct-scramble-seeds config lock).
+
+签字:Ian(2026-07-06,四项裁决原文见本条;全部先于任何消融数据)。
