@@ -239,9 +239,14 @@ def round2_steps():
             needs=["r2.smoke"],
             argv=_module(
                 "edr.scaffold.loop",
+                # Round-2 loop input = F2 (M1's residual failures), split internally
+                # at the frozen seed — same semantics as the reviewed round-2 wrapper.
+                "--input", "outputs/round2/f2_failures.json",
                 "--base-adapter-dir", config["m1_adapter"],
                 "--output", "outputs/round2/loop/evolution_loop.json",
                 "--seeds", config.get("loop_split_seed", 20260630),
+                # NL family only: T2 consumes NL patches exclusively and family
+                # loops are independent, so this is identical H2 at 1/3 the cost.
                 "--families", "NL",
             ),
             produces=["outputs/round2/loop/evolution_loop.json"],

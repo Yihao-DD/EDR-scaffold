@@ -28,7 +28,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from edr.config import load_config  # noqa: E402
-from edr.paths import ADAPTER_DIR, OUTPUT_DIR, ROUND1_DIR, STATE_FILE  # noqa: E402
+from edr.paths import OUTPUT_DIR, STATE_FILE  # noqa: E402
 from edr.runner.gpus import detect_lanes  # noqa: E402
 from edr.runner.scheduler import Runner  # noqa: E402
 from edr.runner.steps import ablation_steps, round2_steps  # noqa: E402

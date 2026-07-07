@@ -51,6 +51,18 @@ def test_ablation_dag_needs_and_producers():
                 assert target in produced, f"{step.id} consumes {target} with no producer"
 
 
+def test_round2_loop_searches_patches_over_f2_not_round1_failures():
+    """The round-2 evolve loop must take F2 (M1's residual failures) as input.
+    Defaulting to the round-1 failure set would silently re-teach solved
+    episodes — the exact class of bug dry-runs cannot catch."""
+
+    steps = _steps_by_id(round2_steps())
+    argv = [str(a) for a in steps["r2.loop"].argv]
+    assert argv[argv.index("--input") + 1] == "outputs/round2/f2_failures.json"
+    assert argv[argv.index("--families") + 1] == "NL"
+    assert "--base-adapter-dir" in argv, "raw-M0 patch search is invalid in round 2"
+
+
 def test_round2_dag_needs_and_teacher2_once():
     steps = round2_steps()
     by_id = _steps_by_id(steps)

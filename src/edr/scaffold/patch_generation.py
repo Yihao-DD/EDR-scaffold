@@ -746,7 +746,7 @@ def write_markdown(result, output_path):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="STRUCT/NL information-parity pairing probe")
-    parser.add_argument("--input", default="../EDG-EXP1/results/a2_failures.json")
+    parser.add_argument("--input", default="data/round1/base_failures.json")
     parser.add_argument("--output", default="results/pairing_probe.json")
     parser.add_argument("--log", default="logs/pairing_probe.md")
     parser.add_argument("--n", type=int, default=20)

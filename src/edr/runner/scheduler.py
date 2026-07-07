@@ -65,8 +65,25 @@ class Runner:
             print(f"[{marker}] {step_id} ({state}){needs}")
             print(f"      $ {' '.join(step.argv)}")
 
+    def _block_failed_dependents(self):
+        for step_id in self.order:
+            step = self.steps[step_id]
+            if self.status_of(step_id) == "pending" and self.deps_failed(step):
+                self.state.mark(step_id, "blocked")
+
+    def _reset_stale_done(self):
+        """Resume contract: state 'done' is honored only while every declared
+        output still exists; otherwise the step reruns."""
+
+        for step_id in self.order:
+            step = self.steps[step_id]
+            if self.state.record(step_id).get("status") == "done" and not self.state.is_done(step, REPO_ROOT):
+                self.state.mark(step_id, "pending", note="outputs missing on resume; rerunning")
+                print(f"[resume] {step_id}: declared outputs missing -> rerunning")
+
     def run(self):
         self.state.reset_failed()
+        self._reset_stale_done()
         lanes = detect_lanes(self.config.get("gpu", {}))
         gpu_steps_present = any(step.gpu for step in self.steps.values())
         if gpu_steps_present and not lanes:
@@ -80,11 +97,7 @@ class Runner:
         while True:
             progressed = self._reap()
             free_lanes = [lane for lane in lanes if lane not in {info[1] for info in self.running.values()}]
-            # block dependents of failures
-            for step_id in self.order:
-                step = self.steps[step_id]
-                if self.status_of(step_id) == "pending" and self.deps_failed(step):
-                    self.state.mark(step_id, "blocked")
+            self._block_failed_dependents()
             # launch / execute ready steps
             for step_id in self.order:
                 step = self.steps[step_id]
@@ -109,6 +122,8 @@ class Runner:
                 self.status_of(step_id) == "pending" and not self.deps_failed(self.steps[step_id])
                 for step_id in self.order
             ):
+                # final pass so dependents of late failures end as 'blocked', not 'pending'
+                self._block_failed_dependents()
                 break
             if not progressed:
                 time.sleep(POLL_SECONDS)
