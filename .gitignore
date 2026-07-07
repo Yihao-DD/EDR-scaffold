@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+**/.DS_Store
+*.egg-info/
+
+# All run-time artifacts land here (datasets built at run time, adapters,
+# eval JSONs, logs, scheduler state). Reports are copied out explicitly.
+outputs/*
+!outputs/.gitkeep
+
+# Large model artifacts are fetched from HF Hub (tools/fetch_adapters.py)
+data/adapters/*
+!data/adapters/.gitkeep
+
+# Local credentials / machine-specific overrides
+configs/local.json

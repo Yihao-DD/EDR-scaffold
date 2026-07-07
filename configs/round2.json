@@ -1,0 +1,10 @@
+{
+  "seeds": [20260708, 20260709, 20260710, 20260711, 20260712],
+  "m1_adapter": "data/adapters/round1/seed20260704",
+  "m1_reference": {
+    "seed": 20260704,
+    "expected_heldout_repair_count": 51,
+    "expected_sibling_success_count": 292
+  },
+  "forget_gate": 0.02
+}

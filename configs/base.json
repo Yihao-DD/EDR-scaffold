@@ -1,0 +1,24 @@
+{
+  "_comment": "Machine-adaptable keys: model_id, model_cache_dir, gpu.*. Everything else is a preregistered experimental constant.",
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "model_cache_dir": null,
+  "split_seed": 20260630,
+  "dataset_seed": 20260702,
+  "regression_seed": 20260701,
+  "recipe_locked": {
+    "rank": 16,
+    "lr": 5e-05,
+    "epochs": 3,
+    "replay_ratio": "2:1",
+    "kl_anchor_lambda": 2.0,
+    "guards": "non-finite skip + grad clipping"
+  },
+  "eval": {
+    "max_new_tokens": 256
+  },
+  "gpu": {
+    "mode": "auto",
+    "max_lanes": null,
+    "min_free_mem_gb": 20
+  }
+}

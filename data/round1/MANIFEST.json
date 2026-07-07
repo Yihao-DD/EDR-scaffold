@@ -1,0 +1,164 @@
+{
+  "probe": "round1_manifest",
+  "m1_designated": {
+    "seed": 20260704,
+    "adapter_dir": "data/adapters/round1/seed20260704",
+    "reference": {
+      "expected_heldout_repair_count": 51,
+      "expected_sibling_success_count": 292
+    },
+    "rule": "median heldout repair over the five round-1 seeds; ties take the smaller seed"
+  },
+  "adapters": {
+    "hf_repo": null,
+    "files": [
+      {
+        "path": "round1/seed20260703/adapter_model.safetensors",
+        "seed": 20260703,
+        "size": 161533192,
+        "sha256": "6c69d3f52474dd8bec16ad8df2ea2366538fe87a25d5bb053261d3eb7459f879"
+      },
+      {
+        "path": "round1/seed20260704/adapter_model.safetensors",
+        "seed": 20260704,
+        "size": 161533192,
+        "sha256": "c3afb185a6a32480a55e678599b3bebc8b8899ed935d620605b00ab3c3e62683"
+      },
+      {
+        "path": "round1/seed20260705/adapter_model.safetensors",
+        "seed": 20260705,
+        "size": 161533192,
+        "sha256": "fa1ef04a60bdbc5ed9f5b7ea54a0bef5c5e556656868f16e0ec824a1ca3fd8a6"
+      },
+      {
+        "path": "round1/seed20260706/adapter_model.safetensors",
+        "seed": 20260706,
+        "size": 161533192,
+        "sha256": "ddaf2d2fea9f56a097ce55981910d6154b057863d2b9ba4e3af1cf08bc67bb7f"
+      },
+      {
+        "path": "round1/seed20260707/adapter_model.safetensors",
+        "seed": 20260707,
+        "size": 161533192,
+        "sha256": "65e1d6928ac27e3ef2a8e05c1481950d4a616956d39abcafd6ecef220d9cdf89"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "base_failures.json",
+      "size": 13892827,
+      "sha256": "2b97c5775cbdd0896e27308d9487e75f5665647ff182afa1d810e5feac182955"
+    },
+    {
+      "path": "distill_core.jsonl",
+      "size": 682692,
+      "sha256": "b95e12ae75da19df8460959e0d7f04670e42afbe0a486bc2e254b2f5b70a706e"
+    },
+    {
+      "path": "distill_train.jsonl",
+      "size": 1989087,
+      "sha256": "f5ac3a81d6092457057e5051026b95fd643169f1586625e838392b666cc00a82"
+    },
+    {
+      "path": "episode_ids/capped120_replay.json",
+      "size": 3645,
+      "sha256": "2807ad8671b2cf78d6392eaf6dcf39d9d77e985db8a9a50b0a178f10fe4561c6"
+    },
+    {
+      "path": "episode_ids/d_heldout_failures.json",
+      "size": 4865,
+      "sha256": "9587e6efe469812b4035bb9d8583061482360ee33749cafb8b2ec71630ad2452"
+    },
+    {
+      "path": "episode_ids/d_val_failures.json",
+      "size": 4756,
+      "sha256": "2d4233aa87883f062e51711a8024aa9e293c8be099cbe486d53a76d4bf24ccbe"
+    },
+    {
+      "path": "episode_ids/old400_success_eval.json",
+      "size": 11393,
+      "sha256": "2fa12e13d582461ea5c2a4827ef752f440cd965ecef14167921c6e7bb0adb38e"
+    },
+    {
+      "path": "episode_ids/sibling300_arena.json",
+      "size": 7402,
+      "sha256": "df11166782033ee43775194fa0c17e5f4e5830cb995b72387ec44770947cc137"
+    },
+    {
+      "path": "evolution_h1.json",
+      "size": 18413232,
+      "sha256": "b58ebc70c5dba70f0caa6e9a4e8213aa483774459652a4a3b2344a48be7d06db"
+    },
+    {
+      "path": "heldout_pass16_partition.json",
+      "size": 172832,
+      "sha256": "7e861cd64e32c6f28729f6f6efc9e8932200079feb768801b9acac2ac90df25a"
+    },
+    {
+      "path": "reference_evals/seed20260703/heldout.json",
+      "size": 143893,
+      "sha256": "e26b6990e51e9c5a5afacb50714a20174c37bbbcfdf077478ec255adef55ab1a"
+    },
+    {
+      "path": "reference_evals/seed20260703/sibling.json",
+      "size": 369688,
+      "sha256": "5dbb77aeb777f1d7813f5c53818923696391c15b038e7e3839ec427788fe48cc"
+    },
+    {
+      "path": "reference_evals/seed20260704/heldout.json",
+      "size": 143469,
+      "sha256": "375660513a8780b2ca8091d423071be65252ba8ee5ab0ccbdccd1cbc21e173f2"
+    },
+    {
+      "path": "reference_evals/seed20260704/sibling.json",
+      "size": 370058,
+      "sha256": "dce732c1712398bd864b936968dbd9c0dbfef12e463b55dffb95053cdd78c0ed"
+    },
+    {
+      "path": "reference_evals/seed20260705/heldout.json",
+      "size": 142596,
+      "sha256": "1630799b6b5ee605ebb8acf175bf8e03ecc568c348918a5ba8b56c60d5bc805e"
+    },
+    {
+      "path": "reference_evals/seed20260705/sibling.json",
+      "size": 369936,
+      "sha256": "ae1b76f326971da8531de1d69d1563d6c9176e68a2921f1db0c031ace481fe70"
+    },
+    {
+      "path": "reference_evals/seed20260706/heldout.json",
+      "size": 145522,
+      "sha256": "3ba76ee938342bbdd85cd585ce875d1d825ba29ff99d58f7200c97fb558c5389"
+    },
+    {
+      "path": "reference_evals/seed20260706/sibling.json",
+      "size": 369329,
+      "sha256": "a67325f416744e7968fbd4ff5803e90389d151cb3bbde2cfa3c11bdf23e51999"
+    },
+    {
+      "path": "reference_evals/seed20260707/heldout.json",
+      "size": 142881,
+      "sha256": "286eae38ec35cd1487fb19ca00ac2bf4947b99da8381cbd3a629b4f4994f8c7f"
+    },
+    {
+      "path": "reference_evals/seed20260707/sibling.json",
+      "size": 369323,
+      "sha256": "184f0bdf1e55d248dfe09f4790902e6b0fda239c775606ef5388424d81597c40"
+    },
+    {
+      "path": "sibling_arena.json",
+      "size": 1469182,
+      "sha256": "3d474ff59901fcc910450bd5022d7194801a198ecb004be3870f59edcb3469c6"
+    },
+    {
+      "path": "teacher_heldout_reference.json",
+      "size": 109863,
+      "sha256": "f08c004587f636d31ff1227115b738dfda089f379f6f978a45260072a41fc7d7"
+    },
+    {
+      "path": "train_val_pass16_partition.json",
+      "size": 110699,
+      "sha256": "c3f7b9460c50f1c396f1cc62dca70f76f59a1b92a80a5d79181e495135077c49"
+    }
+  ]
+}
